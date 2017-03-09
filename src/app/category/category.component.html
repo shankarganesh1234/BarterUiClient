@@ -1,0 +1,21 @@
+<!-- <div class="container">
+<div class="row table">
+    <div class="col-sm-6">
+        <div *ngFor="let category of categories">
+            <ul class="nav nav-tabs style1" role="tablist">
+                <li role="presentation" class="active"><a href="#tab1_1" aria-controls="home" role="tab" data-toggle="tab">{{category.categoryName}}</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+</div> -->
+<div class="col-sm-12">
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs style1" role="tablist">
+        <li *ngFor="let category of categories" role="presentation">
+            <a href="#" aria-controls="home" role="tab" data-toggle="tab">{{category.categoryName}}</a>
+        </li>
+    </ul>
+</div>
+<!-- end col -->
+
