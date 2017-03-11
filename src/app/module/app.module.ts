@@ -10,6 +10,7 @@ import { AppRoutingModule }     from '../routing/app-routing.module';
 import { HttpModule, JsonpModule }    from '@angular/http';
 import {LandingComponent} from "../landing/landing.component";
 import {HeaderComponent} from "../header/header.component";
+import {SearchBarComponent} from "../search-bar/search-bar.component";
 
 
 
@@ -20,7 +21,7 @@ import {HeaderComponent} from "../header/header.component";
   					HttpModule,
   					JsonpModule,
   					],
-  declarations: [ AppComponent, ItemListComponent, CategoryComponent, LandingComponent, HeaderComponent],
+  declarations: [ AppComponent, ItemListComponent, CategoryComponent, LandingComponent, HeaderComponent, SearchBarComponent],
   bootstrap:    [ LandingComponent ],
   providers:	[ SearchService, CategoryService ]
 })

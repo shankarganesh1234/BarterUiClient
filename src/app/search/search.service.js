@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
 require('rxjs/add/operator/toPromise');
+var url_values_1 = require('../urls/url-values');
 // Import RxJs required methods
 var Rx_1 = require('rxjs/Rx');
 require('rxjs/add/operator/map');
@@ -18,27 +19,28 @@ require('rxjs/add/operator/catch');
 var SearchService = (function () {
     function SearchService(http) {
         this.http = http;
-        this.headers = new http_1.Headers({ 'Content-Type': 'application/json',
-            'Accept': 'application/json' });
+        this.headers = new http_1.Headers({
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        });
         this.options = new http_1.RequestOptions({ headers: this.headers });
-        this.searchUrl = "http://localhost:8080/SwapServerSide/search/item";
-        this.autocompleteUrl = "http://localhost:8080/SwapServerSide/search/autocomplete/";
+        this.urls = new url_values_1.GlobalUrls();
     }
     SearchService.prototype.search = function (queryString) {
-        console.log(this.searchUrl);
+        console.log(this.urls.searchUrl);
         console.log(JSON.stringify({ query: queryString }));
         var body = JSON.stringify({ query: queryString });
         return this.http
-            .post(this.searchUrl, body, this.options)
+            .post(this.urls.searchUrl, body, this.options)
             .map(this.extractData)
             .catch(this.handleError);
     };
     SearchService.prototype.autoComplete = function (term) {
-        console.log(this.searchUrl);
+        console.log(this.urls.autocompleteUrl);
         console.log(JSON.stringify({ query: term }));
         var body = JSON.stringify({ query: term });
         return this.http
-            .get(this.autocompleteUrl + term, this.options)
+            .get(this.urls.autocompleteUrl + term, this.options)
             .map(this.extractData)
             .catch(this.handleError);
     };

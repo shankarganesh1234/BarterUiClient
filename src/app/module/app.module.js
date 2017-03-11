@@ -20,6 +20,7 @@ var app_routing_module_1 = require('../routing/app-routing.module');
 var http_1 = require('@angular/http');
 var landing_component_1 = require("../landing/landing.component");
 var header_component_1 = require("../header/header.component");
+var search_bar_component_1 = require("../search-bar/search-bar.component");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -31,7 +32,7 @@ var AppModule = (function () {
                 http_1.HttpModule,
                 http_1.JsonpModule,
             ],
-            declarations: [app_component_1.AppComponent, item_list_component_1.ItemListComponent, category_component_1.CategoryComponent, landing_component_1.LandingComponent, header_component_1.HeaderComponent],
+            declarations: [app_component_1.AppComponent, item_list_component_1.ItemListComponent, category_component_1.CategoryComponent, landing_component_1.LandingComponent, header_component_1.HeaderComponent, search_bar_component_1.SearchBarComponent],
             bootstrap: [landing_component_1.LandingComponent],
             providers: [search_service_1.SearchService, category_service_1.CategoryService]
         }), 
