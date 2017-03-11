@@ -4,7 +4,7 @@ import { Headers, Http, RequestOptions, Response} from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
 import { SearchResponse } from './search-response';
-import { Item } from './item';
+import { Item } from '../item/item';
 // Import RxJs required methods
 import {Observable} from 'rxjs/Rx';
 import 'rxjs/add/operator/map';

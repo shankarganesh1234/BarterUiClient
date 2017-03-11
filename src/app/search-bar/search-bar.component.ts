@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { SearchService } from './search.service';
+import { SearchService } from '../search/search.service';
 import { Router } from '@angular/router';
-import { SearchResponse } from './search-response';
-import { ItemListComponent } from './item-list.component';
+import { SearchResponse } from '../search/search-response';
 import { Observable }        from 'rxjs/Observable';
 import { Subject }           from 'rxjs/Subject';
 
@@ -15,15 +14,15 @@ import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
-import { Item } from './item';
+import { Item } from '../item/item';
   
 @Component({
   moduleId: module.id,
-  selector: 'swap-header',
-  templateUrl: `./header.component.html`,
-  styleUrls:['./header.component.css']
+  selector: 'swap-search-bar',
+  templateUrl: `search-bar.component.html`,
+  styleUrls:['search-bar.component.css']
 })
-export class HeaderComponent implements OnInit {
+export class SearchBarComponent implements OnInit {
 
 	 searchResponse:SearchResponse;
    observableTitles : Observable<Item[]>;

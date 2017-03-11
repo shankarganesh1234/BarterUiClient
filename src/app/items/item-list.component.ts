@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
 import { Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
-import { SearchResponse } from './search-response';
+import { SearchResponse } from '../search/search-response';
 
 
 @Component({
 		moduleId: module.id,
 	  	selector: 'swap-item-list',
-  		templateUrl: './item-list.component.html',
- 		styleUrls: [ './item-list.component.css' ]
+  		templateUrl: 'item-list.component.html',
+ 		styleUrls: [ 'item-list.component.css' ]
 })
 
 export class ItemListComponent implements OnInit, OnChanges {

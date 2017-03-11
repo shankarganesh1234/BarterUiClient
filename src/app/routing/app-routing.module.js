@@ -10,12 +10,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
-var header_component_1 = require('./header.component');
-var item_list_component_1 = require('./item-list.component');
-var category_component_1 = require('./category/category.component');
+var item_list_component_1 = require('../items/item-list.component');
+var category_component_1 = require('../category/category.component');
 var routes = [
-    { path: '', redirectTo: '/search', pathMatch: 'full' },
-    { path: 'search', component: header_component_1.HeaderComponent },
     { path: 'itemlist', component: item_list_component_1.ItemListComponent },
     { path: 'categories', component: category_component_1.CategoryComponent }
 ];

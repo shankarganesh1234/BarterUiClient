@@ -9,35 +9,26 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var search_service_1 = require('./search.service');
+var search_service_1 = require('../search/search.service');
 var router_1 = require('@angular/router');
 var Observable_1 = require('rxjs/Observable');
 var Subject_1 = require('rxjs/Subject');
-require('../js/jquery-3.1.1.min.js');
-require('../js/bootstrap.min.js');
-require('../js/owl.carousel.min.js');
-require('../js/jquery.downCount.js');
-require('../js/jquery.sticky.js');
-require('../js/pace.min.js');
-require('../js/star-rating.min.js');
-require('../js/wow.min.js');
-require('../js/swiper.min.js');
 // Observable class extensions
 require('rxjs/add/observable/of');
 // Observable operators
 require('rxjs/add/operator/catch');
 require('rxjs/add/operator/debounceTime');
 require('rxjs/add/operator/distinctUntilChanged');
-var SearchComponent = (function () {
-    function SearchComponent(searchService, router) {
+var SearchBarComponent = (function () {
+    function SearchBarComponent(searchService, router) {
         this.searchService = searchService;
         this.router = router;
         this.searchQueries = new Subject_1.Subject();
     }
-    SearchComponent.prototype.autocomplete = function (term) {
+    SearchBarComponent.prototype.autocomplete = function (term) {
         this.searchQueries.next(term);
     };
-    SearchComponent.prototype.ngOnInit = function () {
+    SearchBarComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.observableTitles = this.searchQueries
             .debounceTime(300) // wait 300ms after each keystroke before considering the term
@@ -51,29 +42,28 @@ var SearchComponent = (function () {
             return Observable_1.Observable.of([]);
         });
     };
-    SearchComponent.prototype.search = function (searchVal) {
+    SearchBarComponent.prototype.search = function (searchVal) {
         var _this = this;
         this.searchService
             .search(searchVal)
             .subscribe(function (result) { return _this.success(result); }, function (error) { return console.log(error); });
     };
-    SearchComponent.prototype.success = function (result) {
+    SearchBarComponent.prototype.success = function (result) {
         console.log(result);
         this.searchResponse = result;
         // var link = ['/itemlist'];
         // this.router.navigate(link);
     };
-    SearchComponent = __decorate([
+    SearchBarComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
-            selector: 'swap-search',
-            templateUrl: "./search.component.html",
-            styleUrls: ['./search.component.css']
+            selector: 'swap-search-bar',
+            templateUrl: "search-bar.component.html",
+            styleUrls: ['search-bar.component.css']
         }), 
         __metadata('design:paramtypes', [search_service_1.SearchService, router_1.Router])
-    ], SearchComponent);
-    return SearchComponent;
+    ], SearchBarComponent);
+    return SearchBarComponent;
 }());
-exports.SearchComponent = SearchComponent;
-require('../js/main.js');
-//# sourceMappingURL=search.component.js.map
+exports.SearchBarComponent = SearchBarComponent;
+//# sourceMappingURL=search-bar.component.js.map

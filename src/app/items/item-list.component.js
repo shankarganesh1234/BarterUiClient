@@ -11,7 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var core_2 = require('@angular/core');
 var router_1 = require('@angular/router');
-var search_response_1 = require('./search-response');
+var search_response_1 = require('../search/search-response');
 var ItemListComponent = (function () {
     function ItemListComponent(router) {
         this.router = router;
@@ -31,8 +31,8 @@ var ItemListComponent = (function () {
         core_1.Component({
             moduleId: module.id,
             selector: 'swap-item-list',
-            templateUrl: './item-list.component.html',
-            styleUrls: ['./item-list.component.css']
+            templateUrl: 'item-list.component.html',
+            styleUrls: ['item-list.component.css']
         }), 
         __metadata('design:paramtypes', [router_1.Router])
     ], ItemListComponent);
