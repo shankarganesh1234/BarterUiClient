@@ -8,14 +8,14 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var http_1 = require('@angular/http');
-require('rxjs/add/operator/toPromise');
-var url_values_1 = require('../urls/url-values');
+var core_1 = require("@angular/core");
+var http_1 = require("@angular/http");
+require("rxjs/add/operator/toPromise");
+var url_values_1 = require("../urls/url-values");
 // Import RxJs required methods
-var Rx_1 = require('rxjs/Rx');
-require('rxjs/add/operator/map');
-require('rxjs/add/operator/catch');
+var Rx_1 = require("rxjs/Rx");
+require("rxjs/add/operator/map");
+require("rxjs/add/operator/catch");
 var SearchService = (function () {
     function SearchService(http) {
         this.http = http;

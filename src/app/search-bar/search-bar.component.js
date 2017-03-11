@@ -8,17 +8,15 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var search_service_1 = require('../search/search.service');
-var router_1 = require('@angular/router');
-var Observable_1 = require('rxjs/Observable');
-var Subject_1 = require('rxjs/Subject');
-// Observable class extensions
-require('rxjs/add/observable/of');
-// Observable operators
-require('rxjs/add/operator/catch');
-require('rxjs/add/operator/debounceTime');
-require('rxjs/add/operator/distinctUntilChanged');
+var core_1 = require("@angular/core");
+var search_service_1 = require("../search/search.service");
+var router_1 = require("@angular/router");
+var Observable_1 = require("rxjs/Observable");
+var Subject_1 = require("rxjs/Subject");
+require("rxjs/add/observable/of");
+require("rxjs/add/operator/catch");
+require("rxjs/add/operator/debounceTime");
+require("rxjs/add/operator/distinctUntilChanged");
 var SearchBarComponent = (function () {
     function SearchBarComponent(searchService, router) {
         this.searchService = searchService;

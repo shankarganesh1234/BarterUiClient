@@ -1,23 +1,23 @@
 <section class="section white-backgorund">
 </section>
-    <div class="container">
-        <div class="row">
-            <div *ngFor="let item of searchResponse.items">
-                <div class="col-sm-6 col-md-3">
-                    <div class="thumbnail store style1">
-                        <div class="header">
-                            <figure class="layer">
-                                <a href="javascript:void(0);">
-                                    <img class="front" src="{{item.imageUrl}}" alt="">
-                                    <img class="back" src="{{item.imageUrl}}" alt="">
-                                </a>
-                            </figure>
-                        </div>
-                        <div class="caption">
-                            <h6 class="regular"><a href="#">{{item.title}}</a></h6>
-                        </div>
+<div class="container">
+    <div class="row">
+        <div *ngFor="let item of searchResponse.items">
+            <div class="col-sm-6 col-md-3">
+                <div class="thumbnail store style1">
+                    <div class="header">
+                        <figure class="layer">
+                            <a href="javascript:void(0);">
+                                <img class="front" src="{{item.imageUrl}}" alt="">
+                                <img class="back" src="{{item.imageUrl}}" alt="">
+                            </a>
+                        </figure>
+                    </div>
+                    <div class="caption">
+                        <h6 class="regular"><a href="#">{{item.title}}</a></h6>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>

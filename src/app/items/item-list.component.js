@@ -8,10 +8,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var core_2 = require('@angular/core');
-var router_1 = require('@angular/router');
-var search_response_1 = require('../search/search-response');
+var core_1 = require("@angular/core");
+var router_1 = require("@angular/router");
+var search_response_1 = require("../search/search-response");
 var ItemListComponent = (function () {
     function ItemListComponent(router) {
         this.router = router;
@@ -24,7 +23,7 @@ var ItemListComponent = (function () {
         console.log("on changes invoked");
     };
     __decorate([
-        core_2.Input(), 
+        core_1.Input(), 
         __metadata('design:type', search_response_1.SearchResponse)
     ], ItemListComponent.prototype, "searchResponse", void 0);
     ItemListComponent = __decorate([

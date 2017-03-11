@@ -1,7 +1,9 @@
 <div class="input-group input-group-lg col-lg-12">
-    <input type="text" id="searchBox" #searchBox class="form-control" placeholder="Address, city, state, zip" aria-describedby="sizing-addon1" (keyup)="autocomplete(searchBox.value)">
+    <input type="text" id="searchBox" #searchBox class="form-control" placeholder="Address, city, state, zip"
+           aria-describedby="sizing-addon1" (keyup)="autocomplete(searchBox.value)">
 </div>
-<div *ngFor="let item of observableTitles | async" class="search-result" (click)="searchBox.value = item.title; search(item.title)">
+<div *ngFor="let item of observableTitles | async" class="search-result"
+     (click)="searchBox.value = item.title; search(item.title)">
     <a>{{item.title}}</a>
 </div>
 <div class="input-group input-group-lg col-lg-12">

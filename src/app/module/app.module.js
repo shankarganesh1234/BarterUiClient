@@ -8,16 +8,16 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var platform_browser_1 = require('@angular/platform-browser');
-var forms_1 = require('@angular/forms');
-var app_component_1 = require('../app-component/app.component');
-var search_service_1 = require('../search/search.service');
-var category_service_1 = require('../category/category.service');
-var item_list_component_1 = require('../items/item-list.component');
-var category_component_1 = require('../category/category.component');
-var app_routing_module_1 = require('../routing/app-routing.module');
-var http_1 = require('@angular/http');
+var core_1 = require("@angular/core");
+var platform_browser_1 = require("@angular/platform-browser");
+var forms_1 = require("@angular/forms");
+var app_component_1 = require("../app-component/app.component");
+var search_service_1 = require("../search/search.service");
+var category_service_1 = require("../category/category.service");
+var item_list_component_1 = require("../items/item-list.component");
+var category_component_1 = require("../category/category.component");
+var app_routing_module_1 = require("../routing/app-routing.module");
+var http_1 = require("@angular/http");
 var landing_component_1 = require("../landing/landing.component");
 var header_component_1 = require("../header/header.component");
 var search_bar_component_1 = require("../search-bar/search-bar.component");

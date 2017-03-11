@@ -42,37 +42,41 @@ $screen-sm: 767px;
 $screen-xs: 480px;
 
 @mixin round($radius...) {
-    -webkit-border-radius: $radius;
-    -moz-border-radius: $radius;
-    -ms-border-radius: $radius;
-    border-radius: $radius;
-    //border-radius: 10px 20px 3px 8px;
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  -ms-border-radius: $radius;
+  border-radius: $radius;
+  //border-radius: 10px 20px 3px 8px;
 }
+
 @mixin box-shadow($shadow...) {
-    -webkit-box-shadow: $shadow;
-    -moz-box-shadow: $shadow;
-    -ms-box-shadow: $shadow;
-    box-shadow: $shadow;
-          //box-shadow: 10px 10px 5px #888888;
+  -webkit-box-shadow: $shadow;
+  -moz-box-shadow: $shadow;
+  -ms-box-shadow: $shadow;
+  box-shadow: $shadow;
+  //box-shadow: 10px 10px 5px #888888;
 }
+
 @mixin linear-gradient($gradient...) {
-    background: -webkit-linear-gradient($gradient); /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient($gradient); /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient($gradient); /* For Firefox 3.6 to 15 */
-    background: linear-gradient($gradient); /* Standard syntax */
-    //background: -webkit-linear-gradient(red, yellow, green);
+  background: -webkit-linear-gradient($gradient); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient($gradient); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient($gradient); /* For Firefox 3.6 to 15 */
+  background: linear-gradient($gradient); /* Standard syntax */
+  //background: -webkit-linear-gradient(red, yellow, green);
 }
+
 @mixin transition($transition...) {
-    -webkit-transition: $transition;
-    -moz-transition: $transition;
-    -ms-transition: $transition;
-    -o-transition: $transition;
-    transition: $transition;
-    //transition: all .3s ease-in;
+  -webkit-transition: $transition;
+  -moz-transition: $transition;
+  -ms-transition: $transition;
+  -o-transition: $transition;
+  transition: $transition;
+  //transition: all .3s ease-in;
 }
+
 @mixin transform($transform...) {
-    -ms-transform: $transform; /* IE 9 */
-    -webkit-transform: $transform; /* Chrome, Safari, Opera */
-    transform: $transform;
-    //transform: rotate(7deg);
+  -ms-transform: $transform; /* IE 9 */
+  -webkit-transform: $transform; /* Chrome, Safari, Opera */
+  transform: $transform;
+  //transform: rotate(7deg);
 }
