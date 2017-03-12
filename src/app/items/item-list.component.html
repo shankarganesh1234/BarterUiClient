@@ -1,23 +1,35 @@
-<section class="section white-backgorund">
-</section>
 <div class="container">
-    <div class="row">
-        <div *ngFor="let item of searchResponse.items">
-            <div class="col-sm-6 col-md-3">
-                <div class="thumbnail store style1">
-                    <div class="header">
-                        <figure class="layer">
-                            <a href="javascript:void(0);">
-                                <img class="front" src="{{item.imageUrl}}" alt="">
-                                <img class="back" src="{{item.imageUrl}}" alt="">
-                            </a>
-                        </figure>
+    <div class="row column-4">
+        <div class="col-sm-6 col-md-3" *ngFor="let item of searchResponse.items">
+            <div class="thumbnail store style1">
+                <div class="header">
+                    <div class="badges">
+                        <span class="product-badge top left primary-background text-white semi-circle">Sale</span>
+                        <span class="product-badge top right text-warning">
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star-half-o"></i>
+                                            </span>
                     </div>
-                    <div class="caption">
-                        <h6 class="regular"><a href="#">{{item.title}}</a></h6>
+                    <figure class="layer">
+                        <a href="javascript:void(0);">
+                            <img class="front" src="{{item.imageUrl}}" alt="">
+                            <img class="back" src="{{item.imageUrl}}" alt="">
+                        </a>
+                    </figure>
+                    <div class="icons">
+                        <a class="icon semi-circle" href="javascript:void(0);"><i class="fa fa-heart-o"></i></a>
+                        <a class="icon semi-circle" href="javascript:void(0);"><i class="fa fa-gift"></i></a>
+                        <a class="icon semi-circle" href="javascript:void(0);" data-toggle="modal"
+                           data-target=".productQuickView"><i class="fa fa-search"></i></a>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
+                <div class="caption">
+                    <h6 class="regular"><a href="shop-single-product-v1.html">{{item.title}}</a></h6>
+                </div><!-- end caption -->
+            </div><!-- end thumbnail -->
+        </div><!-- end col -->
+    </div><!-- end row -->
 </div>

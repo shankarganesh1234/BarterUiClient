@@ -13,6 +13,7 @@ import {HeaderComponent} from "../header/header.component";
 import {SearchBarComponent} from "../search-bar/search-bar.component";
 
 
+
 @NgModule({
     imports: [BrowserModule,
         FormsModule,

@@ -1,7 +1,6 @@
 import {Component, Input, OnChanges, OnInit, SimpleChanges} from "@angular/core";
 import {SearchResponse} from "../search/search-response";
 
-
 @Component({
     moduleId: module.id,
     selector: 'swap-item-list',
@@ -21,4 +20,5 @@ export class ItemListComponent implements OnInit, OnChanges {
     ngOnChanges(changes: SimpleChanges) {
         console.log("on changes invoked");
     }
+
 }
