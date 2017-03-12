@@ -46,6 +46,7 @@ var SearchService = (function () {
     };
     SearchService.prototype.extractData = function (res) {
         var body = res.json();
+        console.log(body);
         return body || {};
     };
     SearchService.prototype.handleError = function (error) {

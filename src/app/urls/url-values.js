@@ -4,6 +4,7 @@ var GlobalUrls = (function () {
         this.serverName = "customServer";
         this.searchUrl = "http://localhost:8080/" + this.serverName + "/search/item";
         this.autocompleteUrl = "http://localhost:8080/" + this.serverName + "/search/autocomplete/";
+        this.googleZipUrl = "http://maps.googleapis.com/maps/api/geocode/json?";
     }
     return GlobalUrls;
 }());

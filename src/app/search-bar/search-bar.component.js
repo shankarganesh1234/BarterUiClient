@@ -16,6 +16,7 @@ require("rxjs/add/observable/of");
 require("rxjs/add/operator/catch");
 require("rxjs/add/operator/debounceTime");
 require("rxjs/add/operator/distinctUntilChanged");
+var search_bar_1 = require("./search-bar");
 var SearchBarComponent = (function () {
     function SearchBarComponent(searchService) {
         this.searchService = searchService;
@@ -38,11 +39,19 @@ var SearchBarComponent = (function () {
             console.log(error);
             return Observable_1.Observable.of([]);
         });
+        console.log("inside search bar component");
+        console.log(localStorage.getItem("postal_code"));
+        var postalCode = "";
+        if (localStorage.getItem("postal_code") != null) {
+            postalCode = localStorage.getItem("postal_code");
+        }
+        this.searchBarModel = new search_bar_1.SearchBar("", postalCode);
     };
-    SearchBarComponent.prototype.search = function (searchVal) {
+    SearchBarComponent.prototype.search = function (searchBarModel) {
         var _this = this;
+        localStorage.setItem("postal_code", searchBarModel.zip);
         this.searchService
-            .search(searchVal)
+            .search(searchBarModel.search)
             .subscribe(function (result) { return _this.success(result); }, function (error) { return console.log(error); });
     };
     SearchBarComponent.prototype.success = function (result) {

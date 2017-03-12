@@ -8,6 +8,7 @@ import "rxjs/add/operator/catch";
 import "rxjs/add/operator/debounceTime";
 import "rxjs/add/operator/distinctUntilChanged";
 import {Item} from "../item/item";
+import {SearchBar} from "./search-bar";
 
 @Component({
     moduleId: module.id,
@@ -27,6 +28,8 @@ export class SearchBarComponent implements OnInit {
     constructor(private searchService: SearchService) {
     }
 
+    searchBarModel:SearchBar;
+
     autocomplete(term: string): void {
         this.searchQueries.next(term);
     }
@@ -45,22 +48,31 @@ export class SearchBarComponent implements OnInit {
                 console.log(error);
                 return Observable.of<Item[]>([]);
             });
+        console.log("inside search bar component");
+        console.log(localStorage.getItem("postal_code"));
+        let postalCode:string = "";
+        if(localStorage.getItem("postal_code") != null) {
+            postalCode = localStorage.getItem("postal_code");
+        }
+        this.searchBarModel = new SearchBar("", postalCode);
     }
 
 
-    search(searchVal: string): void {
+    search(searchBarModel: SearchBar): void {
+
+        localStorage.setItem("postal_code", searchBarModel.zip);
         this.searchService
-            .search(searchVal)
+            .search(searchBarModel.search)
             .subscribe(
                 result => this.success(result),
                 error => console.log(error)
             );
-
     }
 
     success(result: any): void {
         console.log(result);
         this.searchResponseEvent.emit(result);
     }
+
 }
 
