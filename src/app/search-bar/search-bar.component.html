@@ -2,16 +2,17 @@
     <input type="text" id="searchBox" #searchBox class="form-control" placeholder="Address, city, state, zip"
            aria-describedby="sizing-addon1" (keyup)="autocomplete(searchBox.value)">
 </div>
-<div *ngFor="let item of observableTitles | async" class="search-result"
-     (click)="searchBox.value = item.title; search(item.title)">
-    <a>{{item.title}}</a>
-</div>
+<!-- Disabling auto complete for now -->
+<!--<div *ngFor="let item of observableTitles | async" class="search-result"-->
+     <!--(click)="searchBox.value = item.title; search(item.title)">-->
+    <!--<a>{{item.title}}</a>-->
+<!--</div>-->
 <div class="input-group input-group-lg col-lg-12">
     <p></p>
     <a class="btn btn-default btn-lg page-scroll" href="#search-results" (click)="search(searchBox.value)">Show me!</a>
 </div>
 
-<div *ngIf="searchResponse" class="col-md-10">
-    <swap-item-list [searchResponse]="searchResponse"></swap-item-list>
-</div>
+<!--<div *ngIf="searchResponse" class="col-md-10">-->
+    <!--<swap-item-list [searchResponse]="searchResponse"></swap-item-list>-->
+<!--</div>-->
 

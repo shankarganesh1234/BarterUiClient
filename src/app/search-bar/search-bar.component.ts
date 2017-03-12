@@ -1,6 +1,5 @@
-import {Component, OnInit} from "@angular/core";
+import {Component, OnInit, EventEmitter, Output} from "@angular/core";
 import {SearchService} from "../search/search.service";
-import {Router} from "@angular/router";
 import {SearchResponse} from "../search/search-response";
 import {Observable} from "rxjs/Observable";
 import {Subject} from "rxjs/Subject";
@@ -18,13 +17,14 @@ import {Item} from "../item/item";
 })
 export class SearchBarComponent implements OnInit {
 
-    searchResponse: SearchResponse;
+    @Output()
+    searchResponseEvent: EventEmitter<SearchResponse> = new EventEmitter<SearchResponse>();
+
     observableTitles: Observable<Item[]>;
 
     private searchQueries = new Subject<string>();
 
-    constructor(private searchService: SearchService,
-                private router: Router) {
+    constructor(private searchService: SearchService) {
     }
 
     autocomplete(term: string): void {
@@ -60,9 +60,7 @@ export class SearchBarComponent implements OnInit {
 
     success(result: any): void {
         console.log(result);
-        this.searchResponse = result;
-        // var link = ['/itemlist'];
-        // this.router.navigate(link);
+        this.searchResponseEvent.emit(result);
     }
 }
 

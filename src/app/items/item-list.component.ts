@@ -1,5 +1,4 @@
 import {Component, Input, OnChanges, OnInit, SimpleChanges} from "@angular/core";
-import {Router} from "@angular/router";
 import {SearchResponse} from "../search/search-response";
 
 
@@ -14,9 +13,6 @@ export class ItemListComponent implements OnInit, OnChanges {
 
     @Input()
     searchResponse: SearchResponse;
-
-    constructor(private router: Router) {
-    };
 
     ngOnInit(): void {
         console.log("inside item list component");

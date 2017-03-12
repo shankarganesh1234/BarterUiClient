@@ -1,4 +1,5 @@
 import {Component} from "@angular/core";
+import {SearchResponse} from "../search/search-response";
 
 
 @Component({
@@ -8,5 +9,11 @@ import {Component} from "@angular/core";
 })
 export class LandingComponent {
 
+    private searchResponse : SearchResponse;
+
+    onNotify(searchResults:SearchResponse):void {
+        console.log(searchResults.total);
+        this.searchResponse = searchResults;
+    }
 }
 

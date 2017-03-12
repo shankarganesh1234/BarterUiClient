@@ -9,13 +9,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var router_1 = require("@angular/router");
 var search_response_1 = require("../search/search-response");
 var ItemListComponent = (function () {
-    function ItemListComponent(router) {
-        this.router = router;
+    function ItemListComponent() {
     }
-    ;
     ItemListComponent.prototype.ngOnInit = function () {
         console.log("inside item list component");
     };
@@ -33,7 +30,7 @@ var ItemListComponent = (function () {
             templateUrl: 'item-list.component.html',
             styleUrls: ['item-list.component.css']
         }), 
-        __metadata('design:paramtypes', [router_1.Router])
+        __metadata('design:paramtypes', [])
     ], ItemListComponent);
     return ItemListComponent;
 }());
