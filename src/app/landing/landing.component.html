@@ -1,7 +1,7 @@
 <swap-header></swap-header>
 
 <!-- Intro Section -->
-<section id="intro" class="intro-section">
+<section id="intro" class="intro-section" style="height: auto">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
@@ -15,14 +15,12 @@
 
 
 <!-- Search Results Section -->
-<section id="search-results" class="about-section" style="height: auto">
+<section id="search-results" class="intro-section" style="height: auto">
     <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <h1>Items in your area</h1>
-            </div>
-        </div>
         <div *ngIf="searchResponse" row>
+            <div class="col-lg-12">
+                <h3>Items in your area </h3>
+            </div>
             <swap-item-list [searchResponse]="searchResponse"></swap-item-list>
         </div>
     </div>
