@@ -26,10 +26,10 @@ var SearchService = (function () {
         this.options = new http_1.RequestOptions({ headers: this.headers });
         this.urls = new url_values_1.GlobalUrls();
     }
-    SearchService.prototype.search = function (queryString) {
+    SearchService.prototype.search = function (searchRequest) {
         console.log(this.urls.searchUrl);
-        console.log(JSON.stringify({ query: queryString }));
-        var body = JSON.stringify({ query: queryString });
+        console.log(JSON.stringify(searchRequest));
+        var body = JSON.stringify(searchRequest);
         return this.http
             .post(this.urls.searchUrl, body, this.options)
             .map(this.extractData)

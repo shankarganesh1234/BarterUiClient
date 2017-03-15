@@ -62,7 +62,7 @@ export class SearchBarComponent implements OnInit {
 
         localStorage.setItem("postal_code", searchBarModel.zip);
         this.searchService
-            .search(searchBarModel.search)
+            .search(searchBarModel)
             .subscribe(
                 result => this.success(result),
                 error => console.log(error)

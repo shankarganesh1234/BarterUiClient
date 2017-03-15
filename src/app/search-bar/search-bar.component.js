@@ -51,7 +51,7 @@ var SearchBarComponent = (function () {
         var _this = this;
         localStorage.setItem("postal_code", searchBarModel.zip);
         this.searchService
-            .search(searchBarModel.search)
+            .search(searchBarModel)
             .subscribe(function (result) { return _this.success(result); }, function (error) { return console.log(error); });
     };
     SearchBarComponent.prototype.success = function (result) {

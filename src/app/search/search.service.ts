@@ -8,6 +8,7 @@ import {GlobalUrls} from "../urls/url-values";
 import {Observable} from "rxjs/Rx";
 import "rxjs/add/operator/map";
 import "rxjs/add/operator/catch";
+import {SearchBar} from "../search-bar/search-bar";
 
 @Injectable()
 export class SearchService {
@@ -25,10 +26,10 @@ export class SearchService {
         this.urls = new GlobalUrls();
     }
 
-    search(queryString: string): Observable<SearchResponse> {
+    search(searchRequest: SearchBar): Observable<SearchResponse> {
         console.log(this.urls.searchUrl);
-        console.log(JSON.stringify({query: queryString}));
-        let body = JSON.stringify({query: queryString});
+        console.log(JSON.stringify(searchRequest));
+        let body = JSON.stringify(searchRequest);
         return this.http
             .post(this.urls.searchUrl, body, this.options)
             .map(this.extractData)
