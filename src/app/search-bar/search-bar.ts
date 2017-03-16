@@ -1,6 +1,7 @@
 export class SearchBar {
-    constructor(
-        public search: string,
-        public zip: string
-    ) {  }
+    search: string;
+    zip: string;
+    start: number = 0;
+    limit: number = 8;
+    page: number = 1;
 }

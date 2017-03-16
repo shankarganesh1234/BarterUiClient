@@ -1,8 +1,9 @@
 "use strict";
 var SearchBar = (function () {
-    function SearchBar(search, zip) {
-        this.search = search;
-        this.zip = zip;
+    function SearchBar() {
+        this.start = 0;
+        this.limit = 8;
+        this.page = 1;
     }
     return SearchBar;
 }());

@@ -21,6 +21,7 @@ var http_1 = require("@angular/http");
 var landing_component_1 = require("../landing/landing.component");
 var header_component_1 = require("../header/header.component");
 var search_bar_component_1 = require("../search-bar/search-bar.component");
+var ng2_pagination_1 = require('ng2-pagination');
 var AppModule = (function () {
     function AppModule() {
     }
@@ -31,6 +32,7 @@ var AppModule = (function () {
                 app_routing_module_1.AppRoutingModule,
                 http_1.HttpModule,
                 http_1.JsonpModule,
+                ng2_pagination_1.Ng2PaginationModule
             ],
             declarations: [app_component_1.AppComponent, item_list_component_1.ItemListComponent, category_component_1.CategoryComponent, landing_component_1.LandingComponent, header_component_1.HeaderComponent, search_bar_component_1.SearchBarComponent],
             bootstrap: [landing_component_1.LandingComponent],

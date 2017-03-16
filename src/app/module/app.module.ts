@@ -11,7 +11,7 @@ import {HttpModule, JsonpModule} from "@angular/http";
 import {LandingComponent} from "../landing/landing.component";
 import {HeaderComponent} from "../header/header.component";
 import {SearchBarComponent} from "../search-bar/search-bar.component";
-
+import {Ng2PaginationModule} from 'ng2-pagination';
 
 
 @NgModule({
@@ -20,6 +20,7 @@ import {SearchBarComponent} from "../search-bar/search-bar.component";
         AppRoutingModule,
         HttpModule,
         JsonpModule,
+        Ng2PaginationModule
     ],
     declarations: [AppComponent, ItemListComponent, CategoryComponent, LandingComponent, HeaderComponent, SearchBarComponent],
     bootstrap: [LandingComponent],

@@ -45,7 +45,9 @@ var SearchBarComponent = (function () {
         if (localStorage.getItem("postal_code") != null) {
             postalCode = localStorage.getItem("postal_code");
         }
-        this.searchBarModel = new search_bar_1.SearchBar("", postalCode);
+        this.searchBarModel = new search_bar_1.SearchBar();
+        this.searchBarModel.search = "";
+        this.searchBarModel.zip = postalCode;
     };
     SearchBarComponent.prototype.search = function (searchBarModel) {
         var _this = this;

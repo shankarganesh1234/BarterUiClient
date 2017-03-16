@@ -10,14 +10,38 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var search_response_1 = require("../search/search-response");
+var search_bar_1 = require("../search-bar/search-bar");
+var search_service_1 = require("../search/search.service");
 var ItemListComponent = (function () {
-    function ItemListComponent() {
+    function ItemListComponent(searchService) {
+        this.searchService = searchService;
     }
     ItemListComponent.prototype.ngOnInit = function () {
         console.log("inside item list component");
     };
     ItemListComponent.prototype.ngOnChanges = function (changes) {
         console.log("on changes invoked");
+    };
+    ItemListComponent.prototype.paginatedResults = function (page, limit, query, zip) {
+        var _this = this;
+        this.searchRequest = new search_bar_1.SearchBar();
+        this.searchRequest.zip = zip;
+        this.searchRequest.search = query;
+        this.searchRequest.limit = limit;
+        this.searchRequest.page = page;
+        if (page === 1) {
+            this.searchRequest.start = 0;
+        }
+        else {
+            this.searchRequest.start = ((page - 1) * limit) + 1;
+        }
+        this.searchService
+            .search(this.searchRequest)
+            .subscribe(function (result) { return _this.success(result); }, function (error) { return console.log(error); });
+    };
+    ItemListComponent.prototype.success = function (result) {
+        console.log(result);
+        this.searchResponse = result;
     };
     __decorate([
         core_1.Input(), 
@@ -30,7 +54,7 @@ var ItemListComponent = (function () {
             templateUrl: 'item-list.component.html',
             styleUrls: ['item-list.component.css']
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [search_service_1.SearchService])
     ], ItemListComponent);
     return ItemListComponent;
 }());

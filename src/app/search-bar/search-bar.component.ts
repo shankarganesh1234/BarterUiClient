@@ -9,6 +9,7 @@ import "rxjs/add/operator/debounceTime";
 import "rxjs/add/operator/distinctUntilChanged";
 import {Item} from "../item/item";
 import {SearchBar} from "./search-bar";
+import {$} from "protractor";
 
 @Component({
     moduleId: module.id,
@@ -54,7 +55,9 @@ export class SearchBarComponent implements OnInit {
         if(localStorage.getItem("postal_code") != null) {
             postalCode = localStorage.getItem("postal_code");
         }
-        this.searchBarModel = new SearchBar("", postalCode);
+        this.searchBarModel = new SearchBar();
+        this.searchBarModel.search = "";
+        this.searchBarModel.zip = postalCode;
     }
 
 
