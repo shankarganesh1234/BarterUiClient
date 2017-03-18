@@ -1,4 +1,4 @@
 export class Category {
-  categoryName: string;
-  categoryId: number;
+    categoryName: string;
+    categoryId: number;
 }

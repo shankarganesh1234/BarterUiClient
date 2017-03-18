@@ -1,0 +1,40 @@
+<div class="container">
+    <div class="row column-4">
+        <div class="col-sm-6 col-md-3" *ngFor="let item of searchResponse.items  | paginate: { itemsPerPage: searchResponse.limit, currentPage: searchResponse.page, totalItems: searchResponse.total }">
+            <div class="thumbnail store style1">
+                <div class="header">
+                    <div class="badges">
+                        <span class="product-badge top left primary-background text-white semi-circle">Sale</span>
+                        <span class="product-badge top right text-warning">
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star-half-o"></i>
+                                            </span>
+                    </div>
+                    <figure class="layer zoom-in">
+                        <a href="javascript:void(0);">
+                            <img class="front img-height-web" src="{{item.imageUrl}}" alt="">
+                            <img class="back img-height-web" src="{{item.imageUrl}}" alt="">
+                        </a>
+                    </figure>
+                    <div class="icons">
+                        <a class="icon semi-circle" href="javascript:void(0);"><i class="fa fa-heart-o"></i></a>
+                        <a class="icon semi-circle" href="javascript:void(0);"><i class="fa fa-gift"></i></a>
+                        <a class="icon semi-circle" href="javascript:void(0);" data-toggle="modal"
+                           data-target=".productQuickView"><i class="fa fa-search"></i></a>
+                    </div>
+                </div>
+                <div class="caption">
+                    <h6 class="regular"><a href="shop-single-product-v1.html">{{item.title}}</a></h6>
+                </div><!-- end caption -->
+            </div><!-- end thumbnail -->
+        </div><!-- end col -->
+    </div><!-- end row -->
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <pagination-controls (pageChange)="paginatedResults($event, searchResponse.limit, searchResponse.search, searchResponse.zip)"></pagination-controls>
+    </div><!-- end col -->
+</div><!-- end row -->
