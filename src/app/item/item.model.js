@@ -5,4 +5,4 @@ var Item = (function () {
     return Item;
 }());
 exports.Item = Item;
-//# sourceMappingURL=item.js.map
+//# sourceMappingURL=item.model.js.map

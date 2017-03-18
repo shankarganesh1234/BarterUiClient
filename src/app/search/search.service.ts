@@ -2,7 +2,7 @@ import {Injectable} from "@angular/core";
 import {Headers, Http, RequestOptions, Response} from "@angular/http";
 import "rxjs/add/operator/toPromise";
 import {SearchResponse} from "./search-response";
-import {Item} from "../item/item";
+import {Item} from "../item/item.model";
 import {GlobalUrls} from "../urls/url-values";
 // Import RxJs required methods
 import {Observable} from "rxjs/Rx";

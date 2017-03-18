@@ -1,4 +1,4 @@
-import {Item} from "../item/item";
+import {Item} from "../item/item.model";
 
 export class SearchResponse {
     start: number = 0;
