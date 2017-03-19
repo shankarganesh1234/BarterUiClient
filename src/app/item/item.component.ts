@@ -35,12 +35,12 @@ export class ItemComponent implements OnInit {
         this.itemForm = this.fb.group({
             'title': [this.itemModel.title, [
                 Validators.required,
-                Validators.maxLength(24)
+                Validators.maxLength(100)
             ]
             ],
             'description': [this.itemModel.description, [
                 Validators.required,
-                Validators.maxLength(300)
+                Validators.maxLength(500)
             ]
             ],
             'zipCode': [this.itemModel.zipCode, [
@@ -102,11 +102,11 @@ export class ItemComponent implements OnInit {
     validationMessages = {
         'title': {
             'required': 'Title is required',
-            'maxlength': 'Name cannot be more than 50 characters long.'
+            'maxlength': 'Name cannot be more than 100 characters long.'
         },
         'description': {
             'required': 'Description is required',
-            'maxlength': 'Name cannot be more than 300 characters long.'
+            'maxlength': 'Name cannot be more than 500 characters long.'
         },
         'zipCode': {
             'required': 'Zip code is required',

@@ -41,6 +41,12 @@ var ItemService = (function () {
             .map(this.extractData)
             .catch(this.handleError);
     };
+    ItemService.prototype.getItem = function (itemId) {
+        console.log(JSON.stringify(itemId));
+        return this.http.get(this.urls.createItemUrl + itemId, this.options)
+            .map(this.extractData)
+            .catch(this.handleError);
+    };
     ItemService.prototype.extractData = function (res) {
         var body = res.json();
         console.log("create item success");

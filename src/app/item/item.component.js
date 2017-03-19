@@ -31,11 +31,11 @@ var ItemComponent = (function () {
         this.validationMessages = {
             'title': {
                 'required': 'Title is required',
-                'maxlength': 'Name cannot be more than 50 characters long.'
+                'maxlength': 'Name cannot be more than 100 characters long.'
             },
             'description': {
                 'required': 'Description is required',
-                'maxlength': 'Name cannot be more than 300 characters long.'
+                'maxlength': 'Name cannot be more than 500 characters long.'
             },
             'zipCode': {
                 'required': 'Zip code is required',
@@ -64,12 +64,12 @@ var ItemComponent = (function () {
         this.itemForm = this.fb.group({
             'title': [this.itemModel.title, [
                     forms_1.Validators.required,
-                    forms_1.Validators.maxLength(24)
+                    forms_1.Validators.maxLength(100)
                 ]
             ],
             'description': [this.itemModel.description, [
                     forms_1.Validators.required,
-                    forms_1.Validators.maxLength(300)
+                    forms_1.Validators.maxLength(500)
                 ]
             ],
             'zipCode': [this.itemModel.zipCode, [

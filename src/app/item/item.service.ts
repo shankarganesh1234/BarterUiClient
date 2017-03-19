@@ -41,6 +41,13 @@ export class ItemService {
             .catch(this.handleError);
     }
 
+    getItem(itemId: number): Observable<Item> {
+        console.log(JSON.stringify(itemId));
+        return this.http.get(this.urls.createItemUrl + itemId, this.options)
+            .map(this.extractData)
+            .catch(this.handleError);
+    }
+
     private extractData(res: Response) {
         let body = res.json();
         console.log("create item success");

@@ -2,6 +2,8 @@ import {Component, Input, OnChanges, OnInit, SimpleChanges} from "@angular/core"
 import {SearchResponse} from "../search/search-response";
 import {SearchBar} from "../search-bar/search-bar";
 import {SearchService} from "../search/search.service";
+import {$} from "protractor";
+
 
 @Component({
     moduleId: module.id,
