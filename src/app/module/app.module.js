@@ -22,6 +22,8 @@ var landing_component_1 = require("../landing/landing.component");
 var header_component_1 = require("../header/header.component");
 var search_bar_component_1 = require("../search-bar/search-bar.component");
 var ng2_pagination_1 = require('ng2-pagination');
+var item_component_1 = require("../item/item.component");
+var forms_2 = require('@angular/forms');
 var AppModule = (function () {
     function AppModule() {
     }
@@ -32,9 +34,10 @@ var AppModule = (function () {
                 app_routing_module_1.AppRoutingModule,
                 http_1.HttpModule,
                 http_1.JsonpModule,
-                ng2_pagination_1.Ng2PaginationModule
+                ng2_pagination_1.Ng2PaginationModule,
+                forms_2.ReactiveFormsModule
             ],
-            declarations: [app_component_1.AppComponent, item_list_component_1.ItemListComponent, category_component_1.CategoryComponent, landing_component_1.LandingComponent, header_component_1.HeaderComponent, search_bar_component_1.SearchBarComponent],
+            declarations: [app_component_1.AppComponent, item_list_component_1.ItemListComponent, category_component_1.CategoryComponent, landing_component_1.LandingComponent, header_component_1.HeaderComponent, search_bar_component_1.SearchBarComponent, item_component_1.ItemComponent],
             bootstrap: [landing_component_1.LandingComponent],
             providers: [search_service_1.SearchService, category_service_1.CategoryService]
         }), 

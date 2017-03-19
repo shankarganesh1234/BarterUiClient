@@ -12,6 +12,8 @@ import {LandingComponent} from "../landing/landing.component";
 import {HeaderComponent} from "../header/header.component";
 import {SearchBarComponent} from "../search-bar/search-bar.component";
 import {Ng2PaginationModule} from 'ng2-pagination';
+import {ItemComponent} from "../item/item.component";
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -20,9 +22,10 @@ import {Ng2PaginationModule} from 'ng2-pagination';
         AppRoutingModule,
         HttpModule,
         JsonpModule,
-        Ng2PaginationModule
+        Ng2PaginationModule,
+        ReactiveFormsModule
     ],
-    declarations: [AppComponent, ItemListComponent, CategoryComponent, LandingComponent, HeaderComponent, SearchBarComponent],
+    declarations: [AppComponent, ItemListComponent, CategoryComponent, LandingComponent, HeaderComponent, SearchBarComponent, ItemComponent],
     bootstrap: [LandingComponent],
     providers: [SearchService, CategoryService]
 })
