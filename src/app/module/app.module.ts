@@ -14,6 +14,7 @@ import {SearchBarComponent} from "../search-bar/search-bar.component";
 import {Ng2PaginationModule} from 'ng2-pagination';
 import {ItemComponent} from "../item/item.component";
 import { ReactiveFormsModule } from '@angular/forms';
+import {ItemService} from "../item/item.service";
 
 
 @NgModule({
@@ -27,7 +28,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     ],
     declarations: [AppComponent, ItemListComponent, CategoryComponent, LandingComponent, HeaderComponent, SearchBarComponent, ItemComponent],
     bootstrap: [LandingComponent],
-    providers: [SearchService, CategoryService]
+    providers: [SearchService, CategoryService, ItemService]
 })
 
 export class AppModule {

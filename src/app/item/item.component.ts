@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from "@angular/core";
 import {Item} from "./item.model";
 import {FormBuilder, Validators, FormGroup} from "@angular/forms";
+import {ItemService} from "./item.service";
 
 
 @Component({
@@ -19,8 +20,9 @@ export class ItemComponent implements OnInit {
     itemModel: Item = new Item();
     submitted = false;
     active = true;
+    itemImageFormData: FormData;
 
-    constructor(private fb: FormBuilder) {
+    constructor(private fb: FormBuilder, private itemService: ItemService) {
     }
 
 
@@ -46,11 +48,11 @@ export class ItemComponent implements OnInit {
                 Validators.maxLength(5)
             ]
             ],
-            'categoryName': [this.itemModel.categoryName, [
+            'categoryId': [this.itemModel.categoryId, [
                 Validators.required
             ]
             ],
-            'userName': [this.itemModel.userName, [
+            'userId': [this.itemModel.userId, [
                 Validators.required
             ]
             ],
@@ -67,10 +69,6 @@ export class ItemComponent implements OnInit {
         this.itemForm.valueChanges
             .subscribe(data => this.onValueChanged(data));
         this.onValueChanged(); // (re)set validation messages now
-    }
-
-    success(result: any): void {
-        console.log(result);
     }
 
     onValueChanged(data?: any) {
@@ -91,22 +89,12 @@ export class ItemComponent implements OnInit {
         }
     }
 
-    onSubmit() {
-        this.submitted = true;
-        this.itemModel = this.itemForm.value;
-    }
-
-    createItem() {
-        this.itemModel = new Item();
-        this.buildForm();
-    }
-
     formErrors = {
         'title': '',
         'description': '',
         'zipCode': '',
-        'categoryName': '',
-        'userName': '',
+        'categoryId': '',
+        'userId': '',
         'condition': '',
         'itemStage': ''
     };
@@ -124,10 +112,10 @@ export class ItemComponent implements OnInit {
             'required': 'Zip code is required',
             'maxlength': 'Zip code should only be 5 characters long'
         },
-        'categoryName': {
+        'categoryId': {
             'required': 'Category is required'
         },
-        'userName': {
+        'userId': {
             'required': 'User name is required'
         },
         'condition': {
@@ -138,12 +126,38 @@ export class ItemComponent implements OnInit {
         }
     };
 
-    fileChange(event: any) {
+    createItem() {
+        this.submitted = true;
+        this.itemModel = this.itemForm.value;
+        this.itemService
+            .createItem(this.itemModel)
+            .subscribe(
+                result => this.itemCreationSuccess(result),
+                error => console.log(error)
+            );
+    }
+
+    itemCreationSuccess(result: Item): void {
+        this.itemImageFormData.append('itemId', result.itemId);
+        this.itemService
+            .createImageForItem(this.itemImageFormData)
+            .subscribe(
+                result => this.itemImageCreationSuccess(result),
+                error => console.log(error)
+            );
+        console.log(result);
+    }
+
+    itemImageCreationSuccess(result: any): void {
+        console.log(result);
+    }
+
+    fileUpload(event:any) {
         let fileList: FileList = event.target.files;
         if (fileList.length > 0) {
             let file: File = fileList[0];
-            let formData: FormData = new FormData();
-            formData.append('uploadFile', file, file.name);
+            this.itemImageFormData = new FormData();
+            this.itemImageFormData.append('file', file, file.name);
         }
     }
 

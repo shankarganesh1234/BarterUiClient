@@ -11,9 +11,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var item_model_1 = require("./item.model");
 var forms_1 = require("@angular/forms");
+var item_service_1 = require("./item.service");
 var ItemComponent = (function () {
-    function ItemComponent(fb) {
+    function ItemComponent(fb, itemService) {
         this.fb = fb;
+        this.itemService = itemService;
         this.itemModel = new item_model_1.Item();
         this.submitted = false;
         this.active = true;
@@ -21,8 +23,8 @@ var ItemComponent = (function () {
             'title': '',
             'description': '',
             'zipCode': '',
-            'categoryName': '',
-            'userName': '',
+            'categoryId': '',
+            'userId': '',
             'condition': '',
             'itemStage': ''
         };
@@ -39,10 +41,10 @@ var ItemComponent = (function () {
                 'required': 'Zip code is required',
                 'maxlength': 'Zip code should only be 5 characters long'
             },
-            'categoryName': {
+            'categoryId': {
                 'required': 'Category is required'
             },
-            'userName': {
+            'userId': {
                 'required': 'User name is required'
             },
             'condition': {
@@ -75,11 +77,11 @@ var ItemComponent = (function () {
                     forms_1.Validators.maxLength(5)
                 ]
             ],
-            'categoryName': [this.itemModel.categoryName, [
+            'categoryId': [this.itemModel.categoryId, [
                     forms_1.Validators.required
                 ]
             ],
-            'userName': [this.itemModel.userName, [
+            'userId': [this.itemModel.userId, [
                     forms_1.Validators.required
                 ]
             ],
@@ -95,9 +97,6 @@ var ItemComponent = (function () {
         this.itemForm.valueChanges
             .subscribe(function (data) { return _this.onValueChanged(data); });
         this.onValueChanged(); // (re)set validation messages now
-    };
-    ItemComponent.prototype.success = function (result) {
-        console.log(result);
     };
     ItemComponent.prototype.onValueChanged = function (data) {
         if (!this.itemForm) {
@@ -116,20 +115,31 @@ var ItemComponent = (function () {
             }
         }
     };
-    ItemComponent.prototype.onSubmit = function () {
+    ItemComponent.prototype.createItem = function () {
+        var _this = this;
         this.submitted = true;
         this.itemModel = this.itemForm.value;
+        this.itemService
+            .createItem(this.itemModel)
+            .subscribe(function (result) { return _this.itemCreationSuccess(result); }, function (error) { return console.log(error); });
     };
-    ItemComponent.prototype.createItem = function () {
-        this.itemModel = new item_model_1.Item();
-        this.buildForm();
+    ItemComponent.prototype.itemCreationSuccess = function (result) {
+        var _this = this;
+        this.itemImageFormData.append('itemId', result.itemId);
+        this.itemService
+            .createImageForItem(this.itemImageFormData)
+            .subscribe(function (result) { return _this.itemImageCreationSuccess(result); }, function (error) { return console.log(error); });
+        console.log(result);
     };
-    ItemComponent.prototype.fileChange = function (event) {
+    ItemComponent.prototype.itemImageCreationSuccess = function (result) {
+        console.log(result);
+    };
+    ItemComponent.prototype.fileUpload = function (event) {
         var fileList = event.target.files;
         if (fileList.length > 0) {
             var file = fileList[0];
-            var formData = new FormData();
-            formData.append('uploadFile', file, file.name);
+            this.itemImageFormData = new FormData();
+            this.itemImageFormData.append('file', file, file.name);
         }
     };
     __decorate([
@@ -143,7 +153,7 @@ var ItemComponent = (function () {
             templateUrl: 'item.component.html',
             styleUrls: ['item.component.css']
         }), 
-        __metadata('design:paramtypes', [forms_1.FormBuilder])
+        __metadata('design:paramtypes', [forms_1.FormBuilder, item_service_1.ItemService])
     ], ItemComponent);
     return ItemComponent;
 }());

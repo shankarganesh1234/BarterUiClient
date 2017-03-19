@@ -24,6 +24,7 @@ var search_bar_component_1 = require("../search-bar/search-bar.component");
 var ng2_pagination_1 = require('ng2-pagination');
 var item_component_1 = require("../item/item.component");
 var forms_2 = require('@angular/forms');
+var item_service_1 = require("../item/item.service");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -39,7 +40,7 @@ var AppModule = (function () {
             ],
             declarations: [app_component_1.AppComponent, item_list_component_1.ItemListComponent, category_component_1.CategoryComponent, landing_component_1.LandingComponent, header_component_1.HeaderComponent, search_bar_component_1.SearchBarComponent, item_component_1.ItemComponent],
             bootstrap: [landing_component_1.LandingComponent],
-            providers: [search_service_1.SearchService, category_service_1.CategoryService]
+            providers: [search_service_1.SearchService, category_service_1.CategoryService, item_service_1.ItemService]
         }), 
         __metadata('design:paramtypes', [])
     ], AppModule);

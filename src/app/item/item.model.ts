@@ -3,8 +3,8 @@ export class Item {
     description: string;
     itemId: number;
     zipCode: number;
-    userName: string;
-    categoryName: string;
+    userId: string;
+    categoryId: string;
     imageUrl: string;
     condition: string;
     city: string;
