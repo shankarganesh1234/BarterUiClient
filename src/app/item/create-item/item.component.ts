@@ -1,7 +1,7 @@
-import {Component, Input, OnInit} from "@angular/core";
-import {Item} from "./item.model";
+import {Component, OnInit} from "@angular/core";
+import {Item} from "../models/item.model";
 import {FormBuilder, Validators, FormGroup} from "@angular/forms";
-import {ItemService} from "./item.service";
+import {ItemService} from "../service/item.service";
 
 
 @Component({
@@ -12,9 +12,6 @@ import {ItemService} from "./item.service";
 })
 
 export class ItemComponent implements OnInit {
-
-    @Input()
-    itemId: string;
 
     itemForm: FormGroup;
     itemModel: Item = new Item();

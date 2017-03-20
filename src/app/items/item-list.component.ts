@@ -1,8 +1,7 @@
-import {Component, Input, OnChanges, OnInit, SimpleChanges} from "@angular/core";
+import {Component, Input, OnChanges, OnInit, SimpleChanges, Output, EventEmitter} from "@angular/core";
 import {SearchResponse} from "../search/search-response";
 import {SearchBar} from "../search-bar/search-bar";
 import {SearchService} from "../search/search.service";
-import {$} from "protractor";
 
 
 @Component({
@@ -16,6 +15,9 @@ export class ItemListComponent implements OnInit, OnChanges {
 
     @Input()
     searchResponse: SearchResponse;
+
+    @Output()
+    itemIdEvent: EventEmitter<number> = new EventEmitter<number>();
 
     searchRequest: SearchBar;
 
@@ -53,5 +55,9 @@ export class ItemListComponent implements OnInit, OnChanges {
     success(result: any): void {
         console.log(result);
         this.searchResponse = result;
+    }
+
+    emitItemId(itemId: number): void{
+        this.itemIdEvent.emit(itemId);
     }
 }

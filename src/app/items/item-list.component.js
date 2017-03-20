@@ -15,6 +15,7 @@ var search_service_1 = require("../search/search.service");
 var ItemListComponent = (function () {
     function ItemListComponent(searchService) {
         this.searchService = searchService;
+        this.itemIdEvent = new core_1.EventEmitter();
     }
     ItemListComponent.prototype.ngOnInit = function () {
         console.log("inside item list component");
@@ -43,10 +44,17 @@ var ItemListComponent = (function () {
         console.log(result);
         this.searchResponse = result;
     };
+    ItemListComponent.prototype.emitItemId = function (itemId) {
+        this.itemIdEvent.emit(itemId);
+    };
     __decorate([
         core_1.Input(), 
         __metadata('design:type', search_response_1.SearchResponse)
     ], ItemListComponent.prototype, "searchResponse", void 0);
+    __decorate([
+        core_1.Output(), 
+        __metadata('design:type', core_1.EventEmitter)
+    ], ItemListComponent.prototype, "itemIdEvent", void 0);
     ItemListComponent = __decorate([
         core_1.Component({
             moduleId: module.id,

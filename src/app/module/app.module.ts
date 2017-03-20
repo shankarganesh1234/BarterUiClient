@@ -1,6 +1,6 @@
 import {NgModule} from "@angular/core";
 import {BrowserModule} from "@angular/platform-browser";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {AppComponent} from "../app-component/app.component";
 import {SearchService} from "../search/search.service";
 import {CategoryService} from "../category/category.service";
@@ -11,10 +11,10 @@ import {HttpModule, JsonpModule} from "@angular/http";
 import {LandingComponent} from "../landing/landing.component";
 import {HeaderComponent} from "../header/header.component";
 import {SearchBarComponent} from "../search-bar/search-bar.component";
-import {Ng2PaginationModule} from 'ng2-pagination';
-import {ItemComponent} from "../item/item.component";
-import { ReactiveFormsModule } from '@angular/forms';
-import {ItemService} from "../item/item.service";
+import {Ng2PaginationModule} from "ng2-pagination";
+import {ItemComponent} from "../item/create-item/item.component";
+import {ItemService} from "../item/service/item.service";
+import {ItemDetailComponent} from "../item/get-item/get-item.component";
 
 
 @NgModule({
@@ -26,7 +26,7 @@ import {ItemService} from "../item/item.service";
         Ng2PaginationModule,
         ReactiveFormsModule
     ],
-    declarations: [AppComponent, ItemListComponent, CategoryComponent, LandingComponent, HeaderComponent, SearchBarComponent, ItemComponent],
+    declarations: [AppComponent, ItemListComponent, CategoryComponent, LandingComponent, HeaderComponent, SearchBarComponent, ItemComponent, ItemDetailComponent],
     bootstrap: [LandingComponent],
     providers: [SearchService, CategoryService, ItemService]
 })

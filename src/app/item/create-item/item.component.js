@@ -9,9 +9,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var item_model_1 = require("./item.model");
+var item_model_1 = require("../models/item.model");
 var forms_1 = require("@angular/forms");
-var item_service_1 = require("./item.service");
+var item_service_1 = require("../service/item.service");
 var ItemComponent = (function () {
     function ItemComponent(fb, itemService) {
         this.fb = fb;
@@ -142,10 +142,6 @@ var ItemComponent = (function () {
             this.itemImageFormData.append('file', file, file.name);
         }
     };
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', String)
-    ], ItemComponent.prototype, "itemId", void 0);
     ItemComponent = __decorate([
         core_1.Component({
             moduleId: module.id,

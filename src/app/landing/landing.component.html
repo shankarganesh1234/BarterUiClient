@@ -21,7 +21,7 @@
             <div class="col-lg-12">
                 <h3>Items in your area </h3>
             </div>
-            <swap-item-list [searchResponse]="searchResponse"></swap-item-list>
+            <swap-item-list [searchResponse]="searchResponse" (itemIdEvent)="onNotify($event)"></swap-item-list>
         </div>
     </div>
 </section>
@@ -49,3 +49,7 @@
 </section>
 
 <swap-item></swap-item>
+
+<div *ngIf="itemId">
+<swap-get-item [itemId]="itemId"></swap-get-item>
+</div>

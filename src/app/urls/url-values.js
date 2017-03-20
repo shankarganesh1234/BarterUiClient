@@ -7,7 +7,7 @@ var GlobalUrls = (function () {
         this.googleZipUrl = "http://maps.googleapis.com/maps/api/geocode/json?";
         this.createItemUrl = "http://localhost:8080/customServer/listing";
         this.createItemImageUrl = "http://localhost:8080/customServer/image/upload";
-        this.getItemUrl = "";
+        this.getItemUrl = "http://localhost:8080/customServer/listing/";
     }
     return GlobalUrls;
 }());

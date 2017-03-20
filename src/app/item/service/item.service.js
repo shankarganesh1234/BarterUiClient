@@ -11,7 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
 require("rxjs/add/operator/toPromise");
-var url_values_1 = require("../urls/url-values");
+var url_values_1 = require("../../urls/url-values");
 // Import RxJs required methods
 var Rx_1 = require("rxjs/Rx");
 require("rxjs/add/operator/map");
@@ -43,7 +43,7 @@ var ItemService = (function () {
     };
     ItemService.prototype.getItem = function (itemId) {
         console.log(JSON.stringify(itemId));
-        return this.http.get(this.urls.createItemUrl + itemId, this.options)
+        return this.http.get(this.urls.getItemUrl + itemId, this.options)
             .map(this.extractData)
             .catch(this.handleError);
     };

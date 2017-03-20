@@ -1,12 +1,13 @@
 import {Injectable} from "@angular/core";
 import {Headers, Http, RequestOptions, Response} from "@angular/http";
 import "rxjs/add/operator/toPromise";
-import {Item} from "../item/item.model";
-import {GlobalUrls} from "../urls/url-values";
+import {Item} from "../models/item.model";
+import {GlobalUrls} from "../../urls/url-values";
 // Import RxJs required methods
 import {Observable} from "rxjs/Rx";
 import "rxjs/add/operator/map";
 import "rxjs/add/operator/catch";
+import {ItemDetail} from "../models/item-detail.model";
 
 @Injectable()
 export class ItemService {
@@ -41,9 +42,9 @@ export class ItemService {
             .catch(this.handleError);
     }
 
-    getItem(itemId: number): Observable<Item> {
+    getItem(itemId: number): Observable<ItemDetail> {
         console.log(JSON.stringify(itemId));
-        return this.http.get(this.urls.createItemUrl + itemId, this.options)
+        return this.http.get(this.urls.getItemUrl + itemId, this.options)
             .map(this.extractData)
             .catch(this.handleError);
     }
