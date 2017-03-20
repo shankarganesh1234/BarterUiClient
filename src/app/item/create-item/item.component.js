@@ -56,7 +56,6 @@ var ItemComponent = (function () {
         };
     }
     ItemComponent.prototype.ngOnInit = function () {
-        console.log("inside item component");
         this.buildForm();
     };
     ItemComponent.prototype.buildForm = function () {
@@ -129,10 +128,8 @@ var ItemComponent = (function () {
         this.itemService
             .createImageForItem(this.itemImageFormData)
             .subscribe(function (result) { return _this.itemImageCreationSuccess(result); }, function (error) { return console.log(error); });
-        console.log(result);
     };
     ItemComponent.prototype.itemImageCreationSuccess = function (result) {
-        console.log(result);
     };
     ItemComponent.prototype.fileUpload = function (event) {
         var fileList = event.target.files;

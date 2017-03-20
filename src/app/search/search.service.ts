@@ -27,8 +27,6 @@ export class SearchService {
     }
 
     search(searchRequest: SearchBar): Observable<SearchResponse> {
-        console.log(this.urls.searchUrl);
-        console.log(JSON.stringify(searchRequest));
         let body = JSON.stringify(searchRequest);
         return this.http
             .post(this.urls.searchUrl, body, this.options)
@@ -37,8 +35,6 @@ export class SearchService {
     }
 
     autoComplete(term: string): Observable<Item[]> {
-        console.log(this.urls.autocompleteUrl);
-        console.log(JSON.stringify({query: term}));
         let body = JSON.stringify({query: term});
         return this.http
             .get(this.urls.autocompleteUrl + term, this.options)
@@ -48,7 +44,6 @@ export class SearchService {
 
     private extractData(res: Response) {
         let body = res.json();
-        console.log(body);
         return body || {};
     }
 

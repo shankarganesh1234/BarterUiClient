@@ -26,7 +26,6 @@ export class ItemService {
     }
 
     createItem(itemRequest: Item): Observable<Item> {
-        console.log(JSON.stringify(itemRequest));
         let body = JSON.stringify(itemRequest);
         return this.http.post(this.urls.createItemUrl, body, this.options)
             .map(this.extractData)
@@ -43,7 +42,6 @@ export class ItemService {
     }
 
     getItem(itemId: number): Observable<ItemDetail> {
-        console.log(JSON.stringify(itemId));
         return this.http.get(this.urls.getItemUrl + itemId, this.options)
             .map(this.extractData)
             .catch(this.handleError);
@@ -51,7 +49,6 @@ export class ItemService {
 
     private extractData(res: Response) {
         let body = res.json();
-        console.log("create item success");
         return body || {};
     }
 

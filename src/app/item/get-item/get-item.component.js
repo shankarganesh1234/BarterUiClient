@@ -15,8 +15,8 @@ var ItemDetailComponent = (function () {
         this.itemService = itemService;
     }
     ItemDetailComponent.prototype.ngOnInit = function () {
-        console.log(this.itemId);
         console.log("inside item component");
+        console.log("checking item id = " + this.itemId);
     };
     ItemDetailComponent.prototype.getItem = function (itemId) {
         var _this = this;
@@ -25,7 +25,6 @@ var ItemDetailComponent = (function () {
             .subscribe(function (result) { return _this.getItemSuccess(result); }, function (error) { return console.log(error); });
     };
     ItemDetailComponent.prototype.getItemSuccess = function (result) {
-        console.log(result);
         this.itemDetail = result;
     };
     __decorate([

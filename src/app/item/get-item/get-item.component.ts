@@ -22,8 +22,8 @@ export class ItemDetailComponent implements OnInit {
 
 
     ngOnInit(): void {
-        console.log(this.itemId);
         console.log("inside item component");
+        console.log("checking item id = " + this.itemId);
     }
 
     getItem(itemId: number) {
@@ -36,7 +36,6 @@ export class ItemDetailComponent implements OnInit {
     }
 
     getItemSuccess(result: ItemDetail) : void {
-        console.log(result);
         this.itemDetail = result;
     }
 

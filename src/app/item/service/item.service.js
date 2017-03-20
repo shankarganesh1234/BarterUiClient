@@ -27,7 +27,6 @@ var ItemService = (function () {
         this.urls = new url_values_1.GlobalUrls();
     }
     ItemService.prototype.createItem = function (itemRequest) {
-        console.log(JSON.stringify(itemRequest));
         var body = JSON.stringify(itemRequest);
         return this.http.post(this.urls.createItemUrl, body, this.options)
             .map(this.extractData)
@@ -42,14 +41,12 @@ var ItemService = (function () {
             .catch(this.handleError);
     };
     ItemService.prototype.getItem = function (itemId) {
-        console.log(JSON.stringify(itemId));
         return this.http.get(this.urls.getItemUrl + itemId, this.options)
             .map(this.extractData)
             .catch(this.handleError);
     };
     ItemService.prototype.extractData = function (res) {
         var body = res.json();
-        console.log("create item success");
         return body || {};
     };
     ItemService.prototype.handleError = function (error) {

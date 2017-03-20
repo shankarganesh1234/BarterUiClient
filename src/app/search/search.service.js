@@ -27,8 +27,6 @@ var SearchService = (function () {
         this.urls = new url_values_1.GlobalUrls();
     }
     SearchService.prototype.search = function (searchRequest) {
-        console.log(this.urls.searchUrl);
-        console.log(JSON.stringify(searchRequest));
         var body = JSON.stringify(searchRequest);
         return this.http
             .post(this.urls.searchUrl, body, this.options)
@@ -36,8 +34,6 @@ var SearchService = (function () {
             .catch(this.handleError);
     };
     SearchService.prototype.autoComplete = function (term) {
-        console.log(this.urls.autocompleteUrl);
-        console.log(JSON.stringify({ query: term }));
         var body = JSON.stringify({ query: term });
         return this.http
             .get(this.urls.autocompleteUrl + term, this.options)
@@ -46,7 +42,6 @@ var SearchService = (function () {
     };
     SearchService.prototype.extractData = function (res) {
         var body = res.json();
-        console.log(body);
         return body || {};
     };
     SearchService.prototype.handleError = function (error) {

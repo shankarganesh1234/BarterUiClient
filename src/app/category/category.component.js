@@ -28,7 +28,6 @@ var CategoryComponent = (function () {
             .subscribe(function (result) { return _this.success(result); }, function (error) { return console.log(error); });
     };
     CategoryComponent.prototype.success = function (result) {
-        console.log(result);
         this.categories = result.categories;
     };
     CategoryComponent = __decorate([

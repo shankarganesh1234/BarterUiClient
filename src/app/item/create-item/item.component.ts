@@ -24,7 +24,6 @@ export class ItemComponent implements OnInit {
 
 
     ngOnInit(): void {
-        console.log("inside item component");
         this.buildForm();
     }
 
@@ -142,11 +141,10 @@ export class ItemComponent implements OnInit {
                 result => this.itemImageCreationSuccess(result),
                 error => console.log(error)
             );
-        console.log(result);
     }
 
     itemImageCreationSuccess(result: any): void {
-        console.log(result);
+
     }
 
     fileUpload(event:any) {

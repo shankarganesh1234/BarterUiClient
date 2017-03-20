@@ -1,7 +1,8 @@
-import {Component, Input, OnChanges, OnInit, SimpleChanges, Output, EventEmitter} from "@angular/core";
+import {Component, Input, OnChanges, OnInit, SimpleChanges, Output, EventEmitter, OnDestroy} from "@angular/core";
 import {SearchResponse} from "../search/search-response";
 import {SearchBar} from "../search-bar/search-bar";
 import {SearchService} from "../search/search.service";
+import {ComponentEventService} from "../component-events/component-event.service";
 
 
 @Component({
@@ -16,20 +17,17 @@ export class ItemListComponent implements OnInit, OnChanges {
     @Input()
     searchResponse: SearchResponse;
 
-    @Output()
-    itemIdEvent: EventEmitter<number> = new EventEmitter<number>();
-
     searchRequest: SearchBar;
 
-    constructor(private searchService: SearchService) {
+    constructor(private searchService: SearchService, private componentEventService: ComponentEventService){
     }
 
     ngOnInit(): void {
-        console.log("inside item list component");
+
     }
 
     ngOnChanges(changes: SimpleChanges) {
-        console.log("on changes invoked");
+
     }
 
     paginatedResults(page: number, limit: number, query: string, zip: string) {
@@ -53,11 +51,10 @@ export class ItemListComponent implements OnInit, OnChanges {
     }
 
     success(result: any): void {
-        console.log(result);
         this.searchResponse = result;
     }
 
     emitItemId(itemId: number): void{
-        this.itemIdEvent.emit(itemId);
+        this.componentEventService.itemClicked(itemId);
     }
 }
