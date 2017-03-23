@@ -15,8 +15,11 @@ var ItemDetailComponent = (function () {
         this.itemService = itemService;
     }
     ItemDetailComponent.prototype.ngOnInit = function () {
-        console.log("inside item component");
-        console.log("checking item id = " + this.itemId);
+        //this.getItem(this.itemId);
+    };
+    ItemDetailComponent.prototype.ngOnChanges = function () {
+        this.getItem(this.itemId);
+        this.getItem(this.itemId);
     };
     ItemDetailComponent.prototype.getItem = function (itemId) {
         var _this = this;
