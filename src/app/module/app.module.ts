@@ -15,6 +15,8 @@ import {Ng2PaginationModule} from "ng2-pagination";
 import {ItemComponent} from "../item/create-item/item.component";
 import {ItemService} from "../item/service/item.service";
 import {ItemDetailComponent} from "../item/get-item/get-item.component";
+import {InterestOptionsComponent} from "../interest/get-options/interest-options.component";
+import {InterestService} from "../interest/service/interest.service";
 
 
 @NgModule({
@@ -26,9 +28,9 @@ import {ItemDetailComponent} from "../item/get-item/get-item.component";
         Ng2PaginationModule,
         ReactiveFormsModule
     ],
-    declarations: [AppComponent, ItemListComponent, CategoryComponent, LandingComponent, HeaderComponent, SearchBarComponent, ItemComponent, ItemDetailComponent],
+    declarations: [AppComponent, ItemListComponent, CategoryComponent, LandingComponent, HeaderComponent, SearchBarComponent, ItemComponent, ItemDetailComponent, InterestOptionsComponent],
     bootstrap: [LandingComponent],
-    providers: [SearchService, CategoryService, ItemService]
+    providers: [SearchService, CategoryService, ItemService, InterestService]
 })
 
 export class AppModule {

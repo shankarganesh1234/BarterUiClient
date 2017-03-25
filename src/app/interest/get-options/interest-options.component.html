@@ -1,0 +1,46 @@
+<div *ngIf="itemDetails" class="container">
+<div class="row">
+<div class="col-md-5">
+    <div class="widget">
+        <div class="panel-group accordion" id="myCartFilter">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#myCartFilter" href="#myCartFilterCollapseOne">
+                            My Items
+                        </a>
+                    </h3>
+                </div>
+                <div id="myCartFilterCollapseOne" class="panel-collapse collapse in">
+                    <div class="panel-body">
+                        <p>There are 2 items in your cart.</p>
+                        <hr class="spacer-10">
+                        <ul class="items">
+                            <li *ngFor="let item of itemDetails;">
+                                <a href="javascript:void(0);" class="product-image">
+                                    <img src="{{item.image_id.url}}" alt="Sample Product ">
+                                </a>
+                                <div class="product-details">
+
+                                    <div class="close-icon">
+                                         <input id="checkbox2" class="styled" type="checkbox" checked>
+                                    </div>
+                                    <p class="product-name">
+                                        <label for="checkbox2">{{item.title}}</label>
+                                    </p>
+                                </div>
+                            </li><!-- end item -->
+                        </ul>
+
+                        <hr class="spacer-10">
+
+                        <hr class="spacer-10">
+                        <a href="checkout.html" class="btn btn-default semi-circle btn-block btn-sm"><i class="fa fa-heart mr-10"></i>Express Interest</a>
+                    </div><!-- end panel-body -->
+                </div><!-- end panel-collapse -->
+            </div><!-- end panel -->
+        </div><!-- end accordion -->
+    </div><!-- end widget -->
+</div><!-- end col -->
+</div>
+</div>

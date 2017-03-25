@@ -47,6 +47,12 @@ export class ItemService {
             .catch(this.handleError);
     }
 
+    getItemsByUser(userId: number): Observable<ItemDetail[]> {
+        return this.http.get(this.urls.getItemByUserUrl + userId, this.options)
+            .map(this.extractData)
+            .catch(this.handleError);
+    }
+
     private extractData(res: Response) {
         let body = res.json();
         return body || {};

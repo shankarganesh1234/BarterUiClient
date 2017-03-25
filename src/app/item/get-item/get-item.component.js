@@ -19,7 +19,6 @@ var ItemDetailComponent = (function () {
     };
     ItemDetailComponent.prototype.ngOnChanges = function () {
         this.getItem(this.itemId);
-        this.getItem(this.itemId);
     };
     ItemDetailComponent.prototype.getItem = function (itemId) {
         var _this = this;
@@ -29,6 +28,9 @@ var ItemDetailComponent = (function () {
     };
     ItemDetailComponent.prototype.getItemSuccess = function (result) {
         this.itemDetail = result;
+    };
+    ItemDetailComponent.prototype.passUserId = function (userId) {
+        this.userId = userId;
     };
     __decorate([
         core_1.Input(), 

@@ -17,6 +17,8 @@ export class ItemDetailComponent implements OnInit, OnChanges {
 
     itemDetail: ItemDetail;
 
+    userId: number;
+
     constructor(private itemService: ItemService) {
     }
 
@@ -25,7 +27,6 @@ export class ItemDetailComponent implements OnInit, OnChanges {
     }
 
     ngOnChanges(): void {
-        this.getItem(this.itemId);
         this.getItem(this.itemId);
     }
 
@@ -42,4 +43,7 @@ export class ItemDetailComponent implements OnInit, OnChanges {
         this.itemDetail = result;
     }
 
+    passUserId(userId: number) {
+        this.userId = userId;
+    }
 }

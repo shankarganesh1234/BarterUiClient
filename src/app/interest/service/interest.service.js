@@ -16,8 +16,8 @@ var url_values_1 = require("../../urls/url-values");
 var Rx_1 = require("rxjs/Rx");
 require("rxjs/add/operator/map");
 require("rxjs/add/operator/catch");
-var ItemService = (function () {
-    function ItemService(http) {
+var InterestService = (function () {
+    function InterestService(http) {
         this.http = http;
         this.headers = new http_1.Headers({
             'Content-Type': 'application/json',
@@ -26,45 +26,21 @@ var ItemService = (function () {
         this.options = new http_1.RequestOptions({ headers: this.headers });
         this.urls = new url_values_1.GlobalUrls();
     }
-    ItemService.prototype.createItem = function (itemRequest) {
-        var body = JSON.stringify(itemRequest);
-        return this.http.post(this.urls.createItemUrl, body, this.options)
-            .map(this.extractData)
-            .catch(this.handleError);
-    };
-    ItemService.prototype.createImageForItem = function (itemImageFormData) {
-        var headers = new http_1.Headers();
-        headers.append('Accept', 'multipart/form-data');
-        var options = new http_1.RequestOptions({ headers: headers });
-        return this.http.post(this.urls.createItemImageUrl, itemImageFormData, options)
-            .map(this.extractData)
-            .catch(this.handleError);
-    };
-    ItemService.prototype.getItem = function (itemId) {
-        return this.http.get(this.urls.getItemUrl + itemId, this.options)
-            .map(this.extractData)
-            .catch(this.handleError);
-    };
-    ItemService.prototype.getItemsByUser = function (userId) {
-        return this.http.get(this.urls.getItemByUserUrl + userId, this.options)
-            .map(this.extractData)
-            .catch(this.handleError);
-    };
-    ItemService.prototype.extractData = function (res) {
+    InterestService.prototype.extractData = function (res) {
         var body = res.json();
         return body || {};
     };
-    ItemService.prototype.handleError = function (error) {
+    InterestService.prototype.handleError = function (error) {
         var errMsg = (error.message) ? error.message :
             error.status ? error.status + " - " + error.statusText : 'Server error';
         console.error(errMsg);
         return Rx_1.Observable.throw(errMsg);
     };
-    ItemService = __decorate([
+    InterestService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [http_1.Http])
-    ], ItemService);
-    return ItemService;
+    ], InterestService);
+    return InterestService;
 }());
-exports.ItemService = ItemService;
-//# sourceMappingURL=item.service.js.map
+exports.InterestService = InterestService;
+//# sourceMappingURL=interest.service.js.map
