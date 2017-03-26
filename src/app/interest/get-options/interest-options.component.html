@@ -13,7 +13,13 @@
                 </div>
                 <div id="myCartFilterCollapseOne" class="panel-collapse collapse in">
                     <div class="panel-body">
-                        <p>There are 2 items in your cart.</p>
+
+                        <ul class="tags">
+                            <li *ngFor="let title of selectedItemTitles">
+                                <a class="btn btn-warning-outline semi-circle btn-xs" href="javascript:void(0);">{{title}}</a>
+                            </li>
+                        </ul>
+
                         <hr class="spacer-10">
                         <ul class="items">
                             <li *ngFor="let item of itemDetails;">
@@ -21,12 +27,11 @@
                                     <img src="{{item.image_id.url}}" alt="Sample Product ">
                                 </a>
                                 <div class="product-details">
-
                                     <div class="close-icon">
-                                         <input id="checkbox2" class="styled" type="checkbox" checked>
+                                         <input id="{{item.itemId}}" class="styled" type="checkbox" (change)="checkedItems($event, item.itemId, item.title)" [disabled]="checkboxState(item.itemId)">
                                     </div>
                                     <p class="product-name">
-                                        <label for="checkbox2">{{item.title}}</label>
+                                        <label for="{{item.itemId}}">{{item.title}}</label>
                                     </p>
                                 </div>
                             </li><!-- end item -->

@@ -10,11 +10,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var item_service_1 = require("../../item/service/item.service");
-var forms_1 = require("@angular/forms");
 var InterestOptionsComponent = (function () {
-    function InterestOptionsComponent(itemService, fb) {
+    function InterestOptionsComponent(itemService) {
         this.itemService = itemService;
-        this.fb = fb;
+        this.selectedItems = [];
+        this.selectedItemTitles = [];
     }
     InterestOptionsComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -29,6 +29,33 @@ var InterestOptionsComponent = (function () {
     InterestOptionsComponent.prototype.getItemsByUserSuccess = function (result) {
         this.itemDetails = result;
     };
+    InterestOptionsComponent.prototype.checkedItems = function (e, itemId, title) {
+        if (e.target.checked) {
+            if (this.selectedItems.length < 3) {
+                console.log('added ' + itemId);
+                this.selectedItems.push(itemId);
+                this.selectedItemTitles.push(title);
+            }
+            else {
+                e.target.setChecked(false);
+                console.log("limit reached");
+            }
+        }
+        else if (!e.target.checked && this.selectedItems.indexOf(itemId) != -1) {
+            console.log('removed ' + itemId);
+            this.selectedItems.splice(this.selectedItems.indexOf(itemId), 1);
+            this.selectedItemTitles.splice(this.selectedItemTitles.indexOf(title), 1);
+        }
+        console.log('array = ' + this.selectedItems);
+    };
+    InterestOptionsComponent.prototype.checkboxState = function (itemId) {
+        if (this.selectedItems.length >= 3 && this.selectedItems.indexOf(itemId) == -1) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    };
     __decorate([
         core_1.Input(), 
         __metadata('design:type', Number)
@@ -40,7 +67,7 @@ var InterestOptionsComponent = (function () {
             templateUrl: 'interest-options.component.html',
             styleUrls: ['interest-options.component.css']
         }), 
-        __metadata('design:paramtypes', [item_service_1.ItemService, forms_1.FormBuilder])
+        __metadata('design:paramtypes', [item_service_1.ItemService])
     ], InterestOptionsComponent);
     return InterestOptionsComponent;
 }());
