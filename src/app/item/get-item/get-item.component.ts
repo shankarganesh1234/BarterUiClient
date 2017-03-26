@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, OnChanges} from "@angular/core";
+import {Component, Input, OnInit, OnChanges, OnDestroy} from "@angular/core";
 import {ItemService} from "../service/item.service";
 import {ItemDetail} from "../models/item-detail.model";
 
@@ -10,7 +10,7 @@ import {ItemDetail} from "../models/item-detail.model";
     styleUrls: ['get-item.component.css']
 })
 
-export class ItemDetailComponent implements OnInit, OnChanges {
+export class ItemDetailComponent implements OnInit, OnChanges, OnDestroy {
 
     @Input()
     itemId: number;
@@ -28,6 +28,14 @@ export class ItemDetailComponent implements OnInit, OnChanges {
 
     ngOnChanges(): void {
         this.getItem(this.itemId);
+    }
+
+    ngOnDestroy(): void {
+        console.log('on destroy called');
+    }
+
+    cleanup(): void {
+        this.itemDetail = null;
     }
 
     getItem(itemId: number) {

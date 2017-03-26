@@ -20,6 +20,12 @@ var ItemDetailComponent = (function () {
     ItemDetailComponent.prototype.ngOnChanges = function () {
         this.getItem(this.itemId);
     };
+    ItemDetailComponent.prototype.ngOnDestroy = function () {
+        console.log('on destroy called');
+    };
+    ItemDetailComponent.prototype.cleanup = function () {
+        this.itemDetail = null;
+    };
     ItemDetailComponent.prototype.getItem = function (itemId) {
         var _this = this;
         this.itemService
