@@ -1,6 +1,8 @@
 import {Component, Input, OnInit, OnChanges} from "@angular/core";
 import {ItemService} from "../../item/service/item.service";
 import {ItemDetail} from "../../item/models/item-detail.model";
+import {InterestService} from "../service/interest.service";
+import {CreateInterest} from "../models/create-interest.model";
 
 
 @Component({
@@ -15,11 +17,17 @@ export class InterestOptionsComponent implements OnInit, OnChanges {
     @Input()
     userId: number;
 
+    @Input()
+    originalItemId: number;
+
+    interestedUserId: number = 2;
+
     itemDetails: ItemDetail[];
     selectedItems: number[] = [];
     selectedItemTitles: string[] = [];
+    createInterestRequest: CreateInterest;
 
-    constructor(private itemService: ItemService) {
+    constructor(private itemService: ItemService, private interestService: InterestService) {
     }
 
     ngOnInit(): void {
@@ -27,7 +35,7 @@ export class InterestOptionsComponent implements OnInit, OnChanges {
             return;
 
         this.itemService
-            .getItemsByUser(this.userId)
+            .getItemsByUser(this.interestedUserId)
             .subscribe(
                 result => this.getItemsByUserSuccess(result),
                 error => console.log(error)
@@ -69,5 +77,26 @@ export class InterestOptionsComponent implements OnInit, OnChanges {
             return false;
         }
     }
+
+    createInterest(): void{
+        this.createInterestRequest = new CreateInterest();
+        this.createInterestRequest.originalUser = this.userId;
+        this.createInterestRequest.interestedUser = this.interestedUserId;
+        this.createInterestRequest.oneSidedInterestFlag = true;
+        this.createInterestRequest.swappableItemIds = this.selectedItems;
+        this.createInterestRequest.originalItem = this.originalItemId;
+
+        this.interestService
+            .createInterest(this.createInterestRequest)
+            .subscribe(
+                result => this.interestSuccess(result),
+                error => console.log(error)
+            );
+    }
+
+    interestSuccess(result: boolean) : boolean {
+        return result;
+    }
+
 
 }

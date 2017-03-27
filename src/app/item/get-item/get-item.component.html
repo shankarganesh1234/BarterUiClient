@@ -68,10 +68,10 @@
                         <hr class="spacer-10">
                         <hr class="spacer-10">
                         <ul class="list list-inline">
-                            <li><button type="button" class="btn btn-default btn-md round" (click)="passUserId(2)"><i class="fa fa-heart mr-5"></i>Interested ?</button></li>
+                            <li><button type="button" class="btn btn-default btn-md round" (click)="passUserId(itemDetail.userId.userId)"><i class="fa fa-heart mr-5"></i>Interested ?</button></li>
                         </ul>
                         <div *ngIf="userId">
-                        <swap-interest-options [userId]="userId" ></swap-interest-options>
+                        <swap-interest-options [userId]="userId" [originalItemId]="itemId"></swap-interest-options>
                         </div>
                     </div><!-- end col -->
                 </div><!-- end row -->

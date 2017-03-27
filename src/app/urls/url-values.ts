@@ -7,6 +7,7 @@ export class GlobalUrls {
     createItemImageUrl: string;
     getItemUrl: string;
     getItemByUserUrl: string;
+    createInterestUrl: string;
     serverName: string;
 
 
@@ -20,5 +21,6 @@ export class GlobalUrls {
         this.createItemImageUrl = "http://localhost:8080/customServer/image/upload";
         this.getItemUrl = "http://localhost:8080/customServer/listing/"
         this.getItemByUserUrl = "http://localhost:8080/customServer/listing/user/";
+        this.createInterestUrl = "http://localhost:8080/customServer/interest/";
     }
 }
