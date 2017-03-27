@@ -15,14 +15,19 @@ var ComponentEventService = (function () {
         // Observable string sources
         this.searchBarEvent = new Subject_1.Subject();
         this.itemIdEvent = new Subject_1.Subject();
+        this.interestCreationEvent = new Subject_1.Subject();
         this.searchBar$ = this.searchBarEvent.asObservable();
         this.itemId$ = this.itemIdEvent.asObservable();
+        this.interestCreated$ = this.interestCreationEvent.asObservable();
     }
     ComponentEventService.prototype.searchBarClicked = function (searchResponse) {
         this.searchBarEvent.next(searchResponse);
     };
     ComponentEventService.prototype.itemClicked = function (itemId) {
         this.itemIdEvent.next(itemId);
+    };
+    ComponentEventService.prototype.interestCreated = function (result) {
+        this.interestCreationEvent.next(result);
     };
     ComponentEventService = __decorate([
         core_1.Injectable(), 

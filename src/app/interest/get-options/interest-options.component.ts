@@ -1,8 +1,9 @@
-import {Component, Input, OnInit, OnChanges} from "@angular/core";
+import {Component, Input, OnInit, OnChanges, Output} from "@angular/core";
 import {ItemService} from "../../item/service/item.service";
 import {ItemDetail} from "../../item/models/item-detail.model";
 import {InterestService} from "../service/interest.service";
 import {CreateInterest} from "../models/create-interest.model";
+import {ComponentEventService} from "../../component-events/component-event.service";
 
 
 @Component({
@@ -27,7 +28,7 @@ export class InterestOptionsComponent implements OnInit, OnChanges {
     selectedItemTitles: string[] = [];
     createInterestRequest: CreateInterest;
 
-    constructor(private itemService: ItemService, private interestService: InterestService) {
+    constructor(private itemService: ItemService, private interestService: InterestService, private componentEventService: ComponentEventService) {
     }
 
     ngOnInit(): void {
@@ -94,9 +95,8 @@ export class InterestOptionsComponent implements OnInit, OnChanges {
             );
     }
 
-    interestSuccess(result: boolean) : boolean {
-        return result;
+    interestSuccess(result: boolean) : void {
+        console.log("interest creation: " + result);
+        this.componentEventService.interestCreated(result);
     }
-
-
 }

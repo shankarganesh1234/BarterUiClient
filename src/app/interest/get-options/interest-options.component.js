@@ -12,10 +12,12 @@ var core_1 = require("@angular/core");
 var item_service_1 = require("../../item/service/item.service");
 var interest_service_1 = require("../service/interest.service");
 var create_interest_model_1 = require("../models/create-interest.model");
+var component_event_service_1 = require("../../component-events/component-event.service");
 var InterestOptionsComponent = (function () {
-    function InterestOptionsComponent(itemService, interestService) {
+    function InterestOptionsComponent(itemService, interestService, componentEventService) {
         this.itemService = itemService;
         this.interestService = interestService;
+        this.componentEventService = componentEventService;
         this.interestedUserId = 2;
         this.selectedItems = [];
         this.selectedItemTitles = [];
@@ -73,7 +75,8 @@ var InterestOptionsComponent = (function () {
             .subscribe(function (result) { return _this.interestSuccess(result); }, function (error) { return console.log(error); });
     };
     InterestOptionsComponent.prototype.interestSuccess = function (result) {
-        return result;
+        console.log("interest creation: " + result);
+        this.componentEventService.interestCreated(result);
     };
     __decorate([
         core_1.Input(), 
@@ -90,7 +93,7 @@ var InterestOptionsComponent = (function () {
             templateUrl: 'interest-options.component.html',
             styleUrls: ['interest-options.component.css']
         }), 
-        __metadata('design:paramtypes', [item_service_1.ItemService, interest_service_1.InterestService])
+        __metadata('design:paramtypes', [item_service_1.ItemService, interest_service_1.InterestService, component_event_service_1.ComponentEventService])
     ], InterestOptionsComponent);
     return InterestOptionsComponent;
 }());

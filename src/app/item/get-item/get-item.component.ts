@@ -1,6 +1,7 @@
 import {Component, Input, OnInit, OnChanges, OnDestroy} from "@angular/core";
 import {ItemService} from "../service/item.service";
 import {ItemDetail} from "../models/item-detail.model";
+import {ComponentEventService} from "../../component-events/component-event.service";
 
 
 @Component({
@@ -19,11 +20,16 @@ export class ItemDetailComponent implements OnInit, OnChanges, OnDestroy {
 
     userId: number;
 
-    constructor(private itemService: ItemService) {
+    interestCreated: boolean;
+
+    constructor(private itemService: ItemService, private componentEventService: ComponentEventService) {
     }
 
     ngOnInit(): void {
-        //this.getItem(this.itemId);
+        this.componentEventService.interestCreated$.subscribe(
+            result => {
+                this.interestCreated = result;
+            });
     }
 
     ngOnChanges(): void {

@@ -10,12 +10,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var item_service_1 = require("../service/item.service");
+var component_event_service_1 = require("../../component-events/component-event.service");
 var ItemDetailComponent = (function () {
-    function ItemDetailComponent(itemService) {
+    function ItemDetailComponent(itemService, componentEventService) {
         this.itemService = itemService;
+        this.componentEventService = componentEventService;
     }
     ItemDetailComponent.prototype.ngOnInit = function () {
-        //this.getItem(this.itemId);
+        var _this = this;
+        this.componentEventService.interestCreated$.subscribe(function (result) {
+            _this.interestCreated = result;
+        });
     };
     ItemDetailComponent.prototype.ngOnChanges = function () {
         this.getItem(this.itemId);
@@ -49,7 +54,7 @@ var ItemDetailComponent = (function () {
             templateUrl: 'get-item.component.html',
             styleUrls: ['get-item.component.css']
         }), 
-        __metadata('design:paramtypes', [item_service_1.ItemService])
+        __metadata('design:paramtypes', [item_service_1.ItemService, component_event_service_1.ComponentEventService])
     ], ItemDetailComponent);
     return ItemDetailComponent;
 }());
