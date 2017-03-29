@@ -8,6 +8,7 @@ export class GlobalUrls {
     getItemUrl: string;
     getItemByUserUrl: string;
     createInterestUrl: string;
+    loginUrl: string;
     serverName: string;
 
 
@@ -22,5 +23,6 @@ export class GlobalUrls {
         this.getItemUrl = "http://localhost:8080/customServer/listing/"
         this.getItemByUserUrl = "http://localhost:8080/customServer/listing/user/";
         this.createInterestUrl = "http://localhost:8080/customServer/interest/";
+        this.loginUrl = "http://localhost:8080/customServer/login/facebook";
     }
 }
