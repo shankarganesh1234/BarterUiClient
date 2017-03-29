@@ -17,10 +17,11 @@ require("rxjs/add/operator/catch");
 require("rxjs/add/operator/debounceTime");
 require("rxjs/add/operator/distinctUntilChanged");
 var search_bar_1 = require("./search-bar");
+var component_event_service_1 = require("../component-events/component-event.service");
 var SearchBarComponent = (function () {
-    function SearchBarComponent(searchService) {
+    function SearchBarComponent(searchService, componentEventService) {
         this.searchService = searchService;
-        this.searchResponseEvent = new core_1.EventEmitter();
+        this.componentEventService = componentEventService;
         this.searchQueries = new Subject_1.Subject();
     }
     SearchBarComponent.prototype.autocomplete = function (term) {
@@ -39,8 +40,6 @@ var SearchBarComponent = (function () {
             console.log(error);
             return Observable_1.Observable.of([]);
         });
-        console.log("inside search bar component");
-        console.log(localStorage.getItem("postal_code"));
         var postalCode = "";
         if (localStorage.getItem("postal_code") != null) {
             postalCode = localStorage.getItem("postal_code");
@@ -57,13 +56,8 @@ var SearchBarComponent = (function () {
             .subscribe(function (result) { return _this.success(result); }, function (error) { return console.log(error); });
     };
     SearchBarComponent.prototype.success = function (result) {
-        console.log(result);
-        this.searchResponseEvent.emit(result);
+        this.componentEventService.searchBarClicked(result);
     };
-    __decorate([
-        core_1.Output(), 
-        __metadata('design:type', core_1.EventEmitter)
-    ], SearchBarComponent.prototype, "searchResponseEvent", void 0);
     SearchBarComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
@@ -71,7 +65,7 @@ var SearchBarComponent = (function () {
             templateUrl: "search-bar.component.html",
             styleUrls: ['search-bar.component.css']
         }), 
-        __metadata('design:paramtypes', [search_service_1.SearchService])
+        __metadata('design:paramtypes', [search_service_1.SearchService, component_event_service_1.ComponentEventService])
     ], SearchBarComponent);
     return SearchBarComponent;
 }());

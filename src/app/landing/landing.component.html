@@ -9,7 +9,7 @@
                 <p><strong>Enter your zip code to start looking at things to barter</strong></p>
             </div>
         </div>
-        <swap-search-bar (searchResponseEvent)="onNotify($event)"></swap-search-bar>
+        <swap-search-bar></swap-search-bar>
     </div>
 </section>
 
@@ -17,12 +17,12 @@
 <!-- Search Results Section -->
 <section id="search-results" class="intro-section" style="height: auto">
     <div class="container">
-        <div *ngIf="searchResponse" class="row">
-            <div class="col-lg-12">
-                <h3>Items in your area </h3>
-            </div>
+        <!--<div *ngIf="searchResponse" class="row">-->
+            <!--<div class="col-lg-12">-->
+                <!--<h3>Items in your area </h3>-->
+            <!--</div>-->
             <swap-item-list [searchResponse]="searchResponse"></swap-item-list>
-        </div>
+        <!--</div>-->
     </div>
 </section>
 
@@ -47,3 +47,9 @@
         </div>
     </div>
 </section>
+
+<swap-item></swap-item>
+
+<div *ngIf="itemId">
+<swap-get-item [itemId]="itemId"></swap-get-item>
+</div>

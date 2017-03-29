@@ -21,7 +21,14 @@ var http_1 = require("@angular/http");
 var landing_component_1 = require("../landing/landing.component");
 var header_component_1 = require("../header/header.component");
 var search_bar_component_1 = require("../search-bar/search-bar.component");
-var ng2_pagination_1 = require('ng2-pagination');
+var ng2_pagination_1 = require("ng2-pagination");
+var item_component_1 = require("../item/create-item/item.component");
+var item_service_1 = require("../item/service/item.service");
+var get_item_component_1 = require("../item/get-item/get-item.component");
+var interest_options_component_1 = require("../interest/get-options/interest-options.component");
+var interest_service_1 = require("../interest/service/interest.service");
+var login_component_1 = require("../login/login.component");
+var login_service_1 = require("../login/service/login.service");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -32,11 +39,12 @@ var AppModule = (function () {
                 app_routing_module_1.AppRoutingModule,
                 http_1.HttpModule,
                 http_1.JsonpModule,
-                ng2_pagination_1.Ng2PaginationModule
+                ng2_pagination_1.Ng2PaginationModule,
+                forms_1.ReactiveFormsModule
             ],
-            declarations: [app_component_1.AppComponent, item_list_component_1.ItemListComponent, category_component_1.CategoryComponent, landing_component_1.LandingComponent, header_component_1.HeaderComponent, search_bar_component_1.SearchBarComponent],
+            declarations: [app_component_1.AppComponent, item_list_component_1.ItemListComponent, category_component_1.CategoryComponent, landing_component_1.LandingComponent, header_component_1.HeaderComponent, search_bar_component_1.SearchBarComponent, item_component_1.ItemComponent, get_item_component_1.ItemDetailComponent, interest_options_component_1.InterestOptionsComponent, login_component_1.LoginComponent],
             bootstrap: [landing_component_1.LandingComponent],
-            providers: [search_service_1.SearchService, category_service_1.CategoryService]
+            providers: [search_service_1.SearchService, category_service_1.CategoryService, item_service_1.ItemService, interest_service_1.InterestService, login_service_1.LoginService]
         }), 
         __metadata('design:paramtypes', [])
     ], AppModule);

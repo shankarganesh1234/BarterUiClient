@@ -7,9 +7,9 @@ import "rxjs/add/observable/of";
 import "rxjs/add/operator/catch";
 import "rxjs/add/operator/debounceTime";
 import "rxjs/add/operator/distinctUntilChanged";
-import {Item} from "../item/item";
+import {Item} from "../item/models/item.model";
 import {SearchBar} from "./search-bar";
-import {$} from "protractor";
+import {ComponentEventService} from "../component-events/component-event.service";
 
 @Component({
     moduleId: module.id,
@@ -19,14 +19,11 @@ import {$} from "protractor";
 })
 export class SearchBarComponent implements OnInit {
 
-    @Output()
-    searchResponseEvent: EventEmitter<SearchResponse> = new EventEmitter<SearchResponse>();
-
     observableTitles: Observable<Item[]>;
 
     private searchQueries = new Subject<string>();
 
-    constructor(private searchService: SearchService) {
+    constructor(private searchService: SearchService, private componentEventService: ComponentEventService) {
     }
 
     searchBarModel:SearchBar;
@@ -49,8 +46,6 @@ export class SearchBarComponent implements OnInit {
                 console.log(error);
                 return Observable.of<Item[]>([]);
             });
-        console.log("inside search bar component");
-        console.log(localStorage.getItem("postal_code"));
         let postalCode:string = "";
         if(localStorage.getItem("postal_code") != null) {
             postalCode = localStorage.getItem("postal_code");
@@ -73,9 +68,7 @@ export class SearchBarComponent implements OnInit {
     }
 
     success(result: any): void {
-        console.log(result);
-        this.searchResponseEvent.emit(result);
-    }
-
+        this.componentEventService.searchBarClicked(result);
+     }
 }
 

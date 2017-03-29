@@ -1,6 +1,6 @@
 import {NgModule} from "@angular/core";
 import {BrowserModule} from "@angular/platform-browser";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {AppComponent} from "../app-component/app.component";
 import {SearchService} from "../search/search.service";
 import {CategoryService} from "../category/category.service";
@@ -11,7 +11,14 @@ import {HttpModule, JsonpModule} from "@angular/http";
 import {LandingComponent} from "../landing/landing.component";
 import {HeaderComponent} from "../header/header.component";
 import {SearchBarComponent} from "../search-bar/search-bar.component";
-import {Ng2PaginationModule} from 'ng2-pagination';
+import {Ng2PaginationModule} from "ng2-pagination";
+import {ItemComponent} from "../item/create-item/item.component";
+import {ItemService} from "../item/service/item.service";
+import {ItemDetailComponent} from "../item/get-item/get-item.component";
+import {InterestOptionsComponent} from "../interest/get-options/interest-options.component";
+import {InterestService} from "../interest/service/interest.service";
+import {LoginComponent} from "../login/login.component";
+import {LoginService} from "../login/service/login.service";
 
 
 @NgModule({
@@ -20,11 +27,12 @@ import {Ng2PaginationModule} from 'ng2-pagination';
         AppRoutingModule,
         HttpModule,
         JsonpModule,
-        Ng2PaginationModule
+        Ng2PaginationModule,
+        ReactiveFormsModule
     ],
-    declarations: [AppComponent, ItemListComponent, CategoryComponent, LandingComponent, HeaderComponent, SearchBarComponent],
+    declarations: [AppComponent, ItemListComponent, CategoryComponent, LandingComponent, HeaderComponent, SearchBarComponent, ItemComponent, ItemDetailComponent, InterestOptionsComponent, LoginComponent],
     bootstrap: [LandingComponent],
-    providers: [SearchService, CategoryService]
+    providers: [SearchService, CategoryService, ItemService, InterestService, LoginService]
 })
 
 export class AppModule {

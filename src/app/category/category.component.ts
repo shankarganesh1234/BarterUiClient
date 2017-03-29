@@ -34,7 +34,6 @@ export class CategoryComponent implements OnInit {
     }
 
     success(result: any): void {
-        console.log(result);
         this.categories = result.categories;
     }
 }

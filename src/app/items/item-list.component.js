@@ -12,15 +12,15 @@ var core_1 = require("@angular/core");
 var search_response_1 = require("../search/search-response");
 var search_bar_1 = require("../search-bar/search-bar");
 var search_service_1 = require("../search/search.service");
+var component_event_service_1 = require("../component-events/component-event.service");
 var ItemListComponent = (function () {
-    function ItemListComponent(searchService) {
+    function ItemListComponent(searchService, componentEventService) {
         this.searchService = searchService;
+        this.componentEventService = componentEventService;
     }
     ItemListComponent.prototype.ngOnInit = function () {
-        console.log("inside item list component");
     };
     ItemListComponent.prototype.ngOnChanges = function (changes) {
-        console.log("on changes invoked");
     };
     ItemListComponent.prototype.paginatedResults = function (page, limit, query, zip) {
         var _this = this;
@@ -40,8 +40,10 @@ var ItemListComponent = (function () {
             .subscribe(function (result) { return _this.success(result); }, function (error) { return console.log(error); });
     };
     ItemListComponent.prototype.success = function (result) {
-        console.log(result);
         this.searchResponse = result;
+    };
+    ItemListComponent.prototype.emitItemId = function (itemId) {
+        this.componentEventService.itemClicked(itemId);
     };
     __decorate([
         core_1.Input(), 
@@ -54,7 +56,7 @@ var ItemListComponent = (function () {
             templateUrl: 'item-list.component.html',
             styleUrls: ['item-list.component.css']
         }), 
-        __metadata('design:paramtypes', [search_service_1.SearchService])
+        __metadata('design:paramtypes', [search_service_1.SearchService, component_event_service_1.ComponentEventService])
     ], ItemListComponent);
     return ItemListComponent;
 }());

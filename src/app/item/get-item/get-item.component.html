@@ -1,0 +1,82 @@
+<!-- Modal Product Quick View -->
+<div *ngIf="itemDetail" id="itemDetailModal" class="modal fade productQuickView" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="cleanup()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h5>{{itemDetail.title}}</h5>
+            </div><!-- end modal-header -->
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-5">
+                        <div class='carousel slide product-slider' data-ride='carousel' data-interval="false">
+                            <div class='carousel-inner'>
+                                <div class='item active'>
+                                    <figure>
+                                        <img src="{{itemDetail.image_id.url}}" alt='' />
+                                    </figure>
+                                </div><!-- end item -->
+                                <div class='item'>
+                                    <figure>
+                                        <img src="{{itemDetail.image_id.url}}" alt='' />
+                                    </figure>
+                                </div><!-- end item -->
+                                <div class='item'>
+                                    <figure>
+                                        <img src="{{itemDetail.image_id.url}}" alt='' />
+                                    </figure>
+                                </div><!-- end item -->
+                                <div class='item'>
+                                    <figure>
+                                        <img src="{{itemDetail.image_id.url}}" alt=''/>
+                                    </figure>
+                                </div><!-- end item -->
+
+                                <!-- Arrows -->
+                                <a class='left carousel-control' href='.product-slider' data-slide='prev'>
+                                    <span class='fa fa-angle-left'></span>
+                                </a>
+                                <a class='right carousel-control' href='.product-slider' data-slide='next'>
+                                    <span class='fa fa-angle-right'></span>
+                                </a>
+                            </div><!-- end carousel-inner -->
+
+                            <!-- thumbs -->
+                            <ol class='carousel-indicators mCustomScrollbar meartlab'>
+                                <li data-target='.product-slider' data-slide-to='0' class='active'><img src="{{itemDetail.image_id.url}}" alt='' /></li>
+                                <li data-target='.product-slider' data-slide-to='1'><img src="{{itemDetail.image_id.url}}" alt='' /></li>
+                                <li data-target='.product-slider' data-slide-to='2'><img src="{{itemDetail.image_id.url}}" alt='' /></li>
+                                <li data-target='.product-slider' data-slide-to='3'><img src="{{itemDetail.image_id.url}}" alt='' /></li>
+                            </ol><!-- end carousel-indicators -->
+                        </div><!-- end carousel -->
+                    </div><!-- end col -->
+                    <div class="col-sm-7">
+                        <p class="text-gray alt-font">Item category : {{itemDetail.categoryId.categoryName}}</p>
+                        <p class="text-gray alt-font">Item location : {{itemDetail.zipCode.zipCode}}</p>
+
+                        <i class="fa fa-star text-warning"></i>
+                        <i class="fa fa-star text-warning"></i>
+                        <i class="fa fa-star text-warning"></i>
+                        <i class="fa fa-star text-warning"></i>
+                        <i class="fa fa-star-half-o text-warning"></i>
+
+                        <div class="caption"><span class="label label-default">3.8 Stars</span></div>
+                        <h4 class="text-primary">{{itemDetail.numOfInterests}}</h4>
+                        <p>{{itemDetail.description}}</p>
+                        <hr class="spacer-10">
+                        <hr class="spacer-10">
+                        <ul class="list list-inline">
+                            <li *ngIf="!interestCreated"><button type="button" class="btn btn-default btn-md round" (click)="passUserId(itemDetail.userId.userId)"><i class="fa fa-heart mr-5"></i>Interested ?</button></li>
+                            <li *ngIf="interestCreated"><button type="button" class="btn btn-success round btn-md" (click)="passUserId(itemDetail.userId.userId)"><i class="fa fa-heart mr-5"></i>Expressed Interest. Modify?</button></li>
+                        </ul>
+                        <div *ngIf="userId">
+                        <swap-interest-options [userId]="userId" [originalItemId]="itemId"></swap-interest-options>
+                        </div>
+                    </div><!-- end col -->
+                </div><!-- end row -->
+            </div><!-- end modal-body -->
+        </div><!-- end modal-content -->
+    </div><!-- end modal-dialog -->
+</div><!-- end productRewiew -->

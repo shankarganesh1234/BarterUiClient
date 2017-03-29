@@ -2,7 +2,7 @@ import {Injectable} from "@angular/core";
 import {Headers, Http, RequestOptions, Response} from "@angular/http";
 import "rxjs/add/operator/toPromise";
 import {SearchResponse} from "./search-response";
-import {Item} from "../item/item";
+import {Item} from "../item/models/item.model";
 import {GlobalUrls} from "../urls/url-values";
 // Import RxJs required methods
 import {Observable} from "rxjs/Rx";
@@ -27,8 +27,6 @@ export class SearchService {
     }
 
     search(searchRequest: SearchBar): Observable<SearchResponse> {
-        console.log(this.urls.searchUrl);
-        console.log(JSON.stringify(searchRequest));
         let body = JSON.stringify(searchRequest);
         return this.http
             .post(this.urls.searchUrl, body, this.options)
@@ -37,8 +35,6 @@ export class SearchService {
     }
 
     autoComplete(term: string): Observable<Item[]> {
-        console.log(this.urls.autocompleteUrl);
-        console.log(JSON.stringify({query: term}));
         let body = JSON.stringify({query: term});
         return this.http
             .get(this.urls.autocompleteUrl + term, this.options)
@@ -48,7 +44,6 @@ export class SearchService {
 
     private extractData(res: Response) {
         let body = res.json();
-        console.log(body);
         return body || {};
     }
 
