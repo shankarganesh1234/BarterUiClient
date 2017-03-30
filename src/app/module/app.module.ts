@@ -19,6 +19,7 @@ import {InterestOptionsComponent} from "../interest/get-options/interest-options
 import {InterestService} from "../interest/service/interest.service";
 import {LoginComponent} from "../login/login.component";
 import {LoginService} from "../login/service/login.service";
+import {ErrorModalComponent} from "../errors/error-modal.component";
 
 
 @NgModule({
@@ -30,7 +31,7 @@ import {LoginService} from "../login/service/login.service";
         Ng2PaginationModule,
         ReactiveFormsModule
     ],
-    declarations: [AppComponent, ItemListComponent, CategoryComponent, LandingComponent, HeaderComponent, SearchBarComponent, ItemComponent, ItemDetailComponent, InterestOptionsComponent, LoginComponent],
+    declarations: [AppComponent, ItemListComponent, CategoryComponent, LandingComponent, HeaderComponent, SearchBarComponent, ItemComponent, ItemDetailComponent, InterestOptionsComponent, LoginComponent, ErrorModalComponent],
     bootstrap: [LandingComponent],
     providers: [SearchService, CategoryService, ItemService, InterestService, LoginService]
 })

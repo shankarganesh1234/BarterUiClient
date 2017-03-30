@@ -23,14 +23,18 @@ var InterestOptionsComponent = (function () {
         this.selectedItemTitles = [];
     }
     InterestOptionsComponent.prototype.ngOnInit = function () {
+        this.invokeGetItemsByUser();
+    };
+    InterestOptionsComponent.prototype.ngOnChanges = function () {
+        this.invokeGetItemsByUser();
+    };
+    InterestOptionsComponent.prototype.invokeGetItemsByUser = function () {
         var _this = this;
         if (this.userId === null)
             return;
         this.itemService
             .getItemsByUser(this.interestedUserId)
             .subscribe(function (result) { return _this.getItemsByUserSuccess(result); }, function (error) { return console.log(error); });
-    };
-    InterestOptionsComponent.prototype.ngOnChanges = function () {
     };
     InterestOptionsComponent.prototype.getItemsByUserSuccess = function (result) {
         this.itemDetails = result;

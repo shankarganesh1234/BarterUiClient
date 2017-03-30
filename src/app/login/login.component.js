@@ -35,7 +35,11 @@ var LoginComponent = (function () {
             }
         }, { scope: 'public_profile,email' });
     };
-    LoginComponent.prototype.onFacebookLogoutClick = function () {
+    LoginComponent.prototype.isUserLoggedIn = function () {
+        var _this = this;
+        FB.getLoginStatus(function (response) {
+            _this.statusChangeCallback(response);
+        });
     };
     LoginComponent.prototype.statusChangeCallback = function (resp) {
         if (resp.status === 'connected') {
@@ -49,12 +53,11 @@ var LoginComponent = (function () {
         }
     };
     ;
+    LoginComponent.prototype.onFacebookLogoutClick = function () {
+    };
     LoginComponent.prototype.ngOnInit = function () {
-        var _this = this;
         // check if user is logged on on page load
-        FB.getLoginStatus(function (response) {
-            _this.statusChangeCallback(response);
-        });
+        this.isUserLoggedIn();
     };
     LoginComponent.prototype.userLogin = function (accessToken) {
         var _this = this;

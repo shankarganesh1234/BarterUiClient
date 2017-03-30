@@ -41,9 +41,10 @@ export class LoginComponent implements OnInit {
 
     }
 
-    onFacebookLogoutClick() {
-
-
+    isUserLoggedIn() {
+        FB.getLoginStatus((response:any) => {
+            this.statusChangeCallback(response);
+        });
     }
 
     statusChangeCallback(resp: any) {
@@ -56,11 +57,16 @@ export class LoginComponent implements OnInit {
         }
     };
 
+    onFacebookLogoutClick() {
+
+
+    }
+
+
+
     ngOnInit() {
         // check if user is logged on on page load
-        FB.getLoginStatus((response:any) => {
-            this.statusChangeCallback(response);
-        });
+        this.isUserLoggedIn();
     }
 
     userLogin(accessToken: string) : any {

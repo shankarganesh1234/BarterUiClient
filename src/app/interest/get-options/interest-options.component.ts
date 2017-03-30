@@ -32,6 +32,14 @@ export class InterestOptionsComponent implements OnInit, OnChanges {
     }
 
     ngOnInit(): void {
+        this.invokeGetItemsByUser();
+    }
+
+    ngOnChanges(): void {
+        this.invokeGetItemsByUser();
+    }
+
+    invokeGetItemsByUser(): void {
         if (this.userId === null)
             return;
 
@@ -41,11 +49,6 @@ export class InterestOptionsComponent implements OnInit, OnChanges {
                 result => this.getItemsByUserSuccess(result),
                 error => console.log(error)
             );
-
-    }
-
-    ngOnChanges(): void {
-
     }
 
     getItemsByUserSuccess(result: ItemDetail[]): void {

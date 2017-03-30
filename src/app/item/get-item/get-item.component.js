@@ -11,10 +11,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var item_service_1 = require("../service/item.service");
 var component_event_service_1 = require("../../component-events/component-event.service");
+var messages_1 = require("../../messages/messages");
 var ItemDetailComponent = (function () {
     function ItemDetailComponent(itemService, componentEventService) {
         this.itemService = itemService;
         this.componentEventService = componentEventService;
+        this.showInterests = false;
+        this.messages = new messages_1.Messages();
     }
     ItemDetailComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -30,6 +33,7 @@ var ItemDetailComponent = (function () {
     };
     ItemDetailComponent.prototype.cleanup = function () {
         this.itemDetail = null;
+        this.showInterests = false;
     };
     ItemDetailComponent.prototype.getItem = function (itemId) {
         var _this = this;
@@ -42,7 +46,44 @@ var ItemDetailComponent = (function () {
     };
     ItemDetailComponent.prototype.passUserId = function (userId) {
         this.userId = userId;
+        this.isUserLoggedIn();
     };
+    ItemDetailComponent.prototype.onFacebookLoginClick = function () {
+        var _this = this;
+        FB.login(function (result) {
+            if (result.status === 'connected') {
+                console.log('connected');
+                console.log(result);
+                _this.errorMessage = null;
+            }
+            else {
+                console.log('cannot tell');
+                _this.errorMessage = _this.messages.user_not_logged_in;
+            }
+        }, { scope: 'public_profile,email' });
+    };
+    ItemDetailComponent.prototype.isUserLoggedIn = function () {
+        var _this = this;
+        FB.getLoginStatus(function (response) {
+            _this.statusChangeCallback(response);
+        });
+    };
+    ItemDetailComponent.prototype.statusChangeCallback = function (resp) {
+        if (resp.status === 'connected') {
+            console.log('inside connected');
+            this.errorMessage = null;
+            this.showInterests = true;
+        }
+        else if (resp.status === 'not_authorized') {
+            console.log('not authorized');
+            this.errorMessage = this.messages.user_not_logged_in;
+        }
+        else {
+            console.log('unknown');
+            this.errorMessage = this.messages.user_not_logged_in;
+        }
+    };
+    ;
     __decorate([
         core_1.Input(), 
         __metadata('design:type', Number)
