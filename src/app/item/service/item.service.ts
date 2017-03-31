@@ -1,4 +1,4 @@
-import {Injectable} from "@angular/core";
+import {Injectable, OnInit} from "@angular/core";
 import {Headers, Http, RequestOptions, Response} from "@angular/http";
 import "rxjs/add/operator/toPromise";
 import {Item} from "../models/item.model";
@@ -9,6 +9,8 @@ import "rxjs/add/operator/map";
 import "rxjs/add/operator/catch";
 import {ItemDetail} from "../models/item-detail.model";
 
+declare const FB:any;
+
 @Injectable()
 export class ItemService {
 
@@ -17,12 +19,14 @@ export class ItemService {
     private urls: GlobalUrls;
 
     constructor(private http: Http) {
+
         this.headers = new Headers({
             'Content-Type': 'application/json',
             'Accept': 'application/json'
         });
         this.options = new RequestOptions({headers: this.headers});
         this.urls = new GlobalUrls();
+        this.isUserLoggedIn();
     }
 
     createItem(itemRequest: Item): Observable<Item> {
@@ -65,4 +69,22 @@ export class ItemService {
         console.error(errMsg);
         return Observable.throw(errMsg);
     }
+
+    // TODO: temporary, remove this. This is getting repeated too many times
+    isUserLoggedIn() {
+        FB.getLoginStatus((response:any) => {
+            this.statusChangeCallback(response);
+        });
+    }
+
+    statusChangeCallback(resp: any) {
+        if (resp.status === 'connected') {
+            console.log('inside connected');
+            this.headers.append("Authorization", resp.authResponse.accessToken);
+        }else if (resp.status === 'not_authorized') {
+            console.log('not authorized');
+        }else {
+            console.log('unknown');
+        }
+    };
 }
