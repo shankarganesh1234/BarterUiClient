@@ -1,6 +1,8 @@
 import {Component, OnInit, Input} from "@angular/core";
 
 declare const FB:any;
+declare var $: any
+
 
 @Component({
     moduleId: module.id,
@@ -27,6 +29,7 @@ export class ErrorModalComponent implements OnInit{
                 console.log('connected');
                 console.log(result);
                 this.errorMessage = null;
+                $('#errorModal').modal('hide');
             } else {
                 console.log('cannot tell');
             }

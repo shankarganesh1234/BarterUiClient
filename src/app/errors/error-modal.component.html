@@ -1,9 +1,9 @@
 <!-- Modal Medium -->
-<div class="modal fade myModalMedium" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" id="errorModal">
+<div *ngIf="errorMessage" class="modal fade myModalMedium" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" id="errorModal">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="errorCloseButton">
                     <span aria-hidden="true">&times;</span>
                 </button>
                 <div class="row">

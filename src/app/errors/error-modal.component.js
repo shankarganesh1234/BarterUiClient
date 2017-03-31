@@ -23,6 +23,7 @@ var ErrorModalComponent = (function () {
                 console.log('connected');
                 console.log(result);
                 _this.errorMessage = null;
+                $('#errorModal').modal('hide');
             }
             else {
                 console.log('cannot tell');
