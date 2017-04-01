@@ -1,6 +1,5 @@
 import {Component, OnInit} from "@angular/core";
 import {LoginService} from "./service/login.service";
-import {LoginResponse} from "./models/login-response.model";
 import {LoginRequest} from "./models/login-request.model";
 import {ComponentEventService} from "../component-events/component-event.service";
 import {User} from "../user/user";
@@ -75,6 +74,13 @@ export class LoginComponent implements OnInit {
     ngOnInit() {
         // check if user is logged on on page load
         this.isUserLoggedIn();
+        this.componentEventService.userLoggedOut$.subscribe(
+            result => {
+                if(result == true) {
+                    this.userInfo = null;
+                    this.isLoggedIn = false;
+                }
+            });
     }
 
     userLogin(accessToken: string) : any {

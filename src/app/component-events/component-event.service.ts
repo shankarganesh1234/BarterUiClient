@@ -12,12 +12,13 @@ export class ComponentEventService {
     private itemIdEvent = new Subject<number>();
     private interestCreationEvent = new Subject<boolean>();
     private userLoggedInEvent = new Subject<User>();
-
+    private userLoggedOutEvent = new Subject<boolean>();
 
     searchBar$ = this.searchBarEvent.asObservable();
     itemId$ = this.itemIdEvent.asObservable();
     interestCreated$ = this.interestCreationEvent.asObservable();
     userLoggedin$ = this.userLoggedInEvent.asObservable();
+    userLoggedOut$ = this.userLoggedOutEvent.asObservable();
 
     searchBarClicked(searchResponse: SearchResponse) {
         this.searchBarEvent.next(searchResponse);
@@ -30,5 +31,8 @@ export class ComponentEventService {
     }
     userLoggedIn(result: User) {
         this.userLoggedInEvent.next(result);
+    }
+    userLoggedOut(result: boolean) {
+        this.userLoggedOutEvent.next(result);
     }
 }

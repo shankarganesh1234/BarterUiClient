@@ -65,8 +65,15 @@ var LoginComponent = (function () {
     LoginComponent.prototype.onFacebookLogoutClick = function () {
     };
     LoginComponent.prototype.ngOnInit = function () {
+        var _this = this;
         // check if user is logged on on page load
         this.isUserLoggedIn();
+        this.componentEventService.userLoggedOut$.subscribe(function (result) {
+            if (result == true) {
+                _this.userInfo = null;
+                _this.isLoggedIn = false;
+            }
+        });
     };
     LoginComponent.prototype.userLogin = function (accessToken) {
         var _this = this;

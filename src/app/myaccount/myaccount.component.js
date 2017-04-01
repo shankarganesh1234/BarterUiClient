@@ -27,6 +27,18 @@ var MyAccountComponent = (function () {
             _this.isLoggedIn = true;
         });
     };
+    MyAccountComponent.prototype.onFacebookLogoutClick = function () {
+        var _this = this;
+        FB.logout(function (response) {
+            _this.loggedOut(response);
+        });
+    };
+    MyAccountComponent.prototype.loggedOut = function (response) {
+        console.log('logged out');
+        this.isLoggedIn = false;
+        this.user = null;
+        this.componentEventService.userLoggedOut(true);
+    };
     MyAccountComponent = __decorate([
         core_1.Component({
             moduleId: module.id,

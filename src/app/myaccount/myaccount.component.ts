@@ -30,4 +30,17 @@ export class MyAccountComponent implements OnInit {
                 this.isLoggedIn = true;
             });
     }
+
+    onFacebookLogoutClick() {
+        FB.logout((response:any) => {
+            this.loggedOut(response);
+        });
+    }
+
+    loggedOut(response: any): void {
+        console.log('logged out');
+        this.isLoggedIn = false;
+        this.user = null;
+        this.componentEventService.userLoggedOut(true);
+    }
 }
