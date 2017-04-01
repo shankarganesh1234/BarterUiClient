@@ -30,6 +30,8 @@ var interest_service_1 = require("../interest/service/interest.service");
 var login_component_1 = require("../login/login.component");
 var login_service_1 = require("../login/service/login.service");
 var error_modal_component_1 = require("../errors/error-modal.component");
+var myaccount_component_1 = require("../myaccount/myaccount.component");
+var user_service_1 = require("../user/service/user.service");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -43,9 +45,9 @@ var AppModule = (function () {
                 ng2_pagination_1.Ng2PaginationModule,
                 forms_1.ReactiveFormsModule
             ],
-            declarations: [app_component_1.AppComponent, item_list_component_1.ItemListComponent, category_component_1.CategoryComponent, landing_component_1.LandingComponent, header_component_1.HeaderComponent, search_bar_component_1.SearchBarComponent, item_component_1.ItemComponent, get_item_component_1.ItemDetailComponent, interest_options_component_1.InterestOptionsComponent, login_component_1.LoginComponent, error_modal_component_1.ErrorModalComponent],
+            declarations: [app_component_1.AppComponent, item_list_component_1.ItemListComponent, category_component_1.CategoryComponent, landing_component_1.LandingComponent, header_component_1.HeaderComponent, search_bar_component_1.SearchBarComponent, item_component_1.ItemComponent, get_item_component_1.ItemDetailComponent, interest_options_component_1.InterestOptionsComponent, login_component_1.LoginComponent, error_modal_component_1.ErrorModalComponent, myaccount_component_1.MyAccountComponent],
             bootstrap: [landing_component_1.LandingComponent],
-            providers: [search_service_1.SearchService, category_service_1.CategoryService, item_service_1.ItemService, interest_service_1.InterestService, login_service_1.LoginService]
+            providers: [search_service_1.SearchService, category_service_1.CategoryService, item_service_1.ItemService, interest_service_1.InterestService, login_service_1.LoginService, user_service_1.UserService]
         }), 
         __metadata('design:paramtypes', [])
     ], AppModule);

@@ -1,4 +1,4 @@
-import {Injectable, OnInit} from "@angular/core";
+import {Injectable} from "@angular/core";
 import {Headers, Http, RequestOptions, Response} from "@angular/http";
 import "rxjs/add/operator/toPromise";
 import {Item} from "../models/item.model";

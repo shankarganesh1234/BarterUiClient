@@ -11,9 +11,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var login_service_1 = require("./service/login.service");
 var login_request_model_1 = require("./models/login-request.model");
+var component_event_service_1 = require("../component-events/component-event.service");
 var LoginComponent = (function () {
-    function LoginComponent(loginService) {
+    function LoginComponent(loginService, componentEventService) {
         this.loginService = loginService;
+        this.componentEventService = componentEventService;
+        this.isLoggedIn = false;
         FB.init({
             appId: '422821098053082',
             cookie: false,
@@ -29,9 +32,11 @@ var LoginComponent = (function () {
                 console.log('connected');
                 console.log(result);
                 _this.userLogin(result.authResponse.accessToken);
+                _this.isLoggedIn = true;
             }
             else {
                 console.log('cannot tell');
+                _this.isLoggedIn = false;
             }
         }, { scope: 'public_profile,email' });
     };
@@ -44,12 +49,16 @@ var LoginComponent = (function () {
     LoginComponent.prototype.statusChangeCallback = function (resp) {
         if (resp.status === 'connected') {
             console.log('inside connected');
+            this.userLogin(resp.authResponse.accessToken);
+            this.isLoggedIn = true;
         }
         else if (resp.status === 'not_authorized') {
             console.log('not authorized');
+            this.isLoggedIn = false;
         }
         else {
             console.log('unknown');
+            this.isLoggedIn = false;
         }
     };
     ;
@@ -69,6 +78,7 @@ var LoginComponent = (function () {
     };
     LoginComponent.prototype.loginSuccess = function (result) {
         this.userInfo = result;
+        this.componentEventService.userLoggedIn(result);
     };
     LoginComponent = __decorate([
         core_1.Component({
@@ -77,7 +87,7 @@ var LoginComponent = (function () {
             templateUrl: 'login.component.html',
             styleUrls: ['login.component.css']
         }), 
-        __metadata('design:paramtypes', [login_service_1.LoginService])
+        __metadata('design:paramtypes', [login_service_1.LoginService, component_event_service_1.ComponentEventService])
     ], LoginComponent);
     return LoginComponent;
 }());

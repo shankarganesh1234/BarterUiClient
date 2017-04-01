@@ -20,6 +20,8 @@ import {InterestService} from "../interest/service/interest.service";
 import {LoginComponent} from "../login/login.component";
 import {LoginService} from "../login/service/login.service";
 import {ErrorModalComponent} from "../errors/error-modal.component";
+import {MyAccountComponent} from "../myaccount/myaccount.component";
+import {UserService} from "../user/service/user.service";
 
 
 @NgModule({
@@ -31,9 +33,9 @@ import {ErrorModalComponent} from "../errors/error-modal.component";
         Ng2PaginationModule,
         ReactiveFormsModule
     ],
-    declarations: [AppComponent, ItemListComponent, CategoryComponent, LandingComponent, HeaderComponent, SearchBarComponent, ItemComponent, ItemDetailComponent, InterestOptionsComponent, LoginComponent, ErrorModalComponent],
+    declarations: [AppComponent, ItemListComponent, CategoryComponent, LandingComponent, HeaderComponent, SearchBarComponent, ItemComponent, ItemDetailComponent, InterestOptionsComponent, LoginComponent, ErrorModalComponent, MyAccountComponent],
     bootstrap: [LandingComponent],
-    providers: [SearchService, CategoryService, ItemService, InterestService, LoginService]
+    providers: [SearchService, CategoryService, ItemService, InterestService, LoginService, UserService]
 })
 
 export class AppModule {

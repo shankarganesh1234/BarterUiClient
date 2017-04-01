@@ -2,6 +2,8 @@ import {Component, OnInit} from "@angular/core";
 import {LoginService} from "./service/login.service";
 import {LoginResponse} from "./models/login-response.model";
 import {LoginRequest} from "./models/login-request.model";
+import {ComponentEventService} from "../component-events/component-event.service";
+import {User} from "../user/user";
 
 
 declare const FB:any;
@@ -15,9 +17,10 @@ declare const FB:any;
 
 export class LoginComponent implements OnInit {
 
-    userInfo: LoginResponse;
+    userInfo: User;
+    isLoggedIn: boolean = false;
 
-    constructor(private loginService: LoginService) {
+    constructor(private loginService: LoginService, private componentEventService: ComponentEventService) {
         FB.init({
             appId      : '422821098053082',
             cookie     : false,  // enable cookies to allow the server to access
@@ -34,11 +37,12 @@ export class LoginComponent implements OnInit {
                 console.log('connected');
                 console.log(result);
                 this.userLogin(result.authResponse.accessToken);
+                this.isLoggedIn = true;
             } else {
                 console.log('cannot tell');
+                this.isLoggedIn = false;
             }
         }, { scope: 'public_profile,email' });
-
     }
 
     isUserLoggedIn() {
@@ -50,10 +54,14 @@ export class LoginComponent implements OnInit {
     statusChangeCallback(resp: any) {
         if (resp.status === 'connected') {
             console.log('inside connected');
+            this.userLogin(resp.authResponse.accessToken);
+            this.isLoggedIn = true;
         }else if (resp.status === 'not_authorized') {
             console.log('not authorized');
+            this.isLoggedIn = false;
         }else {
             console.log('unknown');
+            this.isLoggedIn = false;
         }
     };
 
@@ -80,8 +88,9 @@ export class LoginComponent implements OnInit {
             );
     }
 
-    loginSuccess(result: LoginResponse) : void {
+    loginSuccess(result: User) : void {
         this.userInfo = result;
+        this.componentEventService.userLoggedIn(result);
     }
 
 }

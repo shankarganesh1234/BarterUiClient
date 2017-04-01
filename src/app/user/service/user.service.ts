@@ -6,18 +6,19 @@ import {GlobalUrls} from "../../urls/url-values";
 import {Observable} from "rxjs/Rx";
 import "rxjs/add/operator/map";
 import "rxjs/add/operator/catch";
-import {LoginRequest} from "../models/login-request.model";
-import {LoginResponse} from "../models/login-response.model";
-import {User} from "../../user/user";
+import {User} from "../user";
+
+declare const FB:any;
 
 @Injectable()
-export class LoginService {
+export class UserService {
 
     private headers: Headers;
     private options: RequestOptions;
     private urls: GlobalUrls;
 
     constructor(private http: Http) {
+
         this.headers = new Headers({
             'Content-Type': 'application/json',
             'Accept': 'application/json'
@@ -26,9 +27,8 @@ export class LoginService {
         this.urls = new GlobalUrls();
     }
 
-    userLogin(loginRequest: LoginRequest): Observable<User> {
-        let body = JSON.stringify(loginRequest);
-        return this.http.post(this.urls.loginUrl, body, this.options)
+    getUserProfile(userId: number): Observable<User> {
+        return this.http.get(this.urls.userProfileUrl + userId, this.options)
             .map(this.extractData)
             .catch(this.handleError);
     }
