@@ -45,6 +45,10 @@ var InterestOptionsComponent = (function (_super) {
             this.errorMessage = this.messages.user_not_logged_in;
             return null;
         }
+        if (user.id == this.itemUserId) {
+            this.errorMessage = this.messages.orig_user_interested_user_equal;
+            return null;
+        }
         this.errorMessage = null;
         this.loggedInUserId = user.id;
         this.itemService

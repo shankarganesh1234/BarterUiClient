@@ -56,6 +56,11 @@ export class InterestOptionsComponent extends LoggedInUser implements OnInit, On
             return null;
         }
 
+       if(user.id == this.itemUserId) {
+           this.errorMessage = this.messages.orig_user_interested_user_equal;
+           return null;
+       }
+
         this.errorMessage = null;
         this.loggedInUserId = user.id;
         this.itemService
