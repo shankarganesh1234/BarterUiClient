@@ -1,7 +1,7 @@
 import {Component, OnInit} from "@angular/core";
-import {UserService} from "../user/service/user.service";
-import {ComponentEventService} from "../component-events/component-event.service";
 import {User} from "../user/user";
+import {LoggedInUser} from "../user/loggedInUser";
+import {ComponentEventService} from "../component-events/component-event.service";
 
 
 declare const FB:any;
@@ -12,18 +12,16 @@ declare const FB:any;
     templateUrl: 'myaccount.component.html'
 })
 
-export class MyAccountComponent implements OnInit {
+export class MyAccountComponent extends LoggedInUser implements OnInit {
 
     isLoggedIn: boolean = false;
     user: User;
 
-    constructor(private userService: UserService, private componentEventService: ComponentEventService) {
-
+    constructor(private componentEventService: ComponentEventService) {
+        super();
     }
     ngOnInit(): void {
-        console.log('my account');
-        console.log(this.user);
-        console.log(this.isLoggedIn);
+        console.log('myaccount: init');
         this.componentEventService.userLoggedin$.subscribe(
             result => {
                 this.user = result;
@@ -38,9 +36,10 @@ export class MyAccountComponent implements OnInit {
     }
 
     loggedOut(response: any): void {
-        console.log('logged out');
+        console.log('myaccount: logged out');
         this.isLoggedIn = false;
         this.user = null;
+        this.removeLoggedInUser();
         this.componentEventService.userLoggedOut(true);
     }
 }
