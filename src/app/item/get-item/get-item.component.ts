@@ -25,16 +25,11 @@ export class ItemDetailComponent implements OnInit, OnChanges, OnDestroy {
 
     interestCreated: boolean;
 
-    errorMessage: string;
-
-    messages: Messages;
-
     showInterests: boolean = false;
 
 
     constructor(private itemService: ItemService, private componentEventService: ComponentEventService) {
-        this.messages = new Messages();
-    }
+     }
 
     ngOnInit(): void {
         this.componentEventService.interestCreated$.subscribe(
@@ -71,41 +66,6 @@ export class ItemDetailComponent implements OnInit, OnChanges, OnDestroy {
 
     passUserId(userId: number) {
         this.userId = userId;
-        this.isUserLoggedIn();
+        this.showInterests = true;
     }
-
-    onFacebookLoginClick() {
-
-        FB.login((result: any) => {
-            if (result.status === 'connected') {
-                console.log('connected');
-                console.log(result);
-                this.errorMessage = null;
-            } else {
-                console.log('cannot tell');
-                this.errorMessage = this.messages.user_not_logged_in;
-            }
-        }, { scope: 'public_profile,email' });
-
-    }
-
-    isUserLoggedIn() {
-        FB.getLoginStatus((response:any) => {
-            this.statusChangeCallback(response);
-        });
-    }
-
-    statusChangeCallback(resp: any) {
-        if (resp.status === 'connected') {
-            console.log('inside connected');
-            this.errorMessage = null;
-            this.showInterests = true;
-        }else if (resp.status === 'not_authorized') {
-            console.log('not authorized');
-            this.errorMessage = this.messages.user_not_logged_in;
-        }else {
-            console.log('unknown');
-            this.errorMessage = this.messages.user_not_logged_in;
-        }
-    };
 }

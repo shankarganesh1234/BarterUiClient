@@ -16,19 +16,10 @@ var ErrorModalComponent = (function () {
     ErrorModalComponent.prototype.ngOnInit = function () {
         this.show = true;
     };
-    ErrorModalComponent.prototype.onFacebookLoginClick = function () {
-        var _this = this;
-        FB.login(function (result) {
-            if (result.status === 'connected') {
-                console.log('connected');
-                console.log(result);
-                _this.errorMessage = null;
-                $('#errorModal').modal('hide');
-            }
-            else {
-                console.log('cannot tell');
-            }
-        }, { scope: 'public_profile,email' });
+    ErrorModalComponent.prototype.dismissModal = function () {
+        this.errorMessage = null;
+        $('#errorModal').modal('hide');
+        this.temp = 'data-dismiss';
     };
     __decorate([
         core_1.Input(), 

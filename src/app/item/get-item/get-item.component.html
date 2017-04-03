@@ -72,7 +72,7 @@
                             <li *ngIf="interestCreated"><button type="button" class="btn btn-success round btn-md" (click)="passUserId(itemDetail.userId.userId)"><i class="fa fa-heart mr-5"></i>Expressed Interest. Modify?</button></li>
                         </ul>
                         <div *ngIf="showInterests">
-                        <swap-interest-options [userId]="userId" [originalItemId]="itemId"></swap-interest-options>
+                        <swap-interest-options [itemUserId]="userId" [originalItemId]="itemId"></swap-interest-options>
                         </div>
                     </div><!-- end col -->
                 </div><!-- end row -->
@@ -81,6 +81,3 @@
     </div><!-- end modal-dialog -->
 </div><!-- end productRewiew -->
 
-<div *ngIf="errorMessage">
-<error-modal [errorMessage] = "errorMessage"></error-modal>
-</div>

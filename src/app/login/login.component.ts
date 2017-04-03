@@ -3,6 +3,7 @@ import {LoginService} from "./service/login.service";
 import {LoginRequest} from "./models/login-request.model";
 import {ComponentEventService} from "../component-events/component-event.service";
 import {User} from "../user/user";
+import {LoggedInUser} from "../user/loggedInUser";
 
 
 declare const FB:any;
@@ -14,12 +15,12 @@ declare const FB:any;
     styleUrls: ['login.component.css']
 })
 
-export class LoginComponent implements OnInit {
+export class LoginComponent extends LoggedInUser implements OnInit {
 
-    userInfo: User;
     isLoggedIn: boolean = false;
 
     constructor(private loginService: LoginService, private componentEventService: ComponentEventService) {
+        super();
         FB.init({
             appId      : '422821098053082',
             cookie     : false,  // enable cookies to allow the server to access
@@ -33,12 +34,10 @@ export class LoginComponent implements OnInit {
 
         FB.login((result: any) => {
             if (result.status === 'connected') {
-                console.log('connected');
-                console.log(result);
                 this.userLogin(result.authResponse.accessToken);
                 this.isLoggedIn = true;
             } else {
-                console.log('cannot tell');
+                this.removeLoggedInUser();
                 this.isLoggedIn = false;
             }
         }, { scope: 'public_profile,email' });
@@ -52,24 +51,16 @@ export class LoginComponent implements OnInit {
 
     statusChangeCallback(resp: any) {
         if (resp.status === 'connected') {
-            console.log('inside connected');
-            this.userLogin(resp.authResponse.accessToken);
             this.isLoggedIn = true;
+            this.componentEventService.userLoggedIn(this.getLoggedInUser());
         }else if (resp.status === 'not_authorized') {
-            console.log('not authorized');
+            this.removeLoggedInUser();
             this.isLoggedIn = false;
         }else {
-            console.log('unknown');
+            this.removeLoggedInUser();
             this.isLoggedIn = false;
         }
     };
-
-    onFacebookLogoutClick() {
-
-
-    }
-
-
 
     ngOnInit() {
         // check if user is logged on on page load
@@ -77,7 +68,6 @@ export class LoginComponent implements OnInit {
         this.componentEventService.userLoggedOut$.subscribe(
             result => {
                 if(result == true) {
-                    this.userInfo = null;
                     this.isLoggedIn = false;
                 }
             });
@@ -89,13 +79,13 @@ export class LoginComponent implements OnInit {
         this.loginService
             .userLogin(loginRequest)
             .subscribe(
-                result => this.loginSuccess(result),
+                result => this.loginSuccess(accessToken, result),
                 error => console.log(error)
             );
     }
 
-    loginSuccess(result: User) : void {
-        this.userInfo = result;
+    loginSuccess(accessToken: string, result: User) : void {
+        this.setUserInfoInLocalStorage(accessToken, result);
         this.componentEventService.userLoggedIn(result);
     }
 

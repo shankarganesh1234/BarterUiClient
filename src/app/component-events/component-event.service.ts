@@ -20,6 +20,7 @@ export class ComponentEventService {
     userLoggedin$ = this.userLoggedInEvent.asObservable();
     userLoggedOut$ = this.userLoggedOutEvent.asObservable();
 
+
     searchBarClicked(searchResponse: SearchResponse) {
         this.searchBarEvent.next(searchResponse);
     }
@@ -35,4 +36,5 @@ export class ComponentEventService {
     userLoggedOut(result: boolean) {
         this.userLoggedOutEvent.next(result);
     }
+
 }

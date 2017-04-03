@@ -1,4 +1,9 @@
 "use strict";
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -12,8 +17,11 @@ var core_1 = require("@angular/core");
 var login_service_1 = require("./service/login.service");
 var login_request_model_1 = require("./models/login-request.model");
 var component_event_service_1 = require("../component-events/component-event.service");
-var LoginComponent = (function () {
+var loggedInUser_1 = require("../user/loggedInUser");
+var LoginComponent = (function (_super) {
+    __extends(LoginComponent, _super);
     function LoginComponent(loginService, componentEventService) {
+        _super.call(this);
         this.loginService = loginService;
         this.componentEventService = componentEventService;
         this.isLoggedIn = false;
@@ -29,13 +37,11 @@ var LoginComponent = (function () {
         var _this = this;
         FB.login(function (result) {
             if (result.status === 'connected') {
-                console.log('connected');
-                console.log(result);
                 _this.userLogin(result.authResponse.accessToken);
                 _this.isLoggedIn = true;
             }
             else {
-                console.log('cannot tell');
+                _this.removeLoggedInUser();
                 _this.isLoggedIn = false;
             }
         }, { scope: 'public_profile,email' });
@@ -48,29 +54,25 @@ var LoginComponent = (function () {
     };
     LoginComponent.prototype.statusChangeCallback = function (resp) {
         if (resp.status === 'connected') {
-            console.log('inside connected');
-            this.userLogin(resp.authResponse.accessToken);
             this.isLoggedIn = true;
+            this.componentEventService.userLoggedIn(this.getLoggedInUser());
         }
         else if (resp.status === 'not_authorized') {
-            console.log('not authorized');
+            this.removeLoggedInUser();
             this.isLoggedIn = false;
         }
         else {
-            console.log('unknown');
+            this.removeLoggedInUser();
             this.isLoggedIn = false;
         }
     };
     ;
-    LoginComponent.prototype.onFacebookLogoutClick = function () {
-    };
     LoginComponent.prototype.ngOnInit = function () {
         var _this = this;
         // check if user is logged on on page load
         this.isUserLoggedIn();
         this.componentEventService.userLoggedOut$.subscribe(function (result) {
             if (result == true) {
-                _this.userInfo = null;
                 _this.isLoggedIn = false;
             }
         });
@@ -81,10 +83,10 @@ var LoginComponent = (function () {
         loginRequest.accessToken = accessToken;
         this.loginService
             .userLogin(loginRequest)
-            .subscribe(function (result) { return _this.loginSuccess(result); }, function (error) { return console.log(error); });
+            .subscribe(function (result) { return _this.loginSuccess(accessToken, result); }, function (error) { return console.log(error); });
     };
-    LoginComponent.prototype.loginSuccess = function (result) {
-        this.userInfo = result;
+    LoginComponent.prototype.loginSuccess = function (accessToken, result) {
+        this.setUserInfoInLocalStorage(accessToken, result);
         this.componentEventService.userLoggedIn(result);
     };
     LoginComponent = __decorate([
@@ -97,6 +99,6 @@ var LoginComponent = (function () {
         __metadata('design:paramtypes', [login_service_1.LoginService, component_event_service_1.ComponentEventService])
     ], LoginComponent);
     return LoginComponent;
-}());
+}(loggedInUser_1.LoggedInUser));
 exports.LoginComponent = LoginComponent;
 //# sourceMappingURL=login.component.js.map

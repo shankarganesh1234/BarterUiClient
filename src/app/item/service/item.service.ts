@@ -26,7 +26,6 @@ export class ItemService {
         });
         this.options = new RequestOptions({headers: this.headers});
         this.urls = new GlobalUrls();
-        this.isUserLoggedIn();
     }
 
     createItem(itemRequest: Item): Observable<Item> {
@@ -70,21 +69,6 @@ export class ItemService {
         return Observable.throw(errMsg);
     }
 
-    // TODO: temporary, remove this. This is getting repeated too many times
-    isUserLoggedIn() {
-        FB.getLoginStatus((response:any) => {
-            this.statusChangeCallback(response);
-        });
-    }
 
-    statusChangeCallback(resp: any) {
-        if (resp.status === 'connected') {
-            console.log('inside connected');
-            this.headers.append("Authorization", resp.authResponse.accessToken);
-        }else if (resp.status === 'not_authorized') {
-            console.log('not authorized');
-        }else {
-            console.log('unknown');
-        }
-    };
+
 }

@@ -1,4 +1,9 @@
 "use strict";
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -9,19 +14,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var user_service_1 = require("../user/service/user.service");
+var loggedInUser_1 = require("../user/loggedInUser");
 var component_event_service_1 = require("../component-events/component-event.service");
-var MyAccountComponent = (function () {
-    function MyAccountComponent(userService, componentEventService) {
-        this.userService = userService;
+var MyAccountComponent = (function (_super) {
+    __extends(MyAccountComponent, _super);
+    function MyAccountComponent(componentEventService) {
+        _super.call(this);
         this.componentEventService = componentEventService;
         this.isLoggedIn = false;
     }
     MyAccountComponent.prototype.ngOnInit = function () {
         var _this = this;
-        console.log('my account');
-        console.log(this.user);
-        console.log(this.isLoggedIn);
+        console.log('myaccount: init');
         this.componentEventService.userLoggedin$.subscribe(function (result) {
             _this.user = result;
             _this.isLoggedIn = true;
@@ -34,9 +38,10 @@ var MyAccountComponent = (function () {
         });
     };
     MyAccountComponent.prototype.loggedOut = function (response) {
-        console.log('logged out');
+        console.log('myaccount: logged out');
         this.isLoggedIn = false;
         this.user = null;
+        this.removeLoggedInUser();
         this.componentEventService.userLoggedOut(true);
     };
     MyAccountComponent = __decorate([
@@ -45,9 +50,9 @@ var MyAccountComponent = (function () {
             selector: 'swap-myaccount',
             templateUrl: 'myaccount.component.html'
         }), 
-        __metadata('design:paramtypes', [user_service_1.UserService, component_event_service_1.ComponentEventService])
+        __metadata('design:paramtypes', [component_event_service_1.ComponentEventService])
     ], MyAccountComponent);
     return MyAccountComponent;
-}());
+}(loggedInUser_1.LoggedInUser));
 exports.MyAccountComponent = MyAccountComponent;
 //# sourceMappingURL=myaccount.component.js.map

@@ -25,7 +25,6 @@ var ItemService = (function () {
         });
         this.options = new http_1.RequestOptions({ headers: this.headers });
         this.urls = new url_values_1.GlobalUrls();
-        this.isUserLoggedIn();
     }
     ItemService.prototype.createItem = function (itemRequest) {
         var body = JSON.stringify(itemRequest);
@@ -61,26 +60,6 @@ var ItemService = (function () {
         console.error(errMsg);
         return Rx_1.Observable.throw(errMsg);
     };
-    // TODO: temporary, remove this. This is getting repeated too many times
-    ItemService.prototype.isUserLoggedIn = function () {
-        var _this = this;
-        FB.getLoginStatus(function (response) {
-            _this.statusChangeCallback(response);
-        });
-    };
-    ItemService.prototype.statusChangeCallback = function (resp) {
-        if (resp.status === 'connected') {
-            console.log('inside connected');
-            this.headers.append("Authorization", resp.authResponse.accessToken);
-        }
-        else if (resp.status === 'not_authorized') {
-            console.log('not authorized');
-        }
-        else {
-            console.log('unknown');
-        }
-    };
-    ;
     ItemService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [http_1.Http])

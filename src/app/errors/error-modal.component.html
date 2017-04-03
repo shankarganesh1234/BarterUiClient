@@ -3,7 +3,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="errorCloseButton">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="errorCloseButton" (click)="dismissModal()">
                     <span aria-hidden="true">&times;</span>
                 </button>
                 <div class="row">
@@ -23,8 +23,8 @@
             <div class="modal-body">
                 <div class="row">
                     <div class="col-sm-4">
-                        <button class="btn btn-facebook round btn-xs" (click)="onFacebookLoginClick()">
-                            <i class="fa fa-facebook mr-10"></i>Facebook
+                        <button class="btn btn-danger round btn-xs" (click)="dismissModal()">
+                            <i class="fa fa-facebook mr-10"></i>Ok
                         </button>
                     </div>
                 </div><!-- end row -->
