@@ -1,7 +1,6 @@
 import {Component, OnInit, Input} from "@angular/core";
 
-declare const FB: any;
-declare var $: any
+declare var $: any;
 
 
 @Component({
@@ -18,8 +17,6 @@ export class ErrorModalComponent implements OnInit {
     @Input()
     errorMessage: string;
 
-    temp:string;
-
     ngOnInit() {
         this.show = true;
     }
@@ -27,6 +24,5 @@ export class ErrorModalComponent implements OnInit {
     dismissModal() {
         this.errorMessage = null;
         $('#errorModal').modal('hide');
-        this.temp = 'data-dismiss';
     }
 }

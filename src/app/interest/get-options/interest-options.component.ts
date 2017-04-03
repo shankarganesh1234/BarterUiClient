@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, OnChanges, Output} from "@angular/core";
+import {Component, Input, OnInit, OnChanges} from "@angular/core";
 import {ItemService} from "../../item/service/item.service";
 import {ItemDetail} from "../../item/models/item-detail.model";
 import {InterestService} from "../service/interest.service";

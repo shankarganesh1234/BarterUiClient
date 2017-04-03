@@ -1,11 +1,10 @@
-import {Component, Input, OnInit, OnChanges, OnDestroy} from "@angular/core";
+import {Component, OnInit, OnChanges, OnDestroy} from "@angular/core";
 import {ItemService} from "../service/item.service";
 import {ItemDetail} from "../models/item-detail.model";
 import {ComponentEventService} from "../../component-events/component-event.service";
-import {Messages} from "../../messages/messages";
 
 
-declare const FB:any;
+declare var $: any;
 
 @Component({
     moduleId: module.id,
@@ -16,7 +15,8 @@ declare const FB:any;
 
 export class ItemDetailComponent implements OnInit, OnChanges, OnDestroy {
 
-    @Input()
+    showItem: boolean = false;
+
     itemId: number;
 
     itemDetail: ItemDetail;
@@ -36,10 +36,14 @@ export class ItemDetailComponent implements OnInit, OnChanges, OnDestroy {
             result => {
                 this.interestCreated = result;
             });
+        this.componentEventService.itemId$.subscribe(
+            itemId => {
+                this.itemId = itemId;
+                this.getItem(this.itemId);
+            });
     }
 
     ngOnChanges(): void {
-        this.getItem(this.itemId);
     }
 
     ngOnDestroy(): void {
@@ -49,6 +53,8 @@ export class ItemDetailComponent implements OnInit, OnChanges, OnDestroy {
     cleanup(): void {
         this.itemDetail = null;
         this.showInterests = false;
+        this.showItem = false;
+        $('#itemDetailModal').modal('hide');
     }
 
     getItem(itemId: number) {
@@ -62,6 +68,7 @@ export class ItemDetailComponent implements OnInit, OnChanges, OnDestroy {
 
     getItemSuccess(result: ItemDetail) : void {
         this.itemDetail = result;
+        this.showItem = true;
     }
 
     passUserId(userId: number) {

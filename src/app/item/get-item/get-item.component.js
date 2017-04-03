@@ -15,6 +15,7 @@ var ItemDetailComponent = (function () {
     function ItemDetailComponent(itemService, componentEventService) {
         this.itemService = itemService;
         this.componentEventService = componentEventService;
+        this.showItem = false;
         this.showInterests = false;
     }
     ItemDetailComponent.prototype.ngOnInit = function () {
@@ -22,9 +23,12 @@ var ItemDetailComponent = (function () {
         this.componentEventService.interestCreated$.subscribe(function (result) {
             _this.interestCreated = result;
         });
+        this.componentEventService.itemId$.subscribe(function (itemId) {
+            _this.itemId = itemId;
+            _this.getItem(_this.itemId);
+        });
     };
     ItemDetailComponent.prototype.ngOnChanges = function () {
-        this.getItem(this.itemId);
     };
     ItemDetailComponent.prototype.ngOnDestroy = function () {
         console.log('on destroy called');
@@ -32,6 +36,8 @@ var ItemDetailComponent = (function () {
     ItemDetailComponent.prototype.cleanup = function () {
         this.itemDetail = null;
         this.showInterests = false;
+        this.showItem = false;
+        $('#itemDetailModal').modal('hide');
     };
     ItemDetailComponent.prototype.getItem = function (itemId) {
         var _this = this;
@@ -41,15 +47,12 @@ var ItemDetailComponent = (function () {
     };
     ItemDetailComponent.prototype.getItemSuccess = function (result) {
         this.itemDetail = result;
+        this.showItem = true;
     };
     ItemDetailComponent.prototype.passUserId = function (userId) {
         this.userId = userId;
         this.showInterests = true;
     };
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', Number)
-    ], ItemDetailComponent.prototype, "itemId", void 0);
     ItemDetailComponent = __decorate([
         core_1.Component({
             moduleId: module.id,

@@ -19,7 +19,6 @@ var ErrorModalComponent = (function () {
     ErrorModalComponent.prototype.dismissModal = function () {
         this.errorMessage = null;
         $('#errorModal').modal('hide');
-        this.temp = 'data-dismiss';
     };
     __decorate([
         core_1.Input(), 

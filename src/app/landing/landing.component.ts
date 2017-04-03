@@ -1,7 +1,6 @@
 import {Component, OnDestroy, OnInit} from "@angular/core";
 import {SearchResponse} from "../search/search-response";
 import {ComponentEventService} from "../component-events/component-event.service";
-import {Subscription} from "rxjs";
 
 @Component({
     moduleId: module.id,
@@ -12,7 +11,6 @@ import {Subscription} from "rxjs";
 export class LandingComponent implements OnInit {
 
     private searchResponse : SearchResponse;
-    private itemId: number;
 
     constructor(private componentEventService: ComponentEventService) {
     }
@@ -23,11 +21,6 @@ export class LandingComponent implements OnInit {
             searchResults => {
                 this.searchResponse = searchResults;
             });
-
-        this.componentEventService.itemId$.subscribe(
-            itemId => {
-                this.itemId = itemId;
-            });
-    }
+     }
 }
 
