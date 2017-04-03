@@ -2,3 +2,7 @@
     min-height:339px;
     max-height:339px;
 }
+
+a:hover {
+    cursor:pointer;
+}
