@@ -77,7 +77,7 @@ export class InterestOptionsComponent extends LoggedInUser implements OnInit, On
 
     checkedItems(e: any, itemId: number, title: string): void {
         if(e.target.checked) {
-            if(this.selectedItems.length < 3) {
+            if(this.selectedItems.length < 1) {
                 console.log('added ' + itemId);
                 this.selectedItems.push(itemId);
                 this.selectedItemTitles.push(title);
@@ -95,7 +95,7 @@ export class InterestOptionsComponent extends LoggedInUser implements OnInit, On
 
     checkboxState(itemId: number): boolean {
 
-        if(this.selectedItems.length >= 3 && this.selectedItems.indexOf(itemId) == -1) {
+        if(this.selectedItems.length >= 1 && this.selectedItems.indexOf(itemId) == -1) {
             return true;
         } else {
             return false;

@@ -60,7 +60,7 @@ var InterestOptionsComponent = (function (_super) {
     };
     InterestOptionsComponent.prototype.checkedItems = function (e, itemId, title) {
         if (e.target.checked) {
-            if (this.selectedItems.length < 3) {
+            if (this.selectedItems.length < 1) {
                 console.log('added ' + itemId);
                 this.selectedItems.push(itemId);
                 this.selectedItemTitles.push(title);
@@ -78,7 +78,7 @@ var InterestOptionsComponent = (function (_super) {
         console.log('array = ' + this.selectedItems);
     };
     InterestOptionsComponent.prototype.checkboxState = function (itemId) {
-        if (this.selectedItems.length >= 3 && this.selectedItems.indexOf(itemId) == -1) {
+        if (this.selectedItems.length >= 1 && this.selectedItems.indexOf(itemId) == -1) {
             return true;
         }
         else {
