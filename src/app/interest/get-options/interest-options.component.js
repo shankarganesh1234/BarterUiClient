@@ -29,6 +29,7 @@ var InterestOptionsComponent = (function (_super) {
         this.componentEventService = componentEventService;
         this.selectedItems = [];
         this.selectedItemTitles = [];
+        this.showInterests = false;
         this.messages = new messages_1.Messages();
     }
     InterestOptionsComponent.prototype.ngOnInit = function () {
@@ -57,6 +58,7 @@ var InterestOptionsComponent = (function (_super) {
     };
     InterestOptionsComponent.prototype.getItemsByUserSuccess = function (result) {
         this.itemDetails = result;
+        this.showInterests = true;
     };
     InterestOptionsComponent.prototype.checkedItems = function (e, itemId, title) {
         if (e.target.checked) {
@@ -99,6 +101,8 @@ var InterestOptionsComponent = (function (_super) {
     };
     InterestOptionsComponent.prototype.interestSuccess = function (result) {
         console.log("interest creation: " + result);
+        if (result === true)
+            this.showInterests = false;
         this.componentEventService.interestCreated(result);
     };
     InterestOptionsComponent.prototype.dismissError = function () {

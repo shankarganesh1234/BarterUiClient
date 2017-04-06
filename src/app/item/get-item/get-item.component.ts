@@ -41,9 +41,11 @@ export class ItemDetailComponent implements OnInit, OnChanges, OnDestroy {
                 this.itemId = itemId;
                 this.getItem(this.itemId);
             });
+        this.interestCreated = false;
     }
 
     ngOnChanges(): void {
+        this.interestCreated = false;
     }
 
     ngOnDestroy(): void {
@@ -54,6 +56,7 @@ export class ItemDetailComponent implements OnInit, OnChanges, OnDestroy {
         this.itemDetail = null;
         this.showInterests = false;
         this.showItem = false;
+        this.interestCreated = false;
         $('#itemDetailModal').modal('hide');
     }
 

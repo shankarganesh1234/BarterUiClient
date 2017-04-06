@@ -32,6 +32,7 @@ export class InterestOptionsComponent extends LoggedInUser implements OnInit, On
     createInterestRequest: CreateInterest;
     errorMessage: string;
     messages: Messages;
+    showInterests: boolean = false;
 
     constructor(private itemService: ItemService, private interestService: InterestService, private componentEventService: ComponentEventService) {
         super();
@@ -73,6 +74,7 @@ export class InterestOptionsComponent extends LoggedInUser implements OnInit, On
 
     getItemsByUserSuccess(result: ItemDetail[]): void {
         this.itemDetails = result;
+        this.showInterests = true;
     }
 
     checkedItems(e: any, itemId: number, title: string): void {
@@ -120,6 +122,9 @@ export class InterestOptionsComponent extends LoggedInUser implements OnInit, On
 
     interestSuccess(result: boolean) : void {
         console.log("interest creation: " + result);
+        if(result === true)
+            this.showInterests = false;
+
         this.componentEventService.interestCreated(result);
     }
 

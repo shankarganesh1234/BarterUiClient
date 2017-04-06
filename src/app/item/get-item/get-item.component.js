@@ -27,8 +27,10 @@ var ItemDetailComponent = (function () {
             _this.itemId = itemId;
             _this.getItem(_this.itemId);
         });
+        this.interestCreated = false;
     };
     ItemDetailComponent.prototype.ngOnChanges = function () {
+        this.interestCreated = false;
     };
     ItemDetailComponent.prototype.ngOnDestroy = function () {
         console.log('on destroy called');
@@ -37,6 +39,7 @@ var ItemDetailComponent = (function () {
         this.itemDetail = null;
         this.showInterests = false;
         this.showItem = false;
+        this.interestCreated = false;
         $('#itemDetailModal').modal('hide');
     };
     ItemDetailComponent.prototype.getItem = function (itemId) {

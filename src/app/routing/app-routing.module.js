@@ -12,9 +12,11 @@ var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var item_list_component_1 = require("../items/item-list.component");
 var category_component_1 = require("../category/category.component");
+var myaccount_detail_component_1 = require("../myaccount/myaccount-detail/myaccount-detail.component");
 var routes = [
     { path: 'itemlist', component: item_list_component_1.ItemListComponent },
-    { path: 'categories', component: category_component_1.CategoryComponent }
+    { path: 'categories', component: category_component_1.CategoryComponent },
+    { path: 'my-account', component: myaccount_detail_component_1.MyAccountDetailComponent }
 ];
 var AppRoutingModule = (function () {
     function AppRoutingModule() {
