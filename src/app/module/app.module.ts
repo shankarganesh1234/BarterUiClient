@@ -23,6 +23,12 @@ import {ErrorModalComponent} from "../errors/error-modal.component";
 import {MyAccountComponent} from "../myaccount/myaccount.component";
 import {UserService} from "../user/service/user.service";
 import {MyAccountDetailComponent} from "../myaccount/myaccount-detail/myaccount-detail.component";
+import {MyProfileComponent} from "../myaccount/myaccount-detail/my-profile/my-profile.component";
+import {MyInterestsComponent} from "../myaccount/myaccount-detail/my-interests/my-interests.component";
+import {MyItemsComponent} from "../myaccount/myaccount-detail/my-items/my-items.component";
+import {MyOffersComponent} from "../myaccount/myaccount-detail/my-offers/my-offers.component";
+import {MyReviewsComponent} from "../myaccount/myaccount-detail/my-reviews/my-reviews.component";
+import {MyNotificationsComponent} from "../myaccount/myaccount-detail/notifications/my-notifications.component";
 
 
 @NgModule({
@@ -46,7 +52,13 @@ import {MyAccountDetailComponent} from "../myaccount/myaccount-detail/myaccount-
                 LoginComponent,
                 ErrorModalComponent,
                 MyAccountComponent,
-                MyAccountDetailComponent],
+                MyAccountDetailComponent,
+                MyProfileComponent,
+                MyInterestsComponent,
+                MyItemsComponent,
+                MyOffersComponent,
+                MyReviewsComponent,
+                MyNotificationsComponent],
     bootstrap: [LandingComponent],
     providers: [SearchService, CategoryService, ItemService, InterestService, LoginService, UserService]
 })

@@ -33,6 +33,12 @@ var error_modal_component_1 = require("../errors/error-modal.component");
 var myaccount_component_1 = require("../myaccount/myaccount.component");
 var user_service_1 = require("../user/service/user.service");
 var myaccount_detail_component_1 = require("../myaccount/myaccount-detail/myaccount-detail.component");
+var my_profile_component_1 = require("../myaccount/myaccount-detail/my-profile/my-profile.component");
+var my_interests_component_1 = require("../myaccount/myaccount-detail/my-interests/my-interests.component");
+var my_items_component_1 = require("../myaccount/myaccount-detail/my-items/my-items.component");
+var my_offers_component_1 = require("../myaccount/myaccount-detail/my-offers/my-offers.component");
+var my_reviews_component_1 = require("../myaccount/myaccount-detail/my-reviews/my-reviews.component");
+var my_notifications_component_1 = require("../myaccount/myaccount-detail/notifications/my-notifications.component");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -58,7 +64,13 @@ var AppModule = (function () {
                 login_component_1.LoginComponent,
                 error_modal_component_1.ErrorModalComponent,
                 myaccount_component_1.MyAccountComponent,
-                myaccount_detail_component_1.MyAccountDetailComponent],
+                myaccount_detail_component_1.MyAccountDetailComponent,
+                my_profile_component_1.MyProfileComponent,
+                my_interests_component_1.MyInterestsComponent,
+                my_items_component_1.MyItemsComponent,
+                my_offers_component_1.MyOffersComponent,
+                my_reviews_component_1.MyReviewsComponent,
+                my_notifications_component_1.MyNotificationsComponent],
             bootstrap: [landing_component_1.LandingComponent],
             providers: [search_service_1.SearchService, category_service_1.CategoryService, item_service_1.ItemService, interest_service_1.InterestService, login_service_1.LoginService, user_service_1.UserService]
         }), 

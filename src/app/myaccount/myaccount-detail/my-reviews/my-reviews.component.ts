@@ -1,19 +1,19 @@
 import {Component, OnInit} from "@angular/core";
-import {User} from "../user/user";
-import {LoggedInUser} from "../user/loggedInUser";
-import {ComponentEventService} from "../component-events/component-event.service";
+import {LoggedInUser} from "../../../user/loggedInUser";
+import {ComponentEventService} from "../../../component-events/component-event.service";
+import {User} from "../../../user/user";
+
 
 
 declare const FB:any;
 
 @Component({
     moduleId: module.id,
-    selector: 'swap-myaccount',
-    templateUrl: 'myaccount.component.html',
-    styleUrls: ['myaccount.component.css']
+    selector: 'swap-myreviews',
+    templateUrl: 'my-reviews.component.html'
 })
 
-export class MyAccountComponent extends LoggedInUser implements OnInit {
+export class MyReviewsComponent extends LoggedInUser implements OnInit {
 
     isLoggedIn: boolean = false;
     user: User;

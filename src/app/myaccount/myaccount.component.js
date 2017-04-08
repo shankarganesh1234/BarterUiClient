@@ -48,7 +48,8 @@ var MyAccountComponent = (function (_super) {
         core_1.Component({
             moduleId: module.id,
             selector: 'swap-myaccount',
-            templateUrl: 'myaccount.component.html'
+            templateUrl: 'myaccount.component.html',
+            styleUrls: ['myaccount.component.css']
         }), 
         __metadata('design:paramtypes', [component_event_service_1.ComponentEventService])
     ], MyAccountComponent);

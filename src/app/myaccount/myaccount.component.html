@@ -7,12 +7,13 @@
                             </span>
 </a>
 <ul class="w-150">
-    <li><a href="register.html">My Items</a></li>
-    <li><a href="login.html">My Interests</a></li>
-    <li><a href="register.html">Offers on My Items</a></li>
+    <li><a [routerLink]="['/my-account', 'my-profile']">My Profile</a></li>
+    <li><a [routerLink]="['/my-account', 'my-items']">My Items</a></li>
+    <li><a [routerLink]="['/my-account', 'my-interests']">My Interests</a></li>
+    <li><a [routerLink]="['/my-account', 'my-offers']">Offers on My Items</a></li>
     <li class="divider"></li>
-    <li><a href="wishlist.html">Notifications</a></li>
-    <li><a href="cart.html">Reviews</a></li>
-    <li><a href="javascript: void(0)" (click)="onFacebookLogoutClick()">Logout</a></li>
+    <li><a [routerLink]="['/my-account', 'my-notifications']">Notifications</a></li>
+    <li><a [routerLink]="['/my-account', 'my-reviews']">Reviews</a></li>
+    <li><a (click)="onFacebookLogoutClick()">Logout</a></li>
 </ul>
 </div>

@@ -1,7 +1,8 @@
-import {Component, OnInit} from "@angular/core";
+import {Component, Input, OnInit} from "@angular/core";
 import {LoggedInUser} from "../../user/loggedInUser";
 import {ComponentEventService} from "../../component-events/component-event.service";
 import {User} from "../../user/user";
+import {ActivatedRoute} from "@angular/router";
 
 
 declare const FB:any;
@@ -17,7 +18,10 @@ export class MyAccountDetailComponent extends LoggedInUser implements OnInit {
     isLoggedIn: boolean = false;
     user: User;
 
-    constructor(private componentEventService: ComponentEventService) {
+    componentLoadIndicator: string;
+    private sub: any;
+
+    constructor(private componentEventService: ComponentEventService, private route: ActivatedRoute) {
         super();
     }
     ngOnInit(): void {
@@ -27,6 +31,12 @@ export class MyAccountDetailComponent extends LoggedInUser implements OnInit {
                 this.user = result;
                 this.isLoggedIn = true;
             });
+
+        this.sub = this.route.params.subscribe(params => {
+            this.componentLoadIndicator = params['component']; // (+) converts string 'id' to a number
+            console.log(this.componentLoadIndicator);
+        });
+
     }
 
     onFacebookLogoutClick() {

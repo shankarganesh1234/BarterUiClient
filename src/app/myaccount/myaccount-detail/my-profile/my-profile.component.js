@@ -14,51 +14,45 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var loggedInUser_1 = require("../../user/loggedInUser");
-var component_event_service_1 = require("../../component-events/component-event.service");
-var router_1 = require("@angular/router");
-var MyAccountDetailComponent = (function (_super) {
-    __extends(MyAccountDetailComponent, _super);
-    function MyAccountDetailComponent(componentEventService, route) {
+var loggedInUser_1 = require("../../../user/loggedInUser");
+var component_event_service_1 = require("../../../component-events/component-event.service");
+var MyProfileComponent = (function (_super) {
+    __extends(MyProfileComponent, _super);
+    function MyProfileComponent(componentEventService) {
         _super.call(this);
         this.componentEventService = componentEventService;
-        this.route = route;
         this.isLoggedIn = false;
     }
-    MyAccountDetailComponent.prototype.ngOnInit = function () {
+    MyProfileComponent.prototype.ngOnInit = function () {
         var _this = this;
         console.log('myaccount: init');
         this.componentEventService.userLoggedin$.subscribe(function (result) {
             _this.user = result;
             _this.isLoggedIn = true;
         });
-        this.sub = this.route.params.subscribe(function (params) {
-            _this.componentLoadIndicator = params['component']; // (+) converts string 'id' to a number
-            console.log(_this.componentLoadIndicator);
-        });
     };
-    MyAccountDetailComponent.prototype.onFacebookLogoutClick = function () {
+    MyProfileComponent.prototype.onFacebookLogoutClick = function () {
         var _this = this;
         FB.logout(function (response) {
             _this.loggedOut(response);
         });
     };
-    MyAccountDetailComponent.prototype.loggedOut = function (response) {
+    MyProfileComponent.prototype.loggedOut = function (response) {
         console.log('myaccount: logged out');
         this.isLoggedIn = false;
         this.user = null;
         this.removeLoggedInUser();
         this.componentEventService.userLoggedOut(true);
     };
-    MyAccountDetailComponent = __decorate([
+    MyProfileComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
-            selector: 'swap-myaccount-detail',
-            templateUrl: 'myaccount-detail.component.html'
+            selector: 'swap-myprofile',
+            templateUrl: 'my-profile.component.html'
         }), 
-        __metadata('design:paramtypes', [component_event_service_1.ComponentEventService, router_1.ActivatedRoute])
-    ], MyAccountDetailComponent);
-    return MyAccountDetailComponent;
+        __metadata('design:paramtypes', [component_event_service_1.ComponentEventService])
+    ], MyProfileComponent);
+    return MyProfileComponent;
 }(loggedInUser_1.LoggedInUser));
-exports.MyAccountDetailComponent = MyAccountDetailComponent;
-//# sourceMappingURL=myaccount-detail.component.js.map
+exports.MyProfileComponent = MyProfileComponent;
+//# sourceMappingURL=my-profile.component.js.map
