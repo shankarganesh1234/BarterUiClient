@@ -42,5 +42,6 @@ export class MyAccountComponent extends LoggedInUser implements OnInit {
         this.user = null;
         this.removeLoggedInUser();
         this.componentEventService.userLoggedOut(true);
+        
     }
 }

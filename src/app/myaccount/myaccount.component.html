@@ -14,6 +14,6 @@
     <li class="divider"></li>
     <li><a [routerLink]="['/my-account', 'my-notifications']">Notifications</a></li>
     <li><a [routerLink]="['/my-account', 'my-reviews']">Reviews</a></li>
-    <li><a (click)="onFacebookLogoutClick()">Logout</a></li>
+    <li><a routerLink="/home" (click)="onFacebookLogoutClick()">Logout</a></li>
 </ul>
 </div>
