@@ -50,11 +50,15 @@ var MyAccountDetailComponent = (function (_super) {
         this.removeLoggedInUser();
         this.componentEventService.userLoggedOut(true);
     };
+    MyAccountDetailComponent.prototype.loadComponent = function (componentName) {
+        this.componentLoadIndicator = componentName;
+    };
     MyAccountDetailComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
             selector: 'swap-myaccount-detail',
-            templateUrl: 'myaccount-detail.component.html'
+            templateUrl: 'myaccount-detail.component.html',
+            styleUrls: ['myaccount-detail.component.css']
         }), 
         __metadata('design:paramtypes', [component_event_service_1.ComponentEventService, router_1.ActivatedRoute])
     ], MyAccountDetailComponent);

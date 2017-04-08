@@ -10,7 +10,8 @@ declare const FB:any;
 @Component({
     moduleId: module.id,
     selector: 'swap-myaccount-detail',
-    templateUrl: 'myaccount-detail.component.html'
+    templateUrl: 'myaccount-detail.component.html',
+    styleUrls: ['myaccount-detail.component.css']
 })
 
 export class MyAccountDetailComponent extends LoggedInUser implements OnInit {
@@ -51,5 +52,9 @@ export class MyAccountDetailComponent extends LoggedInUser implements OnInit {
         this.user = null;
         this.removeLoggedInUser();
         this.componentEventService.userLoggedOut(true);
+    }
+
+    loadComponent(componentName: string): void {
+        this.componentLoadIndicator = componentName;
     }
 }

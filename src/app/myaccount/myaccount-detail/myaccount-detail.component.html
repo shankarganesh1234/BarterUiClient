@@ -6,22 +6,22 @@
 
             <ul class="list list-unstyled">
                 <li class="active">
-                    <a href="my-account/my-profile">My Profile</a>
+                    <a (click)="loadComponent('my-profile')">My Profile</a>
                 </li>
                 <li>
-                    <a href="cart.html">My Items<span class="text-primary">(3)</span></a>
+                    <a (click)="loadComponent('my-items')">My Items<span class="text-primary">(3)</span></a>
                 </li>
                 <li>
-                    <a href="order-list.html">My Interests</a>
+                    <a (click)="loadComponent('my-interests')">My Interests</a>
                 </li>
                 <li>
-                    <a href="wishlist.html">Offers on My Items <span class="text-primary">(5)</span></a>
+                    <a (click)="loadComponent('my-offers')">Offers on My Items <span class="text-primary">(5)</span></a>
                 </li>
                 <li>
-                    <a href="user-information.html">Notifications</a>
+                    <a (click)="loadComponent('my-notifications')">Notifications</a>
                 </li>
                 <li>
-                    <a href="user-information.html">Reviews</a>
+                    <a (click)="loadComponent('my-reviews')">Reviews</a>
                 </li>
             </ul>
         </div><!-- end widget -->
