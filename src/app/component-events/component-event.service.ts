@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Subject }    from 'rxjs/Subject';
 import {SearchResponse} from "../search/search-response";
 import {User} from "../user/user";
+import {ItemDetail} from "../item/models/item-detail.model";
 
 
 @Injectable()
@@ -13,13 +14,19 @@ export class ComponentEventService {
     private interestCreationEvent = new Subject<boolean>();
     private userLoggedInEvent = new Subject<User>();
     private userLoggedOutEvent = new Subject<boolean>();
+    private itemObjectEvent = new Subject<ItemDetail>();
+
 
     searchBar$ = this.searchBarEvent.asObservable();
     itemId$ = this.itemIdEvent.asObservable();
     interestCreated$ = this.interestCreationEvent.asObservable();
     userLoggedin$ = this.userLoggedInEvent.asObservable();
     userLoggedOut$ = this.userLoggedOutEvent.asObservable();
+    itemObjectEvent$ = this.itemObjectEvent.asObservable();
 
+    passItemObject(itemDetail: ItemDetail) {
+        this.itemObjectEvent.next(itemDetail);
+    }
 
     searchBarClicked(searchResponse: SearchResponse) {
         this.searchBarEvent.next(searchResponse);

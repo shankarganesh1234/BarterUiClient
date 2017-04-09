@@ -1,98 +1,89 @@
-<section class="section white-backgorund" id="create-item">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="title-wrap">
-                    <h2 class="title">Create an item</h2>
-                    <h6 class="subtitle">Don't worry, the item will only be visible to others once you publish</h6>
+<div id="item-section"></div>
+<div class="container light-backgorund" *ngIf="createOrUpdate == 'update' || createOrUpdate == 'create' ">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="title-wrap">
+                <h2 class="title">Create an item</h2>
+                <h6 class="subtitle">Don't worry, the item will only be visible to others once you publish</h6>
+            </div>
+        </div><!-- end col -->
+    </div><!-- end row -->
+    <div class="row">
+        <form [formGroup]="itemForm" *ngIf="active" (ngSubmit)="createItem(itemForm)">
+            <div class="col-sm-6">
+                <div class="form-group" [class.has-error]="formErrors.title">
+                    <label for="title">Title</label>
+                    <input type="text" formControlName="title" id="title" class="form-control input-md"
+                           placeholder="Title" required>
+                    <div *ngIf="formErrors.title">
+                        {{ formErrors.title }}
+                    </div>
+                </div>
+
+                <div class="form-group" [class.has-error]="formErrors.zipCode">
+                    <label for="zipCode">Zip Code</label>
+                    <input type="text" formControlName="zipCode" id="zipCode" class="form-control input-md"
+                           placeholder="5 Digit Zip Code">
+                    <div *ngIf="formErrors.zipCode">
+                        {{ formErrors.zipCode }}
+                    </div>
+                </div>
+                <div class="form-group" [class.has-error]="formErrors.categoryId">
+                    <label for="categoryId">Category</label>
+                    <select class="form-control" id="categoryId" name="categoryId"
+                            formControlName="categoryId">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                    <div *ngIf="formErrors.categoryId">
+                        {{ formErrors.categoryId }}
+                    </div>
+                </div>
+                <div class="form-group" [class.has-error]="formErrors.condition">
+                    <label for="condition">Condition</label>
+                    <select class="form-control" id="condition" name="condition" formControlName="condition">
+                        <option>BRAND_NEW</option>
+                        <option>PRE_OWNED</option>
+                    </select>
+                    <div *ngIf="formErrors.condition">
+                        {{ formErrors.condition }}
+                    </div>
+                </div>
+                <div class="form-group" [class.has-error]="formErrors.itemStage">
+                    <label for="itemImage">Upload item images</label>
+                    <input type="file" (change)="fileUpload($event)" id="itemImage" placeholder="Upload file"
+                           accept=".jpg,.jpeg,.png">
+                </div>
+
+                <div class="form-group">
+                    <input *ngIf="createOrUpdate == 'update'" type="submit" class="btn btn-default round btn-md" value="Update my item">
+                    <input *ngIf="createOrUpdate == 'create'" type="submit" class="btn btn-default round btn-md" value="List my item">
+                </div>
+            </div>
+            <div class="col-sm-4 col-sm-offset-1">
+                <div class="form-group" [class.has-error]="formErrors.description">
+                    <label for="description">Description</label>
+                    <textarea formControlName="description" rows="6" id="description"
+                              class="form-control input-md"
+                              placeholder="Describe your item">
+                        </textarea>
+                    <div *ngIf="formErrors.description">
+                        {{ formErrors.description }}
+                    </div>
+                </div>
+                <div class="form-group" [class.has-error]="formErrors.itemStage">
+                    <label for="itemStage">Item Status</label>
+                    <select class="form-control" id="itemStage" name="itemStage" formControlName="itemStage">
+                        <option>INITIALIZED</option>
+                    </select>
+                    <div *ngIf="formErrors.itemStage">
+                        {{ formErrors.itemStage }}
+                    </div>
                 </div>
             </div><!-- end col -->
-        </div><!-- end row -->
-        <div class="row">
-            <form [formGroup]="itemForm" *ngIf="active" (ngSubmit)="createItem(itemForm)">
-                <div class="col-sm-6">
-
-                    <div class="form-group" [class.has-error]="formErrors.title">
-                        <label for="title">Title</label>
-                        <input type="text" formControlName="title" id="title" class="form-control input-md"
-                               placeholder="Title" required>
-                        <div *ngIf="formErrors.title">
-                            {{ formErrors.title }}
-                        </div>
-                    </div>
-
-                    <div class="form-group" [class.has-error]="formErrors.zipCode">
-                        <label for="zipCode">Zip Code</label>
-                        <input type="text" formControlName="zipCode" id="zipCode" class="form-control input-md"
-                               placeholder="5 Digit Zip Code">
-                        <div *ngIf="formErrors.zipCode">
-                            {{ formErrors.zipCode }}
-                        </div>
-                    </div>
-                    <div class="form-group" [class.has-error]="formErrors.userId">
-                        <label for="userId">User ID</label>
-                        <input type="text" formControlName="userId" id="userId" class="form-control input-md"
-                               placeholder="User ID">
-                        <div *ngIf="formErrors.userId">
-                            {{ formErrors.userId }}
-                        </div>
-                    </div>
-                    <div class="form-group" [class.has-error]="formErrors.categoryId">
-                        <label for="categoryId">Category</label>
-                        <select class="form-control" id="categoryId" name="categoryId"
-                                formControlName="categoryId">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                        </select>
-                        <div *ngIf="formErrors.categoryId">
-                            {{ formErrors.categoryId }}
-                        </div>
-                    </div>
-                    <div class="form-group" [class.has-error]="formErrors.condition">
-                        <label for="condition">Condition</label>
-                        <select class="form-control" id="condition" name="condition" formControlName="condition">
-                            <option>BRAND_NEW</option>
-                            <option>PRE_OWNED</option>
-                        </select>
-                        <div *ngIf="formErrors.condition">
-                            {{ formErrors.condition }}
-                        </div>
-                    </div>
-                    <div class="form-group" [class.has-error]="formErrors.itemStage">
-                        <label for="itemImage">Upload item images</label>
-                        <input type="file" (change)="fileUpload($event)" id="itemImage" placeholder="Upload file"
-                               accept=".jpg,.jpeg,.png">
-                    </div>
-
-                    <div class="form-group">
-                        <input type="submit" class="btn btn-default round btn-md" value="List my item">
-                    </div>
-                </div>
-                <div class="col-sm-4 col-sm-offset-1">
-                    <div class="form-group" [class.has-error]="formErrors.description">
-                        <label for="description">Description</label>
-                        <textarea formControlName="description" rows="6" id="description"
-                                  class="form-control input-md"
-                                  placeholder="Describe your item">
-                        </textarea>
-                        <div *ngIf="formErrors.description">
-                            {{ formErrors.description }}
-                        </div>
-                    </div>
-                    <div class="form-group" [class.has-error]="formErrors.itemStage">
-                        <label for="itemStage">Item Status</label>
-                        <select class="form-control" id="itemStage" name="itemStage" formControlName="itemStage">
-                            <option>INITIALIZED</option>
-                        </select>
-                        <div *ngIf="formErrors.itemStage">
-                            {{ formErrors.itemStage }}
-                        </div>
-                    </div>
-                </div><!-- end col -->
-            </form>
-        </div>
+        </form>
     </div>
-</section>
+</div>

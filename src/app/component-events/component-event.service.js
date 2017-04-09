@@ -18,12 +18,17 @@ var ComponentEventService = (function () {
         this.interestCreationEvent = new Subject_1.Subject();
         this.userLoggedInEvent = new Subject_1.Subject();
         this.userLoggedOutEvent = new Subject_1.Subject();
+        this.itemObjectEvent = new Subject_1.Subject();
         this.searchBar$ = this.searchBarEvent.asObservable();
         this.itemId$ = this.itemIdEvent.asObservable();
         this.interestCreated$ = this.interestCreationEvent.asObservable();
         this.userLoggedin$ = this.userLoggedInEvent.asObservable();
         this.userLoggedOut$ = this.userLoggedOutEvent.asObservable();
+        this.itemObjectEvent$ = this.itemObjectEvent.asObservable();
     }
+    ComponentEventService.prototype.passItemObject = function (itemDetail) {
+        this.itemObjectEvent.next(itemDetail);
+    };
     ComponentEventService.prototype.searchBarClicked = function (searchResponse) {
         this.searchBarEvent.next(searchResponse);
     };

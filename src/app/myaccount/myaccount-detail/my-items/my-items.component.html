@@ -7,6 +7,11 @@
 
     <hr class="spacer-5"><hr class="spacer-20 no-border">
 
+    <div class="row left">
+        <a class="page-scroll" (click)="createNewItem()" href="#item-section">Create a new listing</a>
+    </div>
+
+
     <div class="row" *ngIf="items">
         <div class="col-sm-12">
             <div class="table-responsive">
@@ -30,7 +35,7 @@
                             </a>
                         </td>
                         <td>
-                            <h6 class="regular"><a href="shop-single-product-v1.html">{{item.title}}</a></h6>
+                            <h6 class="regular"><a class="page-scroll" (click)="selectItem(item)" href="#item-section">{{item.title}}</a></h6>
                         </td>
                         <td>
                             <span class="label label-primary">{{item.itemStage}}</span>
@@ -43,3 +48,4 @@
         </div><!-- end col -->
     </div><!-- end row -->
 </div><!-- end col -->
+

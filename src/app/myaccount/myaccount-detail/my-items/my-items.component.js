@@ -58,6 +58,12 @@ var MyItemsComponent = (function (_super) {
     MyItemsComponent.prototype.getItemsForUserSuccess = function (result) {
         this.items = result;
     };
+    MyItemsComponent.prototype.selectItem = function (item) {
+        this.componentEventService.passItemObject(item);
+    };
+    MyItemsComponent.prototype.createNewItem = function () {
+        this.componentEventService.passItemObject(null);
+    };
     MyItemsComponent = __decorate([
         core_1.Component({
             moduleId: module.id,

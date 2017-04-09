@@ -7,4 +7,5 @@ export class User {
     feedbackScore: number;
     email: string;
     active: string;
+    userId: string;
 }
