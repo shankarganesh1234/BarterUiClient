@@ -17,17 +17,14 @@ export class MyProfileComponent extends LoggedInUser implements OnInit {
 
     isLoggedIn: boolean = false;
     user: User;
+    loggedInUser: LoggedInUser = new LoggedInUser();
 
     constructor(private componentEventService: ComponentEventService) {
         super();
     }
     ngOnInit(): void {
         console.log('myaccount: init');
-        this.componentEventService.userLoggedin$.subscribe(
-            result => {
-                this.user = result;
-                this.isLoggedIn = true;
-            });
+        this.user = this.loggedInUser.getLoggedInUser();
     }
 
     onFacebookLogoutClick() {

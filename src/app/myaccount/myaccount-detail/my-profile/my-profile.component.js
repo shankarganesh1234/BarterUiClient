@@ -22,14 +22,11 @@ var MyProfileComponent = (function (_super) {
         _super.call(this);
         this.componentEventService = componentEventService;
         this.isLoggedIn = false;
+        this.loggedInUser = new loggedInUser_1.LoggedInUser();
     }
     MyProfileComponent.prototype.ngOnInit = function () {
-        var _this = this;
         console.log('myaccount: init');
-        this.componentEventService.userLoggedin$.subscribe(function (result) {
-            _this.user = result;
-            _this.isLoggedIn = true;
-        });
+        this.user = this.loggedInUser.getLoggedInUser();
     };
     MyProfileComponent.prototype.onFacebookLogoutClick = function () {
         var _this = this;
