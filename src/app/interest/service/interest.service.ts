@@ -7,6 +7,8 @@ import {Observable} from "rxjs/Rx";
 import "rxjs/add/operator/map";
 import "rxjs/add/operator/catch";
 import {CreateInterest} from "../models/create-interest.model";
+import {Interest} from "../models/interest.model";
+import {Interests} from "../models/interests.model";
 
 @Injectable()
 export class InterestService {
@@ -27,6 +29,18 @@ export class InterestService {
     createInterest(createInterest: CreateInterest): Observable<boolean> {
         let body = JSON.stringify(createInterest);
         return this.http.post(this.urls.createInterestUrl, body, this.options)
+            .map(this.extractData)
+            .catch(this.handleError);
+    }
+
+    getInterestsForUser(userId: number): Observable<Interests> {
+        return this.http.get(this.urls.getInterestsForUser + userId, this.options)
+            .map(this.extractData)
+            .catch(this.handleError);
+    }
+
+    deleteInterests(interestId: number): Observable<void> {
+        return this.http.delete(this.urls.deleteInterestUrl + interestId, this.options)
             .map(this.extractData)
             .catch(this.handleError);
     }

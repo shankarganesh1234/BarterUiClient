@@ -17,12 +17,14 @@ var core_1 = require("@angular/core");
 var loggedInUser_1 = require("../../../user/loggedInUser");
 var component_event_service_1 = require("../../../component-events/component-event.service");
 var user_service_1 = require("../../../user/service/user.service");
+var item_service_1 = require("../../../item/service/item.service");
 var MyItemsComponent = (function (_super) {
     __extends(MyItemsComponent, _super);
-    function MyItemsComponent(componentEventService, userService) {
+    function MyItemsComponent(componentEventService, userService, itemService) {
         _super.call(this);
         this.componentEventService = componentEventService;
         this.userService = userService;
+        this.itemService = itemService;
         this.isLoggedIn = false;
         this.loggedInUser = new loggedInUser_1.LoggedInUser();
     }
@@ -55,6 +57,12 @@ var MyItemsComponent = (function (_super) {
             .getItemsForUser(userId)
             .subscribe(function (result) { return _this.getItemsForUserSuccess(result); }, function (error) { return console.log(error); });
     };
+    MyItemsComponent.prototype.deleteItem = function (itemId) {
+        var _this = this;
+        this.itemService
+            .deleteItem(itemId)
+            .subscribe(function (result) { return _this.getItemsForUser(_this.user.id); }, function (error) { return console.log(error); });
+    };
     MyItemsComponent.prototype.getItemsForUserSuccess = function (result) {
         this.items = result;
     };
@@ -70,7 +78,7 @@ var MyItemsComponent = (function (_super) {
             selector: 'swap-myitems',
             templateUrl: 'my-items.component.html'
         }), 
-        __metadata('design:paramtypes', [component_event_service_1.ComponentEventService, user_service_1.UserService])
+        __metadata('design:paramtypes', [component_event_service_1.ComponentEventService, user_service_1.UserService, item_service_1.ItemService])
     ], MyItemsComponent);
     return MyItemsComponent;
 }(loggedInUser_1.LoggedInUser));

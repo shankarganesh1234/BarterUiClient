@@ -16,12 +16,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var loggedInUser_1 = require("../../../user/loggedInUser");
 var component_event_service_1 = require("../../../component-events/component-event.service");
+var interest_service_1 = require("../../../interest/service/interest.service");
 var MyInterestsComponent = (function (_super) {
     __extends(MyInterestsComponent, _super);
-    function MyInterestsComponent(componentEventService) {
+    function MyInterestsComponent(componentEventService, interestService) {
         _super.call(this);
         this.componentEventService = componentEventService;
+        this.interestService = interestService;
         this.isLoggedIn = false;
+        this.loggedInUser = new loggedInUser_1.LoggedInUser();
     }
     MyInterestsComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -30,6 +33,23 @@ var MyInterestsComponent = (function (_super) {
             _this.user = result;
             _this.isLoggedIn = true;
         });
+        this.user = this.loggedInUser.getLoggedInUser();
+        this.getMyInterests();
+    };
+    MyInterestsComponent.prototype.getMyInterests = function () {
+        var _this = this;
+        this.interestService
+            .getInterestsForUser(this.user.id)
+            .subscribe(function (result) { return _this.getMyInterestsSuccess(result); }, function (error) { return console.log(error); });
+    };
+    MyInterestsComponent.prototype.deleteInterest = function (interestId) {
+        var _this = this;
+        this.interestService
+            .deleteInterests(interestId)
+            .subscribe(function (result) { return _this.getMyInterests(); }, function (error) { return console.log(error); });
+    };
+    MyInterestsComponent.prototype.getMyInterestsSuccess = function (result) {
+        this.myInterests = result.interests;
     };
     MyInterestsComponent.prototype.onFacebookLogoutClick = function () {
         var _this = this;
@@ -48,9 +68,10 @@ var MyInterestsComponent = (function (_super) {
         core_1.Component({
             moduleId: module.id,
             selector: 'swap-myinterests',
-            templateUrl: 'my-interests.component.html'
+            templateUrl: 'my-interests.component.html',
+            styleUrls: ['my-interests.component.css']
         }), 
-        __metadata('design:paramtypes', [component_event_service_1.ComponentEventService])
+        __metadata('design:paramtypes', [component_event_service_1.ComponentEventService, interest_service_1.InterestService])
     ], MyInterestsComponent);
     return MyInterestsComponent;
 }(loggedInUser_1.LoggedInUser));

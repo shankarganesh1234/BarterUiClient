@@ -4,6 +4,7 @@ import {ComponentEventService} from "../../../component-events/component-event.s
 import {User} from "../../../user/user";
 import {UserService} from "../../../user/service/user.service";
 import {ItemDetail} from "../../../item/models/item-detail.model";
+import {ItemService} from "../../../item/service/item.service";
 
 
 
@@ -23,7 +24,7 @@ export class MyItemsComponent extends LoggedInUser implements OnInit {
     items: ItemDetail[];
 
 
-    constructor(private componentEventService: ComponentEventService, private userService: UserService) {
+    constructor(private componentEventService: ComponentEventService, private userService: UserService, private itemService: ItemService) {
         super();
     }
     ngOnInit(): void {
@@ -56,6 +57,15 @@ export class MyItemsComponent extends LoggedInUser implements OnInit {
             .getItemsForUser(userId)
             .subscribe(
                 result => this.getItemsForUserSuccess(result),
+                error => console.log(error)
+            );
+    }
+
+    deleteItem(itemId: number): void {
+        this.itemService
+            .deleteItem(itemId)
+            .subscribe(
+                result => this.getItemsForUser(this.user.id),
                 error => console.log(error)
             );
     }

@@ -13,6 +13,9 @@ var GlobalUrls = (function () {
         this.loginUrl = "http://localhost:8080/customServer/login/facebook";
         this.userProfileUrl = "http://localhost:8080/customServer/userprofile/";
         this.userItemsUrl = "http://localhost:8080/customServer/listing/user/";
+        this.getInterestsForUser = "http://localhost:8080/customServer/interest/interesteduser/";
+        this.deleteInterestUrl = "http://localhost:8080/customServer/interest/";
+        this.userItemDeleteUrl = "http://localhost:8080/customServer/listing/";
     }
     return GlobalUrls;
 }());

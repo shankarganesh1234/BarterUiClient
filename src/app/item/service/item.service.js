@@ -50,6 +50,11 @@ var ItemService = (function () {
             .map(this.extractData)
             .catch(this.handleError);
     };
+    ItemService.prototype.deleteItem = function (itemId) {
+        return this.http.delete(this.urls.userItemDeleteUrl + itemId, this.options)
+            .map(this.extractData)
+            .catch(this.handleError);
+    };
     ItemService.prototype.extractData = function (res) {
         var body = res.json();
         return body || {};

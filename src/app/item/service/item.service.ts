@@ -56,6 +56,12 @@ export class ItemService {
             .catch(this.handleError);
     }
 
+    deleteItem(itemId: number): Observable<void> {
+        return this.http.delete(this.urls.userItemDeleteUrl + itemId, this.options)
+            .map(this.extractData)
+            .catch(this.handleError);
+    }
+
     private extractData(res: Response) {
         let body = res.json();
         return body || {};
