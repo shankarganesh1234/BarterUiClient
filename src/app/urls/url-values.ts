@@ -10,6 +10,7 @@ export class GlobalUrls {
     createInterestUrl: string;
     loginUrl: string;
     userProfileUrl:string;
+    userItemsUrl: string;
     serverName: string;
 
     constructor() {
@@ -24,5 +25,6 @@ export class GlobalUrls {
         this.createInterestUrl = "http://localhost:8080/customServer/interest/";
         this.loginUrl = "http://localhost:8080/customServer/login/facebook";
         this.userProfileUrl = "http://localhost:8080/customServer/userprofile/";
+        this.userItemsUrl = "http://localhost:8080/customServer/listing/user/";
     }
 }

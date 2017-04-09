@@ -31,6 +31,11 @@ var UserService = (function () {
             .map(this.extractData)
             .catch(this.handleError);
     };
+    UserService.prototype.getItemsForUser = function (userId) {
+        return this.http.get(this.urls.userItemsUrl + userId, this.options)
+            .map(this.extractData)
+            .catch(this.handleError);
+    };
     UserService.prototype.extractData = function (res) {
         var body = res.json();
         return body || {};

@@ -16,12 +16,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var loggedInUser_1 = require("../../../user/loggedInUser");
 var component_event_service_1 = require("../../../component-events/component-event.service");
+var user_service_1 = require("../../../user/service/user.service");
 var MyItemsComponent = (function (_super) {
     __extends(MyItemsComponent, _super);
-    function MyItemsComponent(componentEventService) {
+    function MyItemsComponent(componentEventService, userService) {
         _super.call(this);
         this.componentEventService = componentEventService;
+        this.userService = userService;
         this.isLoggedIn = false;
+        this.loggedInUser = new loggedInUser_1.LoggedInUser();
     }
     MyItemsComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -30,6 +33,8 @@ var MyItemsComponent = (function (_super) {
             _this.user = result;
             _this.isLoggedIn = true;
         });
+        this.user = this.loggedInUser.getLoggedInUser();
+        this.getItemsForUser(this.user.id);
     };
     MyItemsComponent.prototype.onFacebookLogoutClick = function () {
         var _this = this;
@@ -44,13 +49,22 @@ var MyItemsComponent = (function (_super) {
         this.removeLoggedInUser();
         this.componentEventService.userLoggedOut(true);
     };
+    MyItemsComponent.prototype.getItemsForUser = function (userId) {
+        var _this = this;
+        this.userService
+            .getItemsForUser(userId)
+            .subscribe(function (result) { return _this.getItemsForUserSuccess(result); }, function (error) { return console.log(error); });
+    };
+    MyItemsComponent.prototype.getItemsForUserSuccess = function (result) {
+        this.items = result;
+    };
     MyItemsComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
             selector: 'swap-myitems',
             templateUrl: 'my-items.component.html'
         }), 
-        __metadata('design:paramtypes', [component_event_service_1.ComponentEventService])
+        __metadata('design:paramtypes', [component_event_service_1.ComponentEventService, user_service_1.UserService])
     ], MyItemsComponent);
     return MyItemsComponent;
 }(loggedInUser_1.LoggedInUser));

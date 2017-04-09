@@ -1,150 +1,45 @@
 <div class="col-sm-9">
     <div class="row">
         <div class="col-sm-12 text-left">
-            <h2 class="title">My Order</h2>
+            <h2 class="title">My Items</h2>
         </div><!-- end col -->
     </div><!-- end row -->
 
     <hr class="spacer-5"><hr class="spacer-20 no-border">
 
-    <div class="row">
+    <div class="row" *ngIf="items">
         <div class="col-sm-12">
             <div class="table-responsive">
                 <table class="table table-striped">
                     <thead>
                     <tr>
-                        <th>ID</th>
-                        <th colspan="2">Products</th>
-                        <th>Price</th>
-                        <th>Date</th>
+                        <th>#</th>
+                        <th colspan="2">Item Title</th>
                         <th>Status</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
+
+                    <tr *ngFor="let item of items">
                         <td>
-                            #23AS17
+                            {{item.itemId}}
                         </td>
                         <td>
                             <a href="shop-single-product-v1.html">
-                                <img width="60px" src="img/products/men_06.jpg" alt="product">
+                                <img width="60px" src="{{item.image_id.url}}" alt="{{item.title}}">
                             </a>
                         </td>
                         <td>
-                            <h6 class="regular"><a href="shop-single-product-v1.html">Lorem Ipsum</a></h6>
-                            <p>Sed aliquam tincidunt tempus</p>
+                            <h6 class="regular"><a href="shop-single-product-v1.html">{{item.title}}</a></h6>
                         </td>
                         <td>
-                            <span>$59.99</span>
-                        </td>
-                        <td>
-                            20 Dec 2016
-                        </td>
-                        <td>
-                            <span class="label label-primary">Pending</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            #2MA269
-                        </td>
-                        <td>
-                            <a href="shop-single-product-v1.html">
-                                <img width="60px" src="img/products/shoes_01.jpg" alt="product">
-                            </a>
-                        </td>
-                        <td>
-                            <h6 class="regular"><a href="shop-single-product-v1.html">Lorem Ipsum</a></h6>
-                            <p>Sed aliquam tincidunt tempus</p>
-                        </td>
-                        <td>
-                            <span>$39.99</span>
-                        </td>
-                        <td>
-                            09 Nov 2016
-                        </td>
-                        <td>
-                            <span class="label label-danger">Cancel</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            #973C5J
-                        </td>
-                        <td>
-                            <a href="shop-single-product-v1.html">
-                                <img width="60px" src="img/products/bags_07.jpg" alt="product">
-                            </a>
-                        </td>
-                        <td>
-                            <h6 class="regular"><a href="shop-single-product-v1.html">Lorem Ipsum</a></h6>
-                            <p>Sed aliquam tincidunt tempus</p>
-                        </td>
-                        <td>
-                            <span>$29.99</span>
-                        </td>
-                        <td>
-                            23 Oct 2016
-                        </td>
-                        <td>
-                            <span class="label label-success">Done</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            #113V5G
-                        </td>
-                        <td>
-                            <a href="shop-single-product-v1.html">
-                                <img width="60px" src="img/products/bags_03.jpg" alt="product">
-                            </a>
-                        </td>
-                        <td>
-                            <h6 class="regular"><a href="shop-single-product-v1.html">Lorem Ipsum</a></h6>
-                            <p>Sed aliquam tincidunt tempus</p>
-                        </td>
-                        <td>
-                            <span>$19.99</span>
-                        </td>
-                        <td>
-                            17 Sep 2016
-                        </td>
-                        <td>
-                            <span class="label label-default">Disable</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            #113V5G
-                        </td>
-                        <td>
-                            <a href="shop-single-product-v1.html">
-                                <img width="60px" src="img/products/bags_04.jpg" alt="product">
-                            </a>
-                        </td>
-                        <td>
-                            <h6 class="regular"><a href="shop-single-product-v1.html">Lorem Ipsum</a></h6>
-                            <p>Sed aliquam tincidunt tempus</p>
-                        </td>
-                        <td>
-                            <span>$19.99</span>
-                        </td>
-                        <td>
-                            13 Sep 2016
-                        </td>
-                        <td>
-                            <span class="label label-warning">Awaiting</span>
+                            <span class="label label-primary">{{item.itemStage}}</span>
                         </td>
                     </tr>
                     </tbody>
                 </table><!-- end table -->
             </div><!-- end table-responsive -->
-
             <hr class="spacer-10 no-border">
-
-            <a href="checkout.html" class="btn btn-light semi-circle btn-sm">
-                <i class="fa fa-arrow-left mr-5"></i> Shopping
-            </a>
         </div><!-- end col -->
     </div><!-- end row -->
 </div><!-- end col -->

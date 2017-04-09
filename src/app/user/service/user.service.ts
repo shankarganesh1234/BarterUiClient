@@ -7,6 +7,7 @@ import {Observable} from "rxjs/Rx";
 import "rxjs/add/operator/map";
 import "rxjs/add/operator/catch";
 import {User} from "../user";
+import {ItemDetail} from "../../item/models/item-detail.model";
 
 declare const FB:any;
 
@@ -29,6 +30,12 @@ export class UserService {
 
     getUserProfile(userId: number): Observable<User> {
         return this.http.get(this.urls.userProfileUrl + userId, this.options)
+            .map(this.extractData)
+            .catch(this.handleError);
+    }
+
+    getItemsForUser(userId: number): Observable<ItemDetail[]> {
+        return this.http.get(this.urls.userItemsUrl + userId, this.options)
             .map(this.extractData)
             .catch(this.handleError);
     }
