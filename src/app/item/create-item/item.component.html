@@ -2,9 +2,11 @@
 <div class="container light-backgorund" *ngIf="createOrUpdate == 'update' || createOrUpdate == 'create' ">
     <div class="row">
         <div class="col-sm-12">
-            <div class="title-wrap">
+            <div *ngIf="createOrUpdate == 'create'" class="title-wrap">
                 <h2 class="title">Create an item</h2>
-                <h6 class="subtitle">Don't worry, the item will only be visible to others once you publish</h6>
+            </div>
+            <div *ngIf="createOrUpdate == 'update'" class="title-wrap">
+                <h2 class="title">Update your item</h2>
             </div>
         </div><!-- end col -->
     </div><!-- end row -->
