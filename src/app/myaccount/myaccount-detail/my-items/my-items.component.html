@@ -13,8 +13,13 @@
         </h4>
     </div>
 
+    <div class="row" *ngIf="((items == null) || (items && items.length == 0))">
+        <div class="col-sm-12">
+            You do not have listed items
+        </div>
+    </div>
 
-    <div class="row" *ngIf="items">
+    <div class="row" *ngIf="items && items.length > 0">
         <div class="col-sm-12">
             <div class="table-responsive">
                 <table class="table table-striped">

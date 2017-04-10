@@ -16,41 +16,48 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var loggedInUser_1 = require("../../../user/loggedInUser");
 var component_event_service_1 = require("../../../component-events/component-event.service");
+var interest_service_1 = require("../../../interest/service/interest.service");
 var MyOffersComponent = (function (_super) {
     __extends(MyOffersComponent, _super);
-    function MyOffersComponent(componentEventService) {
+    function MyOffersComponent(componentEventService, interestService) {
         _super.call(this);
         this.componentEventService = componentEventService;
+        this.interestService = interestService;
         this.isLoggedIn = false;
+        this.loggedInUser = new loggedInUser_1.LoggedInUser();
     }
     MyOffersComponent.prototype.ngOnInit = function () {
         var _this = this;
-        console.log('myaccount: init');
         this.componentEventService.userLoggedin$.subscribe(function (result) {
             _this.user = result;
             _this.isLoggedIn = true;
         });
+        this.user = this.loggedInUser.getLoggedInUser();
+        this.getMyOffers();
     };
-    MyOffersComponent.prototype.onFacebookLogoutClick = function () {
+    MyOffersComponent.prototype.getMyOffers = function () {
         var _this = this;
-        FB.logout(function (response) {
-            _this.loggedOut(response);
-        });
+        this.interestService
+            .getOffersForUser(this.user.id)
+            .subscribe(function (result) { return _this.getMyOffersSuccess(result); }, function (error) { return console.log(error); });
     };
-    MyOffersComponent.prototype.loggedOut = function (response) {
-        console.log('myaccount: logged out');
-        this.isLoggedIn = false;
-        this.user = null;
-        this.removeLoggedInUser();
-        this.componentEventService.userLoggedOut(true);
+    MyOffersComponent.prototype.deleteOffer = function (interestId) {
+        var _this = this;
+        this.interestService
+            .deleteInterests(interestId)
+            .subscribe(function (result) { return _this.getMyOffers(); }, function (error) { return console.log(error); });
+    };
+    MyOffersComponent.prototype.getMyOffersSuccess = function (result) {
+        this.myOffers = result.interests;
     };
     MyOffersComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
             selector: 'swap-myoffers',
-            templateUrl: 'my-offers.component.html'
+            templateUrl: 'my-offers.component.html',
+            styleUrls: ['my-offers.component.css']
         }), 
-        __metadata('design:paramtypes', [component_event_service_1.ComponentEventService])
+        __metadata('design:paramtypes', [component_event_service_1.ComponentEventService, interest_service_1.InterestService])
     ], MyOffersComponent);
     return MyOffersComponent;
 }(loggedInUser_1.LoggedInUser));

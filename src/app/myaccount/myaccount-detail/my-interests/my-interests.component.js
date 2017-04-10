@@ -28,7 +28,6 @@ var MyInterestsComponent = (function (_super) {
     }
     MyInterestsComponent.prototype.ngOnInit = function () {
         var _this = this;
-        console.log('myaccount: init');
         this.componentEventService.userLoggedin$.subscribe(function (result) {
             _this.user = result;
             _this.isLoggedIn = true;
@@ -50,19 +49,6 @@ var MyInterestsComponent = (function (_super) {
     };
     MyInterestsComponent.prototype.getMyInterestsSuccess = function (result) {
         this.myInterests = result.interests;
-    };
-    MyInterestsComponent.prototype.onFacebookLogoutClick = function () {
-        var _this = this;
-        FB.logout(function (response) {
-            _this.loggedOut(response);
-        });
-    };
-    MyInterestsComponent.prototype.loggedOut = function (response) {
-        console.log('myaccount: logged out');
-        this.isLoggedIn = false;
-        this.user = null;
-        this.removeLoggedInUser();
-        this.componentEventService.userLoggedOut(true);
     };
     MyInterestsComponent = __decorate([
         core_1.Component({

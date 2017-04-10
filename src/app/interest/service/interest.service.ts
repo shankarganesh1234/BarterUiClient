@@ -39,6 +39,12 @@ export class InterestService {
             .catch(this.handleError);
     }
 
+    getOffersForUser(userId: number): Observable<Interests> {
+        return this.http.get(this.urls.getOffersForUser + userId, this.options)
+            .map(this.extractData)
+            .catch(this.handleError);
+    }
+
     deleteInterests(interestId: number): Observable<void> {
         return this.http.delete(this.urls.deleteInterestUrl + interestId, this.options)
             .map(this.extractData)

@@ -1,4 +1,4 @@
-<div *ngIf="myInterests" class="col-sm-12">
+<div class="col-sm-12">
     <div class="row">
         <div class="col-sm-12 text-left">
             <h2 class="title">My Interests</h2>
@@ -8,9 +8,15 @@
     <hr class="spacer-5">
     <hr class="spacer-20 no-border">
 
+    <div class="row" *ngIf="((myInterests == null) || (myInterests && myInterests.length == 0))">
+        <div class="col-sm-12">
+            You have not expressed interest on any items.
+        </div>
+    </div>
+
     <div class="row">
         <div class="col-md-12">
-            <div *ngIf="myInterests" class="table-responsive">
+            <div *ngIf="myInterests && myInterests.length > 0" class="table-responsive">
                 <table class="table table-striped">
                     <thead>
                     <tr>
@@ -48,16 +54,13 @@
                             <p>{{interest.swappableItemId.title}}</p>
                         </td>
                         <td>
-                            <a (click)="deleteInterest(interest.interestId)" class="btn btn-danger round btn-xs">Delete Interest</a>
+                            <a (click)="deleteInterest(interest.interestId)" class="btn btn-danger round btn-xs">Withdraw Interest</a>
                         </td>
                     </tr>
                     </tbody>
                 </table><!-- end table -->
             </div><!-- end table-responsive -->
-
             <hr class="spacer-10 no-border">
-
-
         </div><!-- end col -->
     </div><!-- end row -->
 </div><!-- end col -->

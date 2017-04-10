@@ -16,6 +16,7 @@ var GlobalUrls = (function () {
         this.getInterestsForUser = "http://localhost:8080/customServer/interest/interesteduser/";
         this.deleteInterestUrl = "http://localhost:8080/customServer/interest/";
         this.userItemDeleteUrl = "http://localhost:8080/customServer/listing/";
+        this.getOffersForUser = "http://localhost:8080/customServer/interest/originaluser/";
     }
     return GlobalUrls;
 }());

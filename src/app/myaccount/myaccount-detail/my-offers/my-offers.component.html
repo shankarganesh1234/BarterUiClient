@@ -1,86 +1,66 @@
-<div class="col-sm-9">
+<div class="col-sm-12">
     <div class="row">
         <div class="col-sm-12 text-left">
-            <h2 class="title">My Wishlist</h2>
+            <h2 class="title">Offers on my Items</h2>
         </div><!-- end col -->
     </div><!-- end row -->
 
-    <hr class="spacer-5"><hr class="spacer-20 no-border">
+    <hr class="spacer-5">
+    <hr class="spacer-20 no-border">
+
+    <div class="row" *ngIf="((myOffers == null) || (myOffers && myOffers.length == 0))">
+        <div class="col-sm-12">
+            There are no offers on your listed items
+        </div>
+    </div>
 
     <div class="row">
-        <div class="col-sm-12">
-            <div class="table-responsive">
-                <table class="table">
+        <div class="col-md-12">
+            <div *ngIf="myOffers" class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>My Item</th>
+                        <th>Status</th>
+                        <th>Offer</th>
+                        <th></th>
+                    </tr>
+                    </thead>
                     <tbody>
-                    <tr>
+                    <tr *ngFor="let offer of myOffers">
                         <td>
                             <a href="shop-single-product-v1.html">
-                                <img width="60px" src="img/products/men_06.jpg" alt="product">
+                                <img width="60px" src="{{offer.originalItemId.image_id.url}}" alt="product">
                             </a>
+                            <br>
+                            <p>{{offer.originalItemId.title}}</p>
                         </td>
                         <td>
-                            <h6 class="regular"><a href="shop-single-product-v1.html">Lorem Ipsum</a></h6>
-                            <small>12x1.5 L</small>
+                            <ul class="list-unstyled">
+                                <li>
+                                    <i class="fa fa-angle-double-left text-success fa-2x"></i>
+                                    <i class="fa fa-angle-double-left text-success fa-2x"></i>
+                                </li>
+                                <li>
+                                    <i class="fa fa-angle-double-left text-danger fa-2x"></i>
+                                    <i class="fa fa-angle-double-left text-danger fa-2x"></i>
+                                </li>
+                            </ul>
                         </td>
-                        <td>
-                            <span class="text-primary">$59.99</span>
-                        </td>
-                        <td>
-                            <a href="javascript:void(0)" class="btn btn-default round btn-sm"><i class="fa fa-cart-plus mr-5"></i> Add to cart</a>
-                        </td>
-                        <td>
-                            <button type="button" class="close">×</button>
-                        </td>
-                    </tr>
-                    <tr>
                         <td>
                             <a href="shop-single-product-v1.html">
-                                <img width="60px" src="img/products/shoes_01.jpg" alt="product">
+                                <img width="60px" src="{{offer.swappableItemId.image_id.url}}" alt="product">
                             </a>
+                            <p>{{offer.swappableItemId.title}}</p>
                         </td>
                         <td>
-                            <h6 class="regular"><a href="shop-single-product-v1.html">Lorem Ipsum</a></h6>
-                            <small>12x1.5 L</small>
-                        </td>
-                        <td>
-                            <span class="text-primary">$39.99</span>
-                        </td>
-                        <td>
-                            <a href="javascript:void(0)" class="btn btn-default round btn-sm"><i class="fa fa-cart-plus mr-5"></i> Add to cart</a>
-                        </td>
-                        <td>
-                            <button type="button" class="close">×</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <a href="shop-single-product-v1.html">
-                                <img width="60px" src="img/products/bags_07.jpg" alt="product">
-                            </a>
-                        </td>
-                        <td>
-                            <h6 class="regular"><a href="shop-single-product-v1.html">Lorem Ipsum</a></h6>
-                            <small>12x1.5 L</small>
-                        </td>
-                        <td>
-                            <span class="text-primary">$29.99</span>
-                        </td>
-                        <td>
-                            <a href="javascript:void(0)" class="btn btn-default round btn-sm"><i class="fa fa-cart-plus mr-5"></i> Add to cart</a>
-                        </td>
-                        <td>
-                            <button type="button" class="close">×</button>
+                            <a (click)="deleteOffer(offer.interestId)" class="btn btn-danger round btn-xs">Decline Offer</a>
                         </td>
                     </tr>
                     </tbody>
                 </table><!-- end table -->
             </div><!-- end table-responsive -->
-
             <hr class="spacer-10 no-border">
-
-            <a href="shop-sidebar-left.html" class="btn btn-light semi-circle btn-sm">
-                <i class="fa fa-arrow-left mr-5"></i> Continue shopping
-            </a>
         </div><!-- end col -->
     </div><!-- end row -->
 </div><!-- end col -->

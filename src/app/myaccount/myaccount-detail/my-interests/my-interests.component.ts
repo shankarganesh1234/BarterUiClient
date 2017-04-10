@@ -29,7 +29,6 @@ export class MyInterestsComponent extends LoggedInUser implements OnInit {
         super();
     }
     ngOnInit(): void {
-        console.log('myaccount: init');
         this.componentEventService.userLoggedin$.subscribe(
             result => {
                 this.user = result;
@@ -60,19 +59,5 @@ export class MyInterestsComponent extends LoggedInUser implements OnInit {
 
     getMyInterestsSuccess(result: Interests) : void {
         this.myInterests = result.interests;
-    }
-
-    onFacebookLogoutClick() {
-        FB.logout((response:any) => {
-            this.loggedOut(response);
-        });
-    }
-
-    loggedOut(response: any): void {
-        console.log('myaccount: logged out');
-        this.isLoggedIn = false;
-        this.user = null;
-        this.removeLoggedInUser();
-        this.componentEventService.userLoggedOut(true);
     }
 }
