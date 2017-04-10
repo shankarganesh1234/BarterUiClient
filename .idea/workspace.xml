@@ -2,23 +2,30 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c7f5bbd8-3059-40af-a9d3-bdc85f550e4e" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/app/myaccount/myaccount-detail/my-offers/my-offers.component.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/interest/service/interest.service.js" afterPath="$PROJECT_DIR$/src/app/interest/service/interest.service.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/interest/service/interest.service.js.map" afterPath="$PROJECT_DIR$/src/app/interest/service/interest.service.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/interest/service/interest.service.ts" afterPath="$PROJECT_DIR$/src/app/interest/service/interest.service.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/myaccount/myaccount-detail/my-interests/my-interests.component.html" afterPath="$PROJECT_DIR$/src/app/myaccount/myaccount-detail/my-interests/my-interests.component.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/myaccount/myaccount-detail/my-interests/my-interests.component.js" afterPath="$PROJECT_DIR$/src/app/myaccount/myaccount-detail/my-interests/my-interests.component.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/item/create-item/item.component.js" afterPath="$PROJECT_DIR$/src/app/item/create-item/item.component.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/item/create-item/item.component.js.map" afterPath="$PROJECT_DIR$/src/app/item/create-item/item.component.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/item/create-item/item.component.ts" afterPath="$PROJECT_DIR$/src/app/item/create-item/item.component.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/item/service/item.service.js" afterPath="$PROJECT_DIR$/src/app/item/service/item.service.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/item/service/item.service.js.map" afterPath="$PROJECT_DIR$/src/app/item/service/item.service.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/item/service/item.service.ts" afterPath="$PROJECT_DIR$/src/app/item/service/item.service.ts" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/myaccount/myaccount-detail/my-interests/my-interests.component.js.map" afterPath="$PROJECT_DIR$/src/app/myaccount/myaccount-detail/my-interests/my-interests.component.js.map" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/myaccount/myaccount-detail/my-interests/my-interests.component.ts" afterPath="$PROJECT_DIR$/src/app/myaccount/myaccount-detail/my-interests/my-interests.component.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/myaccount/myaccount-detail/my-items/my-items.component.html" afterPath="$PROJECT_DIR$/src/app/myaccount/myaccount-detail/my-items/my-items.component.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/myaccount/myaccount-detail/my-offers/my-offers.component.html" afterPath="$PROJECT_DIR$/src/app/myaccount/myaccount-detail/my-offers/my-offers.component.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/myaccount/myaccount-detail/my-offers/my-offers.component.js" afterPath="$PROJECT_DIR$/src/app/myaccount/myaccount-detail/my-offers/my-offers.component.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/myaccount/myaccount-detail/my-offers/my-offers.component.js.map" afterPath="$PROJECT_DIR$/src/app/myaccount/myaccount-detail/my-offers/my-offers.component.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/myaccount/myaccount-detail/my-offers/my-offers.component.ts" afterPath="$PROJECT_DIR$/src/app/myaccount/myaccount-detail/my-offers/my-offers.component.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/urls/url-values.js" afterPath="$PROJECT_DIR$/src/app/urls/url-values.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/urls/url-values.js.map" afterPath="$PROJECT_DIR$/src/app/urls/url-values.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/urls/url-values.ts" afterPath="$PROJECT_DIR$/src/app/urls/url-values.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/myaccount/myaccount-detail/my-items/my-items.component.js" afterPath="$PROJECT_DIR$/src/app/myaccount/myaccount-detail/my-items/my-items.component.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/myaccount/myaccount-detail/my-items/my-items.component.js.map" afterPath="$PROJECT_DIR$/src/app/myaccount/myaccount-detail/my-items/my-items.component.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/myaccount/myaccount-detail/my-items/my-items.component.ts" afterPath="$PROJECT_DIR$/src/app/myaccount/myaccount-detail/my-items/my-items.component.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/myaccount/myaccount-detail/my-reviews/my-reviews.component.js" afterPath="$PROJECT_DIR$/src/app/myaccount/myaccount-detail/my-reviews/my-reviews.component.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/myaccount/myaccount-detail/my-reviews/my-reviews.component.js.map" afterPath="$PROJECT_DIR$/src/app/myaccount/myaccount-detail/my-reviews/my-reviews.component.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/myaccount/myaccount-detail/my-reviews/my-reviews.component.ts" afterPath="$PROJECT_DIR$/src/app/myaccount/myaccount-detail/my-reviews/my-reviews.component.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/myaccount/myaccount-detail/notifications/my-notifications.component.js" afterPath="$PROJECT_DIR$/src/app/myaccount/myaccount-detail/notifications/my-notifications.component.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/myaccount/myaccount-detail/notifications/my-notifications.component.js.map" afterPath="$PROJECT_DIR$/src/app/myaccount/myaccount-detail/notifications/my-notifications.component.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/myaccount/myaccount-detail/notifications/my-notifications.component.ts" afterPath="$PROJECT_DIR$/src/app/myaccount/myaccount-detail/notifications/my-notifications.component.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/user/loggedInUser.js" afterPath="$PROJECT_DIR$/src/app/user/loggedInUser.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/user/loggedInUser.js.map" afterPath="$PROJECT_DIR$/src/app/user/loggedInUser.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/user/loggedInUser.ts" afterPath="$PROJECT_DIR$/src/app/user/loggedInUser.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/user/service/user.service.js.map" afterPath="$PROJECT_DIR$/src/app/user/service/user.service.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/user/service/user.service.ts" afterPath="$PROJECT_DIR$/src/app/user/service/user.service.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/user/user.ts" afterPath="$PROJECT_DIR$/src/app/user/user.ts" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -39,11 +46,98 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="url-values.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/app/urls/url-values.ts">
+      <file leaf-file-name="item.service.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/item/service/item.service.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="35" column="29" lean-forward="false" selection-start-line="35" selection-start-column="13" selection-end-line="35" selection-end-column="29" />
+            <state relative-caret-position="203">
+              <caret line="30" column="26" lean-forward="false" selection-start-line="30" selection-start-column="15" selection-end-line="30" selection-end-column="26" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="item.component.ts" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/app/item/create-item/item.component.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="321">
+              <caret line="185" column="63" lean-forward="true" selection-start-line="185" selection-start-column="63" selection-end-line="185" selection-end-column="63" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="loggedInUser.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/user/loggedInUser.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="300">
+              <caret line="20" column="59" lean-forward="true" selection-start-line="20" selection-start-column="59" selection-end-line="20" selection-end-column="59" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="user.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/user/user.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="150">
+              <caret line="10" column="1" lean-forward="true" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="item.model.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/item/models/item.model.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="75">
+              <caret line="5" column="18" lean-forward="false" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="18" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="my-reviews.component.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/myaccount/myaccount-detail/my-reviews/my-reviews.component.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="363">
+              <caret line="27" column="5" lean-forward="false" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
+              <folding>
+                <element signature="e#0#48#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="my-notifications.component.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/myaccount/myaccount-detail/notifications/my-notifications.component.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="303">
+              <caret line="22" column="23" lean-forward="true" selection-start-line="22" selection-start-column="23" selection-end-line="22" selection-end-column="23" />
+              <folding>
+                <element signature="e#0#48#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="my-reviews.component.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/myaccount/myaccount-detail/my-reviews/my-reviews.component.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding>
+                <marker date="1491830716000" expanded="true" signature="1258:2133" ph="{...}" />
+                <marker date="1491830716000" expanded="true" signature="1841:1978" ph="{&quot;moduleId&quot;: module.id...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="my-interests.component.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/myaccount/myaccount-detail/my-interests/my-interests.component.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="45">
+              <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -52,81 +146,11 @@
       <file leaf-file-name="my-offers.component.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/app/myaccount/myaccount-detail/my-offers/my-offers.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="393">
-              <caret line="52" column="5" lean-forward="true" selection-start-line="52" selection-start-column="5" selection-end-line="52" selection-end-column="5" />
+            <state relative-caret-position="780">
+              <caret line="52" column="5" lean-forward="false" selection-start-line="52" selection-start-column="5" selection-end-line="52" selection-end-column="5" />
               <folding>
                 <element signature="e#0#48#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="interest.service.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/app/interest/service/interest.service.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="279">
-              <caret line="41" column="20" lean-forward="false" selection-start-line="41" selection-start-column="4" selection-end-line="41" selection-end-column="20" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="my-interests.component.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/app/myaccount/myaccount-detail/my-interests/my-interests.component.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="57" column="5" lean-forward="true" selection-start-line="50" selection-start-column="4" selection-end-line="57" selection-end-column="5" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="my-offers.component.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/app/myaccount/myaccount-detail/my-offers/my-offers.component.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="my-offers.component.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/app/myaccount/myaccount-detail/my-offers/my-offers.component.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="24" column="38" lean-forward="true" selection-start-line="24" selection-start-column="38" selection-end-line="24" selection-end-column="38" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="my-items.component.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/app/myaccount/myaccount-detail/my-items/my-items.component.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="158">
-              <caret line="15" column="2" lean-forward="true" selection-start-line="15" selection-start-column="2" selection-end-line="19" selection-end-column="10" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="my-items.component.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/app/myaccount/myaccount-detail/my-items/my-items.component.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="426">
-              <caret line="61" column="5" lean-forward="true" selection-start-line="54" selection-start-column="4" selection-end-line="61" selection-end-column="5" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="my-interests.component.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/app/myaccount/myaccount-detail/my-interests/my-interests.component.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="14" column="10" lean-forward="true" selection-start-line="10" selection-start-column="4" selection-end-line="14" selection-end-column="10" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -143,36 +167,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>javascript</find>
-      <find>void</find>
-      <find>a:</find>
-      <find>showInterests</find>
-      <find>itemDetails</find>
-      <find>&lt;</find>
-      <find>New Collectio</find>
-      <find>getLoggedInUser</find>
-      <find>setLoggedInUser</find>
-      <find>about</find>
-      <find>ba</find>
-      <find>itemModel</find>
-      <find>List</find>
-      <find>setUserInfoInLocalStorage</find>
-      <find>a</find>
-      <find>angl</find>
-      <find>angle</find>
-      <find>angle-do</find>
-      <find>angle-dou</find>
-      <find>angle-doubl</find>
-      <find>angle-double</find>
-      <find>angle-double-</find>
-      <find>angle-double-l</find>
-      <find>angle-double-le</find>
-      <find>angle-double-lef</find>
-      <find>angle-double-left</find>
-      <find>swap-interest-options</find>
       <find>\&lt;script type\=\&quot;text\/javascript\&quot; src\=\&quot;js\/pace\.min\.js\&quot;\&gt;\&lt;\/script\&gt;\n</find>
       <find>paceOptions</find>
       <find>pace</find>
+      <find>getLoggedInUser</find>
+      <find>headers</find>
+      <find>headers.</find>
+      <find>headers.app</find>
+      <find>headers.appe</find>
+      <find>headers.appen</find>
+      <find>headers.append</find>
+      <find>setUserInfoInLocalStorage</find>
+      <find>F</find>
+      <find>FB</find>
+      <find>FB.</find>
+      <find>FB.l</find>
+      <find>FB.lo</find>
+      <find>FB.log</find>
+      <find>FB.logi</find>
+      <find>FB.login</find>
+      <find>FB.getLoginStatus</find>
+      <find>declare const FB:any;</find>
+      <find>l</find>
+      <find>loca</find>
+      <find>local</find>
+      <find>localS</find>
+      <find>localSt</find>
+      <find>localSto</find>
+      <find>localStor</find>
+      <find>localStora</find>
+      <find>localStorage</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -182,7 +206,6 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/app/login/service/login.service.ts" />
-        <option value="$PROJECT_DIR$/src/app/user/loggedInUser.ts" />
         <option value="$PROJECT_DIR$/src/app/errors/error-modal.component.html" />
         <option value="$PROJECT_DIR$/src/app/messages/messages.ts" />
         <option value="$PROJECT_DIR$/src/app/items/item-list.component.html" />
@@ -198,8 +221,6 @@
         <option value="$PROJECT_DIR$/src/app/myaccount/myaccount-detail/myaccount-detail.component.js" />
         <option value="$PROJECT_DIR$/src/app/routing/app-routing.module.ts" />
         <option value="$PROJECT_DIR$/src/app/myaccount/myaccount.component.css" />
-        <option value="$PROJECT_DIR$/src/app/myaccount/myaccount-detail/my-reviews/my-reviews.component.ts" />
-        <option value="$PROJECT_DIR$/src/app/myaccount/myaccount-detail/notifications/my-notifications.component.ts" />
         <option value="$PROJECT_DIR$/src/app/module/app.module.ts" />
         <option value="$PROJECT_DIR$/src/app/myaccount/myaccount-detail/my-reviews/my-reviews.component.html" />
         <option value="$PROJECT_DIR$/src/app/myaccount/myaccount-detail/notifications/my-notifications.component.html" />
@@ -211,27 +232,30 @@
         <option value="$PROJECT_DIR$/src/app/myaccount/myaccount.component.ts" />
         <option value="$PROJECT_DIR$/src/app/myaccount/myaccount-detail/my-profile/my-profile.component.html" />
         <option value="$PROJECT_DIR$/src/app/myaccount/myaccount-detail/my-profile/my-profile.component.ts" />
-        <option value="$PROJECT_DIR$/src/app/user/service/user.service.ts" />
         <option value="$PROJECT_DIR$/src/app/landing/landing.component.html" />
         <option value="$PROJECT_DIR$/src/app/component-events/component-event.service.ts" />
-        <option value="$PROJECT_DIR$/src/app/user/user.ts" />
         <option value="$PROJECT_DIR$/src/app/item/create-item/item.component.css" />
-        <option value="$PROJECT_DIR$/src/app/item/create-item/item.component.ts" />
         <option value="$PROJECT_DIR$/src/app/header/header.component.html" />
         <option value="$PROJECT_DIR$/src/app/item/create-item/item.component.html" />
         <option value="$PROJECT_DIR$/src/app/myaccount/myaccount-detail/my-interests/my-interests.component.css" />
         <option value="$PROJECT_DIR$/src/app/interest/models/interest.model.ts" />
         <option value="$PROJECT_DIR$/src/app/myaccount/myaccount-detail/myaccount-detail.component.html" />
         <option value="$PROJECT_DIR$/src/app/interest/models/interests.model.ts" />
-        <option value="$PROJECT_DIR$/src/app/myaccount/myaccount-detail/my-items/my-items.component.ts" />
-        <option value="$PROJECT_DIR$/src/app/item/service/item.service.ts" />
-        <option value="$PROJECT_DIR$/src/app/myaccount/myaccount-detail/my-interests/my-interests.component.ts" />
         <option value="$PROJECT_DIR$/src/app/urls/url-values.ts" />
         <option value="$PROJECT_DIR$/src/app/interest/service/interest.service.ts" />
         <option value="$PROJECT_DIR$/src/app/myaccount/myaccount-detail/my-offers/my-offers.component.ts" />
         <option value="$PROJECT_DIR$/src/app/myaccount/myaccount-detail/my-items/my-items.component.html" />
         <option value="$PROJECT_DIR$/src/app/myaccount/myaccount-detail/my-interests/my-interests.component.html" />
         <option value="$PROJECT_DIR$/src/app/myaccount/myaccount-detail/my-offers/my-offers.component.html" />
+        <option value="$PROJECT_DIR$/src/app/user/loggedInUser.ts" />
+        <option value="$PROJECT_DIR$/src/app/user/service/user.service.ts" />
+        <option value="$PROJECT_DIR$/src/app/myaccount/myaccount-detail/my-items/my-items.component.ts" />
+        <option value="$PROJECT_DIR$/src/app/myaccount/myaccount-detail/my-interests/my-interests.component.ts" />
+        <option value="$PROJECT_DIR$/src/app/myaccount/myaccount-detail/my-reviews/my-reviews.component.ts" />
+        <option value="$PROJECT_DIR$/src/app/myaccount/myaccount-detail/notifications/my-notifications.component.ts" />
+        <option value="$PROJECT_DIR$/src/app/item/service/item.service.ts" />
+        <option value="$PROJECT_DIR$/src/app/item/create-item/item.component.ts" />
+        <option value="$PROJECT_DIR$/src/app/user/user.ts" />
       </list>
     </option>
   </component>
@@ -557,6 +581,32 @@
               <option name="myItemId" value="myaccount" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="myaccount.component.ts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NestingTreeNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="customClient" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="customClient" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="myaccount" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -611,6 +661,134 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="myaccount-detail" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="customClient" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="customClient" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="myaccount" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="myaccount-detail" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="notifications" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="my-notifications.component.ts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NestingTreeNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="customClient" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="customClient" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="myaccount" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="myaccount-detail" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="notifications" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="customClient" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="customClient" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="myaccount" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="myaccount-detail" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="my-reviews" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="my-reviews.component.ts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NestingTreeNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="customClient" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="customClient" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="myaccount" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="myaccount-detail" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="my-reviews" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -994,6 +1172,170 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="item" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="service" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="item.service.ts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NestingTreeNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="customClient" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="customClient" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="item" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="models" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="customClient" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="customClient" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="item" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="models" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="item.model.ts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NestingTreeNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="customClient" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="customClient" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="item" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="customClient" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="customClient" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="item" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="create-item" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="item.component.ts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NestingTreeNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="customClient" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="customClient" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="item" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="create-item" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="customClient" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="customClient" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="interest" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -1203,12 +1545,12 @@
       <workItem from="1491349650711" duration="25000" />
       <workItem from="1491350307121" duration="4282000" />
       <workItem from="1491438951545" duration="8255000" />
-      <workItem from="1491674759238" duration="46247000" />
+      <workItem from="1491674759238" duration="52092000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="247535000" />
+    <option name="totallyTimeSpent" value="253380000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1312,64 +1654,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/app/myaccount/myaccount.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="346">
-          <caret line="42" column="26" lean-forward="false" selection-start-line="42" selection-start-column="26" selection-end-line="42" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/myaccount/myaccount-detail/my-profile/my-profile.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/user/loggedInUser.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="60" lean-forward="false" selection-start-line="10" selection-start-column="48" selection-end-line="10" selection-end-column="60" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/search/search-response.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/user/service/user.service.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="245">
-          <caret line="36" column="19" lean-forward="false" selection-start-line="36" selection-start-column="4" selection-end-line="36" selection-end-column="19" />
-          <folding>
-            <element signature="e#0#41#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/myaccount/myaccount-detail/my-profile/my-profile.component.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/myaccount/myaccount-detail/my-profile/my-profile.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="206">
-          <caret line="19" column="12" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/app/item/get-item/get-item.component.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1436,22 +1720,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/item/models/item.model.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="10" lean-forward="false" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/user/user.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="1" lean-forward="true" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/app/items/item-list.component.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1484,29 +1752,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/login/login.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/app/header/header.component.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="6">
           <caret line="25" column="6" lean-forward="true" selection-start-line="25" selection-start-column="6" selection-end-line="25" selection-end-column="6" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/item/create-item/item.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="309">
-          <caret line="38" column="39" lean-forward="false" selection-start-line="38" selection-start-column="25" selection-end-line="38" selection-end-column="39" />
-          <folding>
-            <element signature="e#0#48#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1635,16 +1885,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/item/service/item.service.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="445">
-          <caret line="77" column="0" lean-forward="true" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#41#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/app/interest/models/interests.model.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
@@ -1671,44 +1911,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/interest/service/interest.service.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="279">
-          <caret line="41" column="20" lean-forward="false" selection-start-line="41" selection-start-column="4" selection-end-line="41" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/app/myaccount/myaccount-detail/my-offers/my-offers.component.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/myaccount/myaccount-detail/my-offers/my-offers.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="393">
-          <caret line="52" column="5" lean-forward="true" selection-start-line="52" selection-start-column="5" selection-end-line="52" selection-end-column="5" />
-          <folding>
-            <element signature="e#0#48#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/myaccount/myaccount-detail/my-items/my-items.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="426">
-          <caret line="61" column="5" lean-forward="true" selection-start-line="54" selection-start-column="4" selection-end-line="61" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/myaccount/myaccount-detail/my-interests/my-interests.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="57" column="5" lean-forward="true" selection-start-line="50" selection-start-column="4" selection-end-line="57" selection-end-column="5" />
           <folding />
         </state>
       </provider>
@@ -1733,6 +1939,145 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
           <caret line="24" column="38" lean-forward="true" selection-start-line="24" selection-start-column="38" selection-end-line="24" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/interest/service/interest.service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-56">
+          <caret line="30" column="77" lean-forward="false" selection-start-line="30" selection-start-column="70" selection-end-line="30" selection-end-column="77" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/login/login.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="319">
+          <caret line="40" column="40" lean-forward="true" selection-start-line="40" selection-start-column="40" selection-end-line="40" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/item/service/item.service.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="156">
+          <caret line="39" column="8" lean-forward="false" selection-start-line="39" selection-start-column="8" selection-end-line="39" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/user/service/user.service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/myaccount/myaccount.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#48#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/myaccount/myaccount-detail/my-items/my-items.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/myaccount/myaccount-detail/my-interests/my-interests.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/myaccount/myaccount-detail/my-offers/my-offers.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="780">
+          <caret line="52" column="5" lean-forward="false" selection-start-line="52" selection-start-column="5" selection-end-line="52" selection-end-column="5" />
+          <folding>
+            <element signature="e#0#48#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/myaccount/myaccount-detail/my-reviews/my-reviews.component.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1491830716000" expanded="true" signature="1258:2133" ph="{...}" />
+            <marker date="1491830716000" expanded="true" signature="1841:1978" ph="{&quot;moduleId&quot;: module.id...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/myaccount/myaccount-detail/my-reviews/my-reviews.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="363">
+          <caret line="27" column="5" lean-forward="false" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
+          <folding>
+            <element signature="e#0#48#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/myaccount/myaccount-detail/notifications/my-notifications.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="303">
+          <caret line="22" column="23" lean-forward="true" selection-start-line="22" selection-start-column="23" selection-end-line="22" selection-end-column="23" />
+          <folding>
+            <element signature="e#0#48#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/item/service/item.service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="203">
+          <caret line="30" column="26" lean-forward="false" selection-start-line="30" selection-start-column="15" selection-end-line="30" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/item/models/item.model.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="18" lean-forward="false" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/user/loggedInUser.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" column="59" lean-forward="true" selection-start-line="20" selection-start-column="59" selection-end-line="20" selection-end-column="59" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/user/user.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="1" lean-forward="true" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/item/create-item/item.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="321">
+          <caret line="185" column="63" lean-forward="true" selection-start-line="185" selection-start-column="63" selection-end-line="185" selection-end-column="63" />
           <folding />
         </state>
       </provider>

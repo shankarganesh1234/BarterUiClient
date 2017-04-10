@@ -9,8 +9,6 @@ import "rxjs/add/operator/catch";
 import {User} from "../user";
 import {ItemDetail} from "../../item/models/item-detail.model";
 
-declare const FB:any;
-
 @Injectable()
 export class UserService {
 

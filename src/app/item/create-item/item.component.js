@@ -13,6 +13,7 @@ var item_model_1 = require("../models/item.model");
 var forms_1 = require("@angular/forms");
 var item_service_1 = require("../service/item.service");
 var component_event_service_1 = require("../../component-events/component-event.service");
+var loggedInUser_1 = require("../../user/loggedInUser");
 var ItemComponent = (function () {
     function ItemComponent(fb, itemService, componentEventService) {
         this.fb = fb;
@@ -21,6 +22,7 @@ var ItemComponent = (function () {
         this.itemModel = new item_model_1.Item();
         this.submitted = false;
         this.active = true;
+        this.loggedInUser = new loggedInUser_1.LoggedInUser();
         this.formErrors = {
             'title': '',
             'description': '',
@@ -159,6 +161,8 @@ var ItemComponent = (function () {
         var _this = this;
         this.submitted = true;
         this.itemModel = this.itemForm.value;
+        var id = this.loggedInUser.getLoggedInUser().id;
+        this.itemModel.userId = id;
         this.itemService
             .createItem(this.itemModel)
             .subscribe(function (result) { return _this.itemCreationSuccess(result); }, function (error) { return console.log(error); });

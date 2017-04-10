@@ -8,8 +8,6 @@ import {ItemService} from "../../../item/service/item.service";
 
 
 
-declare const FB:any;
-
 @Component({
     moduleId: module.id,
     selector: 'swap-myitems',
@@ -36,20 +34,6 @@ export class MyItemsComponent extends LoggedInUser implements OnInit {
             });
         this.user = this.loggedInUser.getLoggedInUser();
         this.getItemsForUser(this.user.id);
-    }
-
-    onFacebookLogoutClick() {
-        FB.logout((response:any) => {
-            this.loggedOut(response);
-        });
-    }
-
-    loggedOut(response: any): void {
-        console.log('myaccount: logged out');
-        this.isLoggedIn = false;
-        this.user = null;
-        this.removeLoggedInUser();
-        this.componentEventService.userLoggedOut(true);
     }
 
     getItemsForUser(userId: number): void {

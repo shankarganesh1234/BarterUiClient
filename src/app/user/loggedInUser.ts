@@ -11,6 +11,13 @@ export class LoggedInUser {
         return JSON.parse(localStorage.getItem("loggedInUser"));
     }
 
+    getAccessToken(): string {
+        if(localStorage.getItem("accessToken") === null)
+            return null;
+
+        return localStorage.getItem("accessToken");
+    }
+
     setUserInfoInLocalStorage(accessToken: string, user: User) {
         localStorage.setItem("accessToken", accessToken);
         localStorage.setItem("loggedInUser", JSON.stringify(user));

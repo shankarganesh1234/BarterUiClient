@@ -16,9 +16,11 @@ var url_values_1 = require("../../urls/url-values");
 var Rx_1 = require("rxjs/Rx");
 require("rxjs/add/operator/map");
 require("rxjs/add/operator/catch");
+var loggedInUser_1 = require("../../user/loggedInUser");
 var ItemService = (function () {
     function ItemService(http) {
         this.http = http;
+        this.loggedInUser = new loggedInUser_1.LoggedInUser();
         this.headers = new http_1.Headers({
             'Content-Type': 'application/json',
             'Accept': 'application/json'
@@ -27,8 +29,14 @@ var ItemService = (function () {
         this.urls = new url_values_1.GlobalUrls();
     }
     ItemService.prototype.createItem = function (itemRequest) {
+        var headers = new http_1.Headers({
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'Authorization': this.loggedInUser.getAccessToken()
+        });
+        var options = new http_1.RequestOptions({ headers: headers });
         var body = JSON.stringify(itemRequest);
-        return this.http.post(this.urls.createItemUrl, body, this.options)
+        return this.http.post(this.urls.createItemUrl, body, options)
             .map(this.extractData)
             .catch(this.handleError);
     };

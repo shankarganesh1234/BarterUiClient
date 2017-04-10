@@ -31,19 +31,6 @@ var MyReviewsComponent = (function (_super) {
             _this.isLoggedIn = true;
         });
     };
-    MyReviewsComponent.prototype.onFacebookLogoutClick = function () {
-        var _this = this;
-        FB.logout(function (response) {
-            _this.loggedOut(response);
-        });
-    };
-    MyReviewsComponent.prototype.loggedOut = function (response) {
-        console.log('myaccount: logged out');
-        this.isLoggedIn = false;
-        this.user = null;
-        this.removeLoggedInUser();
-        this.componentEventService.userLoggedOut(true);
-    };
     MyReviewsComponent = __decorate([
         core_1.Component({
             moduleId: module.id,

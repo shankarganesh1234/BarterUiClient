@@ -8,8 +8,7 @@ import {Observable} from "rxjs/Rx";
 import "rxjs/add/operator/map";
 import "rxjs/add/operator/catch";
 import {ItemDetail} from "../models/item-detail.model";
-
-declare const FB:any;
+import {LoggedInUser} from "../../user/loggedInUser";
 
 @Injectable()
 export class ItemService {
@@ -17,6 +16,7 @@ export class ItemService {
     private headers: Headers;
     private options: RequestOptions;
     private urls: GlobalUrls;
+    private loggedInUser: LoggedInUser = new LoggedInUser();
 
     constructor(private http: Http) {
 
@@ -29,8 +29,14 @@ export class ItemService {
     }
 
     createItem(itemRequest: Item): Observable<Item> {
+        let headers =  new Headers({
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'Authorization': this.loggedInUser.getAccessToken()
+        });
+        let options = new RequestOptions({headers: headers});
         let body = JSON.stringify(itemRequest);
-        return this.http.post(this.urls.createItemUrl, body, this.options)
+        return this.http.post(this.urls.createItemUrl, body, options)
             .map(this.extractData)
             .catch(this.handleError);
     }

@@ -4,6 +4,7 @@ import {FormBuilder, Validators, FormGroup} from "@angular/forms";
 import {ItemService} from "../service/item.service";
 import {ComponentEventService} from "../../component-events/component-event.service";
 import {ItemDetail} from "../models/item-detail.model";
+import {LoggedInUser} from "../../user/loggedInUser";
 
 declare const $: any;
 
@@ -23,6 +24,7 @@ export class ItemComponent implements OnInit {
     itemImageFormData: FormData;
     itemDetail: ItemDetail;
     createOrUpdate: string;
+    private loggedInUser: LoggedInUser = new LoggedInUser();
 
     constructor(private fb: FormBuilder, private itemService: ItemService, private componentEventService: ComponentEventService) {
     }
@@ -170,6 +172,8 @@ export class ItemComponent implements OnInit {
     createItem() {
         this.submitted = true;
         this.itemModel = this.itemForm.value;
+        let id = this.loggedInUser.getLoggedInUser().id;
+        this.itemModel.userId = id;
         this.itemService
             .createItem(this.itemModel)
             .subscribe(

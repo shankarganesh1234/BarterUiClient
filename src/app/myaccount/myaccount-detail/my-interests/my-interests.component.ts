@@ -7,9 +7,6 @@ import {Interest} from "../../../interest/models/interest.model";
 import {Interests} from "../../../interest/models/interests.model";
 
 
-
-declare const FB:any;
-
 @Component({
     moduleId: module.id,
     selector: 'swap-myinterests',

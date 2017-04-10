@@ -38,19 +38,6 @@ var MyItemsComponent = (function (_super) {
         this.user = this.loggedInUser.getLoggedInUser();
         this.getItemsForUser(this.user.id);
     };
-    MyItemsComponent.prototype.onFacebookLogoutClick = function () {
-        var _this = this;
-        FB.logout(function (response) {
-            _this.loggedOut(response);
-        });
-    };
-    MyItemsComponent.prototype.loggedOut = function (response) {
-        console.log('myaccount: logged out');
-        this.isLoggedIn = false;
-        this.user = null;
-        this.removeLoggedInUser();
-        this.componentEventService.userLoggedOut(true);
-    };
     MyItemsComponent.prototype.getItemsForUser = function (userId) {
         var _this = this;
         this.userService
