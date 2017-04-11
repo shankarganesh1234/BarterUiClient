@@ -33,13 +33,13 @@ export class InterestService {
             .catch(this.handleError);
     }
 
-    getInterestsForUser(userId: number): Observable<Interests> {
+    getInterestsForUser(userId: string): Observable<Interests> {
         return this.http.get(this.urls.getInterestsForUser + userId, this.options)
             .map(this.extractData)
             .catch(this.handleError);
     }
 
-    getOffersForUser(userId: number): Observable<Interests> {
+    getOffersForUser(userId: string): Observable<Interests> {
         return this.http.get(this.urls.getOffersForUser + userId, this.options)
             .map(this.extractData)
             .catch(this.handleError);

@@ -111,7 +111,7 @@ var InterestOptionsComponent = (function (_super) {
     };
     __decorate([
         core_1.Input(), 
-        __metadata('design:type', Number)
+        __metadata('design:type', String)
     ], InterestOptionsComponent.prototype, "itemUserId", void 0);
     __decorate([
         core_1.Input(), 

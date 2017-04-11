@@ -36,7 +36,7 @@ export class MyItemsComponent extends LoggedInUser implements OnInit {
         this.getItemsForUser(this.user.id);
     }
 
-    getItemsForUser(userId: number): void {
+    getItemsForUser(userId: string): void {
         this.userService
             .getItemsForUser(userId)
             .subscribe(

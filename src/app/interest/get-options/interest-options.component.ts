@@ -19,12 +19,12 @@ import {Messages} from "../../messages/messages";
 export class InterestOptionsComponent extends LoggedInUser implements OnInit, OnChanges{
 
     @Input()
-    itemUserId: number;
+    itemUserId: string;
 
     @Input()
     originalItemId: number;
 
-    loggedInUserId: number;
+    loggedInUserId: string;
 
     itemDetails: ItemDetail[];
     selectedItems: number[] = [];

@@ -32,7 +32,7 @@ export class UserService {
             .catch(this.handleError);
     }
 
-    getItemsForUser(userId: number): Observable<ItemDetail[]> {
+    getItemsForUser(userId: string): Observable<ItemDetail[]> {
         return this.http.get(this.urls.userItemsUrl + userId, this.options)
             .map(this.extractData)
             .catch(this.handleError);
