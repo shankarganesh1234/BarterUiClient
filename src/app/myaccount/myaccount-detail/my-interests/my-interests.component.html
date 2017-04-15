@@ -20,9 +20,8 @@
                 <table class="table table-striped">
                     <thead>
                     <tr>
-                        <th>I Like</th>
-                        <th>Status</th>
-                        <th>I offer</th>
+                        <th>My Interest</th>
+                        <th>My Offer</th>
                         <th></th>
                     </tr>
                     </thead>
@@ -34,24 +33,15 @@
                             </a>
                             <br>
                             <p>{{interest.originalItemId.title}}</p>
+                            <i class="fa fa-check-circle fa-2x text-success" aria-hidden="true" rel="tooltip" title="Interest Expressed"></i>
                         </td>
-                        <td>
-                            <ul class="list-unstyled">
-                                <li>
-                                    <i class="fa fa-angle-double-left text-success fa-2x"></i>
-                                    <i class="fa fa-angle-double-left text-success fa-2x"></i>
-                                </li>
-                                <li>
-                                    <i class="fa fa-angle-double-left text-danger fa-2x"></i>
-                                    <i class="fa fa-angle-double-left text-danger fa-2x"></i>
-                                </li>
-                            </ul>
-                        </td>
+
                         <td>
                             <a href="shop-single-product-v1.html">
                                 <img width="60px" src="{{interest.swappableItemId.image_id.url}}" alt="product">
                             </a>
                             <p>{{interest.swappableItemId.title}}</p>
+                            <i class="fa fa-check-circle text-success fa-2x" aria-hidden="true" rel="tooltip" title="Offer Accepted"></i>
                         </td>
                         <td>
                             <a (click)="deleteInterest(interest.interestId)" class="btn btn-danger round btn-xs">Withdraw Interest</a>

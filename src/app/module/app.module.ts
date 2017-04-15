@@ -28,7 +28,7 @@ import {MyInterestsComponent} from "../myaccount/myaccount-detail/my-interests/m
 import {MyItemsComponent} from "../myaccount/myaccount-detail/my-items/my-items.component";
 import {MyOffersComponent} from "../myaccount/myaccount-detail/my-offers/my-offers.component";
 import {MyReviewsComponent} from "../myaccount/myaccount-detail/my-reviews/my-reviews.component";
-import {MyNotificationsComponent} from "../myaccount/myaccount-detail/notifications/my-notifications.component";
+import {MyNotificationsComponent} from "../myaccount/myaccount-detail/my-notifications/my-notifications.component";
 
 
 @NgModule({

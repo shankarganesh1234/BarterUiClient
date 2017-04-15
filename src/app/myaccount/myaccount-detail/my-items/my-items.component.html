@@ -8,9 +8,7 @@
     <hr class="spacer-5"><hr class="spacer-20 no-border">
 
     <div class="row left">
-        <h4>
-        <a class="page-scroll" (click)="createNewItem()" href="#item-section">Create a new listing</a>
-        </h4>
+        <a class="page-scroll btn btn-primary round btn-xs" (click)="createNewItem()" href="#item-section">Create a new listing</a>
     </div>
 
     <div class="row" *ngIf="((items == null) || (items && items.length == 0))">
@@ -25,10 +23,10 @@
                 <table class="table table-striped">
                     <thead>
                     <tr>
-                        <th>#</th>
-                        <th colspan="2">Item Title</th>
-                        <th>Status</th>
-                        <th></th>
+                        <th class="text-center">#</th>
+                        <th class="text-center">Item</th>
+                        <th class="text-center">Status</th>
+                        <th class="text-center">&nbsp;</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -41,9 +39,8 @@
                             <a href="shop-single-product-v1.html">
                                 <img width="60px" src="{{item.image_id.url}}" alt="{{item.title}}">
                             </a>
-                        </td>
-                        <td>
-                            <h6 class="regular"><a class="page-scroll" (click)="selectItem(item)" href="#item-section">{{item.title}}</a></h6>
+                            <br/>
+                            <a class="page-scroll" (click)="selectItem(item)" href="#item-section">{{item.title}}</a>
                         </td>
                         <td>
                             <span class="label label-primary">{{item.itemStage}}</span>

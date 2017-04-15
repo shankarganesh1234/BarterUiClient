@@ -38,7 +38,7 @@ var my_interests_component_1 = require("../myaccount/myaccount-detail/my-interes
 var my_items_component_1 = require("../myaccount/myaccount-detail/my-items/my-items.component");
 var my_offers_component_1 = require("../myaccount/myaccount-detail/my-offers/my-offers.component");
 var my_reviews_component_1 = require("../myaccount/myaccount-detail/my-reviews/my-reviews.component");
-var my_notifications_component_1 = require("../myaccount/myaccount-detail/notifications/my-notifications.component");
+var my_notifications_component_1 = require("../myaccount/myaccount-detail/my-notifications/my-notifications.component");
 var AppModule = (function () {
     function AppModule() {
     }
