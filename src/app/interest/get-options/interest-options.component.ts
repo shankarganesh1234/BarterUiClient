@@ -1,9 +1,12 @@
-import {Component, Input, OnInit, OnChanges, Output} from "@angular/core";
+import {Component, Input, OnInit, OnChanges} from "@angular/core";
 import {ItemService} from "../../item/service/item.service";
 import {ItemDetail} from "../../item/models/item-detail.model";
 import {InterestService} from "../service/interest.service";
 import {CreateInterest} from "../models/create-interest.model";
 import {ComponentEventService} from "../../component-events/component-event.service";
+import {User} from "../../user/user";
+import {LoggedInUser} from "../../user/loggedInUser";
+import {Messages} from "../../messages/messages";
 
 
 @Component({
@@ -13,48 +16,70 @@ import {ComponentEventService} from "../../component-events/component-event.serv
     styleUrls: ['interest-options.component.css']
 })
 
-export class InterestOptionsComponent implements OnInit, OnChanges {
+export class InterestOptionsComponent extends LoggedInUser implements OnInit, OnChanges{
 
     @Input()
-    userId: number;
+    itemUserId: string;
 
     @Input()
     originalItemId: number;
 
-    interestedUserId: number = 2;
+    loggedInUserId: string;
 
     itemDetails: ItemDetail[];
     selectedItems: number[] = [];
     selectedItemTitles: string[] = [];
     createInterestRequest: CreateInterest;
+    errorMessage: string;
+    messages: Messages;
+    showInterests: boolean = false;
 
     constructor(private itemService: ItemService, private interestService: InterestService, private componentEventService: ComponentEventService) {
+        super();
+        this.messages = new Messages();
     }
 
     ngOnInit(): void {
-        if (this.userId === null)
-            return;
+        this.errorMessage = null;
+        this.invokeGetItemsByUser();
+    }
 
+    ngOnChanges(): void {
+        this.invokeGetItemsByUser();
+    }
+
+    invokeGetItemsByUser(): void {
+
+        let user:User = this.getLoggedInUser();
+
+        if(user === null) {
+            this.errorMessage = this.messages.user_not_logged_in;
+            return null;
+        }
+
+       if(user.id == this.itemUserId) {
+           this.errorMessage = this.messages.orig_user_interested_user_equal;
+           return null;
+       }
+
+        this.errorMessage = null;
+        this.loggedInUserId = user.id;
         this.itemService
-            .getItemsByUser(this.interestedUserId)
+            .getItemsByUser(this.loggedInUserId)
             .subscribe(
                 result => this.getItemsByUserSuccess(result),
                 error => console.log(error)
             );
-
-    }
-
-    ngOnChanges(): void {
-
     }
 
     getItemsByUserSuccess(result: ItemDetail[]): void {
         this.itemDetails = result;
+        this.showInterests = true;
     }
 
     checkedItems(e: any, itemId: number, title: string): void {
         if(e.target.checked) {
-            if(this.selectedItems.length < 3) {
+            if(this.selectedItems.length < 1) {
                 console.log('added ' + itemId);
                 this.selectedItems.push(itemId);
                 this.selectedItemTitles.push(title);
@@ -72,7 +97,7 @@ export class InterestOptionsComponent implements OnInit, OnChanges {
 
     checkboxState(itemId: number): boolean {
 
-        if(this.selectedItems.length >= 3 && this.selectedItems.indexOf(itemId) == -1) {
+        if(this.selectedItems.length >= 1 && this.selectedItems.indexOf(itemId) == -1) {
             return true;
         } else {
             return false;
@@ -81,8 +106,8 @@ export class InterestOptionsComponent implements OnInit, OnChanges {
 
     createInterest(): void{
         this.createInterestRequest = new CreateInterest();
-        this.createInterestRequest.originalUser = this.userId;
-        this.createInterestRequest.interestedUser = this.interestedUserId;
+        this.createInterestRequest.originalUser = this.itemUserId;
+        this.createInterestRequest.interestedUser = this.loggedInUserId;
         this.createInterestRequest.oneSidedInterestFlag = true;
         this.createInterestRequest.swappableItemIds = this.selectedItems;
         this.createInterestRequest.originalItem = this.originalItemId;
@@ -97,6 +122,15 @@ export class InterestOptionsComponent implements OnInit, OnChanges {
 
     interestSuccess(result: boolean) : void {
         console.log("interest creation: " + result);
+        if(result === true)
+            this.showInterests = false;
+
         this.componentEventService.interestCreated(result);
     }
+
+    dismissError(): void {
+        this.errorMessage = null;
+        this.itemUserId = null;
+    }
+
 }

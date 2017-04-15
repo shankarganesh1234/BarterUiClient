@@ -1,6 +1,6 @@
 <!-- Modal Product Quick View -->
-<div *ngIf="itemDetail" id="itemDetailModal" class="modal fade productQuickView" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog modal-lg" role="document">
+<div id="itemDetailModal" class="modal fade productQuickView" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div *ngIf="showItem" class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="cleanup()">
@@ -68,11 +68,11 @@
                         <hr class="spacer-10">
                         <hr class="spacer-10">
                         <ul class="list list-inline">
-                            <li *ngIf="!interestCreated"><button type="button" class="btn btn-default btn-md round" (click)="passUserId(itemDetail.userId.userId)"><i class="fa fa-heart mr-5"></i>Interested ?</button></li>
+                            <li *ngIf="!interestCreated"><button type="button" class="btn btn-default btn-md round" (click)="passUserId(itemDetail.userId.userId)" data-target="#errorModal" data-toggle="modal"><i class="fa fa-heart mr-5"></i>Interested ?</button></li>
                             <li *ngIf="interestCreated"><button type="button" class="btn btn-success round btn-md" (click)="passUserId(itemDetail.userId.userId)"><i class="fa fa-heart mr-5"></i>Expressed Interest. Modify?</button></li>
                         </ul>
-                        <div *ngIf="userId">
-                        <swap-interest-options [userId]="userId" [originalItemId]="itemId"></swap-interest-options>
+                        <div *ngIf="showInterests">
+                        <swap-interest-options [itemUserId]="userId" [originalItemId]="itemId"></swap-interest-options>
                         </div>
                     </div><!-- end col -->
                 </div><!-- end row -->
@@ -80,3 +80,4 @@
         </div><!-- end modal-content -->
     </div><!-- end modal-dialog -->
 </div><!-- end productRewiew -->
+

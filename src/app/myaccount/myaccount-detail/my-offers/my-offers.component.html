@@ -1,0 +1,66 @@
+<div class="col-sm-12">
+    <div class="row">
+        <div class="col-sm-12 text-left">
+            <h2 class="title">Offers on my Items</h2>
+        </div><!-- end col -->
+    </div><!-- end row -->
+
+    <hr class="spacer-5">
+    <hr class="spacer-20 no-border">
+
+    <div class="row" *ngIf="((myOffers == null) || (myOffers && myOffers.length == 0))">
+        <div class="col-sm-12">
+            There are no offers on your listed items
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div *ngIf="myOffers" class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>My Item</th>
+                        <th>Status</th>
+                        <th>Offer</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let offer of myOffers">
+                        <td>
+                            <a href="shop-single-product-v1.html">
+                                <img width="60px" src="{{offer.originalItemId.image_id.url}}" alt="product">
+                            </a>
+                            <br>
+                            <p>{{offer.originalItemId.title}}</p>
+                        </td>
+                        <td>
+                            <ul class="list-unstyled">
+                                <li>
+                                    <i class="fa fa-angle-double-left text-success fa-2x"></i>
+                                    <i class="fa fa-angle-double-left text-success fa-2x"></i>
+                                </li>
+                                <li>
+                                    <i class="fa fa-angle-double-left text-danger fa-2x"></i>
+                                    <i class="fa fa-angle-double-left text-danger fa-2x"></i>
+                                </li>
+                            </ul>
+                        </td>
+                        <td>
+                            <a href="shop-single-product-v1.html">
+                                <img width="60px" src="{{offer.swappableItemId.image_id.url}}" alt="product">
+                            </a>
+                            <p>{{offer.swappableItemId.title}}</p>
+                        </td>
+                        <td>
+                            <a (click)="deleteOffer(offer.interestId)" class="btn btn-danger round btn-xs">Decline Offer</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table><!-- end table -->
+            </div><!-- end table-responsive -->
+            <hr class="spacer-10 no-border">
+        </div><!-- end col -->
+    </div><!-- end row -->
+</div><!-- end col -->

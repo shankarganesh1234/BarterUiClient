@@ -1,0 +1,34 @@
+<!-- Modal Medium -->
+<div *ngIf="errorMessage" class="modal fade myModalMedium" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" id="errorModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="errorCloseButton" (click)="dismissModal()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <div class="row">
+                    <div class="col-sm-10 col-sm-offset-1">
+                        <div class="icon-boxes style1">
+                            <div class="icon">
+                                <i class="fa fa-envelope text-dark"></i>
+                            </div><!-- end icon -->
+                            <div class="box-content">
+                                <h6 class="alt-font text-dark text-uppercase">Heads up!</h6>
+                                <p class="text-gray">{{errorMessage}}</p>
+                            </div>
+                        </div><!-- icon-box -->
+                    </div><!-- end col -->
+                </div><!-- end row -->
+            </div><!-- end modal-header -->
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <button class="btn btn-danger round btn-xs" (click)="dismissModal()">
+                            <i class="fa fa-facebook mr-10"></i>Ok
+                        </button>
+                    </div>
+                </div><!-- end row -->
+            </div><!-- end modal-body -->
+        </div><!-- end modal-content -->
+    </div><!-- end modal-dialog -->
+</div><!-- end Modal Medium -->

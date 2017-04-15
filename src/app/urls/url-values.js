@@ -11,6 +11,15 @@ var GlobalUrls = (function () {
         this.getItemByUserUrl = "http://localhost:8080/customServer/listing/user/";
         this.createInterestUrl = "http://localhost:8080/customServer/interest/";
         this.loginUrl = "http://localhost:8080/customServer/login/facebook";
+        this.userProfileUrl = "http://localhost:8080/customServer/userprofile/";
+        this.userItemsUrl = "http://localhost:8080/customServer/listing/user/";
+        this.getInterestsForUser = "http://localhost:8080/customServer/interest/interesteduser/";
+        this.deleteInterestUrl = "http://localhost:8080/customServer/interest/";
+        this.userItemDeleteUrl = "http://localhost:8080/customServer/listing/";
+        this.getOffersForUser = "http://localhost:8080/customServer/interest/originaluser/";
+        this.createChatDetails = "http://localhost:8080/customServer/chat/";
+        this.getChatForOriginalUser = "http://localhost:8080/customServer/chat/originaluser/";
+        this.getChatForInterestedUser = "http://localhost:8080/customServer/chat/interestedUser/";
     }
     return GlobalUrls;
 }());

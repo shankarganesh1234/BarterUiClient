@@ -8,6 +8,7 @@ import {Observable} from "rxjs/Rx";
 import "rxjs/add/operator/map";
 import "rxjs/add/operator/catch";
 import {ItemDetail} from "../models/item-detail.model";
+import {LoggedInUser} from "../../user/loggedInUser";
 
 @Injectable()
 export class ItemService {
@@ -15,8 +16,10 @@ export class ItemService {
     private headers: Headers;
     private options: RequestOptions;
     private urls: GlobalUrls;
+    private loggedInUser: LoggedInUser = new LoggedInUser();
 
     constructor(private http: Http) {
+
         this.headers = new Headers({
             'Content-Type': 'application/json',
             'Accept': 'application/json'
@@ -26,8 +29,14 @@ export class ItemService {
     }
 
     createItem(itemRequest: Item): Observable<Item> {
+        let headers =  new Headers({
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'Authorization': this.loggedInUser.getAccessToken()
+        });
+        let options = new RequestOptions({headers: headers});
         let body = JSON.stringify(itemRequest);
-        return this.http.post(this.urls.createItemUrl, body, this.options)
+        return this.http.post(this.urls.createItemUrl, body, options)
             .map(this.extractData)
             .catch(this.handleError);
     }
@@ -47,8 +56,14 @@ export class ItemService {
             .catch(this.handleError);
     }
 
-    getItemsByUser(userId: number): Observable<ItemDetail[]> {
+    getItemsByUser(userId: string): Observable<ItemDetail[]> {
         return this.http.get(this.urls.getItemByUserUrl + userId, this.options)
+            .map(this.extractData)
+            .catch(this.handleError);
+    }
+
+    deleteItem(itemId: number): Observable<void> {
+        return this.http.delete(this.urls.userItemDeleteUrl + itemId, this.options)
             .map(this.extractData)
             .catch(this.handleError);
     }
@@ -65,4 +80,7 @@ export class ItemService {
         console.error(errMsg);
         return Observable.throw(errMsg);
     }
+
+
+
 }

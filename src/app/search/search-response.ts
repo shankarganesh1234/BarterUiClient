@@ -6,6 +6,6 @@ export class SearchResponse {
     total: number;
     items: Item[];
     search: string;
-    zip: number
+    zip: number;
     page: number = 1;
 }

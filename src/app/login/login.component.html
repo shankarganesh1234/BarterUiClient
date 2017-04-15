@@ -1,5 +1,4 @@
-<div>
-    <button class="btn btn-facebook round btn-xs" (click)="onFacebookLoginClick()">
-        <i class="fa fa-facebook mr-10"></i>Facebook
-    </button>
-</div>
+<button class="btn btn-facebook round btn-xs" (click)="onFacebookLoginClick()" *ngIf="!isLoggedIn">
+    <i class="fa fa-facebook mr-10"></i>Facebook
+</button>
+

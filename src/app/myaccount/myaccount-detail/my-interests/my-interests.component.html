@@ -1,0 +1,56 @@
+<div class="col-sm-12">
+    <div class="row">
+        <div class="col-sm-12 text-left">
+            <h2 class="title">My Interests</h2>
+        </div><!-- end col -->
+    </div><!-- end row -->
+
+    <hr class="spacer-5">
+    <hr class="spacer-20 no-border">
+
+    <div class="row" *ngIf="((myInterests == null) || (myInterests && myInterests.length == 0))">
+        <div class="col-sm-12">
+            You have not expressed interest on any items.
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div *ngIf="myInterests && myInterests.length > 0" class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>My Interest</th>
+                        <th>My Offer</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let interest of myInterests">
+                        <td>
+                            <a href="shop-single-product-v1.html">
+                                <img width="60px" src="{{interest.originalItemId.image_id.url}}" alt="product">
+                            </a>
+                            <br>
+                            <p>{{interest.originalItemId.title}}</p>
+                            <i class="fa fa-check-circle fa-2x text-success" aria-hidden="true" rel="tooltip" title="Interest Expressed"></i>
+                        </td>
+
+                        <td>
+                            <a href="shop-single-product-v1.html">
+                                <img width="60px" src="{{interest.swappableItemId.image_id.url}}" alt="product">
+                            </a>
+                            <p>{{interest.swappableItemId.title}}</p>
+                            <i class="fa fa-check-circle text-success fa-2x" aria-hidden="true" rel="tooltip" title="Offer Accepted"></i>
+                        </td>
+                        <td>
+                            <a (click)="deleteInterest(interest.interestId)" class="btn btn-danger round btn-xs">Withdraw Interest</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table><!-- end table -->
+            </div><!-- end table-responsive -->
+            <hr class="spacer-10 no-border">
+        </div><!-- end col -->
+    </div><!-- end row -->
+</div><!-- end col -->

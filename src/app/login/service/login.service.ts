@@ -8,6 +8,7 @@ import "rxjs/add/operator/map";
 import "rxjs/add/operator/catch";
 import {LoginRequest} from "../models/login-request.model";
 import {LoginResponse} from "../models/login-response.model";
+import {User} from "../../user/user";
 
 @Injectable()
 export class LoginService {
@@ -25,7 +26,7 @@ export class LoginService {
         this.urls = new GlobalUrls();
     }
 
-    userLogin(loginRequest: LoginRequest): Observable<LoginResponse> {
+    userLogin(loginRequest: LoginRequest): Observable<User> {
         let body = JSON.stringify(loginRequest);
         return this.http.post(this.urls.loginUrl, body, this.options)
             .map(this.extractData)

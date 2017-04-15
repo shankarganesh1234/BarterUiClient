@@ -1,0 +1,41 @@
+<div class="row">
+    <!-- start sidebar -->
+    <div class="col-sm-3">
+        <div class="widget">
+            <h6 class="subtitle">Account Navigation</h6>
+
+            <ul class="list list-unstyled">
+                <li class="active">
+                    <a (click)="loadComponent('my-profile')">My Profile</a>
+                </li>
+                <li>
+                    <a (click)="loadComponent('my-items')">My Items</a>
+                </li>
+                <li>
+                    <a (click)="loadComponent('my-interests')">My Interests</a>
+                </li>
+                <li>
+                    <a (click)="loadComponent('my-offers')">Offers on My Items</a>
+                </li>
+                <li>
+                    <a (click)="loadComponent('my-notifications')">Notifications</a>
+                </li>
+                <li>
+                    <a (click)="loadComponent('my-reviews')">Reviews</a>
+                </li>
+            </ul>
+        </div><!-- end widget -->
+
+    </div><!-- end col -->
+    <!-- end sidebar -->
+    <div class="col-sm-9">
+        <swap-myprofile *ngIf="componentLoadIndicator == 'my-profile'"></swap-myprofile>
+        <swap-myinterests *ngIf="componentLoadIndicator == 'my-interests'"></swap-myinterests>
+        <swap-myitems *ngIf="componentLoadIndicator == 'my-items'"></swap-myitems>
+        <swap-myoffers *ngIf="componentLoadIndicator == 'my-offers'"></swap-myoffers>
+        <swap-myreviews *ngIf="componentLoadIndicator == 'my-reviews'"></swap-myreviews>
+        <swap-mynotifications *ngIf="componentLoadIndicator == 'my-notifications'"></swap-mynotifications>
+    </div>
+</div>
+
+<swap-item *ngIf="componentLoadIndicator == 'my-items'"></swap-item>

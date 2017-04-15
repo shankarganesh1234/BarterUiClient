@@ -1,6 +1,6 @@
 export class CreateInterest {
-    originalUser: number;
-    interestedUser: number;
+    originalUser: string;
+    interestedUser: string;
     originalItem: number;
     swappableItemIds: number[];
     oneSidedInterestFlag: boolean;

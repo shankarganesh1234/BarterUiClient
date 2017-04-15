@@ -1,8 +1,10 @@
-import {Component, Input, OnInit, OnChanges, OnDestroy} from "@angular/core";
+import {Component, OnInit, OnChanges, OnDestroy} from "@angular/core";
 import {ItemService} from "../service/item.service";
 import {ItemDetail} from "../models/item-detail.model";
 import {ComponentEventService} from "../../component-events/component-event.service";
 
+
+declare var $: any;
 
 @Component({
     moduleId: module.id,
@@ -13,7 +15,8 @@ import {ComponentEventService} from "../../component-events/component-event.serv
 
 export class ItemDetailComponent implements OnInit, OnChanges, OnDestroy {
 
-    @Input()
+    showItem: boolean = false;
+
     itemId: number;
 
     itemDetail: ItemDetail;
@@ -22,18 +25,27 @@ export class ItemDetailComponent implements OnInit, OnChanges, OnDestroy {
 
     interestCreated: boolean;
 
+    showInterests: boolean = false;
+
+
     constructor(private itemService: ItemService, private componentEventService: ComponentEventService) {
-    }
+     }
 
     ngOnInit(): void {
         this.componentEventService.interestCreated$.subscribe(
             result => {
                 this.interestCreated = result;
             });
+        this.componentEventService.itemId$.subscribe(
+            itemId => {
+                this.itemId = itemId;
+                this.getItem(this.itemId);
+            });
+        this.interestCreated = false;
     }
 
     ngOnChanges(): void {
-        this.getItem(this.itemId);
+        this.interestCreated = false;
     }
 
     ngOnDestroy(): void {
@@ -42,6 +54,10 @@ export class ItemDetailComponent implements OnInit, OnChanges, OnDestroy {
 
     cleanup(): void {
         this.itemDetail = null;
+        this.showInterests = false;
+        this.showItem = false;
+        this.interestCreated = false;
+        $('#itemDetailModal').modal('hide');
     }
 
     getItem(itemId: number) {
@@ -55,9 +71,11 @@ export class ItemDetailComponent implements OnInit, OnChanges, OnDestroy {
 
     getItemSuccess(result: ItemDetail) : void {
         this.itemDetail = result;
+        this.showItem = true;
     }
 
     passUserId(userId: number) {
         this.userId = userId;
+        this.showInterests = true;
     }
 }

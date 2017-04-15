@@ -12,13 +12,17 @@ var core_1 = require("@angular/core");
 var item_model_1 = require("../models/item.model");
 var forms_1 = require("@angular/forms");
 var item_service_1 = require("../service/item.service");
+var component_event_service_1 = require("../../component-events/component-event.service");
+var loggedInUser_1 = require("../../user/loggedInUser");
 var ItemComponent = (function () {
-    function ItemComponent(fb, itemService) {
+    function ItemComponent(fb, itemService, componentEventService) {
         this.fb = fb;
         this.itemService = itemService;
+        this.componentEventService = componentEventService;
         this.itemModel = new item_model_1.Item();
         this.submitted = false;
         this.active = true;
+        this.loggedInUser = new loggedInUser_1.LoggedInUser();
         this.formErrors = {
             'title': '',
             'description': '',
@@ -56,7 +60,44 @@ var ItemComponent = (function () {
         };
     }
     ItemComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.componentEventService.itemObjectEvent$.subscribe(function (result) {
+            _this.itemDetail = result;
+            _this.setItemInForm(_this.itemDetail);
+            if (result != null) {
+                _this.createOrUpdate = 'update';
+            }
+            else {
+                _this.createOrUpdate = 'create';
+            }
+        });
         this.buildForm();
+    };
+    ItemComponent.prototype.setItemInForm = function (itemDetail) {
+        if (itemDetail != null) {
+            this.itemForm.patchValue({
+                'title': itemDetail.title,
+                'description': itemDetail.description,
+                'zipCode': itemDetail.zipCode.zipCode,
+                'categoryId': itemDetail.categoryId.categoryId,
+                'condition': itemDetail.condition,
+                'itemStage': itemDetail.itemStage,
+                'userId': itemDetail.userId.userId,
+                'itemId': itemDetail.itemId
+            });
+        }
+        else {
+            this.itemForm.patchValue({
+                'title': '',
+                'description': '',
+                'zipCode': '',
+                'categoryId': '',
+                'condition': '',
+                'itemStage': '',
+                'userId': '',
+                'itemId': ''
+            });
+        }
     };
     ItemComponent.prototype.buildForm = function () {
         var _this = this;
@@ -91,6 +132,8 @@ var ItemComponent = (function () {
             'itemStage': [this.itemModel.itemStage, [
                     forms_1.Validators.required
                 ]
+            ],
+            'itemId': [this.itemModel.itemId
             ]
         });
         this.itemForm.valueChanges
@@ -118,6 +161,8 @@ var ItemComponent = (function () {
         var _this = this;
         this.submitted = true;
         this.itemModel = this.itemForm.value;
+        var id = this.loggedInUser.getLoggedInUser().id;
+        this.itemModel.userId = id;
         this.itemService
             .createItem(this.itemModel)
             .subscribe(function (result) { return _this.itemCreationSuccess(result); }, function (error) { return console.log(error); });
@@ -146,7 +191,7 @@ var ItemComponent = (function () {
             templateUrl: 'item.component.html',
             styleUrls: ['item.component.css']
         }), 
-        __metadata('design:paramtypes', [forms_1.FormBuilder, item_service_1.ItemService])
+        __metadata('design:paramtypes', [forms_1.FormBuilder, item_service_1.ItemService, component_event_service_1.ComponentEventService])
     ], ItemComponent);
     return ItemComponent;
 }());

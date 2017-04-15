@@ -2,7 +2,11 @@ import {Component, OnInit} from "@angular/core";
 import {Item} from "../models/item.model";
 import {FormBuilder, Validators, FormGroup} from "@angular/forms";
 import {ItemService} from "../service/item.service";
+import {ComponentEventService} from "../../component-events/component-event.service";
+import {ItemDetail} from "../models/item-detail.model";
+import {LoggedInUser} from "../../user/loggedInUser";
 
+declare const $: any;
 
 @Component({
     moduleId: module.id,
@@ -18,13 +22,54 @@ export class ItemComponent implements OnInit {
     submitted = false;
     active = true;
     itemImageFormData: FormData;
+    itemDetail: ItemDetail;
+    createOrUpdate: string;
+    private loggedInUser: LoggedInUser = new LoggedInUser();
 
-    constructor(private fb: FormBuilder, private itemService: ItemService) {
+    constructor(private fb: FormBuilder, private itemService: ItemService, private componentEventService: ComponentEventService) {
     }
 
 
     ngOnInit(): void {
+        this.componentEventService.itemObjectEvent$.subscribe(
+            result => {
+                this.itemDetail = result;
+                this.setItemInForm(this.itemDetail);
+                if(result != null) {
+                    this.createOrUpdate = 'update';
+                } else {
+                    this.createOrUpdate = 'create';
+                }
+            });
+
         this.buildForm();
+    }
+
+    setItemInForm(itemDetail: ItemDetail): void {
+
+        if(itemDetail != null) {
+        this.itemForm.patchValue({
+            'title': itemDetail.title,
+            'description': itemDetail.description,
+            'zipCode': itemDetail.zipCode.zipCode,
+            'categoryId':itemDetail.categoryId.categoryId,
+            'condition': itemDetail.condition,
+            'itemStage': itemDetail.itemStage,
+            'userId': itemDetail.userId.userId,
+            'itemId': itemDetail.itemId
+         });
+        } else {
+            this.itemForm.patchValue({
+                'title': '',
+                'description': '',
+                'zipCode': '',
+                'categoryId':'',
+                'condition': '',
+                'itemStage': '',
+                'userId': '',
+                'itemId': ''
+            });
+        }
     }
 
     buildForm(): void {
@@ -59,6 +104,8 @@ export class ItemComponent implements OnInit {
             'itemStage': [this.itemModel.itemStage, [
                 Validators.required
             ]
+            ],
+            'itemId': [this.itemModel.itemId
             ]
         })
         ;
@@ -125,6 +172,8 @@ export class ItemComponent implements OnInit {
     createItem() {
         this.submitted = true;
         this.itemModel = this.itemForm.value;
+        let id = this.loggedInUser.getLoggedInUser().id;
+        this.itemModel.userId = id;
         this.itemService
             .createItem(this.itemModel)
             .subscribe(
