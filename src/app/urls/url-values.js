@@ -17,6 +17,9 @@ var GlobalUrls = (function () {
         this.deleteInterestUrl = "http://localhost:8080/customServer/interest/";
         this.userItemDeleteUrl = "http://localhost:8080/customServer/listing/";
         this.getOffersForUser = "http://localhost:8080/customServer/interest/originaluser/";
+        this.createChatDetails = "http://localhost:8080/customServer/chat/";
+        this.getChatForOriginalUser = "http://localhost:8080/customServer/chat/originaluser/";
+        this.getChatForInterestedUser = "http://localhost:8080/customServer/chat/interestedUser/";
     }
     return GlobalUrls;
 }());
