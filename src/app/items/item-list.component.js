@@ -9,10 +9,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var search_response_1 = require("../search/search-response");
-var search_bar_1 = require("../search-bar/search-bar");
-var search_service_1 = require("../search/search.service");
-var component_event_service_1 = require("../component-events/component-event.service");
+var search_response_1 = require("../models/search-response");
+var search_bar_1 = require("../models/search-bar");
+var search_service_1 = require("../services/search.service");
+var component_event_service_1 = require("../services/component-event.service");
 var ItemListComponent = (function () {
     function ItemListComponent(searchService, componentEventService) {
         this.searchService = searchService;

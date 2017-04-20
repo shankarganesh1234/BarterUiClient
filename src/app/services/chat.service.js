@@ -15,7 +15,7 @@ require("rxjs/add/operator/toPromise");
 var Rx_1 = require("rxjs/Rx");
 require("rxjs/add/operator/map");
 require("rxjs/add/operator/catch");
-var url_values_1 = require("../urls/url-values");
+var url_values_1 = require("../utils/url-values");
 var ChatService = (function () {
     function ChatService(http) {
         this.http = http;

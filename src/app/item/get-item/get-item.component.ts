@@ -1,7 +1,7 @@
 import {Component, OnInit, OnChanges, OnDestroy} from "@angular/core";
-import {ItemService} from "../service/item.service";
-import {ItemDetail} from "../models/item-detail.model";
-import {ComponentEventService} from "../../component-events/component-event.service";
+import {ItemService} from "../../services/item.service";
+import {ItemDetail} from "../../models/item-detail.model";
+import {ComponentEventService} from "../../services/component-event.service";
 
 
 declare var $: any;

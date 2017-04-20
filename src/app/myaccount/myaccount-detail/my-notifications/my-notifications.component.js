@@ -14,8 +14,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var loggedInUser_1 = require("../../../user/loggedInUser");
-var component_event_service_1 = require("../../../component-events/component-event.service");
+var loggedInUser_1 = require("../../../storage-utils/loggedInUser");
+var component_event_service_1 = require("../../../services/component-event.service");
 var MyNotificationsComponent = (function (_super) {
     __extends(MyNotificationsComponent, _super);
     function MyNotificationsComponent(componentEventService) {
@@ -39,7 +39,7 @@ var MyNotificationsComponent = (function (_super) {
             appId: '766F9D2A-66CF-49C9-B9E7-F837D73E08B3'
         });
         var userId = this.loggedInUser.getLoggedInUser().id;
-        // connect user -> sb
+        // connect storage-utils -> sb
         sb.connect(userId, function (result) {
             console.log('sb connect : ' + result);
             //create channel

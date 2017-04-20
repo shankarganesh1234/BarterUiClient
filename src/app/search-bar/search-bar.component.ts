@@ -1,15 +1,15 @@
 import {Component, OnInit, EventEmitter, Output} from "@angular/core";
-import {SearchService} from "../search/search.service";
-import {SearchResponse} from "../search/search-response";
+import {SearchService} from "../services/search.service";
+import {SearchResponse} from "../models/search-response";
 import {Observable} from "rxjs/Observable";
 import {Subject} from "rxjs/Subject";
 import "rxjs/add/observable/of";
 import "rxjs/add/operator/catch";
 import "rxjs/add/operator/debounceTime";
 import "rxjs/add/operator/distinctUntilChanged";
-import {Item} from "../item/models/item.model";
-import {SearchBar} from "./search-bar";
-import {ComponentEventService} from "../component-events/component-event.service";
+import {Item} from "../models/item.model";
+import {SearchBar} from "../models/search-bar";
+import {ComponentEventService} from "../services/component-event.service";
 
 @Component({
     moduleId: module.id,

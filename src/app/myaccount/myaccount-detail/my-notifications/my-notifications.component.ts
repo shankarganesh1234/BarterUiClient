@@ -1,7 +1,7 @@
 import {Component, OnInit} from "@angular/core";
-import {LoggedInUser} from "../../../user/loggedInUser";
-import {ComponentEventService} from "../../../component-events/component-event.service";
-import {User} from "../../../user/user";
+import {LoggedInUser} from "../../../storage-utils/loggedInUser";
+import {ComponentEventService} from "../../../services/component-event.service";
+import {User} from "../../../models/user";
 
 @Component({
     moduleId: module.id,
@@ -37,7 +37,7 @@ export class MyNotificationsComponent extends LoggedInUser implements OnInit {
         });
         let userId = this.loggedInUser.getLoggedInUser().id;
 
-        // connect user -> sb
+        // connect storage-utils -> sb
         sb.connect(userId, (result:any) => {
             console.log('sb connect : ' + result);
             //create channel

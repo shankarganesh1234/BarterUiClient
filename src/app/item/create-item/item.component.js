@@ -9,11 +9,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var item_model_1 = require("../models/item.model");
+var item_model_1 = require("../../models/item.model");
 var forms_1 = require("@angular/forms");
-var item_service_1 = require("../service/item.service");
-var component_event_service_1 = require("../../component-events/component-event.service");
-var loggedInUser_1 = require("../../user/loggedInUser");
+var item_service_1 = require("../../services/item.service");
+var component_event_service_1 = require("../../services/component-event.service");
+var loggedInUser_1 = require("../../storage-utils/loggedInUser");
 var ItemComponent = (function () {
     function ItemComponent(fb, itemService, componentEventService) {
         this.fb = fb;

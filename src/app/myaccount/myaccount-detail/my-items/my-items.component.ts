@@ -1,10 +1,10 @@
 import {Component, OnInit} from "@angular/core";
-import {LoggedInUser} from "../../../user/loggedInUser";
-import {ComponentEventService} from "../../../component-events/component-event.service";
-import {User} from "../../../user/user";
-import {UserService} from "../../../user/service/user.service";
-import {ItemDetail} from "../../../item/models/item-detail.model";
-import {ItemService} from "../../../item/service/item.service";
+import {LoggedInUser} from "../../../storage-utils/loggedInUser";
+import {ComponentEventService} from "../../../services/component-event.service";
+import {User} from "../../../models/user";
+import {UserService} from "../../../services/user.service";
+import {ItemDetail} from "../../../models/item-detail.model";
+import {ItemService} from "../../../services/item.service";
 
 
 

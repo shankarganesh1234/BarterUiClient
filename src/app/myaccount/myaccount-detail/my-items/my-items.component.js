@@ -14,10 +14,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var loggedInUser_1 = require("../../../user/loggedInUser");
-var component_event_service_1 = require("../../../component-events/component-event.service");
-var user_service_1 = require("../../../user/service/user.service");
-var item_service_1 = require("../../../item/service/item.service");
+var loggedInUser_1 = require("../../../storage-utils/loggedInUser");
+var component_event_service_1 = require("../../../services/component-event.service");
+var user_service_1 = require("../../../services/user.service");
+var item_service_1 = require("../../../services/item.service");
 var MyItemsComponent = (function (_super) {
     __extends(MyItemsComponent, _super);
     function MyItemsComponent(componentEventService, userService, itemService) {

@@ -1,10 +1,10 @@
 import {Component, OnInit} from "@angular/core";
-import {Item} from "../models/item.model";
+import {Item} from "../../models/item.model";
 import {FormBuilder, Validators, FormGroup} from "@angular/forms";
-import {ItemService} from "../service/item.service";
-import {ComponentEventService} from "../../component-events/component-event.service";
-import {ItemDetail} from "../models/item-detail.model";
-import {LoggedInUser} from "../../user/loggedInUser";
+import {ItemService} from "../../services/item.service";
+import {ComponentEventService} from "../../services/component-event.service";
+import {ItemDetail} from "../../models/item-detail.model";
+import {LoggedInUser} from "../../storage-utils/loggedInUser";
 
 declare const $: any;
 

@@ -9,15 +9,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var search_service_1 = require("../search/search.service");
+var search_service_1 = require("../services/search.service");
 var Observable_1 = require("rxjs/Observable");
 var Subject_1 = require("rxjs/Subject");
 require("rxjs/add/observable/of");
 require("rxjs/add/operator/catch");
 require("rxjs/add/operator/debounceTime");
 require("rxjs/add/operator/distinctUntilChanged");
-var search_bar_1 = require("./search-bar");
-var component_event_service_1 = require("../component-events/component-event.service");
+var search_bar_1 = require("../models/search-bar");
+var component_event_service_1 = require("../services/component-event.service");
 var SearchBarComponent = (function () {
     function SearchBarComponent(searchService, componentEventService) {
         this.searchService = searchService;

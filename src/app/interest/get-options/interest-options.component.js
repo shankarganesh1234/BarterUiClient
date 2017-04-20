@@ -14,12 +14,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var item_service_1 = require("../../item/service/item.service");
-var interest_service_1 = require("../service/interest.service");
-var create_interest_model_1 = require("../models/create-interest.model");
-var component_event_service_1 = require("../../component-events/component-event.service");
-var loggedInUser_1 = require("../../user/loggedInUser");
-var messages_1 = require("../../messages/messages");
+var item_service_1 = require("../../services/item.service");
+var interest_service_1 = require("../../services/interest.service");
+var create_interest_model_1 = require("../../models/create-interest.model");
+var component_event_service_1 = require("../../services/component-event.service");
+var loggedInUser_1 = require("../../storage-utils/loggedInUser");
+var error_messages_1 = require("../../models/error-messages");
 var InterestOptionsComponent = (function (_super) {
     __extends(InterestOptionsComponent, _super);
     function InterestOptionsComponent(itemService, interestService, componentEventService) {
@@ -30,7 +30,7 @@ var InterestOptionsComponent = (function (_super) {
         this.selectedItems = [];
         this.selectedItemTitles = [];
         this.showInterests = false;
-        this.messages = new messages_1.Messages();
+        this.messages = new error_messages_1.Messages();
     }
     InterestOptionsComponent.prototype.ngOnInit = function () {
         this.errorMessage = null;

@@ -1,7 +1,7 @@
 import {Component, OnInit} from "@angular/core";
-import {LoggedInUser} from "../../../user/loggedInUser";
-import {ComponentEventService} from "../../../component-events/component-event.service";
-import {User} from "../../../user/user";
+import {LoggedInUser} from "../../../storage-utils/loggedInUser";
+import {ComponentEventService} from "../../../services/component-event.service";
+import {User} from "../../../models/user";
 
 
 @Component({
