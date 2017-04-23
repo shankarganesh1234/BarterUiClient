@@ -17,11 +17,11 @@ require("rxjs/add/operator/catch");
 require("rxjs/add/operator/debounceTime");
 require("rxjs/add/operator/distinctUntilChanged");
 var search_bar_1 = require("../models/search-bar");
-var component_event_service_1 = require("../services/component-event.service");
+var router_1 = require("@angular/router");
 var SearchBarComponent = (function () {
-    function SearchBarComponent(searchService, componentEventService) {
+    function SearchBarComponent(router, searchService) {
+        this.router = router;
         this.searchService = searchService;
-        this.componentEventService = componentEventService;
         this.searchQueries = new Subject_1.Subject();
     }
     SearchBarComponent.prototype.autocomplete = function (term) {
@@ -49,14 +49,8 @@ var SearchBarComponent = (function () {
         this.searchBarModel.zip = postalCode;
     };
     SearchBarComponent.prototype.search = function (searchBarModel) {
-        var _this = this;
         localStorage.setItem("postal_code", searchBarModel.zip);
-        this.searchService
-            .search(searchBarModel)
-            .subscribe(function (result) { return _this.success(result); }, function (error) { return console.log(error); });
-    };
-    SearchBarComponent.prototype.success = function (result) {
-        this.componentEventService.searchBarClicked(result);
+        this.router.navigate(['/search', searchBarModel.search, searchBarModel.zip]);
     };
     SearchBarComponent = __decorate([
         core_1.Component({
@@ -65,7 +59,7 @@ var SearchBarComponent = (function () {
             templateUrl: "search-bar.component.html",
             styleUrls: ['search-bar.component.css']
         }), 
-        __metadata('design:paramtypes', [search_service_1.SearchService, component_event_service_1.ComponentEventService])
+        __metadata('design:paramtypes', [router_1.Router, search_service_1.SearchService])
     ], SearchBarComponent);
     return SearchBarComponent;
 }());

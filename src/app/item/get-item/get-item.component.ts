@@ -1,7 +1,8 @@
-import {Component, OnInit, OnChanges, OnDestroy} from "@angular/core";
+import {Component, OnChanges, OnDestroy, OnInit} from "@angular/core";
 import {ItemService} from "../../services/item.service";
 import {ItemDetail} from "../../models/item-detail.model";
 import {ComponentEventService} from "../../services/component-event.service";
+import {ActivatedRoute, Params, Router} from "@angular/router";
 
 
 declare var $: any;
@@ -28,20 +29,22 @@ export class ItemDetailComponent implements OnInit, OnChanges, OnDestroy {
     showInterests: boolean = false;
 
 
-    constructor(private itemService: ItemService, private componentEventService: ComponentEventService) {
-     }
+    constructor(private route: ActivatedRoute,
+                private router: Router,
+                private itemService: ItemService,
+                private componentEventService: ComponentEventService) {
+    }
 
     ngOnInit(): void {
         this.componentEventService.interestCreated$.subscribe(
             result => {
                 this.interestCreated = result;
             });
-        this.componentEventService.itemId$.subscribe(
-            itemId => {
-                this.itemId = itemId;
-                this.getItem(this.itemId);
-            });
-        this.interestCreated = false;
+
+
+       let routeItemId = +this.route.snapshot.params['itemId'];
+       this.getItem(routeItemId);
+       this.interestCreated = false;
     }
 
     ngOnChanges(): void {
@@ -69,7 +72,7 @@ export class ItemDetailComponent implements OnInit, OnChanges, OnDestroy {
             );
     }
 
-    getItemSuccess(result: ItemDetail) : void {
+    getItemSuccess(result: ItemDetail): void {
         this.itemDetail = result;
         this.showItem = true;
     }

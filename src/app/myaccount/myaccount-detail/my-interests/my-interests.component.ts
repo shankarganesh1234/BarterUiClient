@@ -7,6 +7,7 @@ import {Interest} from "../../../models/interest.model";
 import {Interests} from "../../../models/interests.model";
 
 
+
 @Component({
     moduleId: module.id,
     selector: 'swap-myinterests',

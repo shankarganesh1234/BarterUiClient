@@ -1,6 +1,6 @@
 <div *ngIf="isLoggedIn">
 <a href="javascript:void(0);">
-    <i class="fa fa-user mr-5"></i>
+    <i class="fa fa-bars mr-5"></i>
     <span class="hidden-xs">
                                 Welcome {{user.firstName}}
                                 <i class="fa fa-angle-down ml-5"></i>
@@ -10,7 +10,7 @@
     <li><a [routerLink]="['/my-account', 'my-profile']">My Profile</a></li>
     <li><a [routerLink]="['/my-account', 'my-items']">My Items</a></li>
     <li><a [routerLink]="['/my-account', 'my-interests']">My Interests</a></li>
-    <li><a [routerLink]="['/my-account', 'my-offers']">Offers on My Items</a></li>
+    <li><a [routerLink]="['/my-account', 'my-offers']">My Offers</a></li>
     <li class="divider"></li>
     <li><a [routerLink]="['/my-account', 'my-notifications']">Notifications</a></li>
     <li><a [routerLink]="['/my-account', 'my-reviews']">Reviews</a></li>

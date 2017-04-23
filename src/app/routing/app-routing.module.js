@@ -11,9 +11,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var myaccount_detail_component_1 = require("../myaccount/myaccount-detail/myaccount-detail.component");
-var search_bar_component_1 = require("../search-bar/search-bar.component");
+var get_item_component_1 = require("../item/get-item/get-item.component");
+var item_list_component_1 = require("../items/item-list.component");
 var routes = [
-    { path: 'home', component: search_bar_component_1.SearchBarComponent },
+    { path: 'search/:search/:zip', component: item_list_component_1.ItemListComponent },
+    { path: 'item/:itemId', component: get_item_component_1.ItemDetailComponent },
     { path: 'my-account/:component', component: myaccount_detail_component_1.MyAccountDetailComponent }
 ];
 var AppRoutingModule = (function () {

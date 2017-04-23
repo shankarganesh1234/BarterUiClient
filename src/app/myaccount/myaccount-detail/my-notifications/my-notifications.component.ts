@@ -2,11 +2,13 @@ import {Component, OnInit} from "@angular/core";
 import {LoggedInUser} from "../../../storage-utils/loggedInUser";
 import {ComponentEventService} from "../../../services/component-event.service";
 import {User} from "../../../models/user";
+import {InterestService} from "../../../services/interest.service";
 
 @Component({
     moduleId: module.id,
     selector: 'swap-mynotifications',
-    templateUrl: 'my-notifications.component.html'
+    templateUrl: 'my-notifications.component.html',
+    styleUrls: ['my-notifications.component.css', 'custom.css']
 })
 
 export class MyNotificationsComponent extends LoggedInUser implements OnInit {
@@ -14,8 +16,11 @@ export class MyNotificationsComponent extends LoggedInUser implements OnInit {
     isLoggedIn: boolean = false;
     user: User;
     loggedInUser: LoggedInUser = new LoggedInUser();
+    appId: string = 'A462E51A-2201-420F-95DD-83FF72881871';
+    sb: any;
+    chatChannel: any;
 
-    constructor(private componentEventService: ComponentEventService) {
+    constructor(private componentEventService: ComponentEventService, private interestService: InterestService) {
         super();
     }
     ngOnInit(): void {
@@ -30,54 +35,34 @@ export class MyNotificationsComponent extends LoggedInUser implements OnInit {
         this.initChat();
     }
 
-    initChat(): void {
-        // init sb
-        let sb = new SendBird({
-            appId: '766F9D2A-66CF-49C9-B9E7-F837D73E08B3'
-        });
+    createChannel(chatWithUser: string): void {
         let userId = this.loggedInUser.getLoggedInUser().id;
 
-        // connect storage-utils -> sb
-        sb.connect(userId, (result:any) => {
+        this.sb.connect(userId, (result:any) => {
             console.log('sb connect : ' + result);
-            //create channel
-            if(userId == '10211509441763463') {
-                  sb.GroupChannel.createChannelWithUserIds(['10155782090995961'], true, name, null, null, null, (result: any) => {
-                      console.log('sb create channel : ' + result);
+            this.sb.GroupChannel.createChannelWithUserIds([userId, chatWithUser], true, name, null, null, null, (result: any) => {
 
-                      let uniqueChannelId = result.url;
-                      let ChannelHandler = new sb.ChannelHandler();
-                      ChannelHandler.onMessageReceived = function(channel, message){
-                          console.log(channel, message);
-                      };
-                      sb.addChannelHandler(uniqueChannelId, ChannelHandler);
-                      // send message
-                      let message = 'Hi this is Shankar';
-                      result.sendUserMessage(message, null, null, (result: any) => {
-                          console.log('sb message sent Shankar' + result);
-                      });
-                  });
-            } else if(userId == '10155782090995961') {
-                sb.GroupChannel.createChannelWithUserIds(['10211509441763463'], true, name, null, null, null, (result: any) => {
-                    console.log('sb create channel : ' + result);
-
-                    let uniqueChannelId = result.url;
-                    let ChannelHandler = new sb.ChannelHandler();
-                    ChannelHandler.onMessageReceived = function(channel, message){
-                        console.log(channel, message);
-                    };
-                    sb.addChannelHandler(uniqueChannelId, ChannelHandler);
-                    // send message
-                    let message = 'Hi this is Manaswini';
-                    result.sendUserMessage(message, null, null, (result: any) => {
-                        console.log('sb message sent Manaswini' + result);
-                    });
-                });
-            }
+                this.chatChannel = result;
+                let uniqueChannelId = result.url;
+                let ChannelHandler = new this.sb.ChannelHandler();
+                ChannelHandler.onMessageReceived = function(channel: any, message: any){
+                    console.log(channel, message);
+                };
+                this.sb.addChannelHandler(uniqueChannelId, ChannelHandler);
+            });
         });
+    }
 
-        // add Channel Handler
+    sendMessage(messageBody: string): void {
+        this.chatChannel.sendUserMessage(messageBody, null, null, (result: any) => {
+            console.log('sb message sent Shankar' + result);
+        });
+    }
 
-
+    initChat(): void {
+        // init sb
+        this.sb = new SendBird({
+            appId: this.appId
+        });
     }
 }

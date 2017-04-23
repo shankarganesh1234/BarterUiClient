@@ -3,6 +3,7 @@ import {SearchResponse} from "../models/search-response";
 import {SearchBar} from "../models/search-bar";
 import {SearchService} from "../services/search.service";
 import {ComponentEventService} from "../services/component-event.service";
+import {ActivatedRoute, Router} from "@angular/router";
 
 
 @Component({
@@ -14,16 +15,27 @@ import {ComponentEventService} from "../services/component-event.service";
 
 export class ItemListComponent implements OnInit, OnChanges {
 
-    @Input()
     searchResponse: SearchResponse;
 
     searchRequest: SearchBar;
 
-    constructor(private searchService: SearchService, private componentEventService: ComponentEventService){
+    constructor(private route: ActivatedRoute, private router: Router, private searchService: SearchService, private componentEventService: ComponentEventService){
     }
 
     ngOnInit(): void {
 
+        let searchQuery = this.route.snapshot.params['search'];
+        let zip = this.route.snapshot.params['zip'];
+        this.searchRequest = new SearchBar();
+        this.searchRequest.zip = zip;
+        this.searchRequest.search = searchQuery;
+
+        this.searchService
+            .search(this.searchRequest)
+            .subscribe(
+                result => this.searchResponse = result,
+                error => console.log(error)
+            );
     }
 
     ngOnChanges(changes: SimpleChanges) {
@@ -54,7 +66,7 @@ export class ItemListComponent implements OnInit, OnChanges {
         this.searchResponse = result;
     }
 
-    emitItemId(itemId: number): void{
-        this.componentEventService.itemClicked(itemId);
+    routeToItemDetail(itemId: number): void{
+        this.router.navigate(['/item', itemId]);
     }
 }

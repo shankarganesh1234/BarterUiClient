@@ -11,8 +11,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var item_service_1 = require("../../services/item.service");
 var component_event_service_1 = require("../../services/component-event.service");
+var router_1 = require("@angular/router");
 var ItemDetailComponent = (function () {
-    function ItemDetailComponent(itemService, componentEventService) {
+    function ItemDetailComponent(route, router, itemService, componentEventService) {
+        this.route = route;
+        this.router = router;
         this.itemService = itemService;
         this.componentEventService = componentEventService;
         this.showItem = false;
@@ -23,10 +26,8 @@ var ItemDetailComponent = (function () {
         this.componentEventService.interestCreated$.subscribe(function (result) {
             _this.interestCreated = result;
         });
-        this.componentEventService.itemId$.subscribe(function (itemId) {
-            _this.itemId = itemId;
-            _this.getItem(_this.itemId);
-        });
+        var routeItemId = +this.route.snapshot.params['itemId'];
+        this.getItem(routeItemId);
         this.interestCreated = false;
     };
     ItemDetailComponent.prototype.ngOnChanges = function () {
@@ -63,7 +64,7 @@ var ItemDetailComponent = (function () {
             templateUrl: 'get-item.component.html',
             styleUrls: ['get-item.component.css']
         }), 
-        __metadata('design:paramtypes', [item_service_1.ItemService, component_event_service_1.ComponentEventService])
+        __metadata('design:paramtypes', [router_1.ActivatedRoute, router_1.Router, item_service_1.ItemService, component_event_service_1.ComponentEventService])
     ], ItemDetailComponent);
     return ItemDetailComponent;
 }());

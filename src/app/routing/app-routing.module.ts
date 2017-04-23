@@ -1,9 +1,11 @@
 import {NgModule} from "@angular/core";
 import {RouterModule, Routes} from "@angular/router";
 import {MyAccountDetailComponent} from "../myaccount/myaccount-detail/myaccount-detail.component";
-import {SearchBarComponent} from "../search-bar/search-bar.component";
+import {ItemDetailComponent} from "../item/get-item/get-item.component";
+import {ItemListComponent} from "../items/item-list.component";
 const routes: Routes = [
-    {path: 'home', component: SearchBarComponent},
+    {path: 'search/:search/:zip', component: ItemListComponent},
+    {path: 'item/:itemId', component: ItemDetailComponent},
     {path: 'my-account/:component', component: MyAccountDetailComponent}
 ];
 @NgModule({
