@@ -19,6 +19,7 @@ export class GlobalUrls {
     createChatDetails: string;
     getChatForOriginalUser: string;
     getChatForInterestedUser: string;
+    getInterests: string;
 
     constructor() {
         this.serverName = "customServer";
@@ -39,5 +40,6 @@ export class GlobalUrls {
         this.createChatDetails = "http://localhost:8080/customServer/chat/";
         this.getChatForOriginalUser = "http://localhost:8080/customServer/chat/originaluser/";
         this.getChatForInterestedUser = "http://localhost:8080/customServer/chat/interestedUser/";
+        this.getInterests = "http://localhost:8080/customServer/interest?";
     }
 }

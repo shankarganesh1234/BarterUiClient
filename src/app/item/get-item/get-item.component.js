@@ -12,14 +12,18 @@ var core_1 = require("@angular/core");
 var item_service_1 = require("../../services/item.service");
 var component_event_service_1 = require("../../services/component-event.service");
 var router_1 = require("@angular/router");
+var interest_service_1 = require("../../services/interest.service");
+var loggedInUser_1 = require("../../storage-utils/loggedInUser");
 var ItemDetailComponent = (function () {
-    function ItemDetailComponent(route, router, itemService, componentEventService) {
+    function ItemDetailComponent(route, router, itemService, componentEventService, interestService) {
         this.route = route;
         this.router = router;
         this.itemService = itemService;
         this.componentEventService = componentEventService;
+        this.interestService = interestService;
         this.showItem = false;
         this.showInterests = false;
+        this.loggedInUser = new loggedInUser_1.LoggedInUser();
     }
     ItemDetailComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -28,6 +32,7 @@ var ItemDetailComponent = (function () {
         });
         var routeItemId = +this.route.snapshot.params['itemId'];
         this.getItem(routeItemId);
+        this.getInterests("" + routeItemId);
         this.interestCreated = false;
     };
     ItemDetailComponent.prototype.ngOnChanges = function () {
@@ -49,6 +54,13 @@ var ItemDetailComponent = (function () {
             .getItem(itemId)
             .subscribe(function (result) { return _this.getItemSuccess(result); }, function (error) { return console.log(error); });
     };
+    ItemDetailComponent.prototype.getInterests = function (itemId) {
+        var _this = this;
+        var userId = this.loggedInUser.getLoggedInUser().id;
+        this.interestService
+            .getInterests(userId, itemId)
+            .subscribe(function (result) { return _this.interestsOrOffers = result; }, function (error) { return console.log(error); });
+    };
     ItemDetailComponent.prototype.getItemSuccess = function (result) {
         this.itemDetail = result;
         this.showItem = true;
@@ -64,7 +76,7 @@ var ItemDetailComponent = (function () {
             templateUrl: 'get-item.component.html',
             styleUrls: ['get-item.component.css']
         }), 
-        __metadata('design:paramtypes', [router_1.ActivatedRoute, router_1.Router, item_service_1.ItemService, component_event_service_1.ComponentEventService])
+        __metadata('design:paramtypes', [router_1.ActivatedRoute, router_1.Router, item_service_1.ItemService, component_event_service_1.ComponentEventService, interest_service_1.InterestService])
     ], ItemDetailComponent);
     return ItemDetailComponent;
 }());

@@ -3,6 +3,9 @@ import {ItemService} from "../../services/item.service";
 import {ItemDetail} from "../../models/item-detail.model";
 import {ComponentEventService} from "../../services/component-event.service";
 import {ActivatedRoute, Params, Router} from "@angular/router";
+import {Interests} from "../../models/interests.model";
+import {InterestService} from "../../services/interest.service";
+import {LoggedInUser} from "../../storage-utils/loggedInUser";
 
 
 declare var $: any;
@@ -28,11 +31,15 @@ export class ItemDetailComponent implements OnInit, OnChanges, OnDestroy {
 
     showInterests: boolean = false;
 
+    interestsOrOffers: Interests;
+
+    loggedInUser: LoggedInUser = new LoggedInUser();
 
     constructor(private route: ActivatedRoute,
                 private router: Router,
                 private itemService: ItemService,
-                private componentEventService: ComponentEventService) {
+                private componentEventService: ComponentEventService,
+                private interestService: InterestService) {
     }
 
     ngOnInit(): void {
@@ -44,6 +51,7 @@ export class ItemDetailComponent implements OnInit, OnChanges, OnDestroy {
 
        let routeItemId = +this.route.snapshot.params['itemId'];
        this.getItem(routeItemId);
+       this.getInterests("" + routeItemId);
        this.interestCreated = false;
     }
 
@@ -68,6 +76,16 @@ export class ItemDetailComponent implements OnInit, OnChanges, OnDestroy {
             .getItem(itemId)
             .subscribe(
                 result => this.getItemSuccess(result),
+                error => console.log(error)
+            );
+    }
+
+    getInterests(itemId: string) {
+        let userId = this.loggedInUser.getLoggedInUser().id;
+        this.interestService
+            .getInterests(userId, itemId)
+            .subscribe(
+                result => this.interestsOrOffers = result,
                 error => console.log(error)
             );
     }

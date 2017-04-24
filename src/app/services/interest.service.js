@@ -42,6 +42,11 @@ var InterestService = (function () {
             .map(this.extractData)
             .catch(this.handleError);
     };
+    InterestService.prototype.getInterests = function (userId, itemId) {
+        return this.http.get(this.urls.getInterests + 'user=' + userId + '&item=' + itemId, this.options)
+            .map(this.extractData)
+            .catch(this.handleError);
+    };
     InterestService.prototype.deleteInterests = function (interestId) {
         return this.http.delete(this.urls.deleteInterestUrl + interestId, this.options)
             .map(this.extractData)

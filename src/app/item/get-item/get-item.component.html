@@ -1,4 +1,3 @@
-<!-- Modal Product Quick View -->
 <div>
     <div *ngIf="showItem">
         <div>
@@ -88,16 +87,44 @@
                                             <swap-interest-options [itemUserId]="userId"
                                                                    [originalItemId]="itemId"></swap-interest-options>
                                         </div>
-
                                     </div>
-
                                 </div>
-                            </div><!-- end tab-pane -->
+                            </div>
                         </div>
-                    </div><!-- end col -->
-                </div><!-- end row -->
-            </div><!-- end modal-body -->
-        </div><!-- end modal-content -->
-    </div><!-- end modal-dialog -->
-</div><!-- end productRewiew -->
+                    </div>
+                </div>
+            </div>
+
+            <br/>
+
+            <div class="container" *ngIf="interestsOrOffers">
+                <div class="row">
+                    <div class="col-sm-12">
+                             <div class="tab-content style2">
+                                 <div class="container">
+                                     <div class="row">
+
+                                         <ng-container *ngFor="let interest of interestsOrOffers.interests">
+                                         <div class="col-xs-1">
+                                             <label for="test">{{interest.interestedUser.firstName}}<span class="text-primary">(120)</span></label>
+                                             <img id ="test" style="max-width: 50%;" class="img-circle" src="{{interest.interestedUser.imageUrl}}" alt="message user image">
+                                         </div>
+
+                                         <div class="col-xs-4">
+                                             Hi ! I am {{interest.interestedUser.firstName}}. I am interested in this item
+                                         </div>
+
+                                         <div class="col-xs-2">
+                                             12/20/2017
+                                         </div>
+                                         </ng-container>
+                                     </div>
+                                 </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 

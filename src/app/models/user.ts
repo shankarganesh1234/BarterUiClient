@@ -8,4 +8,5 @@ export class User {
     email: string;
     active: string;
     userId: string;
+    imageUrl: string;
 }
