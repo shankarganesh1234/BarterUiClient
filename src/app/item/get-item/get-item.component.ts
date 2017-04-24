@@ -51,7 +51,6 @@ export class ItemDetailComponent implements OnInit, OnChanges, OnDestroy {
 
        let routeItemId = +this.route.snapshot.params['itemId'];
        this.getItem(routeItemId);
-       this.getInterests("" + routeItemId);
        this.interestCreated = false;
     }
 
@@ -80,10 +79,18 @@ export class ItemDetailComponent implements OnInit, OnChanges, OnDestroy {
             );
     }
 
-    getInterests(itemId: string) {
+    getInterests(itemDetail: ItemDetail) {
+
+        let itemId = this.itemDetail.itemId;
         let userId = this.loggedInUser.getLoggedInUser().id;
+        let isOwner: boolean;
+        if(this.itemDetail.userId.id == userId)
+            isOwner = true;
+        else
+            isOwner = false;
+
         this.interestService
-            .getInterests(userId, itemId)
+            .getInterests(userId, itemId, isOwner)
             .subscribe(
                 result => this.interestsOrOffers = result,
                 error => console.log(error)
@@ -93,6 +100,7 @@ export class ItemDetailComponent implements OnInit, OnChanges, OnDestroy {
     getItemSuccess(result: ItemDetail): void {
         this.itemDetail = result;
         this.showItem = true;
+        this.getInterests(result);
     }
 
     passUserId(userId: number) {

@@ -42,8 +42,8 @@ var InterestService = (function () {
             .map(this.extractData)
             .catch(this.handleError);
     };
-    InterestService.prototype.getInterests = function (userId, itemId) {
-        return this.http.get(this.urls.getInterests + 'user=' + userId + '&item=' + itemId, this.options)
+    InterestService.prototype.getInterests = function (userId, itemId, isOwner) {
+        return this.http.get(this.urls.getInterests + 'user=' + userId + '&item=' + itemId + '&isowner=' + isOwner, this.options)
             .map(this.extractData)
             .catch(this.handleError);
     };

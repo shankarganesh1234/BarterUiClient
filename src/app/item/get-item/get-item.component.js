@@ -32,7 +32,6 @@ var ItemDetailComponent = (function () {
         });
         var routeItemId = +this.route.snapshot.params['itemId'];
         this.getItem(routeItemId);
-        this.getInterests("" + routeItemId);
         this.interestCreated = false;
     };
     ItemDetailComponent.prototype.ngOnChanges = function () {
@@ -54,16 +53,23 @@ var ItemDetailComponent = (function () {
             .getItem(itemId)
             .subscribe(function (result) { return _this.getItemSuccess(result); }, function (error) { return console.log(error); });
     };
-    ItemDetailComponent.prototype.getInterests = function (itemId) {
+    ItemDetailComponent.prototype.getInterests = function (itemDetail) {
         var _this = this;
+        var itemId = this.itemDetail.itemId;
         var userId = this.loggedInUser.getLoggedInUser().id;
+        var isOwner;
+        if (this.itemDetail.userId.id == userId)
+            isOwner = true;
+        else
+            isOwner = false;
         this.interestService
-            .getInterests(userId, itemId)
+            .getInterests(userId, itemId, isOwner)
             .subscribe(function (result) { return _this.interestsOrOffers = result; }, function (error) { return console.log(error); });
     };
     ItemDetailComponent.prototype.getItemSuccess = function (result) {
         this.itemDetail = result;
         this.showItem = true;
+        this.getInterests(result);
     };
     ItemDetailComponent.prototype.passUserId = function (userId) {
         this.userId = userId;
