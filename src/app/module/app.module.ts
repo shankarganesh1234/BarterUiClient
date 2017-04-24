@@ -29,6 +29,7 @@ import {MyItemsComponent} from "../myaccount/myaccount-detail/my-items/my-items.
 import {MyOffersComponent} from "../myaccount/myaccount-detail/my-offers/my-offers.component";
 import {MyReviewsComponent} from "../myaccount/myaccount-detail/my-reviews/my-reviews.component";
 import {MyNotificationsComponent} from "../myaccount/myaccount-detail/my-notifications/my-notifications.component";
+import {HomeComponent} from "../home/home.component";
 
 
 @NgModule({
@@ -58,7 +59,8 @@ import {MyNotificationsComponent} from "../myaccount/myaccount-detail/my-notific
                 MyItemsComponent,
                 MyOffersComponent,
                 MyReviewsComponent,
-                MyNotificationsComponent],
+                MyNotificationsComponent,
+                HomeComponent],
     bootstrap: [LandingComponent],
     providers: [SearchService, CategoryService, ItemService, InterestService, LoginService, UserService]
 })

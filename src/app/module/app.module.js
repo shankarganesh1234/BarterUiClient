@@ -39,6 +39,7 @@ var my_items_component_1 = require("../myaccount/myaccount-detail/my-items/my-it
 var my_offers_component_1 = require("../myaccount/myaccount-detail/my-offers/my-offers.component");
 var my_reviews_component_1 = require("../myaccount/myaccount-detail/my-reviews/my-reviews.component");
 var my_notifications_component_1 = require("../myaccount/myaccount-detail/my-notifications/my-notifications.component");
+var home_component_1 = require("../home/home.component");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -70,7 +71,8 @@ var AppModule = (function () {
                 my_items_component_1.MyItemsComponent,
                 my_offers_component_1.MyOffersComponent,
                 my_reviews_component_1.MyReviewsComponent,
-                my_notifications_component_1.MyNotificationsComponent],
+                my_notifications_component_1.MyNotificationsComponent,
+                home_component_1.HomeComponent],
             bootstrap: [landing_component_1.LandingComponent],
             providers: [search_service_1.SearchService, category_service_1.CategoryService, item_service_1.ItemService, interest_service_1.InterestService, login_service_1.LoginService, user_service_1.UserService]
         }), 
