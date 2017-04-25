@@ -9,4 +9,5 @@ export class User {
     active: string;
     userId: string;
     imageUrl: string;
+    displayName: string;
 }

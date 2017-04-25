@@ -70,21 +70,19 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                <div class="col-sm-12 col-md-6 text-left">
+                                    <div class="col-sm-12 col-md-6 text-left">
 
                                         <ul class="list list-inline">
                                             <li *ngIf="!interestCreated">
-                                                <button type="button" class="btn btn-default btn-xs"
+                                                <button type="button" class="btn btn-behance btn-xs"
                                                         (click)="passUserId(itemDetail.userId.userId)"
                                                         data-target="#errorModal" data-toggle="modal"><i
-                                                        class="fa fa-refresh"></i> Exchange?
+                                                        class="fa fa-refresh"></i> Barter?
                                                 </button>
                                             </li>
                                             <li *ngIf="interestCreated">
-                                                <button type="button" class="btn btn-default btn-xs"
-                                                        (click)="passUserId(itemDetail.userId.userId)"><i
-                                                        class="fa fa-thumbs-up text-success"></i>Expressed Interest. Modify?
-                                                </button>
+                                                <div class="alert alert-success" role="alert">Congratulations! You made an offer  <i
+                                                        class="fa fa-thumbs-up"></i></div>
                                             </li>
                                         </ul>
                                         <div *ngIf="showInterests">
@@ -104,26 +102,27 @@
             <div class="container" *ngIf="interestsOrOffers">
                 <div class="row">
                     <div class="col-sm-12">
-                             <div class="tab-content style2">
-                                 <div class="container">
-                                     <div class="row">
-
-                                         <ng-container *ngFor="let interest of interestsOrOffers.interests">
-                                         <div class="col-xs-1">
-                                             <label for="test">{{interest.interestedUser.firstName}}<span class="text-primary">(120)</span></label>
-                                             <img id ="test" style="max-width: 50%;" class="img-circle" src="{{interest.interestedUser.imageUrl}}" alt="message user image">
-                                         </div>
-
-                                         <div class="col-xs-4">
-                                             Hi ! I am {{interest.interestedUser.firstName}}. I am interested in this item
-                                         </div>
-
-                                         <div class="col-xs-2">
-                                             12/20/2017
-                                         </div>
-                                         </ng-container>
-                                     </div>
-                                 </div>
+                        <div class="tab-content style2">
+                            <div class="container">
+                                <ng-container *ngFor="let interest of interestsOrOffers.interests">
+                                <div class="row">
+                                        <div class="col-xs-1 text-right">
+                                            <img id="test" style="max-width: 80%;" class="img-circle"
+                                                 src="{{interest.interestedUser.imageUrl}}" alt="message user image">
+                                        </div>
+                                        <div class="col-xs-10 text-left">
+                                            <h6>
+                                                {{interest.interestedUser.displayName}}
+                                            </h6>
+                                            <p>
+                                                is interested in your item and has offered an exchange. <i
+                                                    class="fa fa-commenting-o text-warning fa-2x"></i>
+                                            </p>
+                                            <hr>
+                                        </div>
+                                </div>
+                                </ng-container>
+                            </div>
                         </div>
                     </div>
                 </div>
