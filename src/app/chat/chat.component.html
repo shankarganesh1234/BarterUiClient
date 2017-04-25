@@ -1,0 +1,120 @@
+<div>
+    <div>
+        <div>
+            <div *ngIf="interest" class="container">
+                <div class="row">
+                    <div class="col-sm-5 pre-scrollable">
+                        <div class="tab-content style2">
+                            <div class='item active'>
+                                <figure>
+                                    <img src="{{interest.originalItemId.image_id.url}}" alt=''/>
+                                </figure>
+                            </div><!-- end item -->
+                            <div class="tab-pane active" id="description">
+                                <h5>{{interest.originalItemId.title}}</h5>
+                                <span>{{interest.originalItemId.description}}
+                    </span>
+                                <hr class="spacer-15">
+                                <dl>
+                                    <dt>Category</dt>
+                                    <dd>{{interest.originalItemId.categoryId.categoryName}}</dd>
+                                    <dt>Location</dt>
+                                    <dd>{{interest.originalItemId.zipCode.zipCode}}</dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-2">
+                        <i class="fa fa-refresh fa-3x" aria-hidden="true"></i>
+                    </div>
+
+                    <div class="col-sm-5 pre-scrollable">
+                        <div class="tab-content style2">
+                            <div class='item active'>
+                                <figure>
+                                    <img src="{{interest.swappableItemId.image_id.url}}" alt=''/>
+                                </figure>
+                            </div><!-- end item -->
+                            <div class="tab-pane active" id="description">
+                                <h5>{{interest.swappableItemId.title}}</h5>
+                                <p>{{interest.swappableItemId.description}}
+                                </p>
+                                <hr class="spacer-15">
+                                <dl>
+                                    <dt>Category</dt>
+                                    <dd>{{interest.swappableItemId.categoryId.categoryName}}</dd>
+                                    <dt>Location</dt>
+                                    <dd>{{interest.swappableItemId.zipCode.zipCode}}</dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <hr/>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="box box-default chat-box chat-box-primary box-solid">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">
+                                    Direct Chat
+                                    <span data-toggle="tooltip" title="3 New Messages"
+                                          class="badge bg-light-blue">3</span>
+                                </h3>
+
+                            </div><!-- /.box-header -->
+                            <div class="box-body">
+                                <!-- Conversations are loaded here -->
+                                <div class="chat-box-messages">
+                                    <!-- Message. Default to the left -->
+                                    <div class="chat-box-msg">
+                                        <div class="chat-box-info clearfix">
+                                            <span class="chat-box-name pull-left">Zachary Banks</span>
+                                            <span class="chat-box-timestamp pull-right">23 Jan 2:00 pm</span>
+                                        </div><!-- /.chat-box-info -->
+                                        <img class="chat-box-img" src="http://i.pravatar.cc/128?img=19"
+                                             alt="message user image">
+                                        <!-- /.chat-box-img -->
+                                        <div class="chat-box-text">
+                                            You are never too old to set another goal or to dream a new dream.
+                                        </div><!-- /.chat-box-text -->
+                                    </div><!-- /.chat-box-msg -->
+
+                                    <!-- Message to the right -->
+                                    <div class="chat-box-msg right">
+                                        <div class="chat-box-info clearfix">
+                                            <span class="chat-box-name pull-right">Hannah Watkins</span>
+                                            <span class="chat-box-timestamp pull-left">23 Jan 2:05 pm</span>
+                                        </div><!-- /.chat-box-info -->
+                                        <img class="chat-box-img" src="http://i.pravatar.cc/128?img=12"
+                                             alt="message user image">
+                                        <!-- /.chat-box-img -->
+                                        <div class="chat-box-text">
+                                            In order to succeed, we must first believe that we can.
+                                        </div><!-- /.chat-box-text -->
+                                    </div><!-- /.chat-box-msg -->
+                                </div><!--/.chat-box-messages-->
+                            </div><!-- /.box-body -->
+                            <div class="box-footer">
+                                <form action="#" method="post">
+                                    <div class="input-group">
+                                        <input type="text" name="message" placeholder="Type Message ..."
+                                               class="form-control focus-primary" id="chatMessageInput" #chatMessageInput>
+                                        <span class="input-group-btn">
+                  <button type="button" class="btn btn-primary btn-flat" (click)="sendMessage(chatMessageInput.value)">Send</button>
+                </span>
+                                    </div>
+                                </form>
+                            </div><!-- /.box-footer-->
+                        </div><!--/.chat-box -->
+                    </div>
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>

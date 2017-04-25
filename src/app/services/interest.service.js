@@ -26,6 +26,11 @@ var InterestService = (function () {
         this.options = new http_1.RequestOptions({ headers: this.headers });
         this.urls = new url_values_1.GlobalUrls();
     }
+    InterestService.prototype.getInterestById = function (interestId) {
+        return this.http.get(this.urls.getInterestById + interestId, this.options)
+            .map(this.extractData)
+            .catch(this.handleError);
+    };
     InterestService.prototype.createInterest = function (createInterest) {
         var body = JSON.stringify(createInterest);
         return this.http.post(this.urls.createInterestUrl, body, this.options)

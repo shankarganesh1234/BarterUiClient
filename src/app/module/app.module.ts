@@ -31,6 +31,7 @@ import {MyReviewsComponent} from "../myaccount/myaccount-detail/my-reviews/my-re
 import {MyNotificationsComponent} from "../myaccount/myaccount-detail/my-notifications/my-notifications.component";
 import {HomeComponent} from "../home/home.component";
 import {FooterComponent} from "../footer/footer.component";
+import {ChatComponent} from "../chat/chat.component";
 
 
 @NgModule({
@@ -62,7 +63,8 @@ import {FooterComponent} from "../footer/footer.component";
                 MyReviewsComponent,
                 MyNotificationsComponent,
                 HomeComponent,
-                FooterComponent],
+                FooterComponent,
+                ChatComponent],
     bootstrap: [LandingComponent],
     providers: [SearchService, CategoryService, ItemService, InterestService, LoginService, UserService]
 })

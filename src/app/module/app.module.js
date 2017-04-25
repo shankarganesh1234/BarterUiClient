@@ -41,6 +41,7 @@ var my_reviews_component_1 = require("../myaccount/myaccount-detail/my-reviews/m
 var my_notifications_component_1 = require("../myaccount/myaccount-detail/my-notifications/my-notifications.component");
 var home_component_1 = require("../home/home.component");
 var footer_component_1 = require("../footer/footer.component");
+var chat_component_1 = require("../chat/chat.component");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -74,7 +75,8 @@ var AppModule = (function () {
                 my_reviews_component_1.MyReviewsComponent,
                 my_notifications_component_1.MyNotificationsComponent,
                 home_component_1.HomeComponent,
-                footer_component_1.FooterComponent],
+                footer_component_1.FooterComponent,
+                chat_component_1.ChatComponent],
             bootstrap: [landing_component_1.LandingComponent],
             providers: [search_service_1.SearchService, category_service_1.CategoryService, item_service_1.ItemService, interest_service_1.InterestService, login_service_1.LoginService, user_service_1.UserService]
         }), 

@@ -26,6 +26,12 @@ export class InterestService {
         this.urls = new GlobalUrls();
     }
 
+    getInterestById(interestId: string): Observable<Interest> {
+        return this.http.get(this.urls.getInterestById + interestId, this.options)
+            .map(this.extractData)
+            .catch(this.handleError);
+    }
+
     createInterest(createInterest: CreateInterest): Observable<boolean> {
         let body = JSON.stringify(createInterest);
         return this.http.post(this.urls.createInterestUrl, body, this.options)

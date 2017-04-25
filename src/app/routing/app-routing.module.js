@@ -14,11 +14,13 @@ var myaccount_detail_component_1 = require("../myaccount/myaccount-detail/myacco
 var get_item_component_1 = require("../item/get-item/get-item.component");
 var item_list_component_1 = require("../items/item-list.component");
 var home_component_1 = require("../home/home.component");
+var chat_component_1 = require("../chat/chat.component");
 var routes = [
     { path: '', component: home_component_1.HomeComponent, pathMatch: 'full' },
     { path: 'search/:search/:zip', component: item_list_component_1.ItemListComponent },
     { path: 'item/:itemId', component: get_item_component_1.ItemDetailComponent },
-    { path: 'my-account/:component', component: myaccount_detail_component_1.MyAccountDetailComponent }
+    { path: 'my-account/:component', component: myaccount_detail_component_1.MyAccountDetailComponent },
+    { path: 'chat/:interestId', component: chat_component_1.ChatComponent }
 ];
 var AppRoutingModule = (function () {
     function AppRoutingModule() {

@@ -20,6 +20,7 @@ var GlobalUrls = (function () {
         this.getChatForOriginalUser = "http://localhost:8080/customServer/chat/originaluser/";
         this.getChatForInterestedUser = "http://localhost:8080/customServer/chat/interestedUser/";
         this.getInterests = "http://localhost:8080/customServer/interest?";
+        this.getInterestById = "http://localhost:8080/customServer/interest/";
     }
     return GlobalUrls;
 }());

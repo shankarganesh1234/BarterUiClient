@@ -107,16 +107,20 @@
                                 <ng-container *ngFor="let interest of interestsOrOffers.interests">
                                 <div class="row">
                                         <div class="col-xs-1 text-right">
+                                            <a [routerLink]="['/chat', interest.interestId]">
                                             <img id="test" style="max-width: 80%;" class="img-circle"
-                                                 src="{{interest.interestedUser.imageUrl}}" alt="message user image">
+                                                 src="{{interest.interestedUser.imageUrl}}">
+                                            </a>
                                         </div>
                                         <div class="col-xs-10 text-left">
                                             <h6>
+                                                <a [routerLink]="['/chat', interest.interestId]">
                                                 {{interest.interestedUser.displayName}}
+                                                </a>
                                             </h6>
                                             <p>
-                                                is interested in your item and has offered an exchange. <i
-                                                    class="fa fa-commenting-o text-warning fa-2x"></i>
+                                                is interested in your item and has offered an exchange.
+                                                <a [routerLink]="['/chat', interest.interestId]"><i class="fa fa-commenting-o text-warning fa-2x"></i></a>
                                             </p>
                                             <hr>
                                         </div>
