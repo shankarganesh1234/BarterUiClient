@@ -67,19 +67,23 @@
                                             <dt>Location</dt>
                                             <dd>{{itemDetail.zipCode.zipCode}}</dd>
                                         </dl>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                <div class="col-sm-12 col-md-6 text-left">
 
                                         <ul class="list list-inline">
                                             <li *ngIf="!interestCreated">
-                                                <button type="button" class="btn btn-default btn-md round"
+                                                <button type="button" class="btn btn-default btn-xs"
                                                         (click)="passUserId(itemDetail.userId.userId)"
                                                         data-target="#errorModal" data-toggle="modal"><i
-                                                        class="fa fa-heart mr-5"></i>Interested ?
+                                                        class="fa fa-refresh"></i> Exchange?
                                                 </button>
                                             </li>
                                             <li *ngIf="interestCreated">
-                                                <button type="button" class="btn btn-success round btn-md"
+                                                <button type="button" class="btn btn-default btn-xs"
                                                         (click)="passUserId(itemDetail.userId.userId)"><i
-                                                        class="fa fa-heart mr-5"></i>Expressed Interest. Modify?
+                                                        class="fa fa-thumbs-up text-success"></i>Expressed Interest. Modify?
                                                 </button>
                                             </li>
                                         </ul>
