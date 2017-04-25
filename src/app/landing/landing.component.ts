@@ -6,6 +6,7 @@ import {ComponentEventService} from "../services/component-event.service";
     moduleId: module.id,
     selector: 'swap-landing',
     templateUrl: `landing.component.html`,
+    styleUrls: ['landing.component.css'],
     providers: [ComponentEventService]
 })
 export class LandingComponent implements OnInit {
