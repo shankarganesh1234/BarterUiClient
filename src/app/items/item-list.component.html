@@ -1,8 +1,13 @@
 <div *ngIf="searchResponse" class="container">
     <div class="row">
-        <h6>Showing items available for exchange in : {{searchRequest.zip}}</h6>
+        <h6 class="regular text-left">
+            Showing items available in
+            <small class="text-muted">{{searchRequest.zip}}</small>
+        </h6>
     </div>
 
+    <hr class="spacer-5">
+    <hr class="spacer-20 no-border">
     <div class="row">
         <div id="fh5co-board" data-columns="3">
             <div class="column size-1of3">
@@ -16,7 +21,7 @@
                                     src="{{item.imageUrl}}" alt="Free HTML5 Bootstrap template"></a>
                         </div>
                         <div class="fh5co-desc">
-                            <h6>
+                            <h6 class="regular">
                                 <a (click)="routeToItemDetail(item.itemId)">{{item.title}}</a>
                             </h6>
                         </div>
@@ -36,7 +41,7 @@
                                 src="{{item.imageUrl}}" alt="Free HTML5 Bootstrap template" class="front"></a>
                     </div>
                     <div class="fh5co-desc">
-                        <h6>
+                        <h6 class="regular">
                             <a (click)="routeToItemDetail(item.itemId)">{{item.title}}</a>
                         </h6>
                     </div>
@@ -54,7 +59,7 @@
                                 src="{{item.imageUrl}}" alt="Free HTML5 Bootstrap template"></a>
                     </div>
                     <div class="fh5co-desc">
-                        <h6>
+                        <h6 class="regular">
                             <a (click)="routeToItemDetail(item.itemId)">{{item.title}}</a>
                         </h6>
                     </div>

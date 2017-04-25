@@ -30,6 +30,7 @@ import {MyOffersComponent} from "../myaccount/myaccount-detail/my-offers/my-offe
 import {MyReviewsComponent} from "../myaccount/myaccount-detail/my-reviews/my-reviews.component";
 import {MyNotificationsComponent} from "../myaccount/myaccount-detail/my-notifications/my-notifications.component";
 import {HomeComponent} from "../home/home.component";
+import {FooterComponent} from "../footer/footer.component";
 
 
 @NgModule({
@@ -60,7 +61,8 @@ import {HomeComponent} from "../home/home.component";
                 MyOffersComponent,
                 MyReviewsComponent,
                 MyNotificationsComponent,
-                HomeComponent],
+                HomeComponent,
+                FooterComponent],
     bootstrap: [LandingComponent],
     providers: [SearchService, CategoryService, ItemService, InterestService, LoginService, UserService]
 })
