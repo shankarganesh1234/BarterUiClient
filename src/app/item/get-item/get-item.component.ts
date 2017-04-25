@@ -50,6 +50,7 @@ export class ItemDetailComponent implements OnInit, OnChanges, OnDestroy {
 
 
        let routeItemId = +this.route.snapshot.params['itemId'];
+       this.itemId = routeItemId;
        this.getItem(routeItemId);
        this.interestCreated = false;
     }
@@ -81,10 +82,10 @@ export class ItemDetailComponent implements OnInit, OnChanges, OnDestroy {
 
     getInterests(itemDetail: ItemDetail) {
 
-        let itemId = this.itemDetail.itemId;
+        let itemId = "" + this.itemDetail.itemId;
         let userId = this.loggedInUser.getLoggedInUser().id;
         let isOwner: boolean;
-        if(this.itemDetail.userId.id == userId)
+        if(this.itemDetail.userId.userId == userId)
             isOwner = true;
         else
             isOwner = false;

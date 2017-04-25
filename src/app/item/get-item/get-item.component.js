@@ -31,6 +31,7 @@ var ItemDetailComponent = (function () {
             _this.interestCreated = result;
         });
         var routeItemId = +this.route.snapshot.params['itemId'];
+        this.itemId = routeItemId;
         this.getItem(routeItemId);
         this.interestCreated = false;
     };
@@ -55,10 +56,10 @@ var ItemDetailComponent = (function () {
     };
     ItemDetailComponent.prototype.getInterests = function (itemDetail) {
         var _this = this;
-        var itemId = this.itemDetail.itemId;
+        var itemId = "" + this.itemDetail.itemId;
         var userId = this.loggedInUser.getLoggedInUser().id;
         var isOwner;
-        if (this.itemDetail.userId.id == userId)
+        if (this.itemDetail.userId.userId == userId)
             isOwner = true;
         else
             isOwner = false;
