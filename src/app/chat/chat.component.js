@@ -11,11 +11,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var interest_service_1 = require("../services/interest.service");
+var chat_info_1 = require("../models/chat-info");
 var ChatComponent = (function () {
     function ChatComponent(route, interestService) {
         this.route = route;
         this.interestService = interestService;
         this.appId = 'A462E51A-2201-420F-95DD-83FF72881871';
+        this.chats = [];
     }
     ChatComponent.prototype.ngOnInit = function () {
         var interestId = this.route.snapshot.params['interestId'];
@@ -53,7 +55,10 @@ var ChatComponent = (function () {
                                 var ChannelHandler = new _this.sb.ChannelHandler();
                                 ChannelHandler.onMessageReceived = function (channel, message) {
                                     console.log(channel, message);
-                                };
+                                    if (message != null) {
+                                        this.chats.push(this.createChatInfo(message._sender.userId, this.interest, message.message));
+                                    }
+                                }.bind(_this);
                                 _this.sb.addChannelHandler(uniqueChannelId, ChannelHandler);
                                 console.log('channel created' + uniqueChannelId);
                             }
@@ -67,9 +72,33 @@ var ChatComponent = (function () {
         });
     };
     ChatComponent.prototype.sendMessage = function (messageBody) {
+        var _this = this;
         this.chatChannel.sendUserMessage(messageBody, null, null, function (result) {
             console.log(result);
+            if (result != null) {
+                _this.chats.push(_this.createChatInfo(result._sender.userId, _this.interest, messageBody));
+            }
         });
+    };
+    ChatComponent.prototype.createChatInfo = function (userId, interest, message) {
+        var chatInfo = new chat_info_1.ChatInfo();
+        var dt = new Date();
+        var utcDate = dt.toUTCString();
+        if (userId != null) {
+            if (userId == interest.originalUser.userId) {
+                chatInfo.userImageUrl = interest.originalUser.imageUrl;
+                chatInfo.userName = interest.originalUser.displayName;
+                chatInfo.message = message;
+                chatInfo.timestamp = utcDate;
+            }
+            else {
+                chatInfo.userImageUrl = interest.interestedUser.imageUrl;
+                chatInfo.userName = interest.interestedUser.displayName;
+                chatInfo.message = message;
+                chatInfo.timestamp = utcDate;
+            }
+        }
+        return chatInfo;
     };
     ChatComponent = __decorate([
         core_1.Component({
