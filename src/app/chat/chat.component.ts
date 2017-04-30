@@ -8,8 +8,8 @@ import {ChatInfo} from "../models/chat-info";
 @Component({
     moduleId: module.id,
     selector: 'swap-chat',
-    templateUrl: `chat.component.html`,
-    styleUrls:['chat.component.css', 'chat-item.component.css']
+    templateUrl: `./chat.component.html`,
+    styleUrls:['./chat.component.css', './chat-item.component.css']
 })
 export class ChatComponent implements OnInit {
 

@@ -13,8 +13,8 @@ declare var $: any;
 @Component({
     moduleId: module.id,
     selector: 'swap-get-item',
-    templateUrl: 'get-item.component.html',
-    styleUrls: ['get-item.component.css']
+    templateUrl: './get-item.component.html',
+    styleUrls: ['./get-item.component.css']
 })
 
 export class ItemDetailComponent implements OnInit, OnChanges, OnDestroy {

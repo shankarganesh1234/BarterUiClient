@@ -12,7 +12,7 @@
         <div id="fh5co-board" data-columns="3">
             <div class="column size-1of3">
                 <ng-container
-                        *ngFor="let item of searchResponse.items  | paginate: { itemsPerPage: searchResponse.limit, currentPage: searchResponse.page, totalItems: searchResponse.total }; let i=index">
+                        *ngFor="let item of searchResponse.items; let i=index">
 
                     <div class="item" *ngIf="i%3 == 0">
                         <div class="animate-box bounceIn animated">
@@ -32,7 +32,7 @@
 
           <div class="column size-1of3">
             <ng-container
-                    *ngFor="let item of searchResponse.items  | paginate: { itemsPerPage: searchResponse.limit, currentPage: searchResponse.page, totalItems: searchResponse.total }; let j=index">
+                    *ngFor="let item of searchResponse.items; let j=index">
 
                 <div class="item" *ngIf="j%3 == 1">
                     <div class="animate-box bounceIn animated">
@@ -50,7 +50,7 @@
         </div>
         <div class="column size-1of3">
             <ng-container
-                    *ngFor="let item of searchResponse.items  | paginate: { itemsPerPage: searchResponse.limit, currentPage: searchResponse.page, totalItems: searchResponse.total }; let k=index">
+                    *ngFor="let item of searchResponse.items; let k=index">
 
                 <div class="item" *ngIf="k%3 == 2">
                     <div class="animate-box bounceIn animated">
@@ -66,13 +66,6 @@
                 </div>
             </ng-container>
         </div>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-sm-12">
-            <pagination-controls
-                    (pageChange)="paginatedResults($event, searchResponse.limit, searchResponse.search, searchResponse.zip)"></pagination-controls>
         </div>
     </div>
 </div>

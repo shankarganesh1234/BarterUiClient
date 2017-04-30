@@ -11,8 +11,8 @@ declare const $: any;
 @Component({
     moduleId: module.id,
     selector: 'swap-item',
-    templateUrl: 'item.component.html',
-    styleUrls: ['item.component.css']
+    templateUrl: './item.component.html',
+    styleUrls: ['./item.component.css']
 })
 
 export class ItemComponent implements OnInit {

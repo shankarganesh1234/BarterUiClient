@@ -11,8 +11,8 @@ declare const FB:any;
 @Component({
     moduleId: module.id,
     selector: 'swap-login',
-    templateUrl: 'login.component.html',
-    styleUrls: ['login.component.css']
+    templateUrl: './login.component.html',
+    styleUrls: ['./login.component.css']
 })
 
 export class LoginComponent extends LoggedInUser implements OnInit {
