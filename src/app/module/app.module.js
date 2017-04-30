@@ -12,8 +12,8 @@ var core_1 = require("@angular/core");
 var platform_browser_1 = require("@angular/platform-browser");
 var forms_1 = require("@angular/forms");
 var app_component_1 = require("../app-component/app.component");
-var search_service_1 = require("../search/search.service");
-var category_service_1 = require("../category/category.service");
+var search_service_1 = require("../services/search.service");
+var category_service_1 = require("../services/category.service");
 var item_list_component_1 = require("../items/item-list.component");
 var category_component_1 = require("../category/category.component");
 var app_routing_module_1 = require("../routing/app-routing.module");
@@ -23,15 +23,15 @@ var header_component_1 = require("../header/header.component");
 var search_bar_component_1 = require("../search-bar/search-bar.component");
 var ng2_pagination_1 = require("ng2-pagination");
 var item_component_1 = require("../item/create-item/item.component");
-var item_service_1 = require("../item/service/item.service");
+var item_service_1 = require("../services/item.service");
 var get_item_component_1 = require("../item/get-item/get-item.component");
 var interest_options_component_1 = require("../interest/get-options/interest-options.component");
-var interest_service_1 = require("../interest/service/interest.service");
+var interest_service_1 = require("../services/interest.service");
 var login_component_1 = require("../login/login.component");
-var login_service_1 = require("../login/service/login.service");
+var login_service_1 = require("../services/login.service");
 var error_modal_component_1 = require("../errors/error-modal.component");
 var myaccount_component_1 = require("../myaccount/myaccount.component");
-var user_service_1 = require("../user/service/user.service");
+var user_service_1 = require("../services/user.service");
 var myaccount_detail_component_1 = require("../myaccount/myaccount-detail/myaccount-detail.component");
 var my_profile_component_1 = require("../myaccount/myaccount-detail/my-profile/my-profile.component");
 var my_interests_component_1 = require("../myaccount/myaccount-detail/my-interests/my-interests.component");
@@ -39,6 +39,9 @@ var my_items_component_1 = require("../myaccount/myaccount-detail/my-items/my-it
 var my_offers_component_1 = require("../myaccount/myaccount-detail/my-offers/my-offers.component");
 var my_reviews_component_1 = require("../myaccount/myaccount-detail/my-reviews/my-reviews.component");
 var my_notifications_component_1 = require("../myaccount/myaccount-detail/my-notifications/my-notifications.component");
+var home_component_1 = require("../home/home.component");
+var footer_component_1 = require("../footer/footer.component");
+var chat_component_1 = require("../chat/chat.component");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -70,7 +73,10 @@ var AppModule = (function () {
                 my_items_component_1.MyItemsComponent,
                 my_offers_component_1.MyOffersComponent,
                 my_reviews_component_1.MyReviewsComponent,
-                my_notifications_component_1.MyNotificationsComponent],
+                my_notifications_component_1.MyNotificationsComponent,
+                home_component_1.HomeComponent,
+                footer_component_1.FooterComponent,
+                chat_component_1.ChatComponent],
             bootstrap: [landing_component_1.LandingComponent],
             providers: [search_service_1.SearchService, category_service_1.CategoryService, item_service_1.ItemService, interest_service_1.InterestService, login_service_1.LoginService, user_service_1.UserService]
         }), 

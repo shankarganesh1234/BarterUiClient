@@ -5,8 +5,8 @@ import "rxjs/add/operator/toPromise";
 import {Observable} from "rxjs/Rx";
 import "rxjs/add/operator/map";
 import "rxjs/add/operator/catch";
-import {GlobalUrls} from "../urls/url-values";
-import {ChatDetails} from "../myaccount/myaccount-detail/my-notifications/chat-details";
+import {GlobalUrls} from "../utils/url-values";
+import {ChatDetails} from "../models/chat-details";
 
 @Injectable()
 export class ChatService {

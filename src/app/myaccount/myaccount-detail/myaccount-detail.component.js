@@ -14,8 +14,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var loggedInUser_1 = require("../../user/loggedInUser");
-var component_event_service_1 = require("../../component-events/component-event.service");
+var loggedInUser_1 = require("../../storage-utils/loggedInUser");
+var component_event_service_1 = require("../../services/component-event.service");
 var router_1 = require("@angular/router");
 var MyAccountDetailComponent = (function (_super) {
     __extends(MyAccountDetailComponent, _super);

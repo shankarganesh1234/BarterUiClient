@@ -1,7 +1,11 @@
-import {Component, OnInit, OnChanges, OnDestroy} from "@angular/core";
-import {ItemService} from "../service/item.service";
-import {ItemDetail} from "../models/item-detail.model";
-import {ComponentEventService} from "../../component-events/component-event.service";
+import {Component, OnChanges, OnDestroy, OnInit} from "@angular/core";
+import {ItemService} from "../../services/item.service";
+import {ItemDetail} from "../../models/item-detail.model";
+import {ComponentEventService} from "../../services/component-event.service";
+import {ActivatedRoute, Params, Router} from "@angular/router";
+import {Interests} from "../../models/interests.model";
+import {InterestService} from "../../services/interest.service";
+import {LoggedInUser} from "../../storage-utils/loggedInUser";
 
 
 declare var $: any;
@@ -27,21 +31,28 @@ export class ItemDetailComponent implements OnInit, OnChanges, OnDestroy {
 
     showInterests: boolean = false;
 
+    interestsOrOffers: Interests;
 
-    constructor(private itemService: ItemService, private componentEventService: ComponentEventService) {
-     }
+    loggedInUser: LoggedInUser = new LoggedInUser();
+
+    constructor(private route: ActivatedRoute,
+                private router: Router,
+                private itemService: ItemService,
+                private componentEventService: ComponentEventService,
+                private interestService: InterestService) {
+    }
 
     ngOnInit(): void {
         this.componentEventService.interestCreated$.subscribe(
             result => {
                 this.interestCreated = result;
             });
-        this.componentEventService.itemId$.subscribe(
-            itemId => {
-                this.itemId = itemId;
-                this.getItem(this.itemId);
-            });
-        this.interestCreated = false;
+
+
+       let routeItemId = +this.route.snapshot.params['itemId'];
+       this.itemId = routeItemId;
+       this.getItem(routeItemId);
+       this.interestCreated = false;
     }
 
     ngOnChanges(): void {
@@ -69,9 +80,28 @@ export class ItemDetailComponent implements OnInit, OnChanges, OnDestroy {
             );
     }
 
-    getItemSuccess(result: ItemDetail) : void {
+    getInterests(itemDetail: ItemDetail) {
+
+        let itemId = "" + this.itemDetail.itemId;
+        let userId = this.loggedInUser.getLoggedInUser().id;
+        let isOwner: boolean;
+        if(this.itemDetail.userId.userId == userId)
+            isOwner = true;
+        else
+            isOwner = false;
+
+        this.interestService
+            .getInterests(userId, itemId, isOwner)
+            .subscribe(
+                result => this.interestsOrOffers = result,
+                error => console.log(error)
+            );
+    }
+
+    getItemSuccess(result: ItemDetail): void {
         this.itemDetail = result;
         this.showItem = true;
+        this.getInterests(result);
     }
 
     passUserId(userId: number) {

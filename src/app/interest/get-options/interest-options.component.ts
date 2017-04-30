@@ -1,12 +1,12 @@
 import {Component, Input, OnInit, OnChanges} from "@angular/core";
-import {ItemService} from "../../item/service/item.service";
-import {ItemDetail} from "../../item/models/item-detail.model";
-import {InterestService} from "../service/interest.service";
-import {CreateInterest} from "../models/create-interest.model";
-import {ComponentEventService} from "../../component-events/component-event.service";
-import {User} from "../../user/user";
-import {LoggedInUser} from "../../user/loggedInUser";
-import {Messages} from "../../messages/messages";
+import {ItemService} from "../../services/item.service";
+import {ItemDetail} from "../../models/item-detail.model";
+import {InterestService} from "../../services/interest.service";
+import {CreateInterest} from "../../models/create-interest.model";
+import {ComponentEventService} from "../../services/component-event.service";
+import {User} from "../../models/user";
+import {LoggedInUser} from "../../storage-utils/loggedInUser";
+import {Messages} from "../../models/error-messages";
 
 
 @Component({

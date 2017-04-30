@@ -14,10 +14,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var login_service_1 = require("./service/login.service");
-var login_request_model_1 = require("./models/login-request.model");
-var component_event_service_1 = require("../component-events/component-event.service");
-var loggedInUser_1 = require("../user/loggedInUser");
+var login_service_1 = require("../services/login.service");
+var login_request_model_1 = require("../models/login-request.model");
+var component_event_service_1 = require("../services/component-event.service");
+var loggedInUser_1 = require("../storage-utils/loggedInUser");
 var LoginComponent = (function (_super) {
     __extends(LoginComponent, _super);
     function LoginComponent(loginService, componentEventService) {
@@ -69,7 +69,7 @@ var LoginComponent = (function (_super) {
     ;
     LoginComponent.prototype.ngOnInit = function () {
         var _this = this;
-        // check if user is logged on on page load
+        // check if storage-utils is logged on on page load
         this.isUserLoggedIn();
         this.componentEventService.userLoggedOut$.subscribe(function (result) {
             if (result == true) {

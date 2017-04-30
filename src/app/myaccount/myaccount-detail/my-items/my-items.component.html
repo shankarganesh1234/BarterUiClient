@@ -1,15 +1,12 @@
 <div class="col-sm-12">
     <div class="row">
         <div class="col-sm-12 text-left">
-            <h2 class="title">My Items</h2>
+            <h6 class="regular text-left">My Items</h6>
+            <a class="page-scroll btn btn-facebook btn-xs" (click)="createNewItem()" href="#item-section">Post your stuff</a>
         </div><!-- end col -->
-    </div><!-- end row -->
-
-    <hr class="spacer-5"><hr class="spacer-20 no-border">
-
-    <div class="row left">
-        <a class="page-scroll btn btn-primary round btn-xs" (click)="createNewItem()" href="#item-section">Create a new listing</a>
     </div>
+
+    <hr class="spacer-5">
 
     <div class="row" *ngIf="((items == null) || (items && items.length == 0))">
         <div class="col-sm-12">
@@ -17,43 +14,69 @@
         </div>
     </div>
 
-    <div class="row" *ngIf="items && items.length > 0">
-        <div class="col-sm-12">
-            <div class="table-responsive">
-                <table class="table table-striped">
-                    <thead>
-                    <tr>
-                        <th class="text-center">#</th>
-                        <th class="text-center">Item</th>
-                        <th class="text-center">Status</th>
-                        <th class="text-center">&nbsp;</th>
-                    </tr>
-                    </thead>
-                    <tbody>
 
-                    <tr *ngFor="let item of items">
-                        <td>
-                            {{item.itemId}}
-                        </td>
-                        <td>
-                            <a href="shop-single-product-v1.html">
-                                <img width="60px" src="{{item.image_id.url}}" alt="{{item.title}}">
-                            </a>
-                            <br/>
-                            <a class="page-scroll" (click)="selectItem(item)" href="#item-section">{{item.title}}</a>
-                        </td>
-                        <td>
-                            <span class="label label-primary">{{item.itemStage}}</span>
-                        </td>
-                        <td>
-                            <a (click)="deleteItem(item.itemId)" class="btn btn-danger round btn-xs">Delete Item</a>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table><!-- end table -->
-            </div><!-- end table-responsive -->
-            <hr class="spacer-10 no-border">
-        </div><!-- end col -->
-    </div><!-- end row -->
-</div><!-- end col -->
+    <div *ngIf="items" class="container">
+        <div class="row">
+            <div id="fh5co-board" data-columns="3">
+                <div class="column size-1of3">
+                    <ng-container
+                            *ngFor="let item of items; let i=index">
+
+                        <div class="item" *ngIf="i%3 == 0">
+                            <div class="animate-box bounceIn animated">
+                                <a href="images/img_1.jpg" class="image-popup fh5co-board-img"
+                                   title="{{item.title}}"><img
+                                        src="{{item.image_id.url}}" alt="Free HTML5 Bootstrap template"></a>
+                            </div>
+                            <div class="fh5co-desc">
+                                <h6>
+                                    <a [routerLink]="['/item', item.itemId]">{{item.title}}</a>
+                                </h6>
+                            </div>
+                        </div>
+
+                    </ng-container>
+                </div>
+
+                <div class="column size-1of3">
+                    <ng-container
+                            *ngFor="let item of items; let j=index">
+
+                        <div class="item" *ngIf="j%3 == 1">
+                            <div class="animate-box bounceIn animated">
+                                <a href="images/img_1.jpg" class="image-popup fh5co-board-img"
+                                   title="{{item.title}}"><img
+                                        src="{{item.image_id.url}}" alt="Free HTML5 Bootstrap template" class="front"></a>
+                            </div>
+                            <div class="fh5co-desc">
+                                <h6>
+                                    <a [routerLink]="['/item', item.itemId]">{{item.title}}</a>
+                                </h6>
+                            </div>
+                        </div>
+                    </ng-container>
+                </div>
+                <div class="column size-1of3">
+                    <ng-container
+                            *ngFor="let item of items; let k=index">
+
+                        <div class="item" *ngIf="k%3 == 2">
+                            <div class="animate-box bounceIn animated">
+                                <a href="images/img_1.jpg" class="image-popup fh5co-board-img"
+                                   title="{{item.title}}"><img
+                                        src="{{item.image_id.url}}" alt="Free HTML5 Bootstrap template"></a>
+                            </div>
+                            <div class="fh5co-desc">
+                                <h6>
+                                    <a [routerLink]="['/item', item.itemId]">{{item.title}}</a>
+                                </h6>
+                            </div>
+                        </div>
+                    </ng-container>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 

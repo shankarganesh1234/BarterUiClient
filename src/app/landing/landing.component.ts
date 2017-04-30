@@ -1,11 +1,12 @@
 import {Component, OnDestroy, OnInit} from "@angular/core";
-import {SearchResponse} from "../search/search-response";
-import {ComponentEventService} from "../component-events/component-event.service";
+import {SearchResponse} from "../models/search-response";
+import {ComponentEventService} from "../services/component-event.service";
 
 @Component({
     moduleId: module.id,
     selector: 'swap-landing',
     templateUrl: `landing.component.html`,
+    styleUrls: ['landing.component.css'],
     providers: [ComponentEventService]
 })
 export class LandingComponent implements OnInit {

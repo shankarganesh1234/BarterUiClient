@@ -1,15 +1,14 @@
 import {Component, OnInit, EventEmitter, Output} from "@angular/core";
-import {SearchService} from "../search/search.service";
-import {SearchResponse} from "../search/search-response";
+import {SearchService} from "../services/search.service";
 import {Observable} from "rxjs/Observable";
 import {Subject} from "rxjs/Subject";
 import "rxjs/add/observable/of";
 import "rxjs/add/operator/catch";
 import "rxjs/add/operator/debounceTime";
 import "rxjs/add/operator/distinctUntilChanged";
-import {Item} from "../item/models/item.model";
-import {SearchBar} from "./search-bar";
-import {ComponentEventService} from "../component-events/component-event.service";
+import {Item} from "../models/item.model";
+import {SearchBar} from "../models/search-bar";
+import {Router} from "@angular/router";
 
 @Component({
     moduleId: module.id,
@@ -23,7 +22,7 @@ export class SearchBarComponent implements OnInit {
 
     private searchQueries = new Subject<string>();
 
-    constructor(private searchService: SearchService, private componentEventService: ComponentEventService) {
+    constructor(private router: Router, private searchService: SearchService) {
     }
 
     searchBarModel:SearchBar;
@@ -57,18 +56,9 @@ export class SearchBarComponent implements OnInit {
 
 
     search(searchBarModel: SearchBar): void {
-
         localStorage.setItem("postal_code", searchBarModel.zip);
-        this.searchService
-            .search(searchBarModel)
-            .subscribe(
-                result => this.success(result),
-                error => console.log(error)
-            );
+        this.router.navigate(['/search', searchBarModel.search, searchBarModel.zip]);
     }
 
-    success(result: any): void {
-        this.componentEventService.searchBarClicked(result);
-     }
 }
 

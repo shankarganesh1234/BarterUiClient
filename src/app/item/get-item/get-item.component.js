@@ -9,24 +9,30 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var item_service_1 = require("../service/item.service");
-var component_event_service_1 = require("../../component-events/component-event.service");
+var item_service_1 = require("../../services/item.service");
+var component_event_service_1 = require("../../services/component-event.service");
+var router_1 = require("@angular/router");
+var interest_service_1 = require("../../services/interest.service");
+var loggedInUser_1 = require("../../storage-utils/loggedInUser");
 var ItemDetailComponent = (function () {
-    function ItemDetailComponent(itemService, componentEventService) {
+    function ItemDetailComponent(route, router, itemService, componentEventService, interestService) {
+        this.route = route;
+        this.router = router;
         this.itemService = itemService;
         this.componentEventService = componentEventService;
+        this.interestService = interestService;
         this.showItem = false;
         this.showInterests = false;
+        this.loggedInUser = new loggedInUser_1.LoggedInUser();
     }
     ItemDetailComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.componentEventService.interestCreated$.subscribe(function (result) {
             _this.interestCreated = result;
         });
-        this.componentEventService.itemId$.subscribe(function (itemId) {
-            _this.itemId = itemId;
-            _this.getItem(_this.itemId);
-        });
+        var routeItemId = +this.route.snapshot.params['itemId'];
+        this.itemId = routeItemId;
+        this.getItem(routeItemId);
         this.interestCreated = false;
     };
     ItemDetailComponent.prototype.ngOnChanges = function () {
@@ -48,9 +54,23 @@ var ItemDetailComponent = (function () {
             .getItem(itemId)
             .subscribe(function (result) { return _this.getItemSuccess(result); }, function (error) { return console.log(error); });
     };
+    ItemDetailComponent.prototype.getInterests = function (itemDetail) {
+        var _this = this;
+        var itemId = "" + this.itemDetail.itemId;
+        var userId = this.loggedInUser.getLoggedInUser().id;
+        var isOwner;
+        if (this.itemDetail.userId.userId == userId)
+            isOwner = true;
+        else
+            isOwner = false;
+        this.interestService
+            .getInterests(userId, itemId, isOwner)
+            .subscribe(function (result) { return _this.interestsOrOffers = result; }, function (error) { return console.log(error); });
+    };
     ItemDetailComponent.prototype.getItemSuccess = function (result) {
         this.itemDetail = result;
         this.showItem = true;
+        this.getInterests(result);
     };
     ItemDetailComponent.prototype.passUserId = function (userId) {
         this.userId = userId;
@@ -63,7 +83,7 @@ var ItemDetailComponent = (function () {
             templateUrl: 'get-item.component.html',
             styleUrls: ['get-item.component.css']
         }), 
-        __metadata('design:paramtypes', [item_service_1.ItemService, component_event_service_1.ComponentEventService])
+        __metadata('design:paramtypes', [router_1.ActivatedRoute, router_1.Router, item_service_1.ItemService, component_event_service_1.ComponentEventService, interest_service_1.InterestService])
     ], ItemDetailComponent);
     return ItemDetailComponent;
 }());

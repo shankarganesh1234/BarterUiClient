@@ -1,59 +1,36 @@
-<div class="row">
-    <div class="col-lg-12">
-        <h1>Bartery</h1>
-        <p><strong>Enter your zip code to start looking at things to barter</strong></p>
-    </div>
-</div>
-<form *ngIf="true" class="form-inline" #searchBarForm="ngForm"  (ngSubmit)="search(searchBarModel)">
-    <div class="row">
-    <div class="form-group input-group input-group-lg col-lg-7">
-        <input type="text" id="searchBox"
-               [(ngModel)]="searchBarModel.search" class="form-control" name="searchBox" placeholder="Search"
-               aria-describedby="sizing-addon1" (keyup)="autocomplete(searchBox.value)" #searchBox="ngModel">
-    </div>
-    <div class="form-group input-group input-group-lg col-lg-1">
-        <input type="text"
-               [(ngModel)]="searchBarModel.zip" id="postalCode" required minlength="5" maxlength="5"
-               class="form-control" name="postalCode" placeholder="Zip" #postalCode="ngModel">
-    </div>
-    </div>
+    <form *ngIf="true" class="form-inline" #searchBarForm="ngForm"  (ngSubmit)="search(searchBarModel)">
 
-    <div class="row lg col-lg-8 col-md-offset-2">
-    <div *ngIf="postalCode.errors && (postalCode.dirty || postalCode.touched)"
-         class="alert alert-danger">
-        <div [hidden]="!postalCode.errors.required">
-            Zip code is required
+        <div class="form-group input-group input-group-sm col-md-6">
+            <input type="text" id="searchBox"
+                   [(ngModel)]="searchBarModel.search" class="form-control" name="searchBox" placeholder="What are you looking for?"
+                   aria-describedby="sizing-addon1" (keyup)="autocomplete(searchBox.value)" #searchBox="ngModel">
         </div>
-        <div [hidden]="!postalCode.errors.minlength">
-            Zip code must be at least 5 digits long
+        <div class="form-group input-group input-group-sm col-md-2">
+            <input type="text"
+                   [(ngModel)]="searchBarModel.zip" id="postalCode" required minlength="5" maxlength="5"
+                   class="form-control" name="postalCode" placeholder="Enter zip code" #postalCode="ngModel">
         </div>
-        <div [hidden]="!postalCode.errors.maxlength">
-            Zip code cannot be more than 5 digits long
-        </div>
-    </div>
-    </div>
-
-    <div class="input-group input-group-lg col-lg-12">
-        <p></p>
-        <button class="btn btn-default btn-lg page-scroll" type="submit">Show me!</button>
-    </div>
-</form>
-
-
-<!--<div class="input-group input-group-lg col-lg-12">-->
-<!--<input type="text" id="searchBox" #searchBox class="form-control" placeholder="Address, city, state, zip"-->
-<!--aria-describedby="sizing-addon1" (keyup)="autocomplete(searchBox.value)">-->
-<!--</div>-->
-
-<!-- Disabling auto complete for now -->
-<!--<div *ngFor="let item of observableTitles | async" class="search-result"-->
-<!--(click)="searchBox.value = item.title; search(item.title)">-->
-<!--<a>{{item.title}}</a>-->
-<!--</div>-->
+        <button class="btn btn-behance btn-xs" type="submit" style="vertical-align: baseline">Search</button>
+    </form>
 
 
 
-<!--<div *ngIf="searchResponse" class="col-md-10">-->
-<!--<swap-item-list [searchResponse]="searchResponse"></swap-item-list>-->
-<!--</div>-->
+    <!--<div class="row lg col-lg-8 col-md-offset-2">-->
+    <!--<div *ngIf="postalCode.errors && (postalCode.dirty || postalCode.touched)"-->
+         <!--class="alert alert-danger">-->
+        <!--<div [hidden]="!postalCode.errors.required">-->
+            <!--Zip code is required-->
+        <!--</div>-->
+        <!--<div [hidden]="!postalCode.errors.minlength">-->
+            <!--Zip code must be at least 5 digits long-->
+        <!--</div>-->
+        <!--<div [hidden]="!postalCode.errors.maxlength">-->
+            <!--Zip code cannot be more than 5 digits long-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--</div>-->
 
+    <!--<div class="input-group input-group-lg col-lg-12">-->
+        <!--<p></p>-->
+        <!--<button class="btn btn-default btn-lg page-scroll" type="submit">Show me!</button>-->
+    <!--</div>-->

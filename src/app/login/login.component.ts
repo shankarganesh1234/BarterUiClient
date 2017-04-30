@@ -1,9 +1,9 @@
 import {Component, OnInit} from "@angular/core";
-import {LoginService} from "./service/login.service";
-import {LoginRequest} from "./models/login-request.model";
-import {ComponentEventService} from "../component-events/component-event.service";
-import {User} from "../user/user";
-import {LoggedInUser} from "../user/loggedInUser";
+import {LoginService} from "../services/login.service";
+import {LoginRequest} from "../models/login-request.model";
+import {ComponentEventService} from "../services/component-event.service";
+import {User} from "../models/user";
+import {LoggedInUser} from "../storage-utils/loggedInUser";
 
 
 declare const FB:any;
@@ -63,7 +63,7 @@ export class LoginComponent extends LoggedInUser implements OnInit {
     };
 
     ngOnInit() {
-        // check if user is logged on on page load
+        // check if storage-utils is logged on on page load
         this.isUserLoggedIn();
         this.componentEventService.userLoggedOut$.subscribe(
             result => {
