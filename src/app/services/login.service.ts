@@ -9,6 +9,7 @@ import "rxjs/add/operator/catch";
 import {LoginRequest} from "../models/login-request.model";
 import {LoginResponse} from "../models/login-response.model";
 import {User} from "../models/user";
+import {environment} from "../../environments/environment";
 
 @Injectable()
 export class LoginService {
@@ -28,7 +29,7 @@ export class LoginService {
 
     userLogin(loginRequest: LoginRequest): Observable<User> {
         let body = JSON.stringify(loginRequest);
-        return this.http.post(this.urls.loginUrl, body, this.options)
+        return this.http.post(environment.loginUrl, body, this.options)
             .map(this.extractData)
             .catch(this.handleError);
     }

@@ -1,3 +1,22 @@
 export const environment = {
-  production: true
+  production: true,
+  searchUrl : "http://ec2-54-67-112-241.us-west-1.compute.amazonaws.com:8080/customServer/search/item",
+  autocompleteUrl : "http://ec2-54-67-112-241.us-west-1.compute.amazonaws.com:8080/customServer/search/autocomplete/",
+  googleZipUrl : "http://maps.googleapis.com/maps/api/geocode/json?",
+  createItemUrl : "http://ec2-54-67-112-241.us-west-1.compute.amazonaws.com:8080/customServer/listing",
+  createItemImageUrl : "http://ec2-54-67-112-241.us-west-1.compute.amazonaws.com:8080/customServer/image/upload",
+  getItemUrl : "http://ec2-54-67-112-241.us-west-1.compute.amazonaws.com:8080/customServer/listing/",
+  getItemByUserUrl : "http://ec2-54-67-112-241.us-west-1.compute.amazonaws.com:8080/customServer/listing/user/",
+  createInterestUrl : "http://ec2-54-67-112-241.us-west-1.compute.amazonaws.com:8080/customServer/interest/",
+  loginUrl : "http://ec2-54-67-112-241.us-west-1.compute.amazonaws.com:8080/customServer/login/facebook",
+  userProfileUrl : "http://ec2-54-67-112-241.us-west-1.compute.amazonaws.com:8080/customServer/userprofile/",
+  getInterestsForUser : "http://ec2-54-67-112-241.us-west-1.compute.amazonaws.com:8080/customServer/interest/interesteduser/",
+  deleteInterestUrl : "http://ec2-54-67-112-241.us-west-1.compute.amazonaws.com:8080/customServer/interest/",
+  userItemDeleteUrl : "http://ec2-54-67-112-241.us-west-1.compute.amazonaws.com:8080/customServer/listing/",
+  getOffersForUser : "http://ec2-54-67-112-241.us-west-1.compute.amazonaws.com:8080/customServer/interest/originaluser/",
+  createChatDetails : "http://ec2-54-67-112-241.us-west-1.compute.amazonaws.com:8080/customServer/chat/",
+  getChatForOriginalUser : "http://ec2-54-67-112-241.us-west-1.compute.amazonaws.com:8080/customServer/chat/originaluser/",
+  getChatForInterestedUser : "http://ec2-54-67-112-241.us-west-1.compute.amazonaws.com:8080/customServer/chat/interestedUser/",
+  getInterests : "http://ec2-54-67-112-241.us-west-1.compute.amazonaws.com:8080/customServer/interest?",
+  getInterestById : "http://ec2-54-67-112-241.us-west-1.compute.amazonaws.com:8080/customServer/interest/"
 };

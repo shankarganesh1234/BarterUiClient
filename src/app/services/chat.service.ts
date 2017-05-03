@@ -7,6 +7,7 @@ import "rxjs/add/operator/map";
 import "rxjs/add/operator/catch";
 import {GlobalUrls} from "../utils/url-values";
 import {ChatDetails} from "../models/chat-details";
+import {environment} from "../../environments/environment";
 
 @Injectable()
 export class ChatService {
@@ -27,7 +28,7 @@ export class ChatService {
 
     createChatDetails(chatDetails: ChatDetails): Observable<void> {
         let body = JSON.stringify(chatDetails);
-        return this.http.post(this.urls.createChatDetails, body, this.options)
+        return this.http.post(environment.createChatDetails, body, this.options)
             .map(this.extractData)
             .catch(this.handleError);
     }
