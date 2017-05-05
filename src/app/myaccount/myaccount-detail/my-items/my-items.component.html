@@ -28,11 +28,29 @@
                                    title="{{item.title}}"><img
                                         src="{{item.image_id.url}}"></a>
                             </div>
-                            <div class="fh5co-desc">
-                                <h6>
-                                    <a [routerLink]="['/item', item.itemId]">{{item.title}}</a>
-                                </h6>
+                            <div class="row">
+                                <div class="fh5co-desc col-md-8">
+                                    <h6 class="regular">
+                                        <a [routerLink]="['/item', item.itemId]">{{item.title}}</a>
+                                    </h6>
+                                </div>
+
+                                <div class="fh5co-desc col-md-4">
+                                    <h6 class="regular">
+                                <span class="glyphicon glyphicon-map-marker" aria-hidden="true">
+                                    {{item.zipCode.zipCode}}
+                                </span>
+                                    </h6>
+                                </div>
                             </div>
+                            <Div class="row">
+                                <div class="col-md-10"> &nbsp;</div>
+                                <div class="col-md-1">
+                                    <a (click)="deleteItem(item.itemId)">
+                                    <i class="fa fa-trash text-danger" aria-hidden="true" title="Delete this item"></i>
+                                    </a>
+                                </div>
+                            </Div>
                         </div>
 
                     </ng-container>
@@ -48,10 +66,20 @@
                                    title="{{item.title}}"><img
                                         src="{{item.image_id.url}}"></a>
                             </div>
-                            <div class="fh5co-desc">
-                                <h6>
-                                    <a [routerLink]="['/item', item.itemId]">{{item.title}}</a>
-                                </h6>
+                            <div class="row">
+                                <div class="fh5co-desc col-md-8">
+                                    <h6 class="regular">
+                                        <a [routerLink]="['/item', item.itemId]">{{item.title}}</a>
+                                    </h6>
+                                </div>
+
+                                <div class="fh5co-desc col-md-4">
+                                    <h6 class="regular">
+                                <span class="glyphicon glyphicon-map-marker" aria-hidden="true">
+                                    {{item.zipCode.zipCode}}
+                                </span>
+                                    </h6>
+                                </div>
                             </div>
                         </div>
                     </ng-container>
@@ -66,10 +94,20 @@
                                    title="{{item.title}}"><img
                                         src="{{item.image_id.url}}"></a>
                             </div>
-                            <div class="fh5co-desc">
-                                <h6>
-                                    <a [routerLink]="['/item', item.itemId]">{{item.title}}</a>
-                                </h6>
+                            <div class="row">
+                                <div class="fh5co-desc col-md-8">
+                                    <h6 class="regular">
+                                        <a [routerLink]="['/item', item.itemId]">{{item.title}}</a>
+                                    </h6>
+                                </div>
+
+                                <div class="fh5co-desc col-md-4">
+                                    <h6 class="regular">
+                                <span class="glyphicon glyphicon-map-marker" aria-hidden="true">
+                                    {{item.zipCode.zipCode}}
+                                </span>
+                                    </h6>
+                                </div>
                             </div>
                         </div>
                     </ng-container>

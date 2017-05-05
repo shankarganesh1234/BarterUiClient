@@ -53,15 +53,12 @@ export class MyItemsComponent extends LoggedInUser implements OnInit {
                 error => console.log(error)
             );
     }
-
     getItemsForUserSuccess(result: ItemDetail[]): void {
         this.items = result;
     }
-
     selectItem(item: ItemDetail): void {
         this.componentEventService.passItemObject(item);
     }
-
     createNewItem(): void {
         this.componentEventService.passItemObject(null);
     }
