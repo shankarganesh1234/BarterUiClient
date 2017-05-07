@@ -43,14 +43,14 @@
                                     </h6>
                                 </div>
                             </div>
-                            <Div class="row">
+                            <div class="row">
                                 <div class="col-md-10"> &nbsp;</div>
                                 <div class="col-md-1">
                                     <a (click)="deleteItem(item.itemId)">
                                     <i class="fa fa-trash text-danger" aria-hidden="true" title="Delete this item"></i>
                                     </a>
                                 </div>
-                            </Div>
+                            </div>
                         </div>
 
                     </ng-container>
@@ -81,6 +81,14 @@
                                     </h6>
                                 </div>
                             </div>
+                            <div class="row">
+                                <div class="col-md-10"> &nbsp;</div>
+                                <div class="col-md-1">
+                                    <a (click)="deleteItem(item.itemId)">
+                                        <i class="fa fa-trash text-danger" aria-hidden="true" title="Delete this item"></i>
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                     </ng-container>
                 </div>
@@ -107,6 +115,14 @@
                                     {{item.zipCode.zipCode}}
                                 </span>
                                     </h6>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-10"> &nbsp;</div>
+                                <div class="col-md-1" style="cursor:pointer">
+                                    <a (click)="deleteItem(item.itemId)">
+                                        <i class="fa fa-trash text-danger" aria-hidden="true" title="Delete this item"></i>
+                                    </a>
                                 </div>
                             </div>
                         </div>

@@ -8313,5 +8313,7 @@ a > img.fh5co-align-center {
   margin-left: auto;
   margin-right: auto;
 }
-
+a:hover {
+  cursor:pointer;
+}
 /*# sourceMappingURL=style.css.map */
