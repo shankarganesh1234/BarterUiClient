@@ -8,6 +8,7 @@ import "rxjs/add/operator/catch";
 import {GlobalUrls} from "../utils/url-values";
 import {ChatDetails} from "../models/chat-details";
 import {environment} from "../../environments/environment";
+import {ChatHistory} from "../models/chat-history";
 
 @Injectable()
 export class ChatService {
@@ -24,6 +25,12 @@ export class ChatService {
         });
         this.options = new RequestOptions({headers: this.headers});
         this.urls = new GlobalUrls();
+    }
+
+    getChatHistory(chatChannelId: string) : Observable<ChatHistory[]> {
+        return this.http.get(environment.getChatHistory + chatChannelId, this.options)
+            .map(this.extractData)
+            .catch(this.handleError);
     }
 
     createChatDetails(chatDetails: ChatDetails): Observable<void> {

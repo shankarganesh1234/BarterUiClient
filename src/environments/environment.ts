@@ -23,5 +23,6 @@ export const environment = {
   getChatForOriginalUser : "http://localhost:8080/customServer/chat/originaluser/",
   getChatForInterestedUser : "http://localhost:8080/customServer/chat/interestedUser/",
   getInterests : "http://localhost:8080/customServer/interest?",
-  getInterestById : "http://localhost:8080/customServer/interest/"
+  getInterestById : "http://localhost:8080/customServer/interest/",
+  getChatHistory: "http://localhost:8080/customServer/chat/history?channelId="
 };

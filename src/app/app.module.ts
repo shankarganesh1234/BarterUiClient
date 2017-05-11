@@ -35,6 +35,7 @@ import {LoginService} from "./services/login.service";
 import {UserService} from "./services/user.service";
 import { TestcomponentComponent } from './testcomponent/testcomponent.component';
 import {MyNewComponentComponent} from "./my-new-component/my-new-component.component";
+import {ChatService} from "./services/chat.service";
 
 @NgModule({
   declarations: [
@@ -71,7 +72,7 @@ import {MyNewComponentComponent} from "./my-new-component/my-new-component.compo
     ReactiveFormsModule,
     AlertModule.forRoot()
   ],
-  providers: [SearchService, CategoryService, ItemService, InterestService, LoginService, UserService],
+  providers: [SearchService, CategoryService, ItemService, InterestService, LoginService, UserService, ChatService],
   bootstrap: [LandingComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA], // add this!
 })

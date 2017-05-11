@@ -4,6 +4,8 @@ import {ActivatedRoute} from "@angular/router";
 import {InterestService} from "../services/interest.service";
 import {Interest} from "../models/interest.model";
 import {ChatInfo} from "../models/chat-info";
+import {ChatService} from "../services/chat.service";
+import {ChatHistory} from "../models/chat-history";
 
 @Component({
     moduleId: module.id,
@@ -20,7 +22,8 @@ export class ChatComponent implements OnInit {
     chats: ChatInfo[] = [];
 
     constructor(private route: ActivatedRoute,
-                private interestService: InterestService) {}
+                private interestService: InterestService,
+                private chatService: ChatService) {}
 
     ngOnInit() {
         let interestId = this.route.snapshot.params['interestId'];
@@ -73,6 +76,7 @@ export class ChatComponent implements OnInit {
 
                                 this.sb.addChannelHandler(uniqueChannelId, ChannelHandler);
                                 console.log('channel created' + uniqueChannelId);
+                                this.getChatHistory(uniqueChannelId);
                             } else {
                                 console.log('got null result for create channel');
                             }
@@ -82,6 +86,47 @@ export class ChatComponent implements OnInit {
             }
         });
     }
+
+    getChatHistory(channelId: string): void {
+
+        this.chatService
+            .getChatHistory(channelId)
+            .subscribe(
+                result => this.getChatHistorySuccess(result),
+                error => console.log(error)
+            );
+    }
+
+    getChatHistorySuccess(chatLogs: ChatHistory[]): void {
+
+        if(chatLogs == null || chatLogs.length <= 0)
+            return;
+
+        for(let chatLog of chatLogs) {
+            this.chats.push(this.createChatInfoFromHistory(chatLog));
+        }
+    }
+
+    createChatInfoFromHistory(chatLog: ChatHistory) {
+
+        let chatInfo = new ChatInfo();
+        if(chatLog.senderId != null) {
+
+            let utcDate = new Date(chatLog.messageTimestamp).toUTCString();
+            chatInfo.timestamp = utcDate;
+            chatInfo.message = chatLog.message;
+
+            if(chatLog.senderId == this.interest.originalUser.userId) {
+                chatInfo.userImageUrl = this.interest.originalUser.imageUrl;
+                chatInfo.userName = this.interest.originalUser.displayName;
+            } else {
+                chatInfo.userImageUrl = this.interest.interestedUser.imageUrl;
+                chatInfo.userName = this.interest.interestedUser.displayName;
+            }
+        }
+        return chatInfo;
+    }
+
 
     sendMessage(messageBody: string): void {
         this.chatChannel.sendUserMessage(messageBody, null, null, (result: any) => {
