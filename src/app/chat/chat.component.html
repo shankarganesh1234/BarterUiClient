@@ -3,7 +3,7 @@
     <div>
       <div *ngIf="interest" class="container">
         <div class="row">
-          <div class="col-sm-5 pre-scrollable">
+          <div class="col-sm-3">
             <div class="tab-content style2">
               <div class='item active'>
                 <figure>
@@ -25,11 +25,55 @@
             </div>
           </div>
 
-          <div class="col-sm-2">
+          <div class="col-sm-6">
             <i class="fa fa-refresh fa-3x" aria-hidden="true"></i>
+
+              <div class="box box-default chat-box chat-box-primary box-solid">
+                <div class="box-header with-border">
+                  <h3 class="box-title">
+                    Conversation
+                  </h3>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                  <!-- Conversations are loaded here -->
+                  <div class="chat-box-messages">
+                    <!-- Message. Default to the left -->
+
+                    <ng-container *ngFor="let chat of chats">
+
+                      <div class="chat-box-msg">
+                        <div class="chat-box-info clearfix">
+                          <span class="chat-box-name pull-left">{{chat.userName}}</span>
+                          <span class="chat-box-timestamp pull-right">{{chat.timestamp}}</span>
+                        </div><!-- /.chat-box-info -->
+                        <img class="chat-box-img" src="{{chat.userImageUrl}}"
+                             alt="message user image">
+                        <!-- /.chat-box-img -->
+                        <div class="chat-box-text">
+                          {{chat.message}}
+                        </div><!-- /.chat-box-text -->
+                      </div><!-- /.chat-box-msg -->
+                    </ng-container>
+                  </div><!--/.chat-box-messages-->
+                </div><!-- /.box-body -->
+                <div class="box-footer">
+                  <form action="#" method="post">
+                    <div class="input-group">
+                      <input type="text" name="message" placeholder="Type Message ..."
+                             class="form-control focus-primary" id="chatMessageInput"
+                             #chatMessageInput>
+                      <span class="input-group-btn">
+                                            <button type="button" class="btn btn-primary btn-flat" (click)="sendMessage(chatMessageInput.value)">Send</button>
+                                        </span>
+                    </div>
+                  </form>
+                </div><!-- /.box-footer-->
+              </div><!--/.chat-box -->
+
+
           </div>
 
-          <div class="col-sm-5 pre-scrollable">
+          <div class="col-sm-3">
             <div class="tab-content style2">
               <div class='item active'>
                 <figure>
@@ -51,58 +95,7 @@
             </div>
           </div>
         </div>
-
         <hr/>
-
-        <!-- CHAT SECTION -->
-        <div class="row">
-          <div class="col-md-12">
-            <div class="box box-default chat-box chat-box-primary box-solid">
-              <div class="box-header with-border">
-                <h3 class="box-title">
-                  {{interest.originalUser.displayName}}
-                  <i class="fa fa-refresh"></i>
-                  {{interest.interestedUser.displayName}}
-                </h3>
-
-              </div><!-- /.box-header -->
-              <div class="box-body">
-                <!-- Conversations are loaded here -->
-                <div class="chat-box-messages">
-                  <!-- Message. Default to the left -->
-
-                  <ng-container *ngFor="let chat of chats">
-
-                    <div class="chat-box-msg">
-                      <div class="chat-box-info clearfix">
-                        <span class="chat-box-name pull-left">{{chat.userName}}</span>
-                        <span class="chat-box-timestamp pull-right">{{chat.timestamp}}</span>
-                      </div><!-- /.chat-box-info -->
-                      <img class="chat-box-img" src="{{chat.userImageUrl}}"
-                           alt="message user image">
-                      <!-- /.chat-box-img -->
-                      <div class="chat-box-text">
-                        {{chat.message}}
-                      </div><!-- /.chat-box-text -->
-                    </div><!-- /.chat-box-msg -->
-                  </ng-container>
-                </div><!--/.chat-box-messages-->
-              </div><!-- /.box-body -->
-              <div class="box-footer">
-                <form action="#" method="post">
-                  <div class="input-group">
-                    <input type="text" name="message" placeholder="Type Message ..."
-                           class="form-control focus-primary" id="chatMessageInput"
-                           #chatMessageInput>
-                    <span class="input-group-btn">
-                                            <button type="button" class="btn btn-primary btn-flat" (click)="sendMessage(chatMessageInput.value)">Send</button>
-                                        </span>
-                  </div>
-                </form>
-              </div><!-- /.box-footer-->
-            </div><!--/.chat-box -->
-          </div>
-        </div>
       </div>
     </div>
   </div>
