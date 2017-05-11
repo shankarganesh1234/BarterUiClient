@@ -6,3 +6,8 @@
 a:hover {
     cursor:pointer;
 }
+
+div.item:hover {
+    cursor:pointer;
+}
+
