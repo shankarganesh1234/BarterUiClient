@@ -198,11 +198,12 @@ export class ItemComponent implements OnInit {
 
     fileUpload(event:any) {
         let fileList: FileList = event.target.files;
+        this.itemImageFormData = new FormData();
         if (fileList.length > 0) {
-            let file: File = fileList[0];
-            this.itemImageFormData = new FormData();
-            this.itemImageFormData.append('file', file, file.name);
+            for(let i=0;i<fileList.length; i++) {
+                let file: File = fileList[i];
+                this.itemImageFormData.append('file', file, file.name);
+            }
         }
     }
-
 }
