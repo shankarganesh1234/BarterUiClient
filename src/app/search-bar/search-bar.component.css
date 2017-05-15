@@ -29,3 +29,6 @@
 #custom-search-input .glyphicon-search {
     font-size: 23px;
 }
+.vbaseline {
+    vertical-align: baseline;
+}

@@ -372,7 +372,7 @@ body ::-moz-selection {
     position: relative;
     display: inline-block;
     margin-right: -4px;
-    border-right: 1px solid rgba(0, 0, 0, 0.08);
+    /*border-right: 1px solid rgba(0, 0, 0, 0.08);*/
 }
 
 .topBar ul.topBarNav li:last-child {
