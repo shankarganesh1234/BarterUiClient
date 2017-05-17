@@ -42,6 +42,19 @@ export class ItemService {
             .catch(this.handleError);
     }
 
+    updateItem(itemRequest: Item): Observable<Item> {
+        let headers =  new Headers({
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'Authorization': this.loggedInUser.getAccessToken()
+        });
+        let options = new RequestOptions({headers: headers});
+        let body = JSON.stringify(itemRequest);
+        return this.http.put(environment.updateItem, body, options)
+            .map(this.extractData)
+            .catch(this.handleError);
+    }
+
     createImageForItem(itemImageFormData: FormData): Observable<any> {
         let headers = new Headers();
         headers.append('Accept', 'multipart/form-data');
@@ -65,6 +78,12 @@ export class ItemService {
 
     deleteItem(itemId: number): Observable<void> {
         return this.http.delete(environment.userItemDeleteUrl + itemId, this.options)
+            .map(this.extractData)
+            .catch(this.handleError);
+    }
+
+    deleteImage(imageId: string): Observable<void> {
+        return this.http.delete(environment.deleteImage + imageId, this.options)
             .map(this.extractData)
             .catch(this.handleError);
     }

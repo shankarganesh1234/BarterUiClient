@@ -20,5 +20,7 @@ export const environment = {
   getInterests : "http://52.9.129.222:8080/customServer/interest?",
   getInterestById : "http://52.9.129.222:8080/customServer/interest/",
   getChatHistory: "http://52.9.129.222:8080/customServer/chat/history?",
-  getCategoriesUrl: "http://52.9.129.222:8080/customServer/category"
+  getCategoriesUrl: "http://52.9.129.222:8080/customServer/category",
+  deleteImage: "http://52.9.129.222:8080/customServer/image/",
+  updateItem: "http://52.9.129.222:8080/customServer/listing"
 };

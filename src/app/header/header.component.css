@@ -1,0 +1,15 @@
+.vertical-alignment {
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.display-table {
+    display: table;
+}
+
+.table-cell-top {
+    vertical-align: top;
+    display: table-cell;
+}

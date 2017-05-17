@@ -25,5 +25,7 @@ export const environment = {
   getInterests : "http://localhost:8080/customServer/interest?",
   getInterestById : "http://localhost:8080/customServer/interest/",
   getChatHistory: "http://localhost:8080/customServer/chat/history?channelId=",
-  getCategoriesUrl: "http://localhost:8080/customServer/category"
+  getCategoriesUrl: "http://localhost:8080/customServer/category",
+  deleteImage: "http://localhost:8080/customServer/image/",
+  updateItem: "http://localhost:8080/customServer/listing"
 };

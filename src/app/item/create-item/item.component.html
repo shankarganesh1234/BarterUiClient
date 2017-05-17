@@ -11,7 +11,7 @@
         </div><!-- end col -->
     </div><!-- end row -->
     <div class="row">
-        <form [formGroup]="itemForm" *ngIf="active" (ngSubmit)="createItem(itemForm)">
+        <form [formGroup]="itemForm" *ngIf="active" (ngSubmit)="createOrUpdateItem(itemForm)">
             <div class="col-sm-6">
                 <div class="form-group" [class.has-error]="formErrors.title">
                     <label for="title">Title</label>
@@ -80,5 +80,14 @@
                 </div>
                </div><!-- end col -->
         </form>
+    </div>
+    <!-- Only when editing items, show existing images-->
+    <div *ngIf="itemDetail && itemDetail.images" class="row">
+            <div *ngFor="let image of itemDetail.images" class="col-md-2">
+                <button type="button" class="close" aria-label="Close" title="Delete this image" (click)="deleteExistingImage(image.public_id)">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <img class="img-responsive" src="{{image.url}}"/>
+            </div>
     </div>
 </div>

@@ -180,6 +180,17 @@ export class ItemComponent implements OnInit {
         }
     };
 
+    /**
+     * Create or update an item based on form submission
+     */
+    createOrUpdateItem() {
+        if(this.itemDetail === null) {
+            this.createItem();
+        } else {
+            this.updateItem();
+        }
+    }
+
     createItem() {
         this.submitted = true;
         this.itemModel = this.itemForm.value;
@@ -187,6 +198,23 @@ export class ItemComponent implements OnInit {
         this.itemModel.userId = id;
         this.itemService
             .createItem(this.itemModel)
+            .subscribe(
+                result => this.itemCreationSuccess(result),
+                error => console.log(error)
+            );
+    }
+
+    /**
+     * Edit an existing item
+     */
+    updateItem() {
+        this.submitted = true;
+        this.itemModel = this.itemForm.value;
+        let id = this.loggedInUser.getLoggedInUser().id;
+        this.itemModel.userId = id;
+        this.itemModel.itemId = this.itemDetail.itemId;
+        this.itemService
+            .updateItem(this.itemModel)
             .subscribe(
                 result => this.itemCreationSuccess(result),
                 error => console.log(error)
@@ -244,6 +272,32 @@ export class ItemComponent implements OnInit {
                     this.imageList.splice(i, 1);
                     break;
                 }
+            }
+        }
+    }
+
+    /**
+     * Delete an existing image from an item
+     * The image details are deleted from db and cloudinary as part of the same transaction
+     * @param imageId
+     */
+    deleteExistingImage(imageId: string) {
+        this.itemService
+            .deleteImage(imageId)
+            .subscribe(
+            result => this.deleteExistingImageFromItemDetail(imageId),
+            error => console.log(error)
+        );
+    }
+
+    /**
+     * Remove deleted image from local item detail as well
+     * @param imageId
+     */
+    deleteExistingImageFromItemDetail(imageId: string) {
+        for(let i=0;i<this.itemDetail.images.length; i++) {
+            if(imageId === this.itemDetail.images[i].public_id) {
+                this.itemDetail.images.splice(i, 1);
             }
         }
     }
