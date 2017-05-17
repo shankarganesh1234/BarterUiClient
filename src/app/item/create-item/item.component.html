@@ -51,9 +51,6 @@
                             (onRemove)="removeImage($event)"
                             (onFileUploadFinish)="fileUpload($event)">
                     </image-upload>
-
-                    <!--<input type="file" (change)="fileUpload($event)" id="itemImage" placeholder="Upload file"-->
-                           <!--accept=".jpg,.jpeg,.png" multiple>-->
                 </div>
                 <div class="form-group">
                     <input *ngIf="createOrUpdate == 'update'" type="submit" class="btn btn-behance btn-xs" value="Update my item">
@@ -81,7 +78,7 @@
                         {{ formErrors.condition }}
                     </div>
                 </div>
-            </div><!-- end col -->
+               </div><!-- end col -->
         </form>
     </div>
 </div>
