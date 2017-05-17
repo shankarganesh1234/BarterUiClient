@@ -19,5 +19,6 @@ export const environment = {
   getChatForInterestedUser : "http://52.9.129.222:8080/customServer/chat/interestedUser/",
   getInterests : "http://52.9.129.222:8080/customServer/interest?",
   getInterestById : "http://52.9.129.222:8080/customServer/interest/",
-  getChatHistory: "http://52.9.129.222:8080/customServer/chat/history?"
+  getChatHistory: "http://52.9.129.222:8080/customServer/chat/history?",
+  getCategoriesUrl: "http://52.9.129.222:8080/customServer/category"
 };

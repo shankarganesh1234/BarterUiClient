@@ -6,13 +6,14 @@ import {Category} from "../models/category";
 import {Observable} from "rxjs/Rx";
 import "rxjs/add/operator/map";
 import "rxjs/add/operator/catch";
+import {environment} from "../../environments/environment";
+import {Categories} from "../models/Categories";
 
 @Injectable()
 export class CategoryService {
 
     private headers: Headers;
     private options: RequestOptions;
-    private getCategoriesUrl: string;
 
     constructor(private http: Http) {
         this.headers = new Headers({
@@ -20,12 +21,11 @@ export class CategoryService {
             'Accept': 'application/json'
         });
         this.options = new RequestOptions({headers: this.headers});
-        this.getCategoriesUrl = "http://localhost:8080/SwapServerSide/category";
     }
 
-    getCategories(): Observable<Category[]> {
+    getCategories(): Observable<Categories> {
         return this.http
-            .get(this.getCategoriesUrl, this.options)
+            .get(environment.getCategoriesUrl, this.options)
             .map(this.extractData)
             .catch(this.handleError);
     }

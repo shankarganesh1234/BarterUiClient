@@ -36,6 +36,7 @@ import {UserService} from "./services/user.service";
 import { TestcomponentComponent } from './testcomponent/testcomponent.component';
 import {MyNewComponentComponent} from "./my-new-component/my-new-component.component";
 import {ChatService} from "./services/chat.service";
+import {ImageUploadModule} from "angular2-image-upload";
 
 @NgModule({
   declarations: [
@@ -70,7 +71,8 @@ import {ChatService} from "./services/chat.service";
     HttpModule,
     JsonpModule,
     ReactiveFormsModule,
-    AlertModule.forRoot()
+    AlertModule.forRoot(),
+    ImageUploadModule.forRoot()
   ],
   providers: [SearchService, CategoryService, ItemService, InterestService, LoginService, UserService, ChatService],
   bootstrap: [LandingComponent],

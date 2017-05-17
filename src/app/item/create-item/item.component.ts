@@ -5,6 +5,8 @@ import {ItemService} from "../../services/item.service";
 import {ComponentEventService} from "../../services/component-event.service";
 import {ItemDetail} from "../../models/item-detail.model";
 import {LoggedInUser} from "../../storage-utils/loggedInUser";
+import {CategoryService} from "../../services/category.service";
+import {Category} from "../../models/category";
 
 declare const $: any;
 
@@ -22,11 +24,16 @@ export class ItemComponent implements OnInit {
     submitted = false;
     active = true;
     itemImageFormData: FormData;
+    imageList: File[] = [];
     itemDetail: ItemDetail;
     createOrUpdate: string;
+    categoriesList: Category[] = [];
     private loggedInUser: LoggedInUser = new LoggedInUser();
 
-    constructor(private fb: FormBuilder, private itemService: ItemService, private componentEventService: ComponentEventService) {
+    constructor(private fb: FormBuilder,
+                private itemService: ItemService,
+                private componentEventService: ComponentEventService,
+                private categoryService: CategoryService) {
     }
 
 
@@ -41,8 +48,12 @@ export class ItemComponent implements OnInit {
                     this.createOrUpdate = 'create';
                 }
             });
-
         this.buildForm();
+        this.categoryService.getCategories().subscribe(
+            result => {
+                this.categoriesList = result.categories;
+            }
+        )
     }
 
     setItemInForm(itemDetail: ItemDetail): void {
@@ -182,8 +193,20 @@ export class ItemComponent implements OnInit {
             );
     }
 
+
+    /**
+     * Call to create item images service
+     * Append item Id and the item images
+     * @param result
+     */
     itemCreationSuccess(result: Item): void {
+        this.itemImageFormData = new FormData();
         this.itemImageFormData.append('itemId', result.itemId);
+
+        for(let i=0;i<this.imageList.length; i++) {
+            this.itemImageFormData.append('file', this.imageList[i], this.imageList[i].name);
+        }
+
         this.itemService
             .createImageForItem(this.itemImageFormData)
             .subscribe(
@@ -196,13 +219,31 @@ export class ItemComponent implements OnInit {
 
     }
 
+    /**
+     * Add image or images to the images list
+     * @param event
+     */
     fileUpload(event:any) {
-        let fileList: FileList = event.target.files;
-        this.itemImageFormData = new FormData();
-        if (fileList.length > 0) {
-            for(let i=0;i<fileList.length; i++) {
-                let file: File = fileList[i];
-                this.itemImageFormData.append('file', file, file.name);
+
+        let len = this.imageList.length;
+        this.imageList[len] = event.file;
+    }
+
+    /**
+     * Remove image after choosing.
+     * Removes it from the imageList. The imageList is used finally to add files to the form data
+     * It reflects
+     * @param event
+     */
+    removeImage(event:any) {
+
+        let removeImage = event.file;
+        if(this.imageList != null && this.imageList.length > 0) {
+            for(let i=0;i<this.imageList.length; i++) {
+                if(this.imageList[i].name === removeImage.name) {
+                    this.imageList.splice(i, 1);
+                    break;
+                }
             }
         }
     }
