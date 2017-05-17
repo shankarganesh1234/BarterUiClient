@@ -6,3 +6,11 @@
 a:hover {
     cursor:pointer;
 }
+
+div.item:hover {
+    cursor:pointer;
+}
+p {
+    margin: 0;
+    padding: 0;
+}

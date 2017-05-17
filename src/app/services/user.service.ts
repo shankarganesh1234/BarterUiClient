@@ -8,6 +8,7 @@ import "rxjs/add/operator/map";
 import "rxjs/add/operator/catch";
 import {User} from "../models/user";
 import {ItemDetail} from "../models/item-detail.model";
+import {environment} from "../../environments/environment";
 
 @Injectable()
 export class UserService {
@@ -27,13 +28,13 @@ export class UserService {
     }
 
     getUserProfile(userId: number): Observable<User> {
-        return this.http.get(this.urls.userProfileUrl + userId, this.options)
+        return this.http.get(environment.userProfileUrl + userId, this.options)
             .map(this.extractData)
             .catch(this.handleError);
     }
 
     getItemsForUser(userId: string): Observable<ItemDetail[]> {
-        return this.http.get(this.urls.getItemByUserUrl + userId, this.options)
+        return this.http.get(environment.getItemByUserUrl + userId, this.options)
             .map(this.extractData)
             .catch(this.handleError);
     }

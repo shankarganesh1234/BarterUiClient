@@ -9,6 +9,7 @@ import {Observable} from "rxjs/Rx";
 import "rxjs/add/operator/map";
 import "rxjs/add/operator/catch";
 import {SearchBar} from "../models/search-bar";
+import {environment} from "../../environments/environment";
 
 @Injectable()
 export class SearchService {
@@ -29,7 +30,7 @@ export class SearchService {
     search(searchRequest: SearchBar): Observable<SearchResponse> {
         let body = JSON.stringify(searchRequest);
         return this.http
-            .post(this.urls.searchUrl, body, this.options)
+            .post(environment.searchUrl, body, this.options)
             .map(this.extractData)
             .catch(this.handleError);
     }
@@ -37,7 +38,7 @@ export class SearchService {
     autoComplete(term: string): Observable<Item[]> {
         let body = JSON.stringify({query: term});
         return this.http
-            .get(this.urls.autocompleteUrl + term, this.options)
+            .get(environment.autocompleteUrl + term, this.options)
             .map(this.extractData)
             .catch(this.handleError);
     }

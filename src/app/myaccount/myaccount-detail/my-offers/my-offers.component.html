@@ -14,53 +14,66 @@
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-md-12">
-            <div *ngIf="myOffers" class="table-responsive">
-                <table class="table table-striped">
-                    <thead>
-                    <tr>
-                        <th>My Item</th>
-                        <th>Status</th>
-                        <th>Offer</th>
-                        <th></th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr *ngFor="let offer of myOffers">
-                        <td>
-                            <a href="shop-single-product-v1.html">
-                                <img width="60px" src="{{offer.originalItemId.image_id.url}}" alt="product">
-                            </a>
-                            <br>
-                            <p>{{offer.originalItemId.title}}</p>
-                        </td>
-                        <td>
-                            <ul class="list-unstyled">
-                                <li>
-                                    <i class="fa fa-angle-double-left text-success fa-2x"></i>
-                                    <i class="fa fa-angle-double-left text-success fa-2x"></i>
-                                </li>
-                                <li>
-                                    <i class="fa fa-angle-double-left text-danger fa-2x"></i>
-                                    <i class="fa fa-angle-double-left text-danger fa-2x"></i>
-                                </li>
-                            </ul>
-                        </td>
-                        <td>
-                            <a href="shop-single-product-v1.html">
-                                <img width="60px" src="{{offer.swappableItemId.image_id.url}}" alt="product">
-                            </a>
-                            <p>{{offer.swappableItemId.title}}</p>
-                        </td>
-                        <td>
-                            <a (click)="deleteOffer(offer.interestId)" class="btn btn-danger round btn-xs">Decline Offer</a>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table><!-- end table -->
-            </div><!-- end table-responsive -->
-            <hr class="spacer-10 no-border">
-        </div><!-- end col -->
-    </div><!-- end row -->
+    <div *ngIf="myOffers" class="container">
+        <div class="row">
+            <div id="fh5co-board" data-columns="3">
+                <div class="column size-1of3">
+                    <ng-container
+                            *ngFor="let item of myOffers; let i=index">
+
+                        <div class="item" *ngIf="i%3 == 0">
+                            <div class="animate-box bounceIn animated">
+                                <a href="#" class="image-popup fh5co-board-img"
+                                ><img
+                                        src="{{item.originalItemId.images[0].url}}"></a>
+                            </div>
+                            <div class="fh5co-desc">
+                                <h6>
+                                    <a [routerLink]="['/item', item.originalItemId.itemId]">{{item.originalItemId.title}}</a>
+                                </h6>
+                            </div>
+                        </div>
+
+                    </ng-container>
+                </div>
+
+                <div class="column size-1of3">
+                    <ng-container
+                            *ngFor="let item of myInterests; let j=index">
+
+                        <div class="item" *ngIf="j%3 == 1">
+                            <div class="animate-box bounceIn animated">
+                                <a href="images/img_1.jpg" class="image-popup fh5co-board-img"
+                                   title="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, eos?"><img
+                                        src="{{item.originalItemId.images[0].url}}" alt="Free HTML5 Bootstrap template" class="front"></a>
+                            </div>
+                            <div class="fh5co-desc">
+                                <h6>
+                                    <a [routerLink]="['/item', item.originalItemId.itemId]">{{item.originalItemId.title}}</a>
+                                </h6>
+                            </div>
+                        </div>
+                    </ng-container>
+                </div>
+                <div class="column size-1of3">
+                    <ng-container
+                            *ngFor="let item of myInterests; let k=index">
+
+                        <div class="item" *ngIf="k%3 == 2">
+                            <div class="animate-box bounceIn animated">
+                                <a href="images/img_1.jpg" class="image-popup fh5co-board-img"
+                                ><img
+                                        src="{{item.originalItemId.images[0].url}}"></a>
+                            </div>
+                            <div class="fh5co-desc">
+                                <h6>
+                                    <a [routerLink]="['/item', item.originalItemId.itemId]">{{item.originalItemId.title}}</a>
+                                </h6>
+                            </div>
+                        </div>
+                    </ng-container>
+                </div>
+            </div>
+        </div>
+    </div>
 </div><!-- end col -->

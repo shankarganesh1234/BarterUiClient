@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-sm-12 text-left">
             <h6 class="regular text-left">My Items</h6>
-            <a class="page-scroll btn btn-facebook btn-xs" (click)="createNewItem()" href="#item-section">Post your stuff</a>
+            <a class="page-scroll btn btn-behance btn-xs" (click)="createNewItem()" href="#item-section">Post your stuff</a>
         </div><!-- end col -->
     </div>
 
@@ -24,14 +24,38 @@
 
                         <div class="item" *ngIf="i%3 == 0">
                             <div class="animate-box bounceIn animated">
-                                <a href="images/img_1.jpg" class="image-popup fh5co-board-img"
+                                <a href="#" class="image-popup fh5co-board-img"
                                    title="{{item.title}}"><img
-                                        src="{{item.image_id.url}}" alt="Free HTML5 Bootstrap template"></a>
+                                        src="{{item.images[0].url}}"></a>
                             </div>
-                            <div class="fh5co-desc">
-                                <h6>
-                                    <a [routerLink]="['/item', item.itemId]">{{item.title}}</a>
-                                </h6>
+                            <div class="row">
+                                <div class="fh5co-desc col-md-12">
+                                    <p class="lead"><b><a [routerLink]="['/item', item.itemId]">{{item.title}}</a></b></p>
+                                    <p>
+                                        <small class="text-muted"> Category : {{item.categoryId.categoryName}}</small>
+                                    </p>
+                                    <p>
+                                        <small class="text-muted"> Location : {{item.zipCode.zipCode}}</small>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-8"> &nbsp;</div>
+                                <div class="col-md-1">
+                                    <a class="page-scroll" (click)="selectItem(item)" title="Edit" href="#item-section">
+                                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                    </a>
+                                </div>
+                                <div class="col-md-1">
+                                    <a (click)="console.log('test')" title="Mark as bartered">
+                                            <i class="fa fa-check-circle" aria-hidden="true"></i>
+                                    </a>
+                                </div>
+                                <div class="col-md-1">
+                                    <a (click)="deleteItem(item.itemId)">
+                                    <i class="fa fa-trash" aria-hidden="true" title="Delete this item"></i>
+                                    </a>
+                                </div>
                             </div>
                         </div>
 
@@ -44,14 +68,38 @@
 
                         <div class="item" *ngIf="j%3 == 1">
                             <div class="animate-box bounceIn animated">
-                                <a href="images/img_1.jpg" class="image-popup fh5co-board-img"
+                                <a href="#" class="image-popup fh5co-board-img"
                                    title="{{item.title}}"><img
-                                        src="{{item.image_id.url}}" alt="Free HTML5 Bootstrap template" class="front"></a>
+                                        src="{{item.images[0].url}}"></a>
                             </div>
-                            <div class="fh5co-desc">
-                                <h6>
-                                    <a [routerLink]="['/item', item.itemId]">{{item.title}}</a>
-                                </h6>
+                            <div class="row">
+                                <div class="fh5co-desc col-md-12">
+                                    <p class="lead"><b><a [routerLink]="['/item', item.itemId]">{{item.title}}</a></b></p>
+                                    <p>
+                                        <small class="text-muted"> Category : {{item.categoryId.categoryName}}</small>
+                                    </p>
+                                    <p>
+                                        <small class="text-muted"> Location : {{item.zipCode.zipCode}}</small>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-8"> &nbsp;</div>
+                                <div class="col-md-1">
+                                    <a class="page-scroll" (click)="selectItem(item)" title="Edit" href="#item-section">
+                                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                    </a>
+                                </div>
+                                <div class="col-md-1">
+                                    <a (click)="console.log('test')" title="Mark as bartered">
+                                        <i class="fa fa-check-circle" aria-hidden="true"></i>
+                                    </a>
+                                </div>
+                                <div class="col-md-1">
+                                    <a (click)="deleteItem(item.itemId)">
+                                        <i class="fa fa-trash" aria-hidden="true" title="Delete this item"></i>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </ng-container>
@@ -62,14 +110,38 @@
 
                         <div class="item" *ngIf="k%3 == 2">
                             <div class="animate-box bounceIn animated">
-                                <a href="images/img_1.jpg" class="image-popup fh5co-board-img"
+                                <a href="#" class="image-popup fh5co-board-img"
                                    title="{{item.title}}"><img
-                                        src="{{item.image_id.url}}" alt="Free HTML5 Bootstrap template"></a>
+                                        src="{{item.images[0].url}}"></a>
                             </div>
-                            <div class="fh5co-desc">
-                                <h6>
-                                    <a [routerLink]="['/item', item.itemId]">{{item.title}}</a>
-                                </h6>
+                            <div class="row">
+                                <div class="fh5co-desc col-md-12">
+                                    <p class="lead"><b><a [routerLink]="['/item', item.itemId]">{{item.title}}</a></b></p>
+                                    <p>
+                                        <small class="text-muted"> Category : {{item.categoryId.categoryName}}</small>
+                                    </p>
+                                    <p>
+                                        <small class="text-muted"> Location : {{item.zipCode.zipCode}}</small>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-8"> &nbsp;</div>
+                                <div class="col-md-1">
+                                    <a class="page-scroll" (click)="selectItem(item)" title="Edit" href="#item-section">
+                                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                    </a>
+                                </div>
+                                <div class="col-md-1">
+                                    <a (click)="console.log('test')" title="Mark as bartered">
+                                        <i class="fa fa-check-circle" aria-hidden="true"></i>
+                                    </a>
+                                </div>
+                                <div class="col-md-1">
+                                    <a (click)="deleteItem(item.itemId)">
+                                        <i class="fa fa-trash" aria-hidden="true" title="Delete this item"></i>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </ng-container>

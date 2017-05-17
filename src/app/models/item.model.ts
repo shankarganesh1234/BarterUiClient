@@ -13,4 +13,5 @@ export class Item {
     numOfInterests: number;
     itemStage: string;
     story: string;
+    categoryName: string;
 }

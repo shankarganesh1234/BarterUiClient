@@ -9,6 +9,7 @@ import "rxjs/add/operator/map";
 import "rxjs/add/operator/catch";
 import {ItemDetail} from "../models/item-detail.model";
 import {LoggedInUser} from "../storage-utils/loggedInUser";
+import {environment} from "../../environments/environment";
 
 @Injectable()
 export class ItemService {
@@ -36,7 +37,20 @@ export class ItemService {
         });
         let options = new RequestOptions({headers: headers});
         let body = JSON.stringify(itemRequest);
-        return this.http.post(this.urls.createItemUrl, body, options)
+        return this.http.post(environment.createItemUrl, body, options)
+            .map(this.extractData)
+            .catch(this.handleError);
+    }
+
+    updateItem(itemRequest: Item): Observable<Item> {
+        let headers =  new Headers({
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'Authorization': this.loggedInUser.getAccessToken()
+        });
+        let options = new RequestOptions({headers: headers});
+        let body = JSON.stringify(itemRequest);
+        return this.http.put(environment.updateItem, body, options)
             .map(this.extractData)
             .catch(this.handleError);
     }
@@ -45,25 +59,31 @@ export class ItemService {
         let headers = new Headers();
         headers.append('Accept', 'multipart/form-data');
         let options = new RequestOptions({ headers: headers });
-        return this.http.post(this.urls.createItemImageUrl, itemImageFormData, options)
+        return this.http.post(environment.createItemImageUrl, itemImageFormData, options)
             .map(this.extractData)
             .catch(this.handleError);
     }
 
     getItem(itemId: number): Observable<ItemDetail> {
-        return this.http.get(this.urls.getItemUrl + itemId, this.options)
+        return this.http.get(environment.getItemUrl + itemId, this.options)
             .map(this.extractData)
             .catch(this.handleError);
     }
 
     getItemsByUser(userId: string): Observable<ItemDetail[]> {
-        return this.http.get(this.urls.getItemByUserUrl + userId, this.options)
+        return this.http.get(environment.getItemByUserUrl + userId, this.options)
             .map(this.extractData)
             .catch(this.handleError);
     }
 
     deleteItem(itemId: number): Observable<void> {
-        return this.http.delete(this.urls.userItemDeleteUrl + itemId, this.options)
+        return this.http.delete(environment.userItemDeleteUrl + itemId, this.options)
+            .map(this.extractData)
+            .catch(this.handleError);
+    }
+
+    deleteImage(imageId: string): Observable<void> {
+        return this.http.delete(environment.deleteImage + imageId, this.options)
             .map(this.extractData)
             .catch(this.handleError);
     }

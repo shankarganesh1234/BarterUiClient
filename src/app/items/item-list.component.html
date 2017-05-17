@@ -9,70 +9,134 @@
     <hr class="spacer-5">
     <hr class="spacer-20 no-border">
     <div class="row">
-        <div id="fh5co-board" data-columns="3">
-            <div class="column size-1of3">
+        <div id="fh5co-board" data-columns="4">
+            <div class="column size-1of4">
                 <ng-container
-                        *ngFor="let item of searchResponse.items  | paginate: { itemsPerPage: searchResponse.limit, currentPage: searchResponse.page, totalItems: searchResponse.total }; let i=index">
+                        *ngFor="let item of searchResponse.items; let i=index">
 
-                    <div class="item" *ngIf="i%3 == 0">
+                    <div class="item" *ngIf="i%4 == 0">
                         <div class="animate-box bounceIn animated">
-                            <a href="images/img_1.jpg" class="image-popup fh5co-board-img"
-                               title="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, eos?"><img
-                                    src="{{item.imageUrl}}" alt="Free HTML5 Bootstrap template"></a>
+                            <a href="#" class="image-popup fh5co-board-img"><img
+                                    src="{{item.imageUrl}}"></a>
                         </div>
-                        <div class="fh5co-desc">
-                            <h6 class="regular">
-                                <a (click)="routeToItemDetail(item.itemId)">{{item.title}}</a>
-                            </h6>
+                        <div class="row">
+                            <div class="fh5co-desc col-md-12">
+                                <p class="lead"><b><a (click)="routeToItemDetail(item.itemId)">{{item.title}}</a></b></p>
+                                <p>
+                                    <small class="text-muted"> Category : {{item.categoryName}}</small>
+                                </p>
+                                <p>
+                                    <small class="text-muted"> Location : {{item.zipCode}}</small>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-10"> &nbsp;</div>
+                            <div class="col-md-1">
+                                <a (click)="console.log('flag')">
+                                    <i class="fa fa-flag text-danger" aria-hidden="true" title="Flag this item"></i>
+                                </a>
+                            </div>
                         </div>
                     </div>
 
             </ng-container>
             </div>
 
-          <div class="column size-1of3">
+          <div class="column size-1of4">
             <ng-container
-                    *ngFor="let item of searchResponse.items  | paginate: { itemsPerPage: searchResponse.limit, currentPage: searchResponse.page, totalItems: searchResponse.total }; let j=index">
+                    *ngFor="let item of searchResponse.items; let j=index">
 
-                <div class="item" *ngIf="j%3 == 1">
+                <div class="item" *ngIf="j%4 == 1">
                     <div class="animate-box bounceIn animated">
                         <a href="images/img_1.jpg" class="image-popup fh5co-board-img"
                            title="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, eos?"><img
-                                src="{{item.imageUrl}}" alt="Free HTML5 Bootstrap template" class="front"></a>
+                                src="{{item.imageUrl}}"></a>
                     </div>
-                    <div class="fh5co-desc">
-                        <h6 class="regular">
-                            <a (click)="routeToItemDetail(item.itemId)">{{item.title}}</a>
-                        </h6>
+                    <div class="row">
+                        <div class="fh5co-desc col-md-12">
+                            <p class="lead"><b><a (click)="routeToItemDetail(item.itemId)">{{item.title}}</a></b></p>
+                            <p>
+                                <small class="text-muted"> Category : {{item.categoryName}}</small>
+                            </p>
+                            <p>
+                                <small class="text-muted"> Location : {{item.zipCode}}</small>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-10"> &nbsp;</div>
+                        <div class="col-md-1">
+                            <a (click)="console.log('flag')">
+                                <i class="fa fa-flag text-danger" aria-hidden="true" title="Flag this item"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </ng-container>
         </div>
-        <div class="column size-1of3">
+        <div class="column size-1of4">
             <ng-container
-                    *ngFor="let item of searchResponse.items  | paginate: { itemsPerPage: searchResponse.limit, currentPage: searchResponse.page, totalItems: searchResponse.total }; let k=index">
+                    *ngFor="let item of searchResponse.items; let k=index">
 
-                <div class="item" *ngIf="k%3 == 2">
+                <div class="item" *ngIf="k%4 == 2">
                     <div class="animate-box bounceIn animated">
-                        <a href="images/img_1.jpg" class="image-popup fh5co-board-img"
-                           title="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, eos?"><img
-                                src="{{item.imageUrl}}" alt="Free HTML5 Bootstrap template"></a>
+                        <a href="images/img_1.jpg" class="image-popup fh5co-board-img"><img
+                                src="{{item.imageUrl}}"></a>
                     </div>
-                    <div class="fh5co-desc">
-                        <h6 class="regular">
-                            <a (click)="routeToItemDetail(item.itemId)">{{item.title}}</a>
-                        </h6>
+                    <div class="row">
+                        <div class="fh5co-desc col-md-12">
+                            <p class="lead"><b><a (click)="routeToItemDetail(item.itemId)">{{item.title}}</a></b></p>
+                            <p>
+                                <small class="text-muted"> Category : {{item.categoryName}}</small>
+                            </p>
+                            <p>
+                                <small class="text-muted"> Location : {{item.zipCode}}</small>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-10"> &nbsp;</div>
+                        <div class="col-md-1">
+                            <a (click)="console.log('flag')">
+                                <i class="fa fa-flag text-danger" aria-hidden="true" title="Flag this item"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </ng-container>
         </div>
-        </div>
-    </div>
+            <div class="column size-1of4">
+                <ng-container
+                        *ngFor="let item of searchResponse.items; let l=index">
 
-    <div class="row">
-        <div class="col-sm-12">
-            <pagination-controls
-                    (pageChange)="paginatedResults($event, searchResponse.limit, searchResponse.search, searchResponse.zip)"></pagination-controls>
+                    <div class="item" *ngIf="l%4 == 3">
+                        <div class="animate-box bounceIn animated">
+                            <a href="images/img_1.jpg" class="image-popup fh5co-board-img"><img
+                                    src="{{item.imageUrl}}"></a>
+                        </div>
+                        <div class="row">
+                            <div class="fh5co-desc col-md-12">
+                                <p class="lead"><b><a (click)="routeToItemDetail(item.itemId)">{{item.title}}</a></b></p>
+                                <p>
+                                    <small class="text-muted"> Category : {{item.categoryName}}</small>
+                                </p>
+                                <p>
+                                    <small class="text-muted"> Location : {{item.zipCode}}</small>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-10"> &nbsp;</div>
+                            <div class="col-md-1">
+                                <a (click)="console.log('flag')">
+                                    <i class="fa fa-flag text-danger" aria-hidden="true" title="Flag this item"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+            </div>
         </div>
     </div>
 </div>

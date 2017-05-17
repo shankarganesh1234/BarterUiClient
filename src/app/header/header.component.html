@@ -1,24 +1,21 @@
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="topBar navbar-fixed-top page-scroll">
-        <div class="container">
-            <ul class="topBarNav">
-                <li class="hidden">
-                    <a class="page-scroll" href="#page-top"></a>
-                </li>
-                <li>
-                    <a href="home" id="search-results-link"><i class="fa fa-refresh" aria-hidden="true"></i>
-                         Bartery</a>
-                </li>
-                 <li>
-                    <swap-search-bar></swap-search-bar>
-                </li>
-                <li class="pull-right">
-                    <swap-login></swap-login>
-                </li>
-                <li class="linkdown pull-right">
-                    <swap-myaccount></swap-myaccount>
-                </li>
-            </ul>
+        <div class="row vertical-alignment">
+
+            <div class="col-md-1 text-left">
+                <a href="/" id="search-results-link">
+                    <img class="img-responsive" src="../../assets/img/barterii.png"/>
+                </a>
+            </div>
+            <div class="col-md-8">
+                <swap-search-bar></swap-search-bar>
+            </div>
+            <div class="col-md-2 display-table">
+                <ul class="topBarNav pull-right">
+                    <li class="linkdown table-cell-top"><swap-myaccount></swap-myaccount></li>
+                    <li><swap-login></swap-login></li>
+                </ul>
+            </div>
         </div>
     </div>
 </nav>

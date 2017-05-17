@@ -5,28 +5,14 @@
                 <div class="row">
                     <div class="col-sm-5">
                         <div class='carousel slide product-slider' data-ride='carousel' data-interval="false">
-                            <div class='carousel-inner'>
-                                <div class='item active'>
-                                    <figure>
-                                        <img src="{{itemDetail.image_id.url}}" alt=''/>
-                                    </figure>
-                                </div><!-- end item -->
-                                <div class='item'>
-                                    <figure>
-                                        <img src="{{itemDetail.image_id.url}}" alt=''/>
-                                    </figure>
-                                </div><!-- end item -->
-                                <div class='item'>
-                                    <figure>
-                                        <img src="{{itemDetail.image_id.url}}" alt=''/>
-                                    </figure>
-                                </div><!-- end item -->
-                                <div class='item'>
-                                    <figure>
-                                        <img src="{{itemDetail.image_id.url}}" alt=''/>
-                                    </figure>
-                                </div><!-- end item -->
-
+                            <div class='carousel-inner' *ngIf="itemDetail.images != null && itemDetail.images.length > 0">
+                                <ng-container *ngFor="let image of itemDetail.images; let i=index;">
+                                    <div [ngClass]="{'active': i == 0 }" class='item'>
+                                        <figure>
+                                            <img src="{{image.url}}" alt=''/>
+                                        </figure>
+                                    </div>
+                                </ng-container>
                                 <!-- Arrows -->
                                 <a class='left carousel-control' href='.product-slider' data-slide='prev'>
                                     <span class='fa fa-angle-left'></span>
@@ -37,15 +23,11 @@
                             </div><!-- end carousel-inner -->
 
                             <!-- thumbs -->
-                            <ol class='carousel-indicators mCustomScrollbar meartlab'>
-                                <li data-target='.product-slider' data-slide-to='0' class='active'><img
-                                        src="{{itemDetail.image_id.url}}" alt=''/></li>
-                                <li data-target='.product-slider' data-slide-to='1'><img
-                                        src="{{itemDetail.image_id.url}}" alt=''/></li>
-                                <li data-target='.product-slider' data-slide-to='2'><img
-                                        src="{{itemDetail.image_id.url}}" alt=''/></li>
-                                <li data-target='.product-slider' data-slide-to='3'><img
-                                        src="{{itemDetail.image_id.url}}" alt=''/></li>
+                            <ol class='carousel-indicators mCustomScrollbar meartlab' *ngIf="itemDetail.images != null && itemDetail.images.length > 0">
+                                <ng-container *ngFor="let image of itemDetail.images;let i=index">
+                                    <li data-target='.product-slider' data-slide-to='0' class='active'><img
+                                            src="{{image.url}}" alt=''/></li>
+                                </ng-container>
                             </ol><!-- end carousel-indicators -->
                         </div><!-- end carousel -->
                     </div><!-- end col -->
@@ -60,7 +42,7 @@
                                 <hr class="spacer-15">
 
                                 <div class="row">
-                                    <div class="col-sm-12 col-md-6">
+                                    <div class="col-sm-12 col-md-12">
                                         <dl class="dl-horizontal">
                                             <dt>Category</dt>
                                             <dd>{{itemDetail.categoryId.categoryName}}</dd>
@@ -113,15 +95,13 @@
                                             </a>
                                         </div>
                                         <div class="col-xs-10 text-left">
-                                            <h6>
+                                            <h6 class="inline">
                                                 <a [routerLink]="['/chat', interest.interestId]">
                                                 {{interest.interestedUser.displayName}}
+                                                    <small class="text-muted">has offered an exchange for this item. </small>
+                                                    &nbsp;   <i class="fa fa-commenting-o text-primary"></i>
                                                 </a>
                                             </h6>
-                                            <p>
-                                                is interested in your item and has offered an exchange.
-                                                <a [routerLink]="['/chat', interest.interestId]"><i class="fa fa-commenting-o text-warning fa-2x"></i></a>
-                                            </p>
                                             <hr>
                                         </div>
                                 </div>

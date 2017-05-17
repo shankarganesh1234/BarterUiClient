@@ -32,7 +32,7 @@
                         <ul class="items">
                             <li *ngFor="let item of itemDetails;">
                                 <a href="javascript:void(0);" class="product-image">
-                                    <img src="{{item.image_id.url}}" alt="Sample Product ">
+                                    <img src="{{item.images[0].url}}" alt="Item image ">
                                 </a>
                                 <div class="product-details">
                                     <div class="close-icon">

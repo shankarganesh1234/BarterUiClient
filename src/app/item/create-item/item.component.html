@@ -11,7 +11,7 @@
         </div><!-- end col -->
     </div><!-- end row -->
     <div class="row">
-        <form [formGroup]="itemForm" *ngIf="active" (ngSubmit)="createItem(itemForm)">
+        <form [formGroup]="itemForm" *ngIf="active" (ngSubmit)="createOrUpdateItem(itemForm)">
             <div class="col-sm-6">
                 <div class="form-group" [class.has-error]="formErrors.title">
                     <label for="title">Title</label>
@@ -21,7 +21,6 @@
                         {{ formErrors.title }}
                     </div>
                 </div>
-
                 <div class="form-group" [class.has-error]="formErrors.zipCode">
                     <label for="zipCode">Zip Code</label>
                     <input type="text" formControlName="zipCode" id="zipCode" class="form-control input-md"
@@ -34,35 +33,28 @@
                     <label for="categoryId">Category</label>
                     <select class="form-control" id="categoryId" name="categoryId"
                             formControlName="categoryId">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
+                        <option *ngFor="let category of categoriesList" [value]="category.categoryId">{{category.categoryName}}</option>
                     </select>
                     <div *ngIf="formErrors.categoryId">
                         {{ formErrors.categoryId }}
                     </div>
                 </div>
-                <div class="form-group" [class.has-error]="formErrors.condition">
-                    <label for="condition">Condition</label>
-                    <select class="form-control" id="condition" name="condition" formControlName="condition">
-                        <option>BRAND_NEW</option>
-                        <option>PRE_OWNED</option>
-                    </select>
-                    <div *ngIf="formErrors.condition">
-                        {{ formErrors.condition }}
-                    </div>
-                </div>
+
                 <div class="form-group" [class.has-error]="formErrors.itemStage">
                     <label for="itemImage">Upload item images</label>
-                    <input type="file" (change)="fileUpload($event)" id="itemImage" placeholder="Upload file"
-                           accept=".jpg,.jpeg,.png">
+                    <image-upload id="itemImage"
+                            max="4"
+                            maxFileSize="2000kb"
+                            [buttonCaption]="'Choose images'"
+                            [dropBoxMessage]="'Drop images'"
+                            [fileTooLargeMessage]="'Image size is too large'"
+                            (onRemove)="removeImage($event)"
+                            (onFileUploadFinish)="fileUpload($event)">
+                    </image-upload>
                 </div>
-
                 <div class="form-group">
-                    <input *ngIf="createOrUpdate == 'update'" type="submit" class="btn btn-default round btn-md" value="Update my item">
-                    <input *ngIf="createOrUpdate == 'create'" type="submit" class="btn btn-default round btn-md" value="List my item">
+                    <input *ngIf="createOrUpdate == 'update'" type="submit" class="btn btn-behance btn-xs" value="Update my item">
+                    <input *ngIf="createOrUpdate == 'create'" type="submit" class="btn btn-behance btn-xs" value="List my item">
                 </div>
             </div>
             <div class="col-sm-4 col-sm-offset-1">
@@ -76,16 +68,26 @@
                         {{ formErrors.description }}
                     </div>
                 </div>
-                <div class="form-group" [class.has-error]="formErrors.itemStage">
-                    <label for="itemStage">Item Status</label>
-                    <select class="form-control" id="itemStage" name="itemStage" formControlName="itemStage">
-                        <option>INITIALIZED</option>
+                <div class="form-group" [class.has-error]="formErrors.condition">
+                    <label for="condition">Condition</label>
+                    <select class="form-control" id="condition" name="condition" formControlName="condition">
+                        <option>BRAND_NEW</option>
+                        <option>PRE_OWNED</option>
                     </select>
-                    <div *ngIf="formErrors.itemStage">
-                        {{ formErrors.itemStage }}
+                    <div *ngIf="formErrors.condition">
+                        {{ formErrors.condition }}
                     </div>
                 </div>
-            </div><!-- end col -->
+               </div><!-- end col -->
         </form>
+    </div>
+    <!-- Only when editing items, show existing images-->
+    <div *ngIf="itemDetail && itemDetail.images" class="row">
+            <div *ngFor="let image of itemDetail.images" class="col-md-2">
+                <button type="button" class="close" aria-label="Close" title="Delete this image" (click)="deleteExistingImage(image.public_id)">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <img class="img-responsive" src="{{image.url}}"/>
+            </div>
     </div>
 </div>

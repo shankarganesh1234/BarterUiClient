@@ -12,8 +12,8 @@ import {Messages} from "../../models/error-messages";
 @Component({
     moduleId: module.id,
     selector: 'swap-interest-options',
-    templateUrl: 'interest-options.component.html',
-    styleUrls: ['interest-options.component.css']
+    templateUrl: './interest-options.component.html',
+    styleUrls: ['./interest-options.component.css']
 })
 
 export class InterestOptionsComponent extends LoggedInUser implements OnInit, OnChanges{

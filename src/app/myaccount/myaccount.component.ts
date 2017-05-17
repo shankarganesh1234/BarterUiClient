@@ -9,8 +9,8 @@ declare const FB:any;
 @Component({
     moduleId: module.id,
     selector: 'swap-myaccount',
-    templateUrl: 'myaccount.component.html',
-    styleUrls: ['myaccount.component.css']
+    templateUrl: './myaccount.component.html',
+    styleUrls: ['./myaccount.component.css']
 })
 
 export class MyAccountComponent extends LoggedInUser implements OnInit {
@@ -42,6 +42,6 @@ export class MyAccountComponent extends LoggedInUser implements OnInit {
         this.user = null;
         this.removeLoggedInUser();
         this.componentEventService.userLoggedOut(true);
-        
+
     }
 }

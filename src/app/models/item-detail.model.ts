@@ -9,7 +9,7 @@ export class ItemDetail {
     zipCode: Location;
     userId: User;
     categoryId: Category;
-    image_id: ItemImage;
+    images: ItemImage[];
     condition: string;
     numOfReviews: number;
     numOfInterests: number;
