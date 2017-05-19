@@ -20,6 +20,7 @@ export class ChatComponent implements OnInit {
     chatChannel: any;
     interest: Interest;
     chats: ChatInfo[] = [];
+    isLoading: boolean = true;
 
     constructor(private route: ActivatedRoute,
                 private interestService: InterestService,
@@ -105,6 +106,8 @@ export class ChatComponent implements OnInit {
         for(let chatLog of chatLogs) {
             this.chats.push(this.createChatInfoFromHistory(chatLog));
         }
+
+        this.isLoading = false;
     }
 
     createChatInfoFromHistory(chatLog: ChatHistory) {
