@@ -29,6 +29,7 @@ export class ItemComponent implements OnInit {
     createOrUpdate: string;
     categoriesList: Category[] = [];
     disableButton: boolean = false;
+    serviceMessage: string;
     private loggedInUser: LoggedInUser = new LoggedInUser();
 
     constructor(private fb: FormBuilder,
@@ -39,6 +40,7 @@ export class ItemComponent implements OnInit {
 
 
     ngOnInit(): void {
+        this.serviceMessage = null;
         this.componentEventService.itemObjectEvent$.subscribe(
             result => {
                 this.itemDetail = result;
@@ -247,6 +249,7 @@ export class ItemComponent implements OnInit {
 
     itemImageCreationSuccess(result: any): void {
         this.disableButton = false;
+        this.serviceMessage = 'Success!! ';
     }
 
     /**

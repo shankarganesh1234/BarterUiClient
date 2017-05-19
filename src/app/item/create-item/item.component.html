@@ -55,6 +55,8 @@
                 <div class="form-group">
                     <input *ngIf="createOrUpdate == 'update'" [disabled]="disableButton" type="submit" class="btn btn-behance btn-xs" value="Update my item">
                     <input *ngIf="createOrUpdate == 'create'" [disabled]="disableButton" type="submit" class="btn btn-behance btn-xs" value="List my item">
+                    <div *ngIf="serviceMessage" class="alert alert-success" role="alert">{{serviceMessage}}<i
+                            class="fa fa-thumbs-up"></i></div>
                 </div>
             </div>
             <div class="col-sm-4 col-sm-offset-1">
@@ -90,4 +92,5 @@
                 <img class="img-responsive" src="{{image.url}}"/>
             </div>
     </div>
+
 </div>
