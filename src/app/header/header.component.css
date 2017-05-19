@@ -10,6 +10,6 @@
 }
 
 .table-cell-top {
-    vertical-align: top;
+    vertical-align: middle;
     display: table-cell;
 }

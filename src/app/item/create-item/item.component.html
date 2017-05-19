@@ -53,8 +53,9 @@
                     </image-upload>
                 </div>
                 <div class="form-group">
-                    <input *ngIf="createOrUpdate == 'update'" type="submit" class="btn btn-behance btn-xs" value="Update my item">
-                    <input *ngIf="createOrUpdate == 'create'" type="submit" class="btn btn-behance btn-xs" value="List my item">
+                    <input *ngIf="createOrUpdate == 'update'" [disabled]="disableButton" type="submit" class="btn btn-behance btn-xs" value="Update my item">
+                    <input *ngIf="createOrUpdate == 'create'" [disabled]="disableButton" type="submit" class="btn btn-behance btn-xs" value="List my item">
+                    </a>
                 </div>
             </div>
             <div class="col-sm-4 col-sm-offset-1">

@@ -28,6 +28,7 @@ export class ItemComponent implements OnInit {
     itemDetail: ItemDetail;
     createOrUpdate: string;
     categoriesList: Category[] = [];
+    disableButton: boolean = false;
     private loggedInUser: LoggedInUser = new LoggedInUser();
 
     constructor(private fb: FormBuilder,
@@ -184,6 +185,7 @@ export class ItemComponent implements OnInit {
      * Create or update an item based on form submission
      */
     createOrUpdateItem() {
+        this.disableButton = true;
         if(this.itemDetail === null) {
             this.createItem();
         } else {
@@ -244,7 +246,7 @@ export class ItemComponent implements OnInit {
     }
 
     itemImageCreationSuccess(result: any): void {
-
+        this.disableButton = false;
     }
 
     /**
