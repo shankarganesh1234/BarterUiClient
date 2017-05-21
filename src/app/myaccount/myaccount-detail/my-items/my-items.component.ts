@@ -7,6 +7,7 @@ import {ItemDetail} from "../../../models/item-detail.model";
 import {ItemService} from "../../../services/item.service";
 
 
+declare const AOS:any;
 
 @Component({
     moduleId: module.id,
@@ -24,6 +25,7 @@ export class MyItemsComponent extends LoggedInUser implements OnInit {
 
     constructor(private componentEventService: ComponentEventService, private userService: UserService, private itemService: ItemService) {
         super();
+        AOS.init();
     }
     ngOnInit(): void {
         console.log('myaccount: init');

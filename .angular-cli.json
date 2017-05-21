@@ -27,7 +27,8 @@
         "assets/css/owl.theme.default.min.css",
         "assets/css/salvattore.css",
         "assets/css/style.css",
-        "assets/css/default.css"
+        "assets/css/default.css",
+        "../node_modules/aos/dist/aos.css"
       ],
       "scripts": [
         "assets/js/jquery-3.1.1.min.js",
@@ -37,7 +38,8 @@
         "assets/js/bootstrap.min.js",
         "assets/js/scrolling-nav.js",
         "assets/js/SendBird.min.js",
-        "assets/js/wow.min.js"
+        "assets/js/wow.min.js",
+        "../node_modules/aos/dist/aos.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {
