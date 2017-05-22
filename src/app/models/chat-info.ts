@@ -3,4 +3,5 @@ export class ChatInfo {
     userName: string;
     message: string;
     timestamp: string;
+    id:string;
 }

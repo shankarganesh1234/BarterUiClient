@@ -7,6 +7,8 @@ import {ChatInfo} from "../models/chat-info";
 import {ChatService} from "../services/chat.service";
 import {ChatHistory} from "../models/chat-history";
 
+declare const $:any;
+
 @Component({
     moduleId: module.id,
     selector: 'swap-chat',
@@ -71,7 +73,9 @@ export class ChatComponent implements OnInit {
                                 ChannelHandler.onMessageReceived = function(channel: any, message: any){
                                     console.log(channel, message);
                                     if(message != null) {
-                                        this.chats.push(this.createChatInfo(message._sender.userId, this.interest, message.message));
+                                        let chatInfo: ChatInfo = this.createChatInfo(message._sender.userId, this.interest, message.message);
+                                        chatInfo.id = this.getRandomString();
+                                        this.chats.push(chatInfo);
                                     }
                                 }.bind(this);
 
@@ -102,11 +106,13 @@ export class ChatComponent implements OnInit {
 
         if(chatLogs == null || chatLogs.length <= 0)
             return;
-
+        let chatInfo: ChatInfo;
         for(let chatLog of chatLogs) {
-            this.chats.push(this.createChatInfoFromHistory(chatLog));
+            chatInfo = this.createChatInfoFromHistory(chatLog);
+            chatInfo.id = this.getRandomString();
+            this.chats.push(chatInfo);
         }
-
+        setTimeout(function() {document.getElementById(chatInfo.id).scrollIntoView(false)}, 1000);
         this.isLoading = false;
     }
 
@@ -135,7 +141,15 @@ export class ChatComponent implements OnInit {
         this.chatChannel.sendUserMessage(messageBody, null, null, (result: any) => {
             console.log(result);
             if(result != null) {
-            this.chats.push(this.createChatInfo(result._sender.userId, this.interest, messageBody));
+                let chatInfo: ChatInfo = this.createChatInfo(result._sender.userId, this.interest, messageBody);
+                chatInfo.id = this.getRandomString();
+                this.chats.push(chatInfo);
+                setTimeout(function()
+                {
+                    document.getElementById(chatInfo.id).scrollIntoView(false);
+                    $('#chatMessageInput').val('');
+                }, 1000);
+
             }
         });
     }
@@ -159,5 +173,16 @@ export class ChatComponent implements OnInit {
             }
         }
         return chatInfo;
+    }
+
+    /**
+     * Gets a random string and assigns the id
+     */
+    getRandomString(): string {
+        var text = "";
+        var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        for( var i=0; i < 8; i++ )
+            text += possible.charAt(Math.floor(Math.random() * possible.length));
+        return text;
     }
 }
