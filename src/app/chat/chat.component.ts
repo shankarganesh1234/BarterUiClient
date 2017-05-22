@@ -148,8 +148,7 @@ export class ChatComponent implements OnInit {
                 {
                     document.getElementById(chatInfo.id).scrollIntoView(false);
                     $('#chatMessageInput').val('');
-                }, 1000);
-
+                }, 500);
             }
         });
     }
