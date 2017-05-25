@@ -26,7 +26,11 @@
           </div>
 
           <div class="col-sm-6">
-            <i class="fa fa-refresh fa-3x" aria-hidden="true"></i>
+            <div class="row">
+              <div class="col-md-2 col-lg-offset-5">
+                <img class="img-responsive" src="../../assets/img/barterii_cropped.png"/>
+              </div>
+            </div>
 
               <div class="box box-default chat-box chat-box-primary box-solid">
                 <div class="box-header with-border">
@@ -38,7 +42,7 @@
                   <!-- Conversations are loaded here -->
                   <div class="chat-box-messages">
                     <!-- Message. Default to the left -->
-
+                    <i *ngIf="isLoading" class="fa fa-2x fa-refresh fa-spin"></i>
                     <ng-container *ngFor="let chat of chats">
 
                       <div class="chat-box-msg">
@@ -49,7 +53,7 @@
                         <img class="chat-box-img" src="{{chat.userImageUrl}}"
                              alt="message user image">
                         <!-- /.chat-box-img -->
-                        <div class="chat-box-text">
+                        <div class="chat-box-text" id="{{chat.id}}">
                           {{chat.message}}
                         </div><!-- /.chat-box-text -->
                       </div><!-- /.chat-box-msg -->

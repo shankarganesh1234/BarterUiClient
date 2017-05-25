@@ -5,6 +5,7 @@ import {SearchService} from "../services/search.service";
 import {ComponentEventService} from "../services/component-event.service";
 import {ActivatedRoute, Router} from "@angular/router";
 
+declare const AOS:any;
 
 @Component({
     moduleId: module.id,
@@ -20,6 +21,7 @@ export class ItemListComponent implements OnInit, OnChanges {
     searchRequest: SearchBar;
 
     constructor(private route: ActivatedRoute, private router: Router, private searchService: SearchService, private componentEventService: ComponentEventService){
+        AOS.init();
     }
 
     ngOnInit(): void {
@@ -40,6 +42,28 @@ export class ItemListComponent implements OnInit, OnChanges {
 
     ngOnChanges(changes: SimpleChanges) {
 
+    }
+
+    /**
+     * Invoked when load more button is clicked
+     */
+    loadMore(): void {
+        this.searchRequest.start = this.searchRequest.start + this.searchRequest.limit;
+        this.searchService
+            .search(this.searchRequest)
+            .subscribe(
+                result => this.handleLoadMore(result),
+                error => console.log(error)
+            );
+    }
+
+    /**
+     * Handle the search response after load more button is clicked
+     * @param result
+     */
+    handleLoadMore(result: SearchResponse): void {
+        this.searchResponse.start = result.start;
+        this.searchResponse.items.push.apply(this.searchResponse.items, result.items);
     }
 
     paginatedResults(page: number, limit: number, query: string, zip: string) {

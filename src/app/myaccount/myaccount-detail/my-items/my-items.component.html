@@ -1,6 +1,6 @@
 <div class="col-sm-12">
     <div class="row">
-        <div class="col-sm-12 text-left">
+        <div class="col-sm-12 text-left" id="my-items-id">
             <h6 class="regular text-left">My Items</h6>
             <a class="page-scroll btn btn-behance btn-xs" (click)="createNewItem()" href="#item-section">Post your stuff</a>
         </div><!-- end col -->
@@ -17,12 +17,12 @@
 
     <div *ngIf="items" class="container">
         <div class="row">
-            <div id="fh5co-board" data-columns="3">
-                <div class="column size-1of3">
+            <div id="fh5co-board" data-columns="4">
+                <div class="column size-1of4">
                     <ng-container
                             *ngFor="let item of items; let i=index">
 
-                        <div class="item" *ngIf="i%3 == 0">
+                        <div class="item" *ngIf="i%4 == 0" data-aos="fade-up">
                             <div class="animate-box bounceIn animated">
                                 <a href="#" class="image-popup fh5co-board-img"
                                    title="{{item.title}}"><img
@@ -40,7 +40,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-8"> &nbsp;</div>
+                                <div class="col-md-7"> &nbsp;</div>
                                 <div class="col-md-1">
                                     <a class="page-scroll" (click)="selectItem(item)" title="Edit" href="#item-section">
                                         <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
@@ -62,11 +62,11 @@
                     </ng-container>
                 </div>
 
-                <div class="column size-1of3">
+                <div class="column size-1of4">
                     <ng-container
                             *ngFor="let item of items; let j=index">
 
-                        <div class="item" *ngIf="j%3 == 1">
+                        <div class="item" *ngIf="j%4 == 1" data-aos="fade-up">
                             <div class="animate-box bounceIn animated">
                                 <a href="#" class="image-popup fh5co-board-img"
                                    title="{{item.title}}"><img
@@ -84,7 +84,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-8"> &nbsp;</div>
+                                <div class="col-md-7"> &nbsp;</div>
                                 <div class="col-md-1">
                                     <a class="page-scroll" (click)="selectItem(item)" title="Edit" href="#item-section">
                                         <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
@@ -104,11 +104,11 @@
                         </div>
                     </ng-container>
                 </div>
-                <div class="column size-1of3">
+                <div class="column size-1of4">
                     <ng-container
                             *ngFor="let item of items; let k=index">
 
-                        <div class="item" *ngIf="k%3 == 2">
+                        <div class="item" *ngIf="k%4 == 2" data-aos="fade-up">
                             <div class="animate-box bounceIn animated">
                                 <a href="#" class="image-popup fh5co-board-img"
                                    title="{{item.title}}"><img
@@ -126,7 +126,49 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-8"> &nbsp;</div>
+                                <div class="col-md-7"> &nbsp;</div>
+                                <div class="col-md-1">
+                                    <a class="page-scroll" (click)="selectItem(item)" title="Edit" href="#item-section">
+                                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                    </a>
+                                </div>
+                                <div class="col-md-1">
+                                    <a (click)="console.log('test')" title="Mark as bartered">
+                                        <i class="fa fa-check-circle" aria-hidden="true"></i>
+                                    </a>
+                                </div>
+                                <div class="col-md-1">
+                                    <a (click)="deleteItem(item.itemId)">
+                                        <i class="fa fa-trash" aria-hidden="true" title="Delete this item"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-container>
+                </div>
+                <div class="column size-1of4">
+                    <ng-container
+                            *ngFor="let item of items; let l=index">
+
+                        <div class="item" *ngIf="l%4 == 3" data-aos="fade-up">
+                            <div class="animate-box bounceIn animated">
+                                <a href="#" class="image-popup fh5co-board-img"
+                                   title="{{item.title}}"><img
+                                        src="{{item.images[0].url}}"></a>
+                            </div>
+                            <div class="row">
+                                <div class="fh5co-desc col-md-12">
+                                    <p class="lead"><b><a [routerLink]="['/item', item.itemId]">{{item.title}}</a></b></p>
+                                    <p>
+                                        <small class="text-muted"> Category : {{item.categoryId.categoryName}}</small>
+                                    </p>
+                                    <p>
+                                        <small class="text-muted"> Location : {{item.zipCode.zipCode}}</small>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-7"> &nbsp;</div>
                                 <div class="col-md-1">
                                     <a class="page-scroll" (click)="selectItem(item)" title="Edit" href="#item-section">
                                         <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
