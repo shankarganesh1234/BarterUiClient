@@ -1,7 +1,8 @@
 import {Component, OnInit} from "@angular/core";
-import {User} from "../models/user";
-import {LoggedInUser} from "../storage-utils/loggedInUser";
-import {ComponentEventService} from "../services/component-event.service";
+import {User} from "../../models/user";
+import {LoggedInUser} from "../../storage-utils/loggedInUser";
+import {ComponentEventService} from "../../services/component-event.service";
+import {NotificationService} from "../../services/notification.service";
 
 
 declare const FB:any;
@@ -17,8 +18,9 @@ export class MyAccountComponent extends LoggedInUser implements OnInit {
 
     isLoggedIn: boolean = false;
     user: User;
+    isGlobalNotifications:boolean = false;
 
-    constructor(private componentEventService: ComponentEventService) {
+    constructor(private componentEventService: ComponentEventService, private notificationService: NotificationService) {
         super();
     }
     ngOnInit(): void {
@@ -28,6 +30,16 @@ export class MyAccountComponent extends LoggedInUser implements OnInit {
                 this.user = result;
                 this.isLoggedIn = true;
             });
+
+        // websocket notification section
+        let connection:WebSocket = this.notificationService.getWebSocket();
+        this.notificationService.initWebSocket(connection);
+        this.notificationService.connection.onmessage = function(e) {
+            if(e != null && e.data != null && e.data != '') {
+                console.log(e.data);
+                this.isGlobalNotifications = true;
+            }
+        }.bind(this);
     }
 
     onFacebookLogoutClick() {
@@ -42,6 +54,6 @@ export class MyAccountComponent extends LoggedInUser implements OnInit {
         this.user = null;
         this.removeLoggedInUser();
         this.componentEventService.userLoggedOut(true);
-
     }
+
 }

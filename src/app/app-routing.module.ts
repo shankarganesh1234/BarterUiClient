@@ -3,7 +3,7 @@ import {RouterModule, Routes} from "@angular/router";
 import {HomeComponent} from "./home/home.component";
 import {ItemListComponent} from "./items/item-list.component";
 import {ItemDetailComponent} from "./item/get-item/get-item.component";
-import {MyAccountDetailComponent} from "./myaccount/myaccount-detail/myaccount-detail.component";
+import {MyAccountDetailComponent} from "./myaccount/myaccount-detail/my-account-detail-parent/myaccount-detail.component";
 import {ChatComponent} from "./chat/chat.component";
 
 const routes: Routes = [

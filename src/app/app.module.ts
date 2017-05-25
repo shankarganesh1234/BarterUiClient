@@ -16,8 +16,8 @@ import {ItemDetailComponent} from "./item/get-item/get-item.component";
 import {InterestOptionsComponent} from "./interest/get-options/interest-options.component";
 import {LoginComponent} from "./login/login.component";
 import {ErrorModalComponent} from "./errors/error-modal.component";
-import {MyAccountComponent} from "./myaccount/myaccount.component";
-import {MyAccountDetailComponent} from "./myaccount/myaccount-detail/myaccount-detail.component";
+import {MyAccountComponent} from "./myaccount/my-account-summary/myaccount.component";
+import {MyAccountDetailComponent} from "./myaccount/myaccount-detail/my-account-detail-parent/myaccount-detail.component";
 import {MyProfileComponent} from "./myaccount/myaccount-detail/my-profile/my-profile.component";
 import {MyInterestsComponent} from "./myaccount/myaccount-detail/my-interests/my-interests.component";
 import {MyItemsComponent} from "./myaccount/myaccount-detail/my-items/my-items.component";
@@ -37,6 +37,7 @@ import { TestcomponentComponent } from './testcomponent/testcomponent.component'
 import {MyNewComponentComponent} from "./my-new-component/my-new-component.component";
 import {ChatService} from "./services/chat.service";
 import {ImageUploadModule} from "angular2-image-upload";
+import {NotificationService} from "./services/notification.service";
 
 @NgModule({
   declarations: [
@@ -74,7 +75,7 @@ import {ImageUploadModule} from "angular2-image-upload";
     AlertModule.forRoot(),
     ImageUploadModule.forRoot()
   ],
-  providers: [SearchService, CategoryService, ItemService, InterestService, LoginService, UserService, ChatService],
+  providers: [SearchService, CategoryService, ItemService, InterestService, LoginService, UserService, ChatService, NotificationService],
   bootstrap: [LandingComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA], // add this!
 })

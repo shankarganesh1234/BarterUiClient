@@ -22,5 +22,6 @@ export const environment = {
   getChatHistory: "http://52.9.129.222:8080/customServer/chat/history?",
   getCategoriesUrl: "http://52.9.129.222:8080/customServer/category",
   deleteImage: "http://52.9.129.222:8080/customServer/image/",
-  updateItem: "http://52.9.129.222:8080/customServer/listing"
+  updateItem: "http://52.9.129.222:8080/customServer/listing",
+  websocketNotificationUrl: "ws://52.9.129.222:8080/customServer/notifications/"
 };

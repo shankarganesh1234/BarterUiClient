@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from "@angular/core";
-import {LoggedInUser} from "../../storage-utils/loggedInUser";
-import {ComponentEventService} from "../../services/component-event.service";
-import {User} from "../../models/user";
+import {LoggedInUser} from "../../../storage-utils/loggedInUser";
+import {ComponentEventService} from "../../../services/component-event.service";
+import {User} from "../../../models/user";
 import {ActivatedRoute} from "@angular/router";
 
 
@@ -10,8 +10,8 @@ declare const FB:any;
 @Component({
     moduleId: module.id,
     selector: 'swap-myaccount-detail',
-    templateUrl: 'myaccount-detail.component.html',
-    styleUrls: ['myaccount-detail.component.css']
+    templateUrl: './myaccount-detail.component.html',
+    styleUrls: ['./myaccount-detail.component.css']
 })
 
 export class MyAccountDetailComponent extends LoggedInUser implements OnInit {

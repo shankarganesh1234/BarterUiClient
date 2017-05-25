@@ -146,6 +146,7 @@ export class ChatComponent implements OnInit {
                 this.chats.push(chatInfo);
                 setTimeout(function()
                 {
+                    // scroll into view for the latest message
                     document.getElementById(chatInfo.id).scrollIntoView(false);
                     $('#chatMessageInput').val('');
                 }, 500);
