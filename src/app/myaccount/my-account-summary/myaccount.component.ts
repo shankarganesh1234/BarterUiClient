@@ -3,6 +3,7 @@ import {User} from "../../models/user";
 import {LoggedInUser} from "../../storage-utils/loggedInUser";
 import {ComponentEventService} from "../../services/component-event.service";
 import {NotificationService} from "../../services/notification.service";
+import {NotificationModel} from "../../models/notification-model";
 
 
 declare const FB:any;
@@ -18,7 +19,14 @@ export class MyAccountComponent extends LoggedInUser implements OnInit {
 
     isLoggedIn: boolean = false;
     user: User;
+
+    // flags for showing global notifications on the my account page
     isGlobalNotifications:boolean = false;
+    isOffersNotification:boolean = false;
+    isInterestNotification:boolean = false;
+    // end of flags
+
+    notifications: NotificationModel[];
 
     constructor(private componentEventService: ComponentEventService, private notificationService: NotificationService) {
         super();
@@ -30,16 +38,36 @@ export class MyAccountComponent extends LoggedInUser implements OnInit {
                 this.user = result;
                 this.isLoggedIn = true;
             });
+        this.initializeWebsocket();
+    }
+
+    /**
+     * Initialize websocket and start printing notifications if any
+     */
+    initializeWebsocket(): void {
 
         // websocket notification section
-        let connection:WebSocket = this.notificationService.getWebSocket();
-        this.notificationService.initWebSocket(connection);
-        this.notificationService.connection.onmessage = function(e) {
-            if(e != null && e.data != null && e.data != '') {
-                console.log(e.data);
-                this.isGlobalNotifications = true;
-            }
-        }.bind(this);
+        let connection: WebSocket = this.notificationService.getWebSocket();
+
+        if (connection != null) {
+
+            this.notificationService.initWebSocket(connection);
+            this.notificationService.connection.onmessage = function (e) {
+                if (e != null && e.data != null && e.data != '') {
+                    console.log(e.data);
+                    this.isGlobalNotifications = true;
+                    this.notifications = JSON.parse(e.data);
+
+                    for(let notification of this.notifications) {
+                        if(notification.type == 'MY_OFFERS') {
+                            this.isOffersNotification = true;
+                        } else if(notification.type == 'MY_INTERESTS') {
+                            this.isInterestNotification = true;
+                        }
+                    }
+                }
+            }.bind(this);
+        }
     }
 
     onFacebookLogoutClick() {

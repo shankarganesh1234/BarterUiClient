@@ -9,13 +9,16 @@ import {LoggedInUser} from "../storage-utils/loggedInUser";
 @Injectable()
 export class NotificationService extends LoggedInUser {
 
-    connection:WebSocket = new WebSocket(environment.websocketNotificationUrl + this.getLoggedInUser().id);
+    connection:WebSocket;
 
     /**
      * Get the web socket connection
      * @returns {WebSocket}
      */
     getWebSocket() {
+        if(this.getLoggedInUser() != null && this.getLoggedInUser().id != null && this.getLoggedInUser().id != '') {
+            this.connection = new WebSocket(environment.websocketNotificationUrl + this.getLoggedInUser().id)
+        }
         return this.connection;
     }
 
