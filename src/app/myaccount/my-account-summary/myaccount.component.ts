@@ -65,6 +65,11 @@ export class MyAccountComponent extends LoggedInUser implements OnInit {
                             this.isInterestNotification = true;
                         }
                     }
+                } else {
+                    // reset , since all notifications have been read
+                    this.isGlobalNotifications = false;
+                    this.isOffersNotification = false;
+                    this.isInterestNotification = false;
                 }
             }.bind(this);
         }
