@@ -39,7 +39,8 @@
         "assets/js/scrolling-nav.js",
         "assets/js/SendBird.min.js",
         "assets/js/wow.min.js",
-        "../node_modules/aos/dist/aos.js"
+        "../node_modules/aos/dist/aos.js",
+        "assets/js/main.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {

@@ -1,4 +1,4 @@
-import {Component, Input, OnChanges, OnInit, SimpleChanges, Output, EventEmitter, OnDestroy} from "@angular/core";
+import {Component, OnChanges, OnInit, SimpleChanges} from "@angular/core";
 import {SearchResponse} from "../models/search-response";
 import {SearchBar} from "../models/search-bar";
 import {SearchService} from "../services/search.service";
