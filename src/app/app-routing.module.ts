@@ -8,7 +8,7 @@ import {ChatComponent} from "./chat/chat.component";
 
 const routes: Routes = [
     {path: '', component: HomeComponent, pathMatch: 'full'},
-    {path: 'search/:search/:zip', component: ItemListComponent},
+    {path: 'search/:categoryName/:search/:zip', component: ItemListComponent},
     {path: 'item/:itemId', component: ItemDetailComponent},
     {path: 'my-account/:component', component: MyAccountDetailComponent},
     {path: 'chat/:interestId', component: ChatComponent}
