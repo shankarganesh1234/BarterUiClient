@@ -38,6 +38,7 @@ import {MyNewComponentComponent} from "./my-new-component/my-new-component.compo
 import {ChatService} from "./services/chat.service";
 import {ImageUploadModule} from "angular2-image-upload";
 import {NotificationService} from "./services/notification.service";
+import {FeedbackComponent} from "./feedback/feedback.component";
 
 @NgModule({
   declarations: [
@@ -64,7 +65,8 @@ import {NotificationService} from "./services/notification.service";
     FooterComponent,
     ChatComponent,
     TestcomponentComponent,
-    MyNewComponentComponent
+    MyNewComponentComponent,
+    FeedbackComponent
   ],
   imports: [BrowserModule,
     FormsModule,

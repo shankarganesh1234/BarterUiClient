@@ -1,8 +1,11 @@
 <div *ngIf="searchResponse" class="container">
     <div class="row">
         <h6 class="regular text-left">
-            Showing items available in
+            Showing items available in zip :
             <small class="text-muted">{{searchRequest.zip}}</small>
+            <br>
+            category :
+            <small class="text-muted">{{searchRequest.categoryName}}</small>
         </h6>
     </div>
 
