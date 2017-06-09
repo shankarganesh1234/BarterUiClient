@@ -22,10 +22,21 @@ export class ItemListComponent implements OnInit, OnChanges {
 
     constructor(private route: ActivatedRoute, private router: Router, private searchService: SearchService, private componentEventService: ComponentEventService){
         AOS.init();
+        route.params.subscribe(val => {
+            this.invokeSearchService();
+        });
+
     }
 
     ngOnInit(): void {
+        this.invokeSearchService();
+    }
 
+    ngOnChanges(changes: SimpleChanges) {
+
+    }
+
+    invokeSearchService(): void {
         let searchQuery = this.route.snapshot.params['search'];
         let zip = this.route.snapshot.params['zip'];
         let categoryName = this.route.snapshot.params['categoryName'];
@@ -40,10 +51,6 @@ export class ItemListComponent implements OnInit, OnChanges {
                 result => this.searchResponse = result,
                 error => console.log(error)
             );
-    }
-
-    ngOnChanges(changes: SimpleChanges) {
-
     }
 
     /**
