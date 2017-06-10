@@ -28,5 +28,6 @@ export const environment = {
   getCategoriesUrl: "http://localhost:8080/customServer/category",
   deleteImage: "http://localhost:8080/customServer/image/",
   updateItem: "http://localhost:8080/customServer/listing",
-  websocketNotificationUrl: "ws://localhost:8080/customServer/notifications/"
+  websocketNotificationUrl: "ws://localhost:8080/customServer/notifications/",
+  feedbackUrl: "http://localhost:8080/customServer/feedback"
 };

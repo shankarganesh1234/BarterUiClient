@@ -2,7 +2,6 @@ import {Injectable} from "@angular/core";
 import {Headers, Http, RequestOptions, Response} from "@angular/http";
 import "rxjs/add/operator/toPromise";
 import {Item} from "../models/item.model";
-import {GlobalUrls} from "../utils/url-values";
 // Import RxJs required methods
 import {Observable} from "rxjs/Rx";
 import "rxjs/add/operator/map";
@@ -16,7 +15,6 @@ export class ItemService {
 
     private headers: Headers;
     private options: RequestOptions;
-    private urls: GlobalUrls;
     private loggedInUser: LoggedInUser = new LoggedInUser();
 
     constructor(private http: Http) {
@@ -26,7 +24,6 @@ export class ItemService {
             'Accept': 'application/json'
         });
         this.options = new RequestOptions({headers: this.headers});
-        this.urls = new GlobalUrls();
     }
 
     createItem(itemRequest: Item): Observable<Item> {

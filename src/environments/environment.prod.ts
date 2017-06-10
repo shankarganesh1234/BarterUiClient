@@ -23,5 +23,6 @@ export const environment = {
   getCategoriesUrl: "http://13.56.91.131:8080/customServer/category",
   deleteImage: "http://13.56.91.131:8080/customServer/image/",
   updateItem: "http://13.56.91.131:8080/customServer/listing",
-  websocketNotificationUrl: "ws://13.56.91.131:8080/customServer/notifications/"
+  websocketNotificationUrl: "ws://13.56.91.131:8080/customServer/notifications/",
+  feedbackUrl: "http://13.56.91.131:8080/customServer/feedback"
 };

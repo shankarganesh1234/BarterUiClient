@@ -39,6 +39,7 @@ import {ChatService} from "./services/chat.service";
 import {ImageUploadModule} from "angular2-image-upload";
 import {NotificationService} from "./services/notification.service";
 import {FeedbackComponent} from "./feedback/feedback.component";
+import {FeedbackService} from "./services/feedback.service";
 
 @NgModule({
   declarations: [
@@ -77,7 +78,7 @@ import {FeedbackComponent} from "./feedback/feedback.component";
     AlertModule.forRoot(),
     ImageUploadModule.forRoot()
   ],
-  providers: [SearchService, CategoryService, ItemService, InterestService, LoginService, UserService, ChatService, NotificationService],
+  providers: [SearchService, CategoryService, ItemService, InterestService, LoginService, UserService, ChatService, NotificationService, FeedbackService],
   bootstrap: [LandingComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA], // add this!
 })

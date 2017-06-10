@@ -1,7 +1,6 @@
 import {Injectable} from "@angular/core";
 import {Headers, Http, RequestOptions, Response} from "@angular/http";
 import "rxjs/add/operator/toPromise";
-import {GlobalUrls} from "../utils/url-values";
 // Import RxJs required methods
 import {Observable} from "rxjs/Rx";
 import "rxjs/add/operator/map";
@@ -15,7 +14,6 @@ export class UserService {
 
     private headers: Headers;
     private options: RequestOptions;
-    private urls: GlobalUrls;
 
     constructor(private http: Http) {
 
@@ -24,7 +22,6 @@ export class UserService {
             'Accept': 'application/json'
         });
         this.options = new RequestOptions({headers: this.headers});
-        this.urls = new GlobalUrls();
     }
 
     getUserProfile(userId: number): Observable<User> {
