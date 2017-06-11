@@ -41,6 +41,7 @@ import {NotificationService} from "./services/notification.service";
 import {FeedbackComponent} from "./feedback/feedback.component";
 import {FeedbackService} from "./services/feedback.service";
 import {FaqComponent} from "./faq/faq.component";
+import {AboutUsComponent} from "./aboutus/aboutus.component";
 
 @NgModule({
   declarations: [
@@ -69,7 +70,8 @@ import {FaqComponent} from "./faq/faq.component";
     TestcomponentComponent,
     MyNewComponentComponent,
     FeedbackComponent,
-    FaqComponent
+    FaqComponent,
+    AboutUsComponent
   ],
   imports: [BrowserModule,
     FormsModule,
