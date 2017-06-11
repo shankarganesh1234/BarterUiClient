@@ -40,6 +40,7 @@ import {ImageUploadModule} from "angular2-image-upload";
 import {NotificationService} from "./services/notification.service";
 import {FeedbackComponent} from "./feedback/feedback.component";
 import {FeedbackService} from "./services/feedback.service";
+import {FaqComponent} from "./faq/faq.component";
 
 @NgModule({
   declarations: [
@@ -67,7 +68,8 @@ import {FeedbackService} from "./services/feedback.service";
     ChatComponent,
     TestcomponentComponent,
     MyNewComponentComponent,
-    FeedbackComponent
+    FeedbackComponent,
+    FaqComponent
   ],
   imports: [BrowserModule,
     FormsModule,
