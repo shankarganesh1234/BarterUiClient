@@ -13,7 +13,7 @@ const routes: Routes = [
     {path: 'item/:itemId', component: ItemDetailComponent},
     {path: 'my-account/:component', component: MyAccountDetailComponent},
     {path: 'chat/:interestId', component: ChatComponent},
-    {path: 'user/feedback', component: FeedbackComponent}
+    {path: 'user/:componentName', component: FeedbackComponent}
 ];
 @NgModule({
     imports: [RouterModule.forRoot(routes)],
