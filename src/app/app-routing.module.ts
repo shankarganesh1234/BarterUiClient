@@ -11,7 +11,7 @@ import {AboutUsComponent} from "app/aboutus/aboutus.component";
 
 const routes: Routes = [
     {path: '', component: HomeComponent, pathMatch: 'full'},
-    {path: 'search/:categoryName/:search/:zip', component: ItemListComponent},
+    {path: 'search/:categoryName/:search/:zip/:distance', component: ItemListComponent},
     {path: 'item/:itemId', component: ItemDetailComponent},
     {path: 'my-account/:component', component: MyAccountDetailComponent},
     {path: 'chat/:interestId', component: ChatComponent},

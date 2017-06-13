@@ -76,7 +76,7 @@ export class SearchBarComponent implements OnInit {
 
     search(searchBarModel: SearchBar): void {
         localStorage.setItem("postal_code", searchBarModel.zip);
-        this.router.navigate(['/search', searchBarModel.categoryName, searchBarModel.search, searchBarModel.zip]);
+        this.router.navigate(['/search', searchBarModel.categoryName, searchBarModel.search, searchBarModel.zip, searchBarModel.distance]);
     }
 
 }

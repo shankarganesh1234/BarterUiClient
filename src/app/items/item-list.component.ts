@@ -40,10 +40,12 @@ export class ItemListComponent implements OnInit, OnChanges {
         let searchQuery = this.route.snapshot.params['search'];
         let zip = this.route.snapshot.params['zip'];
         let categoryName = this.route.snapshot.params['categoryName'];
+        let distance = this.route.snapshot.params['distance'];
         this.searchRequest = new SearchBar();
         this.searchRequest.zip = zip;
         this.searchRequest.search = searchQuery;
         this.searchRequest.categoryName = categoryName;
+        this.searchRequest.distance = distance;
 
         this.searchService
             .search(this.searchRequest)
