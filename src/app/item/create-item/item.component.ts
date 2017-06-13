@@ -65,7 +65,7 @@ export class ItemComponent implements OnInit {
         this.itemForm.patchValue({
             'title': itemDetail.title,
             'description': itemDetail.description,
-            'zipCode': itemDetail.zipCode.zipCode,
+            'zipCode': itemDetail.zipCode,
             'categoryId':itemDetail.categoryId.categoryId,
             'condition': itemDetail.condition,
             'itemStage': itemDetail.itemStage,

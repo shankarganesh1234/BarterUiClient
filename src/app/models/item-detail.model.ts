@@ -6,7 +6,7 @@ export class ItemDetail {
     title: string;
     description: string;
     itemId: number;
-    zipCode: Location;
+    zipCode: number;
     userId: User;
     categoryId: Category;
     images: ItemImage[];
