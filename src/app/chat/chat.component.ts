@@ -6,6 +6,7 @@ import {Interest} from "../models/interest.model";
 import {ChatInfo} from "../models/chat-info";
 import {ChatService} from "../services/chat.service";
 import {ChatHistory} from "../models/chat-history";
+import {LoggedInUser} from "../storage-utils/loggedInUser";
 
 declare const $:any;
 
@@ -15,7 +16,7 @@ declare const $:any;
     templateUrl: `./chat.component.html`,
     styleUrls:['./chat.component.css', './chat-item.component.css']
 })
-export class ChatComponent implements OnInit {
+export class ChatComponent extends LoggedInUser implements OnInit {
 
     appId: string = 'A462E51A-2201-420F-95DD-83FF72881871';
     sb: any;
@@ -26,7 +27,9 @@ export class ChatComponent implements OnInit {
 
     constructor(private route: ActivatedRoute,
                 private interestService: InterestService,
-                private chatService: ChatService) {}
+                private chatService: ChatService) {
+        super();
+    }
 
     ngOnInit() {
         let interestId = this.route.snapshot.params['interestId'];
@@ -45,7 +48,15 @@ export class ChatComponent implements OnInit {
     getInterestSuccess(result: Interest): void {
         this.interest = result;
         this.initChat();
-        this.createChannel(this.interest.originalUser.userId, this.interest.interestedUser.userId);
+
+        let currentUserId = this.getLoggedInUser().id;
+        let otherUserId;
+        if(currentUserId == this.interest.originalUser.userId)
+            otherUserId = this.interest.interestedUser.userId;
+        else
+            otherUserId = this.interest.originalUser.userId;
+
+        this.createChannel(currentUserId, otherUserId);
     }
 
     initChat(): void {
@@ -60,11 +71,7 @@ export class ChatComponent implements OnInit {
         this.sb.connect(user1, (userOneResult:any) => {
             if(userOneResult != null) {
                 console.log(userOneResult.userId + " connected");
-                this.sb.connect(user2, (userTwoResult:any) => {
-                    if(userTwoResult != null) {
-                        console.log(userTwoResult.userId + " connected");
-
-                            this.sb.GroupChannel.createChannelWithUserIds([user1, user2], true, name, null, null, null, (result: any) => {
+                          this.sb.GroupChannel.createChannelWithUserIds([user1, user2], true, name, null, null, null, (result: any) => {
                             if(result != null) {
                                 this.chatChannel = result;
                                 let uniqueChannelId = result.url;
@@ -86,8 +93,6 @@ export class ChatComponent implements OnInit {
                                 console.log('got null result for create channel');
                             }
                         })
-                    }
-                });
             }
         });
     }
@@ -104,8 +109,10 @@ export class ChatComponent implements OnInit {
 
     getChatHistorySuccess(chatLogs: ChatHistory[]): void {
 
+        this.isLoading = false;
         if(chatLogs == null || chatLogs.length <= 0)
             return;
+
         let chatInfo: ChatInfo;
         for(let chatLog of chatLogs) {
             chatInfo = this.createChatInfoFromHistory(chatLog);
@@ -113,7 +120,6 @@ export class ChatComponent implements OnInit {
             this.chats.push(chatInfo);
         }
         setTimeout(function() {document.getElementById(chatInfo.id).scrollIntoView(false)}, 1000);
-        this.isLoading = false;
     }
 
     createChatInfoFromHistory(chatLog: ChatHistory) {
@@ -141,6 +147,7 @@ export class ChatComponent implements OnInit {
         this.chatChannel.sendUserMessage(messageBody, null, null, (result: any) => {
             console.log(result);
             if(result != null) {
+
                 let chatInfo: ChatInfo = this.createChatInfo(result._sender.userId, this.interest, messageBody);
                 chatInfo.id = this.getRandomString();
                 this.chats.push(chatInfo);

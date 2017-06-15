@@ -29,7 +29,7 @@ export class ItemListComponent implements OnInit, OnChanges {
     }
 
     ngOnInit(): void {
-        this.invokeSearchService();
+        //this.invokeSearchService();
     }
 
     ngOnChanges(changes: SimpleChanges) {
