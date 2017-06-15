@@ -83,6 +83,7 @@ export class ChatComponent extends LoggedInUser implements OnInit {
                                         let chatInfo: ChatInfo = this.createChatInfo(message._sender.userId, this.interest, message.message);
                                         chatInfo.id = this.getRandomString();
                                         this.chats.push(chatInfo);
+                                        this.scrollToLatest();
                                     }
                                 }.bind(this);
 
@@ -119,7 +120,7 @@ export class ChatComponent extends LoggedInUser implements OnInit {
             chatInfo.id = this.getRandomString();
             this.chats.push(chatInfo);
         }
-        setTimeout(function() {document.getElementById(chatInfo.id).scrollIntoView(false)}, 1000);
+        this.scrollToLatest();
     }
 
     createChatInfoFromHistory(chatLog: ChatHistory) {
@@ -151,13 +152,10 @@ export class ChatComponent extends LoggedInUser implements OnInit {
                 let chatInfo: ChatInfo = this.createChatInfo(result._sender.userId, this.interest, messageBody);
                 chatInfo.id = this.getRandomString();
                 this.chats.push(chatInfo);
-                setTimeout(function()
-                {
-                    // scroll into view for the latest message
-                    document.getElementById(chatInfo.id).scrollIntoView(false);
-                    $('#chatMessageInput').val('');
-                }, 500);
-            }
+                console.log(chatInfo);
+                this.scrollToLatest();
+                $('#chatMessageInput').val('');
+             }
         });
     }
 
@@ -191,5 +189,17 @@ export class ChatComponent extends LoggedInUser implements OnInit {
         for( var i=0; i < 8; i++ )
             text += possible.charAt(Math.floor(Math.random() * possible.length));
         return text;
+    }
+
+    /**
+     * Scroll to the last message sent or received
+     */
+    scrollToLatest(): void {
+
+        setTimeout(function()
+        {
+            $(".chat-box-messages").animate({ scrollTop: $('.chat-box-messages').prop("scrollHeight")}, 1000);
+            $('#chatMessageInput').val('');
+        }, 500);
     }
 }
