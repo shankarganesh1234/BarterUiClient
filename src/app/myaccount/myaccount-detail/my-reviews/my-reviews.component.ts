@@ -19,7 +19,6 @@ export class MyReviewsComponent extends LoggedInUser implements OnInit {
         super();
     }
     ngOnInit(): void {
-        console.log('myaccount: init');
         this.componentEventService.userLoggedin$.subscribe(
             result => {
                 this.user = result;

@@ -32,7 +32,6 @@ export class MyAccountComponent extends LoggedInUser implements OnInit {
         super();
     }
     ngOnInit(): void {
-        console.log('myaccount: init');
         this.componentEventService.userLoggedin$.subscribe(
             result => {
                 this.user = result;
@@ -54,7 +53,6 @@ export class MyAccountComponent extends LoggedInUser implements OnInit {
             this.notificationService.initWebSocket(connection);
             this.notificationService.connection.onmessage = function (e) {
                 if (e != null && e.data != null && e.data != '') {
-                    console.log(e.data);
                     this.isGlobalNotifications = true;
                     this.notifications = JSON.parse(e.data);
 
@@ -82,7 +80,6 @@ export class MyAccountComponent extends LoggedInUser implements OnInit {
     }
 
     loggedOut(response: any): void {
-        console.log('myaccount: logged out');
         this.isLoggedIn = false;
         this.user = null;
         this.removeLoggedInUser();

@@ -80,19 +80,15 @@ export class InterestOptionsComponent extends LoggedInUser implements OnInit, On
     checkedItems(e: any, itemId: number, title: string): void {
         if(e.target.checked) {
             if(this.selectedItems.length < 1) {
-                console.log('added ' + itemId);
                 this.selectedItems.push(itemId);
                 this.selectedItemTitles.push(title);
             } else {
                 e.target.setChecked(false);
-                console.log("limit reached");
             }
         } else if(!e.target.checked && this.selectedItems.indexOf(itemId) != -1){
-            console.log('removed ' + itemId);
             this.selectedItems.splice(this.selectedItems.indexOf(itemId), 1);
             this.selectedItemTitles.splice(this.selectedItemTitles.indexOf(title), 1);
         }
-        console.log('array = ' + this.selectedItems);
     }
 
     checkboxState(itemId: number): boolean {
@@ -121,7 +117,6 @@ export class InterestOptionsComponent extends LoggedInUser implements OnInit, On
     }
 
     interestSuccess(result: boolean) : void {
-        console.log("interest creation: " + result);
         if(result === true)
             this.showInterests = false;
 

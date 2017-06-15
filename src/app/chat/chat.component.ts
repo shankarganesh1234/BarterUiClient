@@ -70,7 +70,6 @@ export class ChatComponent extends LoggedInUser implements OnInit {
 
         this.sb.connect(user1, (userOneResult:any) => {
             if(userOneResult != null) {
-                console.log(userOneResult.userId + " connected");
                           this.sb.GroupChannel.createChannelWithUserIds([user1, user2], true, name, null, null, null, (result: any) => {
                             if(result != null) {
                                 this.chatChannel = result;
@@ -78,7 +77,6 @@ export class ChatComponent extends LoggedInUser implements OnInit {
                                 let ChannelHandler = new this.sb.ChannelHandler();
 
                                 ChannelHandler.onMessageReceived = function(channel: any, message: any){
-                                    console.log(channel, message);
                                     if(message != null) {
                                         let chatInfo: ChatInfo = this.createChatInfo(message._sender.userId, this.interest, message.message);
                                         chatInfo.id = this.getRandomString();
@@ -146,13 +144,11 @@ export class ChatComponent extends LoggedInUser implements OnInit {
 
     sendMessage(messageBody: string): void {
         this.chatChannel.sendUserMessage(messageBody, null, null, (result: any) => {
-            console.log(result);
             if(result != null) {
 
                 let chatInfo: ChatInfo = this.createChatInfo(result._sender.userId, this.interest, messageBody);
                 chatInfo.id = this.getRandomString();
                 this.chats.push(chatInfo);
-                console.log(chatInfo);
                 this.scrollToLatest();
                 $('#chatMessageInput').val('');
              }

@@ -27,7 +27,6 @@ export class NotificationService extends LoggedInUser {
      * @param connection
      */
     initWebSocket(connection:WebSocket) : void {
-        console.log('inside initWebSocket');
         connection.onopen = function () {
             console.log('Websocket opened successfully');
         };

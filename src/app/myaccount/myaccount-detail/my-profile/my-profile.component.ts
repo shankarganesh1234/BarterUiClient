@@ -23,7 +23,6 @@ export class MyProfileComponent extends LoggedInUser implements OnInit {
         super();
     }
     ngOnInit(): void {
-        console.log('myaccount: init');
         this.user = this.loggedInUser.getLoggedInUser();
     }
 
@@ -34,7 +33,6 @@ export class MyProfileComponent extends LoggedInUser implements OnInit {
     }
 
     loggedOut(response: any): void {
-        console.log('myaccount: logged out');
         this.isLoggedIn = false;
         this.user = null;
         this.removeLoggedInUser();
