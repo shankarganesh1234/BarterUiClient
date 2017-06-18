@@ -4,6 +4,7 @@ import {SearchBar} from "../models/search-bar";
 import {SearchService} from "../services/search.service";
 import {ComponentEventService} from "../services/component-event.service";
 import {ActivatedRoute, Router} from "@angular/router";
+import {isUndefined} from "util";
 
 declare const AOS:any;
 
@@ -25,22 +26,36 @@ export class ItemListComponent implements OnInit, OnChanges {
         route.params.subscribe(val => {
             this.invokeSearchService();
         });
-
     }
 
     ngOnInit(): void {
-        //this.invokeSearchService();
+
     }
 
     ngOnChanges(changes: SimpleChanges) {
 
     }
 
+    /**
+     * Reusing this service for showing the landing search results
+     * as well as when the user actually hits the search button with selected query params
+     */
     invokeSearchService(): void {
-        let searchQuery = this.route.snapshot.params['search'];
-        let zip = this.route.snapshot.params['zip'];
-        let categoryName = this.route.snapshot.params['categoryName'];
-        let distance = this.route.snapshot.params['distance'];
+
+        let searchQuery, zip, categoryName, distance;
+        if(isUndefined(this.route.snapshot.params['categoryName'])) {
+            console.log('route params are null. Setting results to landing page');
+            searchQuery = '';
+            zip = '00000';
+            categoryName = 'All categories';
+            distance = '100';
+        } else {
+            searchQuery = this.route.snapshot.params['search'];
+            zip = this.route.snapshot.params['zip'];
+            categoryName = this.route.snapshot.params['categoryName'];
+            distance = this.route.snapshot.params['distance'];
+        }
+
         this.searchRequest = new SearchBar();
         this.searchRequest.zip = zip;
         this.searchRequest.search = searchQuery;
@@ -53,6 +68,8 @@ export class ItemListComponent implements OnInit, OnChanges {
                 result => this.searchResponse = result,
                 error => console.log(error)
             );
+
+
     }
 
     /**

@@ -1,11 +1,35 @@
-<div *ngIf="searchResponse" class="container">
+<section id="welcome" class="home-section auto-height-margin">
     <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+            <img src="../../assets/img/barterii_cropped.png" class="img-responsive"/>
+            <h6 class="subtitle">Discover, Offer, Exchange</h6>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+
+        </div>
+    </div>
+
+
+</section>
+
+
+<div *ngIf="searchResponse" class="container">
+    <div class="row" *ngIf="searchRequest.zip != '00000'">
         <h6 class="regular text-left">
             Showing items available in zip :
             <small class="text-muted">{{searchRequest.zip}}</small>
             <br>
             category :
             <small class="text-muted">{{searchRequest.categoryName}}</small>
+        </h6>
+    </div>
+
+    <div class="row" *ngIf="searchRequest.zip == '00000'">
+        <h6 class="regular text-left">
+            Showing the latest items available for exchange
         </h6>
     </div>
 
@@ -25,6 +49,9 @@
                         <div class="row">
                             <div class="fh5co-desc col-md-12">
                                 <p class="lead"><b><a (click)="routeToItemDetail(item.itemId)">{{item.title}}</a></b></p>
+                                <p>
+                                    <small>{{item.description}}</small>
+                                </p>
                                 <p>
                                     <small class="text-muted"> Category : {{item.categoryName}}</small>
                                 </p>
@@ -60,6 +87,9 @@
                         <div class="fh5co-desc col-md-12">
                             <p class="lead"><b><a (click)="routeToItemDetail(item.itemId)">{{item.title}}</a></b></p>
                             <p>
+                                <small>{{item.description}}</small>
+                            </p>
+                            <p>
                                 <small class="text-muted"> Category : {{item.categoryName}}</small>
                             </p>
                             <p>
@@ -91,6 +121,9 @@
                         <div class="fh5co-desc col-md-12">
                             <p class="lead"><b><a (click)="routeToItemDetail(item.itemId)">{{item.title}}</a></b></p>
                             <p>
+                                <small>{{item.description}}</small>
+                            </p>
+                            <p>
                                 <small class="text-muted"> Category : {{item.categoryName}}</small>
                             </p>
                             <p>
@@ -121,6 +154,9 @@
                         <div class="row">
                             <div class="fh5co-desc col-md-12">
                                 <p class="lead"><b><a (click)="routeToItemDetail(item.itemId)">{{item.title}}</a></b></p>
+                                <p>
+                                    <small>{{item.description}}</small>
+                                </p>
                                 <p>
                                     <small class="text-muted"> Category : {{item.categoryName}}</small>
                                 </p>

@@ -10,7 +10,7 @@ import {FaqComponent} from "./faq/faq.component";
 import {AboutUsComponent} from "app/aboutus/aboutus.component";
 
 const routes: Routes = [
-    {path: '', component: HomeComponent, pathMatch: 'full'},
+    {path: '', component: ItemListComponent, pathMatch: 'full'},
     {path: 'search/:categoryName/:search/:zip/:distance', component: ItemListComponent},
     {path: 'item/:itemId', component: ItemDetailComponent},
     {path: 'my-account/:component', component: MyAccountDetailComponent},
