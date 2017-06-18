@@ -1,4 +1,6 @@
 import {Component, OnInit} from "@angular/core";
+import {LoggedInUser} from "../../../storage-utils/loggedInUser";
+import {NotificationService} from "../../../services/notification.service";
 
 @Component({
     moduleId: module.id,
@@ -7,7 +9,11 @@ import {Component, OnInit} from "@angular/core";
     styleUrls: ['my-notifications.component.css']
 })
 
-export class MyNotificationsComponent implements OnInit {
+export class MyNotificationsComponent extends LoggedInUser implements OnInit {
+
+    constructor(private notificationService: NotificationService) {
+        super();
+    }
 
     ngOnInit(): void {
 

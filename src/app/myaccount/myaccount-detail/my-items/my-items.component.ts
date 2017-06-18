@@ -28,7 +28,6 @@ export class MyItemsComponent extends LoggedInUser implements OnInit {
         AOS.init();
     }
     ngOnInit(): void {
-        console.log('myaccount: init');
         this.componentEventService.userLoggedin$.subscribe(
             result => {
                 this.user = result;

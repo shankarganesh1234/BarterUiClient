@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from "@angular/core";
-import {LoggedInUser} from "../../storage-utils/loggedInUser";
-import {ComponentEventService} from "../../services/component-event.service";
-import {User} from "../../models/user";
+import {LoggedInUser} from "../../../storage-utils/loggedInUser";
+import {ComponentEventService} from "../../../services/component-event.service";
+import {User} from "../../../models/user";
 import {ActivatedRoute} from "@angular/router";
 
 
@@ -10,8 +10,8 @@ declare const FB:any;
 @Component({
     moduleId: module.id,
     selector: 'swap-myaccount-detail',
-    templateUrl: 'myaccount-detail.component.html',
-    styleUrls: ['myaccount-detail.component.css']
+    templateUrl: './myaccount-detail.component.html',
+    styleUrls: ['./myaccount-detail.component.css']
 })
 
 export class MyAccountDetailComponent extends LoggedInUser implements OnInit {
@@ -26,7 +26,6 @@ export class MyAccountDetailComponent extends LoggedInUser implements OnInit {
         super();
     }
     ngOnInit(): void {
-        console.log('myaccount: init');
         this.componentEventService.userLoggedin$.subscribe(
             result => {
                 this.user = result;
@@ -35,7 +34,6 @@ export class MyAccountDetailComponent extends LoggedInUser implements OnInit {
 
         this.sub = this.route.params.subscribe(params => {
             this.componentLoadIndicator = params['component']; // (+) converts string 'id' to a number
-            console.log(this.componentLoadIndicator);
         });
 
     }
@@ -47,7 +45,6 @@ export class MyAccountDetailComponent extends LoggedInUser implements OnInit {
     }
 
     loggedOut(response: any): void {
-        console.log('myaccount: logged out');
         this.isLoggedIn = false;
         this.user = null;
         this.removeLoggedInUser();

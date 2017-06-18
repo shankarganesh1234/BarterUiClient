@@ -23,5 +23,7 @@ export class LandingComponent implements OnInit {
                 this.searchResponse = searchResults;
             });
      }
+
+
 }
 

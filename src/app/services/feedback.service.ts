@@ -1,22 +1,23 @@
 import {Injectable} from "@angular/core";
 import {Headers, Http, RequestOptions, Response} from "@angular/http";
 import "rxjs/add/operator/toPromise";
-import {SearchResponse} from "../models/search-response";
-import {Item} from "../models/item.model";
 // Import RxJs required methods
 import {Observable} from "rxjs/Rx";
 import "rxjs/add/operator/map";
 import "rxjs/add/operator/catch";
-import {SearchBar} from "../models/search-bar";
+import {LoggedInUser} from "../storage-utils/loggedInUser";
 import {environment} from "../../environments/environment";
+import {Feedback} from "../models/feedback";
 
 @Injectable()
-export class SearchService {
+export class FeedbackService {
 
     private headers: Headers;
     private options: RequestOptions;
+    private loggedInUser: LoggedInUser = new LoggedInUser();
 
     constructor(private http: Http) {
+
         this.headers = new Headers({
             'Content-Type': 'application/json',
             'Accept': 'application/json'
@@ -24,18 +25,15 @@ export class SearchService {
         this.options = new RequestOptions({headers: this.headers});
     }
 
-    search(searchRequest: SearchBar): Observable<SearchResponse> {
-        let body = JSON.stringify(searchRequest);
-        return this.http
-            .post(environment.searchUrl, body, this.options)
-            .map(this.extractData)
-            .catch(this.handleError);
-    }
-
-    autoComplete(term: string): Observable<Item[]> {
-        let body = JSON.stringify({query: term});
-        return this.http
-            .get(environment.autocompleteUrl + term, this.options)
+    createFeedback(feedback: Feedback): Observable<boolean> {
+        let headers =  new Headers({
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'Authorization': this.loggedInUser.getAccessToken()
+        });
+        let options = new RequestOptions({headers: headers});
+        let body = JSON.stringify(feedback);
+        return this.http.post(environment.feedbackUrl, body, options)
             .map(this.extractData)
             .catch(this.handleError);
     }

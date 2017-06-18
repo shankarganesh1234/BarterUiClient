@@ -1,13 +1,12 @@
 import {Injectable} from "@angular/core";
 import {Headers, Http, RequestOptions, Response} from "@angular/http";
 import "rxjs/add/operator/toPromise";
-import {Category} from "../models/category";
 // Import RxJs required methods
 import {Observable} from "rxjs/Rx";
 import "rxjs/add/operator/map";
 import "rxjs/add/operator/catch";
 import {environment} from "../../environments/environment";
-import {Categories} from "../models/Categories";
+import {Categories} from "../models/categories";
 
 @Injectable()
 export class CategoryService {

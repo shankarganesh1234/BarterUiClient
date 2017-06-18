@@ -9,6 +9,8 @@ import "rxjs/add/operator/distinctUntilChanged";
 import {Item} from "../models/item.model";
 import {SearchBar} from "../models/search-bar";
 import {Router} from "@angular/router";
+import {Category} from "../models/category";
+import {CategoryService} from "../services/category.service";
 
 @Component({
     moduleId: module.id,
@@ -22,10 +24,11 @@ export class SearchBarComponent implements OnInit {
 
     private searchQueries = new Subject<string>();
 
-    constructor(private router: Router, private searchService: SearchService) {
+    constructor(private router: Router, private searchService: SearchService, private categoryService: CategoryService) {
     }
 
     searchBarModel:SearchBar;
+    categoriesList: Category[] = [];
 
     autocomplete(term: string): void {
         this.searchQueries.next(term);
@@ -52,12 +55,28 @@ export class SearchBarComponent implements OnInit {
         this.searchBarModel = new SearchBar();
         this.searchBarModel.search = "";
         this.searchBarModel.zip = postalCode;
-    }
 
+        // load the supported categories
+        this.categoryService.getCategories().subscribe(
+            result => {
+                // add all the categories from db
+                this.categoriesList = result.categories;
+
+                // add all categories option
+                let allCategory: Category = new Category();
+                allCategory.categoryId = 0;
+                allCategory.categoryName = 'All categories';
+                this.categoriesList.unshift(allCategory);
+
+                this.searchBarModel.categoryName = 'All categories';
+
+            }
+        )
+    }
 
     search(searchBarModel: SearchBar): void {
         localStorage.setItem("postal_code", searchBarModel.zip);
-        this.router.navigate(['/search', searchBarModel.search, searchBarModel.zip]);
+        this.router.navigate(['/search', searchBarModel.categoryName, searchBarModel.search, searchBarModel.zip, searchBarModel.distance]);
     }
 
 }

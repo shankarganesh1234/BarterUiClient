@@ -5,7 +5,6 @@ import "rxjs/add/operator/toPromise";
 import {Observable} from "rxjs/Rx";
 import "rxjs/add/operator/map";
 import "rxjs/add/operator/catch";
-import {GlobalUrls} from "../utils/url-values";
 import {ChatDetails} from "../models/chat-details";
 import {environment} from "../../environments/environment";
 import {ChatHistory} from "../models/chat-history";
@@ -15,7 +14,6 @@ export class ChatService {
 
     private headers: Headers;
     private options: RequestOptions;
-    private urls: GlobalUrls;
 
     constructor(private http: Http) {
 
@@ -24,7 +22,6 @@ export class ChatService {
             'Accept': 'application/json'
         });
         this.options = new RequestOptions({headers: this.headers});
-        this.urls = new GlobalUrls();
     }
 
     getChatHistory(chatChannelId: string) : Observable<ChatHistory[]> {

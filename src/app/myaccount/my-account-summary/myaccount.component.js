@@ -16,53 +16,44 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var loggedInUser_1 = require("../../storage-utils/loggedInUser");
 var component_event_service_1 = require("../../services/component-event.service");
-var router_1 = require("@angular/router");
-var MyAccountDetailComponent = (function (_super) {
-    __extends(MyAccountDetailComponent, _super);
-    function MyAccountDetailComponent(componentEventService, route) {
+var MyAccountComponent = (function (_super) {
+    __extends(MyAccountComponent, _super);
+    function MyAccountComponent(componentEventService) {
         _super.call(this);
         this.componentEventService = componentEventService;
-        this.route = route;
         this.isLoggedIn = false;
     }
-    MyAccountDetailComponent.prototype.ngOnInit = function () {
+    MyAccountComponent.prototype.ngOnInit = function () {
         var _this = this;
         console.log('myaccount: init');
         this.componentEventService.userLoggedin$.subscribe(function (result) {
             _this.user = result;
             _this.isLoggedIn = true;
         });
-        this.sub = this.route.params.subscribe(function (params) {
-            _this.componentLoadIndicator = params['component']; // (+) converts string 'id' to a number
-            console.log(_this.componentLoadIndicator);
-        });
     };
-    MyAccountDetailComponent.prototype.onFacebookLogoutClick = function () {
+    MyAccountComponent.prototype.onFacebookLogoutClick = function () {
         var _this = this;
         FB.logout(function (response) {
             _this.loggedOut(response);
         });
     };
-    MyAccountDetailComponent.prototype.loggedOut = function (response) {
+    MyAccountComponent.prototype.loggedOut = function (response) {
         console.log('myaccount: logged out');
         this.isLoggedIn = false;
         this.user = null;
         this.removeLoggedInUser();
         this.componentEventService.userLoggedOut(true);
     };
-    MyAccountDetailComponent.prototype.loadComponent = function (componentName) {
-        this.componentLoadIndicator = componentName;
-    };
-    MyAccountDetailComponent = __decorate([
+    MyAccountComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
-            selector: 'swap-myaccount-detail',
-            templateUrl: 'myaccount-detail.component.html',
-            styleUrls: ['myaccount-detail.component.css']
+            selector: 'swap-myaccount',
+            templateUrl: 'myaccount.component.html',
+            styleUrls: ['myaccount.component.css']
         }), 
-        __metadata('design:paramtypes', [component_event_service_1.ComponentEventService, router_1.ActivatedRoute])
-    ], MyAccountDetailComponent);
-    return MyAccountDetailComponent;
+        __metadata('design:paramtypes', [component_event_service_1.ComponentEventService])
+    ], MyAccountComponent);
+    return MyAccountComponent;
 }(loggedInUser_1.LoggedInUser));
-exports.MyAccountDetailComponent = MyAccountDetailComponent;
-//# sourceMappingURL=myaccount-detail.component.js.map
+exports.MyAccountComponent = MyAccountComponent;
+//# sourceMappingURL=myaccount.component.js.map

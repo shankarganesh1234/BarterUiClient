@@ -60,7 +60,7 @@ export class ItemDetailComponent implements OnInit, OnChanges, OnDestroy {
     }
 
     ngOnDestroy(): void {
-        console.log('on destroy called');
+
     }
 
     cleanup(): void {

@@ -1,36 +1,33 @@
     <form *ngIf="true" class="form-inline" #searchBarForm="ngForm"  (ngSubmit)="search(searchBarModel)">
 
-        <div class="form-group input-group input-group-sm col-md-6">
+        <div class="col-sm-1">
+            &nbsp;
+        </div>
+        <div class="form-group input-group input-group-sm col-md-2 left">
+            <select class="form-control" id="categorysearch" name="categorysearch"
+                    [(ngModel)]="searchBarModel.categoryName">
+                <option *ngFor="let category of categoriesList" [value]="category.categoryName">{{category.categoryName}}</option>
+            </select>
+        </div>
+        <div class="form-group input-group input-group-sm col-md-4">
             <input type="text" id="searchBox"
                    [(ngModel)]="searchBarModel.search" class="form-control" name="searchBox" placeholder="What are you looking for?"
                    aria-describedby="sizing-addon1" (keyup)="autocomplete(searchBox.value)" #searchBox="ngModel">
         </div>
-        <div class="form-group input-group input-group-sm col-md-2">
+        <div class="form-group input-group input-group-sm col-md-1">
             <input type="text"
                    [(ngModel)]="searchBarModel.zip" id="postalCode" required minlength="5" maxlength="5"
                    class="form-control" name="postalCode" placeholder="Enter zip code" #postalCode="ngModel" value="95050">
         </div>
+        <div class="form-group input-group input-group-sm col-md-2">
+            <select class="form-control" id="distance" name="distance"
+                    [(ngModel)]="searchBarModel.distance">
+                <option [value]="5">Search within ..</option>
+                <option [value]="10">10 Miles</option>
+                <option [value]="10">25 Miles</option>
+                <option [value]="10">50 Miles</option>
+                <option [value]="10">100 Miles</option>
+            </select>
+        </div>
         <button class="btn btn-behance btn-xs vbaseline" type="submit">Search</button>
     </form>
-
-
-
-    <!--<div class="row lg col-lg-8 col-md-offset-2">-->
-    <!--<div *ngIf="postalCode.errors && (postalCode.dirty || postalCode.touched)"-->
-         <!--class="alert alert-danger">-->
-        <!--<div [hidden]="!postalCode.errors.required">-->
-            <!--Zip code is required-->
-        <!--</div>-->
-        <!--<div [hidden]="!postalCode.errors.minlength">-->
-            <!--Zip code must be at least 5 digits long-->
-        <!--</div>-->
-        <!--<div [hidden]="!postalCode.errors.maxlength">-->
-            <!--Zip code cannot be more than 5 digits long-->
-        <!--</div>-->
-    <!--</div>-->
-    <!--</div>-->
-
-    <!--<div class="input-group input-group-lg col-lg-12">-->
-        <!--<p></p>-->
-        <!--<button class="btn btn-default btn-lg page-scroll" type="submit">Show me!</button>-->
-    <!--</div>-->

@@ -51,48 +51,26 @@
         </div><!-- end row -->
 
         <div class="row">
-            <div class="col-sm-5">
-                <h5 class="title">Bartery</h5>
+            <div class="col-sm-8">
+                <h5 class="title">BarterUi</h5>
                 <p>Platform for facilitating exchange of goods, completely cashless, convenient and simple to use</p>
-
-                <hr class="spacer-10 no-border">
-
-                <ul class="social-icons">
-                    <li class="facebook"><a href="javascript:void(0);"><i class="fa fa-facebook"></i></a></li>
-                    <li class="twitter"><a href="javascript:void(0);"><i class="fa fa-twitter"></i></a></li>
-                    <li class="dribbble"><a href="javascript:void(0);"><i class="fa fa-dribbble"></i></a></li>
-                    <li class="linkedin"><a href="javascript:void(0);"><i class="fa fa-linkedin"></i></a></li>
-                    <li class="youtube"><a href="javascript:void(0);"><i class="fa fa-youtube"></i></a></li>
-                    <li class="behance"><a href="javascript:void(0);"><i class="fa fa-behance"></i></a></li>
-                </ul>
-            </div><!-- end col -->
-            <div class="col-sm-3">
-                <h5 class="title">Information</h5>
-                <ul class="list alt-list">
-                    <li><a href="about-us-v1.html"><i class="fa fa-angle-right"></i>About Us</a></li>
-                    <li><a href="faq.html"><i class="fa fa-angle-right"></i>FAQ</a></li>
-                    <li><a href="privacy-policy.html"><i class="fa fa-angle-right"></i>Privacy Policy</a></li>
-                    <li><a href="contact-v1.html"><i class="fa fa-angle-right"></i>Contact Us</a></li>
-                </ul>
             </div><!-- end col -->
             <div class="col-sm-4">
-                <h5 class="title">Donate</h5>
-                <p>If you found the site useful, please make a donation. Donations help me in keeping the site running</p>
-                <ul class="list list-inline">
-                    <li class="text-white"><i class="fa fa-cc-visa fa-2x"></i></li>
-                    <li class="text-white"><i class="fa fa-cc-paypal fa-2x"></i></li>
-                    <li class="text-white"><i class="fa fa-cc-mastercard fa-2x"></i></li>
-                    <li class="text-white"><i class="fa fa-cc-discover fa-2x"></i></li>
+                <h5 class="title">Information</h5>
+                <ul class="list-inline">
+                    <li><a [routerLink]="['/aboutus']">About us</a></li>
+                    <li><a [routerLink]="['/faq']">FAQ</a></li>
+                    <li><a [routerLink]="['/user', 'feedback']">Feedback</a></li>
+                    <li><a [routerLink]="['/user', 'contactUs']">Contact us</a></li>
                 </ul>
             </div><!-- end col -->
         </div><!-- end row -->
-
-        <hr class="spacer-30">
 
         <div class="row text-center">
             <div class="col-sm-12">
-                <p class="text-sm">2017. Made with <i class="fa fa-heart text-danger"></i> by <a href="javascript:void(0);">Shankar Ganesh</a></p>
+                <p class="text-sm">2017. Made with <i class="fa fa-heart text-danger"></i> by <a href="https://github.com/shankarganesh1234">Shankar Ganesh</a></p>
             </div><!-- end col -->
-        </div><!-- end row -->
+        </div>
+
     </div><!-- end container -->
 </footer>

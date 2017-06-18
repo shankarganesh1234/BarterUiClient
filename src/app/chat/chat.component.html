@@ -19,7 +19,7 @@
                   <dt>Category</dt>
                   <dd>{{interest.originalItemId.categoryId.categoryName}}</dd>
                   <dt>Location</dt>
-                  <dd>{{interest.originalItemId.zipCode.zipCode}}</dd>
+                  <dd>{{interest.originalItemId.zipCode}}</dd>
                 </dl>
               </div>
             </div>
@@ -43,6 +43,7 @@
                   <div class="chat-box-messages">
                     <!-- Message. Default to the left -->
                     <i *ngIf="isLoading" class="fa fa-2x fa-refresh fa-spin"></i>
+                    <small class="text-muted">This is the beginning of the conversation</small>
                     <ng-container *ngFor="let chat of chats">
 
                       <div class="chat-box-msg">
@@ -93,7 +94,7 @@
                   <dt>Category</dt>
                   <dd>{{interest.swappableItemId.categoryId.categoryName}}</dd>
                   <dt>Location</dt>
-                  <dd>{{interest.swappableItemId.zipCode.zipCode}}</dd>
+                  <dd>{{interest.swappableItemId.zipCode}}</dd>
                 </dl>
               </div>
             </div>
