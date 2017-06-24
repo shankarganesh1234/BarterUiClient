@@ -4,6 +4,6 @@ export class SearchBar {
     categoryName: string;
     distance: number = 5;
     start: number = 0;
-    limit: number = 8;
+    limit: number = 20;
     page: number = 1;
 }
