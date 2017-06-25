@@ -34,7 +34,6 @@ import {InterestService} from "./services/interest.service";
 import {LoginService} from "./services/login.service";
 import {UserService} from "./services/user.service";
 import { TestcomponentComponent } from './testcomponent/testcomponent.component';
-import {MyNewComponentComponent} from "./my-new-component/my-new-component.component";
 import {ChatService} from "./services/chat.service";
 import {ImageUploadModule} from "angular2-image-upload";
 import {NotificationService} from "./services/notification.service";
@@ -68,7 +67,6 @@ import {AboutUsComponent} from "./aboutus/aboutus.component";
     FooterComponent,
     ChatComponent,
     TestcomponentComponent,
-    MyNewComponentComponent,
     FeedbackComponent,
     FaqComponent,
     AboutUsComponent
