@@ -8,4 +8,6 @@ export class Interest {
     interestedUser: User;
     oneSidedInterestFlag: boolean;
     twoSidedInterestFlag: boolean;
+    unreadInterest:boolean = false;
+    unreadChat:boolean = false;
 }

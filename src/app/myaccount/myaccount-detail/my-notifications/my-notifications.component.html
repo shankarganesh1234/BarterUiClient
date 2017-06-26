@@ -1,10 +1,112 @@
 <div class="col-sm-12">
     <div class="row">
-        <div class="col-sm-12 text-left">
-            <h2 class="title">My Notifications</h2>
+        <div class="col-sm-9 text-left">
+            <h6 class="regular text-left">Items with active interests/offers</h6>
         </div><!-- end col -->
     </div><!-- end row -->
 
     <hr class="spacer-5">
     <hr class="spacer-20 no-border">
-</div>
+
+    <div class="row" *ngIf="((myIntsAndOffrs == null) || (myIntsAndOffrs && myIntsAndOffrs.length == 0))">
+        <div class="col-sm-12">
+            There are no offers on your listed items
+        </div>
+    </div>
+
+    <div *ngIf="myIntsAndOffrs" class="container">
+        <div class="row">
+            <div id="fh5co-board" data-columns="4">
+                <div class="column size-1of4">
+                    <ng-container
+                            *ngFor="let item of myIntsAndOffrs; let i=index">
+
+                        <div class="item" *ngIf="i%4 == 0">
+
+                            <i *ngIf="item.unreadInterest" class="fa fa-2x fa-exclamation-circle text-primary" title="New interest"></i>
+                            <i *ngIf="item.unreadChat" class="fa fa-2x fa-comments text-primary" title="Unread messages"></i>
+
+                            <div class="animate-box bounceIn animated">
+                                <a href="#" class="image-popup fh5co-board-img"><img
+                                        src="{{item.originalItemId.images[0].url}}"></a>
+                            </div>
+                            <div class="fh5co-desc">
+                                <h6>
+                                    <a [routerLink]="['/item', item.originalItemId.itemId]">{{item.originalItemId.title}}</a>
+                                </h6>
+                            </div>
+                        </div>
+
+                    </ng-container>
+                </div>
+
+                <div class="column size-1of4">
+                    <ng-container
+                            *ngFor="let item of myIntsAndOffrs; let j=index">
+
+                        <div class="item" *ngIf="j%4 == 1">
+
+                            <i *ngIf="item.unreadInterest" class="fa fa-2x fa-exclamation-circle text-primary" title="New interest"></i>
+                            <i *ngIf="item.unreadChat" class="fa fa-2x fa-comments text-primary" title="Unread messages"></i>
+
+                            <div class="animate-box bounceIn animated">
+                                <a href="#" class="image-popup fh5co-board-img"
+                                ><img
+                                        src="{{item.originalItemId.images[0].url}}"></a>
+                            </div>
+                            <div class="fh5co-desc">
+                                <h6>
+                                    <a [routerLink]="['/item', item.originalItemId.itemId]">{{item.originalItemId.title}}</a>
+                                </h6>
+                            </div>
+                        </div>
+                    </ng-container>
+                </div>
+                <div class="column size-1of4">
+                    <ng-container
+                            *ngFor="let item of myIntsAndOffrs; let k=index">
+
+                        <div class="item" *ngIf="k%4 == 2">
+
+                            <i *ngIf="item.unreadInterest" class="fa fa-2x fa-exclamation-circle text-primary" title="New interest"></i>
+                            <i *ngIf="item.unreadChat" class="fa fa-2x fa-comments text-primary" title="Unread messages"></i>
+
+                            <div class="animate-box bounceIn animated">
+                                <a href="#" class="image-popup fh5co-board-img"
+                                ><img
+                                        src="{{item.originalItemId.images[0].url}}"></a>
+                            </div>
+                            <div class="fh5co-desc">
+                                <h6>
+                                    <a [routerLink]="['/item', item.originalItemId.itemId]">{{item.originalItemId.title}}</a>
+                                </h6>
+                            </div>
+                        </div>
+                    </ng-container>
+                </div>
+                <div class="column size-1of4">
+                    <ng-container
+                            *ngFor="let item of myIntsAndOffrs; let l=index">
+
+                        <div class="item" *ngIf="l%4 == 3">
+
+                            <i *ngIf="item.unreadInterest" class="fa fa-2x fa-exclamation-circle text-primary" title="New interest"></i>
+                            <i *ngIf="item.unreadChat" class="fa fa-2x fa-comments text-primary" title="Unread messages"></i>
+
+                            <div class="animate-box bounceIn animated">
+                                <a href="#" class="image-popup fh5co-board-img"
+                                ><img
+                                        src="{{item.originalItemId.images[0].url}}"></a>
+                            </div>
+                            <div class="fh5co-desc">
+                                <h6>
+                                    <a [routerLink]="['/item', item.originalItemId.itemId]">{{item.originalItemId.title}}</a>
+                                </h6>
+                            </div>
+                        </div>
+                    </ng-container>
+                </div>
+            </div>
+        </div>
+    </div>
+</div><!-- end col -->
