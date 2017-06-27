@@ -2,6 +2,7 @@
   <div>
     <div>
       <div *ngIf="interest" class="container">
+
         <div class="row">
           <div class="col-sm-3">
             <div class="tab-content style2">
@@ -26,6 +27,11 @@
           </div>
 
           <div class="col-sm-6">
+            <div class="row">
+              <a (click)="deleteInterest(interest.interestId)">
+              <i class="fa fa-thumbs-down fa-2x text-danger" title="Not interested"></i>
+              </a>
+            </div>
             <div class="row">
               <div class="col-md-2 col-lg-offset-5">
                 <img class="img-responsive" src="../../assets/img/barterii_cropped.png"/>

@@ -35,7 +35,7 @@ export class MyNotificationsComponent extends LoggedInUser implements OnInit {
             });
         this.user = this.loggedInUser.getLoggedInUser();
         this.getMyOffers();
-
+        this.initializeWebsocket();
     }
 
     /**
@@ -55,15 +55,6 @@ export class MyNotificationsComponent extends LoggedInUser implements OnInit {
             .getAllInterestsAndOffersForUser(this.user.id)
             .subscribe(
                 result => this.getAllInterestsAndOffersForUser(result),
-                error => console.log(error)
-            );
-    }
-
-    deleteOffer(interestId: number): void {
-        this.interestService
-            .deleteInterests(interestId)
-            .subscribe(
-                result => this.getMyOffers(),
                 error => console.log(error)
             );
     }
@@ -104,5 +95,30 @@ export class MyNotificationsComponent extends LoggedInUser implements OnInit {
     getAllInterestsAndOffersForUser(result: Interests) : void {
         this.myIntsAndOffrs = result.interests;
         this.getUnreadNotifications();
+    }
+
+    /**
+     * Initialize websocket and start printing notifications if any
+     */
+    initializeWebsocket(): void {
+
+        // websocket notification section
+        let connection: WebSocket = this.notificationService.getWebSocket();
+
+        if (connection != null) {
+
+            this.notificationService.initWebSocket(connection);
+            this.notificationService.connection.onmessage = function (e) {
+                if (e != null && e.data != null && e.data != '') {
+                    this.notifications = JSON.parse(e.data);
+
+                    if(this.notifications != null && this.notifications.length > 0) {
+                        for(let notification of this.notifications) {
+                            this.myIntsAndOffrs.map(x => this.setReadStatus(notification, x));
+                        }
+                    }
+                }
+            }.bind(this);
+        }
     }
 }

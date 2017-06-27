@@ -1,6 +1,6 @@
 
 import {Component, OnInit} from "@angular/core";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {InterestService} from "../services/interest.service";
 import {Interest} from "../models/interest.model";
 import {ChatInfo} from "../models/chat-info";
@@ -27,7 +27,8 @@ export class ChatComponent extends LoggedInUser implements OnInit {
 
     constructor(private route: ActivatedRoute,
                 private interestService: InterestService,
-                private chatService: ChatService) {
+                private chatService: ChatService,
+                private router: Router) {
         super();
     }
 
@@ -197,5 +198,18 @@ export class ChatComponent extends LoggedInUser implements OnInit {
             $(".chat-box-messages").animate({ scrollTop: $('.chat-box-messages').prop("scrollHeight")}, 1000);
             $('#chatMessageInput').val('');
         }, 500);
+    }
+
+    /**
+     *
+     * @param interestId
+     */
+    deleteInterest(interestId: number): void {
+        this.interestService
+            .deleteInterests(interestId)
+            .subscribe(
+                result => this.router.navigate(['/my-account/my-notifications']),
+                error => console.log(error)
+            );
     }
 }
