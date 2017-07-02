@@ -32,8 +32,10 @@ export class MyAccountComponent extends LoggedInUser implements OnInit {
     ngOnInit(): void {
         this.componentEventService.userLoggedin$.subscribe(
             result => {
-                this.user = result;
-                this.isLoggedIn = true;
+                if(result != null) {
+                    this.user = result;
+                    this.isLoggedIn = true;
+                }
             });
         this.initializeWebsocket();
     }

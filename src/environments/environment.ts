@@ -31,6 +31,7 @@ export const environment = {
   websocketNotificationUrl: "ws://localhost:8080/customServer/notifications/",
   feedbackUrl: "http://localhost:8080/customServer/feedback",
   getAllInterestsAndOffers: "http://localhost:8080/customServer/interest/user/",
-  getUnreadNotifications: "http://localhost:8080/customServer/notifications/"
+  getUnreadNotifications: "http://localhost:8080/customServer/notifications/",
+  longLivedTokenUrl: "http://localhost:8080/customServer/login/longlivedtoken/"
 
 };
