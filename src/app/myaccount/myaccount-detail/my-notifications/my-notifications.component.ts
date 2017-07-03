@@ -1,4 +1,4 @@
-import {Component, OnInit} from "@angular/core";
+import {Component, OnChanges, OnInit} from "@angular/core";
 import {LoggedInUser} from "../../../storage-utils/loggedInUser";
 import {NotificationService} from "../../../services/notification.service";
 import {Interest} from "../../../models/interest.model";
@@ -7,6 +7,7 @@ import {InterestService} from "../../../services/interest.service";
 import {ComponentEventService} from "../../../services/component-event.service";
 import {Interests} from "../../../models/interests.model";
 import {NotificationModel} from "../../../models/notification-model";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
     moduleId: module.id,
@@ -23,21 +24,27 @@ export class MyNotificationsComponent extends LoggedInUser implements OnInit {
     unreadNotifications: NotificationModel[];
     loggedInUser: LoggedInUser = new LoggedInUser();
 
-    constructor(private componentEventService: ComponentEventService, private interestService: InterestService,private notificationService: NotificationService) {
+    constructor(private route: ActivatedRoute, private componentEventService: ComponentEventService, private interestService: InterestService,private notificationService: NotificationService) {
         super();
+        route.params.subscribe(val => {
+            this.initialize();
+        });
     }
 
     ngOnInit(): void {
+
+
+    }
+
+    initialize(): void {
         this.componentEventService.userLoggedin$.subscribe(
             result => {
                 this.user = result;
                 this.isLoggedIn = true;
             });
         this.user = this.loggedInUser.getLoggedInUser();
-        this.getMyOffers();
-        this.initializeWebsocket();
+        this.getOffersAndInterests();
     }
-
     /**
      * Get the unread notifications for the current user
      */
@@ -50,7 +57,7 @@ export class MyNotificationsComponent extends LoggedInUser implements OnInit {
             );
     }
 
-    getMyOffers(): void {
+    getOffersAndInterests(): void {
         this.interestService
             .getAllInterestsAndOffersForUser(this.user.id)
             .subscribe(
@@ -97,28 +104,4 @@ export class MyNotificationsComponent extends LoggedInUser implements OnInit {
         this.getUnreadNotifications();
     }
 
-    /**
-     * Initialize websocket and start printing notifications if any
-     */
-    initializeWebsocket(): void {
-
-        // websocket notification section
-        let connection: WebSocket = this.notificationService.getWebSocket();
-
-        if (connection != null) {
-
-            this.notificationService.initWebSocket(connection);
-            this.notificationService.connection.onmessage = function (e) {
-                if (e != null && e.data != null && e.data != '') {
-                    this.notifications = JSON.parse(e.data);
-
-                    if(this.notifications != null && this.notifications.length > 0) {
-                        for(let notification of this.notifications) {
-                            this.myIntsAndOffrs.map(x => this.setReadStatus(notification, x));
-                        }
-                    }
-                }
-            }.bind(this);
-        }
-    }
 }
