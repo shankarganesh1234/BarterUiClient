@@ -140,6 +140,5 @@ export class LoginComponent extends LoggedInUser implements OnInit {
     getLongLivedTokenSuccess(user: User, longLivedToken: string): void {
         this.setUserInfoInLocalStorage(longLivedToken, user);
         this.componentEventService.userLoggedIn(user);
-        this.isLoggedIn = true;
     }
 }

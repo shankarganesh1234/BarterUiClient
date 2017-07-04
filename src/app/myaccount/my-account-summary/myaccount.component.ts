@@ -57,10 +57,10 @@ export class MyAccountComponent extends LoggedInUser implements OnInit {
 
                     if(this.notifications != null && this.notifications.length > 0) {
                         this.isUnreadNotification = true;
+                    } else {
+                        // reset , since all notifications have been read
+                        this.isUnreadNotification = false;
                     }
-                } else {
-                    // reset , since all notifications have been read
-                    this.isUnreadNotification = false;
                 }
             }.bind(this);
         }
