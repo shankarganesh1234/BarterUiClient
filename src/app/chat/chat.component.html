@@ -74,7 +74,7 @@
                              class="form-control focus-primary" id="chatMessageInput"
                              #chatMessageInput>
                       <span class="input-group-btn">
-                                            <button type="button" class="btn btn-primary btn-flat" (click)="sendMessage(chatMessageInput.value)">Send</button>
+                                            <button type="button" class="btn btn-primary btn-flat" [disabled]="chatMessageInput.value == ''" (click)="sendMessage(chatMessageInput.value)">Send</button>
                                         </span>
                     </div>
                   </form>
