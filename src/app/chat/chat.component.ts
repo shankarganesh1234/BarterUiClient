@@ -71,7 +71,7 @@ export class ChatComponent extends LoggedInUser implements OnInit {
 
         this.sb.connect(user1, (userOneResult:any) => {
             if(userOneResult != null) {
-                          this.sb.GroupChannel.createChannelWithUserIds([user1, user2], true, interestId, null, null, interestId, (result: any) => {
+                          this.sb.GroupChannel.createChannelWithUserIds([user1, user2], true, null, null, interestId, null, (result: any) => {
                             if(result != null) {
                                 this.chatChannel = result;
                                 let uniqueChannelId = result.url;
