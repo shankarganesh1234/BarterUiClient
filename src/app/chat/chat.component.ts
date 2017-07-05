@@ -57,7 +57,7 @@ export class ChatComponent extends LoggedInUser implements OnInit {
         else
             otherUserId = this.interest.originalUser.userId;
 
-        this.createChannel(currentUserId, otherUserId);
+        this.createChannel(this.interest.interestId+'', currentUserId, otherUserId);
     }
 
     initChat(): void {
@@ -67,11 +67,11 @@ export class ChatComponent extends LoggedInUser implements OnInit {
         });
     }
 
-    createChannel(user1: string, user2: string): void {
+    createChannel(interestId: string, user1: string, user2: string): void {
 
         this.sb.connect(user1, (userOneResult:any) => {
             if(userOneResult != null) {
-                          this.sb.GroupChannel.createChannelWithUserIds([user1, user2], true, name, null, null, null, (result: any) => {
+                          this.sb.GroupChannel.createChannelWithUserIds([user1, user2], true, interestId, null, null, interestId, (result: any) => {
                             if(result != null) {
                                 this.chatChannel = result;
                                 let uniqueChannelId = result.url;

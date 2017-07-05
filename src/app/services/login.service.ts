@@ -10,6 +10,7 @@ import {LoginResponse} from "../models/login-response.model";
 import {User} from "../models/user";
 import {environment} from "../../environments/environment";
 import {FbLongLivedTokenModel} from "../models/fb-longlivedtoken.model";
+import {FbTokenResponse} from "../models/fb-token-response.model";
 
 @Injectable()
 export class LoginService {
@@ -32,7 +33,7 @@ export class LoginService {
             .catch(this.handleError);
     }
 
-    getLongLivedToken(request: FbLongLivedTokenModel): Observable<string> {
+    getLongLivedToken(request: FbLongLivedTokenModel): Observable<FbTokenResponse> {
         let body = JSON.stringify(request);
         return this.http.put(environment.longLivedTokenUrl, body, this.options)
             .map(this.extractData)

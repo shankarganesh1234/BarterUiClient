@@ -5,6 +5,7 @@ import {ComponentEventService} from "../services/component-event.service";
 import {User} from "../models/user";
 import {LoggedInUser} from "../storage-utils/loggedInUser";
 import {FbLongLivedTokenModel} from "../models/fb-longlivedtoken.model";
+import {FbTokenResponse} from "../models/fb-token-response.model";
 
 
 declare const FB:any;
@@ -137,8 +138,11 @@ export class LoginComponent extends LoggedInUser implements OnInit {
      * @param user
      * @param longLivedToken
      */
-    getLongLivedTokenSuccess(user: User, longLivedToken: string): void {
-        this.setUserInfoInLocalStorage(longLivedToken, user);
-        this.componentEventService.userLoggedIn(user);
+    getLongLivedTokenSuccess(user: User, fbTokenResponse: FbTokenResponse): void {
+        if(fbTokenResponse != null && fbTokenResponse.access_token != null) {
+            this.setUserInfoInLocalStorage(fbTokenResponse.access_token, user);
+            this.componentEventService.userLoggedIn(user);
+            this.isLoggedIn = true;
+        }
     }
 }
