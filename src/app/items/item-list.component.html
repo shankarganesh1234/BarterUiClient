@@ -43,7 +43,7 @@
 
                     <div class="item" *ngIf="i%4 == 0" data-aos="fade-up">
                         <div class="animate-box bounceIn animated">
-                            <a href="#" class="image-popup fh5co-board-img"><img
+                            <a (click)="routeToItemDetail(item.itemId)" class="image-popup fh5co-board-img"><img
                                     src="{{item.imageUrl}}"></a>
                         </div>
                         <div class="row">
@@ -63,9 +63,9 @@
                         <div class="row">
                             <div class="col-md-9"> &nbsp;</div>
                             <div class="col-md-2">
-                                <a (click)="console.log('flag')">
-                                    <i class="fa fa-flag fa-2x text-danger" aria-hidden="true" title="Flag this item"></i>
-                                </a>
+                                <!--<a (click)="console.log('flag')">-->
+                                    <!--<i class="fa fa-flag fa-2x text-danger" aria-hidden="true" title="Flag this item"></i>-->
+                                <!--</a>-->
                             </div>
                         </div>
                     </div>
@@ -79,7 +79,7 @@
 
                 <div class="item" *ngIf="j%4 == 1" data-aos="fade-up">
                     <div class="animate-box bounceIn animated">
-                        <a href="images/img_1.jpg" class="image-popup fh5co-board-img"
+                        <a (click)="routeToItemDetail(item.itemId)" class="image-popup fh5co-board-img"
                            title="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, eos?"><img
                                 src="{{item.imageUrl}}"></a>
                     </div>
@@ -100,9 +100,9 @@
                     <div class="row">
                         <div class="col-md-9"> &nbsp;</div>
                         <div class="col-md-2">
-                            <a (click)="console.log('flag')">
-                                <i class="fa fa-flag fa-2x text-danger" aria-hidden="true" title="Flag this item"></i>
-                            </a>
+                            <!--<a (click)="console.log('flag')">-->
+                                <!--<i class="fa fa-flag fa-2x text-danger" aria-hidden="true" title="Flag this item"></i>-->
+                            <!--</a>-->
                         </div>
                     </div>
                 </div>
@@ -114,7 +114,7 @@
 
                 <div class="item" *ngIf="k%4 == 2" data-aos="fade-up">
                     <div class="animate-box bounceIn animated">
-                        <a href="images/img_1.jpg" class="image-popup fh5co-board-img"><img
+                        <a (click)="routeToItemDetail(item.itemId)" class="image-popup fh5co-board-img"><img
                                 src="{{item.imageUrl}}"></a>
                     </div>
                     <div class="row">
@@ -134,9 +134,9 @@
                     <div class="row">
                         <div class="col-md-9"> &nbsp;</div>
                         <div class="col-md-2">
-                            <a (click)="console.log('flag')">
-                                <i class="fa fa-flag fa-2x text-danger" aria-hidden="true" title="Flag this item"></i>
-                            </a>
+                            <!--<a (click)="console.log('flag')">-->
+                                <!--<i class="fa fa-flag fa-2x text-danger" aria-hidden="true" title="Flag this item"></i>-->
+                            <!--</a>-->
                         </div>
                     </div>
                 </div>
@@ -148,7 +148,7 @@
 
                     <div class="item" *ngIf="l%4 == 3" data-aos="fade-up">
                         <div class="animate-box bounceIn animated">
-                            <a href="images/img_1.jpg" class="image-popup fh5co-board-img"><img
+                            <a (click)="routeToItemDetail(item.itemId)" class="image-popup fh5co-board-img"><img
                                     src="{{item.imageUrl}}"></a>
                         </div>
                         <div class="row">
@@ -168,9 +168,9 @@
                         <div class="row">
                             <div class="col-md-9"> &nbsp;</div>
                             <div class="col-md-2">
-                                <a (click)="console.log('flag')">
-                                    <i class="fa fa-flag fa-2x text-danger" aria-hidden="true" title="Flag this item" data-toggle="tooltip" title="Hooray!"></i>
-                                </a>
+                                <!--<a (click)="console.log('flag')">-->
+                                    <!--<i class="fa fa-flag fa-2x text-danger" aria-hidden="true" title="Flag this item" data-toggle="tooltip" title="Hooray!"></i>-->
+                                <!--</a>-->
                             </div>
                         </div>
                     </div>

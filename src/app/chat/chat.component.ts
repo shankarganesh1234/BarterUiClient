@@ -1,6 +1,6 @@
 
 import {Component, OnInit} from "@angular/core";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {InterestService} from "../services/interest.service";
 import {Interest} from "../models/interest.model";
 import {ChatInfo} from "../models/chat-info";
@@ -27,7 +27,8 @@ export class ChatComponent extends LoggedInUser implements OnInit {
 
     constructor(private route: ActivatedRoute,
                 private interestService: InterestService,
-                private chatService: ChatService) {
+                private chatService: ChatService,
+                private router: Router) {
         super();
     }
 
@@ -56,7 +57,7 @@ export class ChatComponent extends LoggedInUser implements OnInit {
         else
             otherUserId = this.interest.originalUser.userId;
 
-        this.createChannel(currentUserId, otherUserId);
+        this.createChannel(this.interest.interestId+'', currentUserId, otherUserId);
     }
 
     initChat(): void {
@@ -66,11 +67,11 @@ export class ChatComponent extends LoggedInUser implements OnInit {
         });
     }
 
-    createChannel(user1: string, user2: string): void {
+    createChannel(interestId: string, user1: string, user2: string): void {
 
         this.sb.connect(user1, (userOneResult:any) => {
             if(userOneResult != null) {
-                          this.sb.GroupChannel.createChannelWithUserIds([user1, user2], true, name, null, null, null, (result: any) => {
+                          this.sb.GroupChannel.createChannelWithUserIds([user1, user2], true, null, null, interestId, null, (result: any) => {
                             if(result != null) {
                                 this.chatChannel = result;
                                 let uniqueChannelId = result.url;
@@ -197,5 +198,18 @@ export class ChatComponent extends LoggedInUser implements OnInit {
             $(".chat-box-messages").animate({ scrollTop: $('.chat-box-messages').prop("scrollHeight")}, 1000);
             $('#chatMessageInput').val('');
         }, 500);
+    }
+
+    /**
+     *
+     * @param interestId
+     */
+    deleteInterest(interestId: number): void {
+        this.interestService
+            .deleteInterests(interestId)
+            .subscribe(
+                result => this.router.navigate(['/my-account/my-notifications']),
+                error => console.log(error)
+            );
     }
 }

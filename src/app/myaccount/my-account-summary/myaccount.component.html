@@ -1,6 +1,6 @@
 <div *ngIf="isLoggedIn">
 <a>
-    <i *ngIf="isGlobalNotifications" class="fa fa-exclamation-circle fa-2x text-danger" data-toggle="tooltip" data-placement="top" title data-original-title="Compare"></i>
+    <i *ngIf="isUnreadNotification" class="fa fa-bell text-primary" data-toggle="tooltip" data-placement="top" title data-original-title="Compare"></i>
     <i class="fa fa-bars mr-5"></i>
     <span class="hidden-xs">
                                 Welcome {{user.firstName}}
@@ -10,9 +10,9 @@
 <ul class="w-150">
     <li><a [routerLink]="['/my-account', 'my-profile']">My Profile</a></li>
     <li><a [routerLink]="['/my-account', 'my-items']">My Items</a></li>
-    <li><a [routerLink]="['/my-account', 'my-interests']"><i *ngIf="isInterestNotification" class="fa fa-exclamation-circle text-danger"></i> My Interests</a></li>
-    <li><a [routerLink]="['/my-account', 'my-offers']"><i *ngIf="isOffersNotification" class="fa fa-exclamation-circle text-danger"></i> My Offers</a></li>
-    <li><a [routerLink]="['/my-account', 'my-notifications']">Notifications</a></li>
+    <!--<li><a [routerLink]="['/my-account', 'my-interests']"> My Interests</a></li>-->
+    <!--<li><a [routerLink]="['/my-account', 'my-offers']"> My Offers</a></li>-->
+    <li><a [routerLink]="['/my-account', 'my-notifications']"><i *ngIf="isUnreadNotification" class="fa fa-bell text-primary"></i> Notifications</a></li>
     <li><a [routerLink]="['/my-account', 'my-reviews']">Reviews</a></li>
     <li><a routerLink="/" (click)="onFacebookLogoutClick()">Logout</a></li>
 </ul>

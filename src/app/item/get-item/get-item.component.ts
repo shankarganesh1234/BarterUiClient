@@ -6,6 +6,9 @@ import {ActivatedRoute, Params, Router} from "@angular/router";
 import {Interests} from "../../models/interests.model";
 import {InterestService} from "../../services/interest.service";
 import {LoggedInUser} from "../../storage-utils/loggedInUser";
+import {NotificationService} from "../../services/notification.service";
+import {NotificationModel} from "../../models/notification-model";
+import {Interest} from "../../models/interest.model";
 
 
 declare var $: any;
@@ -39,7 +42,8 @@ export class ItemDetailComponent implements OnInit, OnChanges, OnDestroy {
                 private router: Router,
                 private itemService: ItemService,
                 private componentEventService: ComponentEventService,
-                private interestService: InterestService) {
+                private interestService: InterestService,
+                private notificationService: NotificationService) {
     }
 
     ngOnInit(): void {
@@ -93,9 +97,14 @@ export class ItemDetailComponent implements OnInit, OnChanges, OnDestroy {
         this.interestService
             .getInterests(userId, itemId, isOwner)
             .subscribe(
-                result => this.interestsOrOffers = result,
+                result => this.getInterestsSuccess(result),
                 error => console.log(error)
             );
+    }
+
+    getInterestsSuccess(result: Interests): void {
+        this.interestsOrOffers = result;
+        this.getUnreadNotifications();
     }
 
     getItemSuccess(result: ItemDetail): void {
@@ -107,5 +116,55 @@ export class ItemDetailComponent implements OnInit, OnChanges, OnDestroy {
     passUserId(userId: number) {
         this.userId = userId;
         this.showInterests = true;
+    }
+
+    /**
+     * Get the unread notifications for the current user
+     */
+    getUnreadNotifications(): void {
+        this.notificationService
+            .getUnreadNotifications(this.loggedInUser.getLoggedInUser().id)
+            .subscribe(
+                result => this.getUnreadNotificationsSuccess(result),
+                error => console.log(error)
+            );
+    }
+
+    /**
+     * Invoked on successful call of get unread notifications
+     * Sets the results into a local variable
+     * @param result
+     */
+    getUnreadNotificationsSuccess(result: NotificationModel[]) : void {
+
+        for(let notification of result) {
+            this.interestsOrOffers.interests.map(x => this.setReadStatus(notification, x));
+        }
+    }
+
+    /**
+     *
+     * @param notification
+     * @param interest
+     * @returns {Interest}
+     */
+    setReadStatus(notification: NotificationModel, interest: Interest) : Interest {
+        console.log('checking for interest with id = ' + interest.interestId);
+        if(+notification.interestId == interest.interestId) {
+
+            if(notification.status == 'UNREAD') {
+
+                if(notification.type == 'INTEREST') {
+                    interest.unreadInterest = true;
+                }
+                if(notification.type == 'CHAT') {
+                    interest.unreadChat = true;
+                }
+            } else {
+                interest.unreadInterest = false;
+                interest.unreadChat = false;
+            }
+        }
+        return interest;
     }
 }

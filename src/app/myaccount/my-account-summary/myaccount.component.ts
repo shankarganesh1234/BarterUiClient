@@ -21,9 +21,7 @@ export class MyAccountComponent extends LoggedInUser implements OnInit {
     user: User;
 
     // flags for showing global notifications on the my account page
-    isGlobalNotifications:boolean = false;
-    isOffersNotification:boolean = false;
-    isInterestNotification:boolean = false;
+    isUnreadNotification: boolean = false;
     // end of flags
 
     notifications: NotificationModel[];
@@ -34,8 +32,10 @@ export class MyAccountComponent extends LoggedInUser implements OnInit {
     ngOnInit(): void {
         this.componentEventService.userLoggedin$.subscribe(
             result => {
-                this.user = result;
-                this.isLoggedIn = true;
+                if(result != null) {
+                    this.user = result;
+                    this.isLoggedIn = true;
+                }
             });
         this.initializeWebsocket();
     }
@@ -53,21 +53,14 @@ export class MyAccountComponent extends LoggedInUser implements OnInit {
             this.notificationService.initWebSocket(connection);
             this.notificationService.connection.onmessage = function (e) {
                 if (e != null && e.data != null && e.data != '') {
-                    this.isGlobalNotifications = true;
                     this.notifications = JSON.parse(e.data);
 
-                    for(let notification of this.notifications) {
-                        if(notification.type == 'MY_OFFERS') {
-                            this.isOffersNotification = true;
-                        } else if(notification.type == 'MY_INTERESTS') {
-                            this.isInterestNotification = true;
-                        }
+                    if(this.notifications != null && this.notifications.length > 0) {
+                        this.isUnreadNotification = true;
+                    } else {
+                        // reset , since all notifications have been read
+                        this.isUnreadNotification = false;
                     }
-                } else {
-                    // reset , since all notifications have been read
-                    this.isGlobalNotifications = false;
-                    this.isOffersNotification = false;
-                    this.isInterestNotification = false;
                 }
             }.bind(this);
         }

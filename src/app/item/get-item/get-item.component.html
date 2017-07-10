@@ -97,10 +97,17 @@
                                         <div class="col-xs-10 text-left">
                                             <h6 class="inline">
                                                 <a [routerLink]="['/chat', interest.interestId]">
-                                                {{interest.interestedUser.displayName}}
-                                                    <small class="text-muted">has offered an exchange for this item. </small>
-                                                    &nbsp;   <i class="fa fa-commenting-o text-primary"></i>
+                                                    <ng-container *ngIf="interest.interestedUser.userId == loggedInUser.getLoggedInUser().id">
+                                                        <small class="text-muted">You have expressed interest on this item. </small>
+                                                        &nbsp;   <i class="fa fa-commenting-o text-primary"></i>
+                                                    </ng-container>
+                                                    <ng-container *ngIf="interest.interestedUser.userId != loggedInUser.getLoggedInUser().id">
+                                                        {{interest.interestedUser.displayName}}
+                                                        <small class="text-muted">has offered an exchange for this item. </small>
+                                                        &nbsp;   <i class="fa fa-commenting-o text-primary"></i>
+                                                    </ng-container>
                                                 </a>
+                                                <i *ngIf="interest.unreadInterest" class="fa fa-exclamation text-primary"></i>
                                             </h6>
                                             <hr>
                                         </div>
