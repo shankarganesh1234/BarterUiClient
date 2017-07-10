@@ -7,6 +7,7 @@ import {ChatInfo} from "../models/chat-info";
 import {ChatService} from "../services/chat.service";
 import {ChatHistory} from "../models/chat-history";
 import {LoggedInUser} from "../storage-utils/loggedInUser";
+import {CommonUtils} from "../utils/commonutils";
 
 declare const $:any;
 
@@ -24,6 +25,7 @@ export class ChatComponent extends LoggedInUser implements OnInit {
     interest: Interest;
     chats: ChatInfo[] = [];
     isLoading: boolean = true;
+    commonUtils: CommonUtils = new CommonUtils();
 
     constructor(private route: ActivatedRoute,
                 private interestService: InterestService,
@@ -79,7 +81,8 @@ export class ChatComponent extends LoggedInUser implements OnInit {
 
                                 ChannelHandler.onMessageReceived = function(channel: any, message: any){
                                     if(message != null) {
-                                        let chatInfo: ChatInfo = this.createChatInfo(message._sender.userId, this.interest, message.message);
+                                        let recdMessage : string = this.commonUtils.decodeMessage(message.message);
+                                        let chatInfo: ChatInfo = this.createChatInfo(message._sender.userId, this.interest, recdMessage);
                                         chatInfo.id = this.getRandomString();
                                         this.chats.push(chatInfo);
                                         this.scrollToLatest();
@@ -144,10 +147,15 @@ export class ChatComponent extends LoggedInUser implements OnInit {
 
 
     sendMessage(messageBody: string): void {
-        this.chatChannel.sendUserMessage(messageBody, null, null, (result: any) => {
+
+        // encode message with interest id
+        let message: string = this.commonUtils.encodeMessage(this.interest.interestId, messageBody);
+
+        this.chatChannel.sendUserMessage(message, null, null, (result: any) => {
             if(result != null) {
 
-                let chatInfo: ChatInfo = this.createChatInfo(result._sender.userId, this.interest, messageBody);
+                // decode before posting to user chat
+                let chatInfo: ChatInfo = this.createChatInfo(result._sender.userId, this.interest, this.commonUtils.decodeMessage(message));
                 chatInfo.id = this.getRandomString();
                 this.chats.push(chatInfo);
                 this.scrollToLatest();
