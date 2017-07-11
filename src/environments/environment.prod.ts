@@ -19,7 +19,7 @@ export const environment = {
   getChatForInterestedUser : "http://13.56.91.131:8080/customServer/chat/interestedUser/",
   getInterests : "http://13.56.91.131:8080/customServer/interest?",
   getInterestById : "http://13.56.91.131:8080/customServer/interest/",
-  getChatHistory: "http://13.56.91.131:8080/customServer/chat/history?",
+  getChatHistory: "http://13.56.91.131:8080/customServer/chat/history?channelId=",
   getCategoriesUrl: "http://13.56.91.131:8080/customServer/category",
   deleteImage: "http://13.56.91.131:8080/customServer/image/",
   updateItem: "http://13.56.91.131:8080/customServer/listing",
