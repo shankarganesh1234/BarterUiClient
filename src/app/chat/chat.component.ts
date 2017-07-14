@@ -91,7 +91,7 @@ export class ChatComponent extends LoggedInUser implements OnInit {
 
                                 this.sb.addChannelHandler(uniqueChannelId, ChannelHandler);
                                 console.log('channel created' + uniqueChannelId);
-                                this.getChatHistory(uniqueChannelId);
+                                this.getChatHistory(uniqueChannelId, interestId);
                             } else {
                                 console.log('got null result for create channel');
                             }
@@ -100,10 +100,10 @@ export class ChatComponent extends LoggedInUser implements OnInit {
         });
     }
 
-    getChatHistory(channelId: string): void {
+    getChatHistory(channelId: string, interestId: string): void {
 
         this.chatService
-            .getChatHistory(channelId)
+            .getChatHistory(channelId, interestId)
             .subscribe(
                 result => this.getChatHistorySuccess(result),
                 error => console.log(error)
