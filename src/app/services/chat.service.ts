@@ -24,8 +24,8 @@ export class ChatService {
         this.options = new RequestOptions({headers: this.headers});
     }
 
-    getChatHistory(chatChannelId: string) : Observable<ChatHistory[]> {
-        return this.http.get(environment.getChatHistory + chatChannelId, this.options)
+    getChatHistory(chatChannelId: string, interestId: string) : Observable<ChatHistory[]> {
+        return this.http.get(environment.getChatHistory + chatChannelId + '&interestId=' + interestId, this.options)
             .map(this.extractData)
             .catch(this.handleError);
     }

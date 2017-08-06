@@ -49,6 +49,12 @@ export class InterestService {
             .catch(this.handleError);
     }
 
+    getAllInterestsAndOffersForUser(userId: string): Observable<Interests> {
+        return this.http.get(environment.getAllInterestsAndOffers + userId, this.options)
+            .map(this.extractData)
+            .catch(this.handleError);
+    }
+
     getInterests(userId: string, itemId: string, isOwner: boolean): Observable<Interests> {
         return this.http.get(environment.getInterests + 'user=' + userId + '&item=' + itemId + '&isowner=' + isOwner, this.options)
             .map(this.extractData)

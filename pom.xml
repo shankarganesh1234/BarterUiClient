@@ -23,6 +23,9 @@
                 <configuration>
                     <webResources>
                         <webResource>
+                            <directory>google-seo</directory>
+                        </webResource>
+                        <webResource>
                             <directory>dist</directory>
                         </webResource>
                     </webResources>

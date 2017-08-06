@@ -1,12 +1,13 @@
 
 import {Component, OnInit} from "@angular/core";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {InterestService} from "../services/interest.service";
 import {Interest} from "../models/interest.model";
 import {ChatInfo} from "../models/chat-info";
 import {ChatService} from "../services/chat.service";
 import {ChatHistory} from "../models/chat-history";
 import {LoggedInUser} from "../storage-utils/loggedInUser";
+import {CommonUtils} from "../utils/commonutils";
 
 declare const $:any;
 
@@ -24,10 +25,12 @@ export class ChatComponent extends LoggedInUser implements OnInit {
     interest: Interest;
     chats: ChatInfo[] = [];
     isLoading: boolean = true;
+    commonUtils: CommonUtils = new CommonUtils();
 
     constructor(private route: ActivatedRoute,
                 private interestService: InterestService,
-                private chatService: ChatService) {
+                private chatService: ChatService,
+                private router: Router) {
         super();
     }
 
@@ -56,7 +59,7 @@ export class ChatComponent extends LoggedInUser implements OnInit {
         else
             otherUserId = this.interest.originalUser.userId;
 
-        this.createChannel(currentUserId, otherUserId);
+        this.createChannel(this.interest.interestId+'', currentUserId, otherUserId);
     }
 
     initChat(): void {
@@ -66,11 +69,11 @@ export class ChatComponent extends LoggedInUser implements OnInit {
         });
     }
 
-    createChannel(user1: string, user2: string): void {
+    createChannel(interestId: string, user1: string, user2: string): void {
 
         this.sb.connect(user1, (userOneResult:any) => {
             if(userOneResult != null) {
-                          this.sb.GroupChannel.createChannelWithUserIds([user1, user2], true, name, null, null, null, (result: any) => {
+                          this.sb.GroupChannel.createChannelWithUserIds([user1, user2], true, null, null, interestId, null, (result: any) => {
                             if(result != null) {
                                 this.chatChannel = result;
                                 let uniqueChannelId = result.url;
@@ -78,7 +81,8 @@ export class ChatComponent extends LoggedInUser implements OnInit {
 
                                 ChannelHandler.onMessageReceived = function(channel: any, message: any){
                                     if(message != null) {
-                                        let chatInfo: ChatInfo = this.createChatInfo(message._sender.userId, this.interest, message.message);
+                                        let recdMessage : string = this.commonUtils.decodeMessage(message.message);
+                                        let chatInfo: ChatInfo = this.createChatInfo(message._sender.userId, this.interest, recdMessage);
                                         chatInfo.id = this.getRandomString();
                                         this.chats.push(chatInfo);
                                         this.scrollToLatest();
@@ -87,7 +91,7 @@ export class ChatComponent extends LoggedInUser implements OnInit {
 
                                 this.sb.addChannelHandler(uniqueChannelId, ChannelHandler);
                                 console.log('channel created' + uniqueChannelId);
-                                this.getChatHistory(uniqueChannelId);
+                                this.getChatHistory(uniqueChannelId, interestId);
                             } else {
                                 console.log('got null result for create channel');
                             }
@@ -96,10 +100,10 @@ export class ChatComponent extends LoggedInUser implements OnInit {
         });
     }
 
-    getChatHistory(channelId: string): void {
+    getChatHistory(channelId: string, interestId: string): void {
 
         this.chatService
-            .getChatHistory(channelId)
+            .getChatHistory(channelId, interestId)
             .subscribe(
                 result => this.getChatHistorySuccess(result),
                 error => console.log(error)
@@ -143,10 +147,15 @@ export class ChatComponent extends LoggedInUser implements OnInit {
 
 
     sendMessage(messageBody: string): void {
-        this.chatChannel.sendUserMessage(messageBody, null, null, (result: any) => {
+
+        // encode message with interest id
+        let message: string = this.commonUtils.encodeMessage(this.interest.interestId, messageBody);
+
+        this.chatChannel.sendUserMessage(message, null, null, (result: any) => {
             if(result != null) {
 
-                let chatInfo: ChatInfo = this.createChatInfo(result._sender.userId, this.interest, messageBody);
+                // decode before posting to user chat
+                let chatInfo: ChatInfo = this.createChatInfo(result._sender.userId, this.interest, this.commonUtils.decodeMessage(message));
                 chatInfo.id = this.getRandomString();
                 this.chats.push(chatInfo);
                 this.scrollToLatest();
@@ -197,5 +206,18 @@ export class ChatComponent extends LoggedInUser implements OnInit {
             $(".chat-box-messages").animate({ scrollTop: $('.chat-box-messages').prop("scrollHeight")}, 1000);
             $('#chatMessageInput').val('');
         }, 500);
+    }
+
+    /**
+     *
+     * @param interestId
+     */
+    deleteInterest(interestId: number): void {
+        this.interestService
+            .deleteInterests(interestId)
+            .subscribe(
+                result => this.router.navigate(['/my-account/my-notifications']),
+                error => console.log(error)
+            );
     }
 }
